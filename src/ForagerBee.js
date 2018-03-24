@@ -1,0 +1,3 @@
+var ForagerBee = function() {
+};
+
