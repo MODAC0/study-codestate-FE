@@ -1,3 +1,11 @@
+if (typeof module === 'object' && typeof module.exports === 'object') {
+  require('mocha');
+  var chai = require('chai')
+  var expect = chai.expect
+  var RetiredForagerBee = require('../src/RetiredForagerBee')
+  var verifyClass = require('./verifyClass')
+}
+
 describe('RetiredForagerBee class functionality', function() {
 
   verifyClass(RetiredForagerBee).followsPattern('pseudoclassical', {}, false);

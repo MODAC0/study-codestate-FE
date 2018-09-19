@@ -1,3 +1,11 @@
+if (typeof module === 'object' && typeof module.exports === 'object') {
+  require('mocha');
+  var chai = require('chai')
+  var expect = chai.expect
+  var HoneyMakerBee = require('../src/HoneyMakerBee')
+  var verifyClass = require('./verifyClass')
+}
+
 describe('HoneyMakerBee class functionality', function() {
 
   verifyClass(HoneyMakerBee).followsPattern('pseudoclassical', {}, false);

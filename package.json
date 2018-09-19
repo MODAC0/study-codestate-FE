@@ -1,0 +1,27 @@
+{
+  "name": "im07-2018-06-beesbeesbees",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "mocha test/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/codestates/im07-2018-06-beesbeesbees.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/codestates/im07-2018-06-beesbeesbees/issues"
+  },
+  "homepage": "https://github.com/codestates/im07-2018-06-beesbeesbees#readme",
+  "dependencies": {
+    "chai": "^4.1.2",
+    "mocha": "^5.2.0",
+    "underscore": "^1.9.1"
+  }
+}

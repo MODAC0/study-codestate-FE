@@ -1,3 +1,10 @@
+if (typeof module === 'object' && typeof module.exports === 'object') {
+  require('mocha');
+  var chai = require('chai')
+  var expect = chai.expect
+  var _ = require('underscore')
+}
+
 var verifyClass = function(constructor) {
   return {
     followsPattern: function(pattern, options, prototypeOfInstances) {
@@ -168,3 +175,7 @@ var verifyClass = function(constructor) {
     }
   }
 };
+
+if (typeof module === 'object' && typeof module.exports === 'object') {
+  module.exports = verifyClass;
+}
