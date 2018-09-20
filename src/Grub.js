@@ -1,4 +1,4 @@
-var Grub = function() {
+var Grub = function () {
 }
 
 if (typeof module === 'object' && typeof module.exports === 'object') {
