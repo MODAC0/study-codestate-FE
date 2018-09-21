@@ -1,9 +1,7 @@
-if (typeof module === 'object' && typeof module.exports === 'object') {
-  require('mocha');
-  var chai = require('chai')
-  var expect = chai.expect
-  var _ = require('underscore')
-}
+require('mocha');
+var chai = require('chai')
+var expect = chai.expect
+var _ = require('underscore')
 
 var verifyClass = function(constructor) {
   return {
@@ -176,6 +174,4 @@ var verifyClass = function(constructor) {
   }
 };
 
-if (typeof module === 'object' && typeof module.exports === 'object') {
-  module.exports = verifyClass;
-}
+module.exports = verifyClass;
