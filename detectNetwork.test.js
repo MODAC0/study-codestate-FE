@@ -24,7 +24,7 @@ describe('Introduction to Mocha Tests - READ ME FIRST', function() {
   it('Doesn\'t throw an error, so it doesn\'t fail', function() {
     // This test doesn't really test anything at all! It will pass no matter what.
     var even = function(num){
-      return num/2 === 0;
+      return num % 2 === 0;
     }
     return even(10) === true;
   });
