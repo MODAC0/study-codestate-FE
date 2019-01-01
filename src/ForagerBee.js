@@ -1,7 +1,7 @@
-var Bee = require('./Bee')
+var Bee = require('./Bee');
 
 var ForagerBee = function () {
 
-}
+};
 
-module.exports = ForagerBee
+module.exports = ForagerBee;

@@ -1,4 +1,4 @@
 var Grub = function () {
-}
+};
 
-module.exports = Grub
+module.exports = Grub;

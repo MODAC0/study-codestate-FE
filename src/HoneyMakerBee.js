@@ -1,7 +1,7 @@
-var Bee = require('./Bee')
+var Bee = require('./Bee');
 
 var HoneyMakerBee = function () {
 
-}
+};
 
-module.exports = HoneyMakerBee
+module.exports = HoneyMakerBee;
