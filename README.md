@@ -10,6 +10,14 @@
 - [ ] Instantiation patterns 중 Pseudoclassical한 방법
 - [ ] Pre Course 수준에서의 Prototype에 대한 개념 이해
 
+## Pair programming을 시작하기 전 혼자서 해볼 것들
+
+본격적으로 Pair programming을 시작하기 전 아래 항목들을 먼저 확인해봅니다.
+
+- [ ] `__proto__`, `constructor`, `prototype` 이 각각 어떤 관계를 가지고 있는 지 조사해봅니다.
+- [ ] `Object.create` 사용법에 대한 복습을 해봅니다.
+- [ ] ES6 `class` 키워드 및 `super` 키워드 이용 방법을 알아봅니다.
+
 ## Advanced 한 과제들
 
 BeesBeesBees는 연습삼아 해볼 수 있는 가벼운 과제입니다 :) 완료하셨으면, Subclass Dance Party로 넘어가주세요.
