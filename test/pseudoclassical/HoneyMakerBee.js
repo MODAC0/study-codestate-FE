@@ -1,7 +1,7 @@
 require('mocha');
 var chai = require('chai')
 var expect = chai.expect
-var HoneyMakerBee = require('../src/HoneyMakerBee')
+var HoneyMakerBee = require('../../src/pseudoclassical/HoneyMakerBee')
 var verifyClass = require('./verifyClass')
 
 describe('HoneyMakerBee class functionality', function() {

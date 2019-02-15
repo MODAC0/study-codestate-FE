@@ -1,7 +1,7 @@
 require('mocha');
 var chai = require('chai')
 var expect = chai.expect
-var Grub = require('../src/Grub')
+var Grub = require('../../src/pseudoclassical/Grub')
 var verifyClass = require('./verifyClass')
 
 describe('Grub class functionality', function() {

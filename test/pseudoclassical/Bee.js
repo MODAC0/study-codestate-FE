@@ -1,7 +1,7 @@
 require('mocha');
 var chai = require('chai')
 var expect = chai.expect
-var Bee = require('../src/Bee')
+var Bee = require('../../src/pseudoclassical/Bee')
 var verifyClass = require('./verifyClass')
 
 describe('Bee class functionality', function() {

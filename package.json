@@ -1,5 +1,5 @@
 {
-  "name": "im07-2018-06-beesbeesbees",
+  "name": "im11-2019-02-beesbeesbees",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -7,7 +7,7 @@
     "test": "test"
   },
   "scripts": {
-    "test": "mocha test/",
+    "test": "mocha test/**/*.js",
     "precommit": "lint-staged",
     "lint": "eslint src/"
   },
@@ -25,14 +25,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/codestates/im07-2018-06-beesbeesbees.git"
+    "url": "git+https://github.com/codestates/im11-2019-02-beesbeesbees.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/codestates/im07-2018-06-beesbeesbees/issues"
+    "url": "https://github.com/codestates/im11-2019-02-beesbeesbees/issues"
   },
-  "homepage": "https://github.com/codestates/im07-2018-06-beesbeesbees#readme",
+  "homepage": "https://github.com/codestates/im11-2019-02-beesbeesbees#readme",
   "dependencies": {
     "chai": "^4.1.2",
     "husky": "^0.14.3",

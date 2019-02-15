@@ -1,7 +1,7 @@
 require('mocha');
 var chai = require('chai')
 var expect = chai.expect
-var ForagerBee = require('../src/ForagerBee')
+var ForagerBee = require('../../src/pseudoclassical/ForagerBee')
 var verifyClass = require('./verifyClass')
 
 describe('ForagerBee class functionality', function() {
