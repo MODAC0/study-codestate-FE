@@ -34,9 +34,14 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
 
       # run tests!
-      - run: npm test
+      - run: npm run test:circleci
 
       - run:
           name: Submit Result
           command: node .circleci/submit.js
+          when: always
+
+      - run:
+          name: Submit Result
+          command: node .circleci/review.js
           when: always
