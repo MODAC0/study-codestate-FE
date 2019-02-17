@@ -26,8 +26,9 @@ BeesBeesBees는 연습삼아 해볼 수 있는 가벼운 과제입니다 :) 완�
 
 1. 현재 repo를 자신의 Github으로 fork 합니다.
 2. fork된 repo를 git clone 명령어로 자신의 local 환경으로 다운로드합니다.
-3. Leanco에서 Pair Programming 전에 혼자서 진행할 부분을 확인합니다.
-4. Pair분과 함께 Programming을 하며 재밌게 coding합니다.
+3. Ternimal에 `npm install`을 입력해 dependency들을 설치합니다.
+4. Leanco에서 Pair Programming 전에 혼자서 진행할 부분을 확인합니다.
+5. Pair분과 함께 Programming을 하며 재밌게 coding합니다.
 
 ## 제출 방법
 
