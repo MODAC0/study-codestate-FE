@@ -7,7 +7,7 @@
     "test": "test"
   },
   "scripts": {
-    "test": "mocha test/**/*.js",
+    "test": "node test/student/getReview.js && mocha test/**/*.js",
     "precommit": "lint-staged",
     "lint": "eslint src/"
   },
@@ -33,9 +33,7 @@
     "url": "https://github.com/codestates/im11-2019-02-beesbeesbees/issues"
   },
   "homepage": "https://github.com/codestates/im11-2019-02-beesbeesbees#readme",
-  "dependencies": {
-    
-  },
+  "dependencies": {},
   "devDependencies": {
     "eslint": "^5.11.1",
     "chai": "^4.1.2",

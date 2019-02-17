@@ -1,7 +1,7 @@
 const { exec } = require("child_process");
 const https = require("https");
 
-const review = require("../__test__/review.json");
+const review = require("../test/student/review.json");
 
 exec('echo "$airtable_api_key"', (err, apikey) => {
   if (err) {

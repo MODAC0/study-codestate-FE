@@ -130,3 +130,6 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+
+# Students data
+review.json
