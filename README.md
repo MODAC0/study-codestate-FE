@@ -10,7 +10,7 @@
 - [ ] Instantiation patterns 중 Pseudoclassical한 방법
 - [ ] Pre Course 수준에서의 Prototype에 대한 개념 이해
 
-## Pair programming을 시작하기 전 혼자서 해볼 것들
+## Solo Part
 
 본격적으로 Pair programming을 시작하기 전 아래 항목들을 먼저 확인해봅니다.
 
