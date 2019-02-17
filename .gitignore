@@ -133,3 +133,6 @@ $RECYCLE.BIN/
 
 # Students data
 review.json
+
+# Prettier
+.prettierrc
