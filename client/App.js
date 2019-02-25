@@ -12,8 +12,7 @@ class App {
       method: 'POST',
       body: JSON.stringify(body),
       headers: {
-        'content-type': 'text/json',
-        origin: 'localhost'
+        'content-type': 'text/json'
       }
     })
       .then(res => res.json())
