@@ -162,7 +162,7 @@ document.addEventListener("DOMContentLoaded", function () {
     "",
     "테스트하려는 동작에 대해 확신할 때까지 detectNetwork.test.js의 테스트를 검사한 다음 테스트가 통과되도록 만드세요. 이렇게 하려면 몇 가지 테스트를 수정해야 할 겁니다. 그 후에, 다음 네트워크를 구현해보세요.",
     "",
-    "Discover는 항상 6011, 644에서 649까지의 접두사와 16, 또는 19의 길이를 가집니다.",
+    "Discover는 항상 6011, 65, 644에서 649까지의 접두사와 16, 또는 19의 길이를 가집니다.",
     "Maestro는 항상 5018, 5020, 5038 또는 6304의 접두사와 12에서부터 19까지의 길이를 가집니다.",
     "",
     "%cdetectNetwork가 Diner's Club, American Express, Visa, MasterCard, Discover 그리고 Maestro의 모든 접두사와 길이 조합에 대해 올바른 발급기관을 리턴하나요? 모든 조합이 잘 작동되면 이제 nextStep()을 호출해서 다음 단계로 넘어갈 수 있습니다. %c",
