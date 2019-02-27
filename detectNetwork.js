@@ -13,4 +13,11 @@ var detectNetwork = function(cardNumber) {
   // The American Express network always starts with a 34 or 37 and is 15 digits long
 
   // Once you've read this, go ahead and try to implement this function, then return to the console.
+
+  // YOUR CODE HERE
 };
+
+// you don't have to worry about this code. keep this code.
+if(typeof window === 'undefined') {
+  module.exports = detectNetwork;
+}

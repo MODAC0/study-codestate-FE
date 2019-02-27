@@ -150,5 +150,5 @@ describe('Maestro', function() {
   // Write full test coverage for the Maestro card
 });
 
-describe('should support China UnionPay')
-describe('should support Switch')
+describe('should support China UnionPay', function() {})
+describe('should support Switch', function() {})

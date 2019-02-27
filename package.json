@@ -1,0 +1,16 @@
+{
+  "name": "pre-TestBuilder",
+  "version": "1.0.0",
+  "description": "",
+  "main": "detectNetwork.js",
+  "scripts": {
+    "test": "mocha .test/"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^6.0.2"
+  }
+}
