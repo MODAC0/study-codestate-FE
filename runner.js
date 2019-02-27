@@ -39,11 +39,28 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function s() {
-    console.log(["Are you sure that detectNetwork works for every credit card network given?", "", "It's pretty normal to feel like your code works because you thought it through carefully when you wrote it. It's also normal to feel frustrated at this process. However, on the job, you won't be able to risk the chance that a function produces unexpected results. The only way to know for sure is to actually run your function for each input, even if it feels tedious.", "", "To be %cabsolutely certain your function produces expected output all the time%c, you must invoke your function for EVERY combination of length and prefix and make sure it returns the correct network. You will not be allowed to advance to the next step until you have done this. If you modify your function, you'll need to refresh the page, and try all of the prefix and length combinations again. This is to ensure your function still works after you made changes.", "", "For example, for American Express, make sure you try detectNetwork with:", "   - A credit card number that starts with 34 and is 15 digits long", "   - A credit card number that starts with 37 and is 15 digits long", "For Diner's Club, make sure you invoke detectNetwork with:", "   - A credit card number that starts with 38 and is 14 digits long", "   - A credit card number that starts with 39 and is 14 digits long", "", "After you have invoked detectNetwork for ALL length and prefix combinations, invoke nextStep:", "", "%c>%c nextStep()"].join("\n"), "font-weight:bold", "font-weight:normal", "color:blue", "color:black")
+    console.log(["주어진 모든 카드번호에 대해서 detectNetwork가 작동하는 것이 확실한가요?",
+    "",
+    "코드가 작동될거라고 느껴지시는 게 당연합니다. 이 과정에서 좌절감을 얻을 수도 있겠죠. 그러나 이렇게 하나하나 테스트하지 않는다면, 앞으로 생길 수 있는 예상치 못한 결과에 대응할 수가 없습니다. 다소 지루한 작업처럼 느껴질 수 있겠지만, 각 입력에 대해 실제로 함수를 테스트해보세요.",
+    "",
+    "%c항상 길이와 접두사의 모든 조합에 대해 함수를 호출하고 올바른 발급기관을 리턴하는지 확인하세요!%c, 이 작업을 수행할 때까지, 다음 단계로 넘어갈 수가 없습니다. 함수를 수정하면 페이지를 새로 고침하고, 모든 접두사와 길이 조합에 대해 다시 테스트를 시도해야 합니다. 이는, 함수를 변경하고 나서도 기존의 기능이 잘 작동되는지를 확인하기 위함입니다.",
+    "",
+    "예를 들어, detectNetwork를 다음과 같이 시도했을 때에는, American Express가 리턴되어야 합니다.",
+    "   - 카드번호가 34로 시작하고, 숫자의 길이가 15개인 경우",
+    "   - 카드번호가 37로 시작하고, 숫자의 길이가 15개인 경우",
+    "detectNetwork를 다음과 같이 시도했을 때에는, Diner's Club이 리턴되어야 합니다.",
+    "   - 카드번호가 38로 시작하고, 숫자의 길이가 14개인 경우",
+    "   - 카드번호가 39로 시작하고, 숫자의 길이가 14개인 경우",
+    "",
+    "모든 길이와 접두어의 조합에 대해 detectNetwork를 실행했으면, nextStep을 호출하여 다음 단계로 넘어갈 수 있습니다.", "", "%c>%c nextStep()"].join("\n"), "font-weight:bold", "font-weight:normal", "color:blue", "color:black")
   }
 
   function c(e) {
-    var t = ["You didn't achieve %cfull test coverage%c in your Mocha tests! Make sure there is a test for each prefix and length combination for each card.", "", "For example, for American Express, make sure there is a test with:", "   - A credit card number that starts with 34 and is 15 digits long", "   - A credit card number that starts with 37 and is 15 digits long", ""].join("\n"),
+    var t = ["Mocha 테스트에서 %c모든 테스트 범위%c를 커버하지 못했어요! 각 카드의 각 접두어와 길이 조합에 대해 테스트가 존재하는지 확인해주세요.",
+    "",
+    "예를 들어 American Express의 경우 다음과 같은 테스트가 있는지 확인하십시오.",
+    "   - 카드번호가 34로 시작하고, 숫자의 길이가 15개인 경우",
+    "   - 카드번호가 37로 시작하고, 숫자의 길이가 15개인 경우", ""].join("\n"),
       o = ["font-weight:bold", "font-weight:normal"];
     if (e) {
       var n = m();
@@ -65,7 +82,30 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function u() {
-    console.log(["STEP ONE:", "", "Your goal is to write a function that can detect what credit card network a card belongs to based on the card's number. You'll write this function in %cdetectNetwork.js%c, which was included in the repo you downloaded. Go find it now and follow the directions there.", "", "%cdetectNetwork.js%c has been loaded by the browser using a script tag, so if you make changes to your function, you'll have to refresh the browser. You'll refresh often as we add steps - don't worry, the file will save progress for fully completed steps. If you're ready to test your function, you can try typing this into the console:", "", " %c>%c detectNetwork(%c'38345678901234'%c)", "", "If you see the output", "", ' %c<%c "%cDiner\'s Club%c"', "", "You're on the right track! If not, you can go back and modify your function - just remember to refresh to get the updated function.", "", "Here's a list of card numbers you can try to ensure that your function works for every combination of prefix and length: ", "", "38345678901234 (Diner's Club)", "39345678901234 (Diner's Club)", "343456789012345 (American Express)", "373456789012345 (American Express)", "", "%cWhen you've made detectNetwork return the correct network for every prefix and length combination for Diner's Club and American Express, you can invoke nextStep: %c", "", "%c>%c nextStep()", ""].join("\n"), "font-weight:bold", "font-weight:normal", "font-weight:bold ", "font-weight:normal", "color:lightgray", "color:black", "color:#c00", "color:black", "color:lightgray", "color:black", "color:#c00", "color:black", "font-weight:bold", "font-weight:normal", "color:blue", "color:black")
+    console.log(["STEP ONE:", "",
+    "여러분의 목표는, 신용카드 번호를 바탕으로 해당 신용카드가 어떠한 발급기관(network)에 속해 있는지 알아낼 수 있는 함수를 작성하는 것입니다. 여러분은 여러분이 clone한 repository에 포함되어 있는 %cdetectNetwork.js%c 파일 안에다 이 함수를 작성하게 될 것입니다. 지금 찾아가서 살펴보시고, 다음 안내를 따라주세요.",
+    "",
+    "%cdetectNetwork.js%c은 브라우저의 <script> 태그를 이용해서 이미 로딩되어 있습니다. 만일 여러분들이 함수에 작은 변화를 만들었다면, 브라우저를 새로고침 해야만 합니다. 앞으로 STEP이 진행될 때마다 브라우저를 새로고침 해야 할텐데, 다행히도 TestBuilder는 여러분이 이전에 완료된 STEP의 대해 진행 상황을 저장합니다. 함수를 테스트할 준비가 되면, 콘솔에 다음과 같이 입력해보세요.",
+    "",
+    " %c>%c detectNetwork(%c'38345678901234'%c)",
+    "",
+    "만일 다음 출력을 보셨다면, 아주 잘 하고 계신겁니다!",
+    "",
+    ' %c<%c "%cDiner\'s Club%c"',
+    "",
+    "만일 그렇지 않은 경우는, 다시 돌아가서 함수를 수정할 수 있습니다. 단지 함수를 수정하고, 새로고침 하는 것을 잊지 말아주세요.",
+    "",
+    "다음은 여러분이 접두사와 카드번호 길이의 모든 조합에 대해, 함수가 작동되도록 시도할 수 있는 카드번호 목록입니다.",
+    "",
+    "38345678901234 (Diner's Club)",
+    "39345678901234 (Diner's Club)",
+    "343456789012345 (American Express)",
+    "373456789012345 (American Express)",
+    "",
+    "%cdetectNetwork가 Diner's Club 및 American Express의 모든 접두사와 길이 조합에 대해 올바른 발급기관을 리턴하나요? 모든 조합이 잘 작동되면 이제 nextStep()을 호출해서 다음 단계로 넘어갈 수 있습니다. %c",
+    "",
+    "%c>%c nextStep()",
+    ""].join("\n"), "font-weight:bold", "font-weight:normal", "font-weight:bold ", "font-weight:normal", "color:lightgray", "color:black", "color:#c00", "color:black", "color:lightgray", "color:black", "color:#c00", "color:black", "font-weight:bold", "font-weight:normal", "color:blue", "color:black")
   }
 
   function f() {
@@ -73,7 +113,31 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function h() {
-    console.log(["STEP TWO:", "Nice work! Extend your function to support two popular networks, Visa and Mastercard:", "", "Visa always has a prefix of 4 and a length of 13, 16, or 19.", "MasterCard always has a prefix of 51, 52, 53, 54, or 55 and a length of 16.", "", "Make sure that you continue to support Diner's Club and American Express cards. Keep testing your implementation here in the console.", "", "Here's a list of card numbers you can try to ensure that your function works for every combination of prefix and length: ", "", "38345678901234 (Diner's Club)", "39345678901234 (Diner's Club)", "343456789012345 (American Express)", "373456789012345 (American Express)", "4123456789012 (Visa)", "4123456789012345 (Visa)", "4123456789012345678 (Visa)", "5112345678901234 (MasterCard)", "5212345678901234 (MasterCard)", "5312345678901234 (MasterCard)", "5412345678901234 (MasterCard)", "5512345678901234 (MasterCard)", "", "", "%cWhen detectNetwork returns the correct network for every prefix and length combination for Diner's Club, American Express, Visa, and MasterCard you can invoke nextStep: %c", "", "%c>%c nextStep()"].join("\n"), "font-weight:bold", "font-weight:normal", "color:blue", "color:black")
+    console.log(["STEP TWO:",
+    "잘 하셨습니다! 이젠 Visa 카드와 Mastercard 카드 번호도 알아낼 수 있도록 기능을 확장해볼까요?",
+    "",
+    "Visa는 항상 4의 접두사와 13, 16, 또는 19의 길이를 가집니다.",
+    "MasterCard는 항상 51, 52, 53, 54, 또는 55의 접두사와 16의 길이를 가집니다.",
+    "",
+    "함수를 변경하고 나서, 이전에 만들었던 내용이 제대로 작동하리라는 보장을 할 수 없으므로 반드시 테스트를 해야 합니다. Diner's Club과 American Express에 대해서도 계속 지원하는지 확인하세요.",
+    "",
+    "다음은 여러분이 접두사와 카드번호 길이의 모든 조합에 대해, 함수가 작동되도록 시도할 수 있는 카드번호 목록입니다.",
+    "",
+    "38345678901234 (Diner's Club)",
+    "39345678901234 (Diner's Club)",
+    "343456789012345 (American Express)",
+    "373456789012345 (American Express)",
+    "4123456789012 (Visa)",
+    "4123456789012345 (Visa)",
+    "4123456789012345678 (Visa)",
+    "5112345678901234 (MasterCard)",
+    "5212345678901234 (MasterCard)",
+    "5312345678901234 (MasterCard)",
+    "5412345678901234 (MasterCard)",
+    "5512345678901234 (MasterCard)",
+    "", "",
+    "%cdetectNetwork가 Diner's Club, American Express, Visa, 그리고 MasterCard의 모든 접두사와 길이 조합에 대해 올바른 발급기관을 리턴하나요? 모든 조합이 잘 작동되면 이제 nextStep()을 호출해서 다음 단계로 넘어갈 수 있습니다. %c",
+    "", "%c>%c nextStep()"].join("\n"), "font-weight:bold", "font-weight:normal", "color:blue", "color:black")
   }
 
   function d() {
@@ -81,11 +145,28 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function w() {
-    console.log(["%cSTEP THREE:%c", "", "Well done! To ease the pain of manual testing, you can write automated tests! In the next step, your browser will turn into an automated test suite powered by Mocha and Chai.", "", "Automated tests are imperative to your efficiency as a developer. You can write a mocha test once and run it an unlimited amount of times, just by refreshing the page.", "", "Each time the test suite is run (by refreshing the page, remember?), the report clearly marks failed tests, allowing you to identify errors quickly.", "", "%cWhen you're ready to see the test suite, invoke nextStep.%c", "", "%c>%c nextStep()"].join("\n"), "font-weight:bold", "font-weight:normal", "font-weight:bold", "font-weight:normal", "color:blue", "color:black")
+    console.log(["%cSTEP THREE:%c", "",
+    "잘 하셨습니다! 이제는 하나하나 수동 테스트하는 고통을 덜고, 자동화된 테스트를 해보면 어떨까요? 다음 단계에서는 브라우저가 Mocha 및 Chai가 제공하는 자동화 테스트 모음으로 바뀝니다.",
+    "",
+    "자동화된 테스트는 개발자로서의 효율성을 위해 반드시 필요합니다. Mocha 테스트를 작성한 후, 페이지를 새로고침하는 것만으로 console.log 없이 함수의 작동 여부를 확인할 수 있습니다.",
+    "",
+    "테스트 모음이 실행될 때마다, 브라우저 창에 나타나는 보고서는 실패한 테스트를 명확하게 표시합니다.",
+    "",
+    "%c이제 준비가 되셨으면, nextStep을 실행하세요.%c",
+    "", "%c>%c nextStep()"].join("\n"), "font-weight:bold", "font-weight:normal", "font-weight:bold", "font-weight:normal", "color:blue", "color:black")
   }
 
   function p() {
-    console.log(["", "Here it is! Each heading (like Diner's Club) is a different set of tests, and underneath each heading is a list of tests, with a ❌ if it fails and a ✔️ if it passes.", "", "Examine the tests in detectNetwork.test.js until you are confident about the behavior they are testing, then make them pass (you might have to modify a few tests to do so!). Then, implement the following networks:", "", "Discover always has a prefix of 6011, 644-649, or 65, and a length of 16 or 19.", "Maestro always has a prefix of 5018, 5020, 5038, or 6304, and a length of 12-19.", "", "%cWhen detectNetwork returns the correct network for every prefix and length combination for Diner's Club, American Express, Visa, MasterCard, Discover, and Maestro, you can invoke nextStep: %c", "", "%c>%c nextStep()"].join("\n"), "font-weight:bold", "font-weight:normal", "color:blue", "color:black")
+    console.log(["", "자 브라우저 창에 테스트 모음이 보이시나요? 각 표제(Diner's Club과 같은)는 다른 테스트 세트이며, 각 표제 아래에는 테스트 목록이 표시됩니다. 테스트가 실패하면 ❌가, 성공하면 ✔️가 표시됩니다.",
+    "",
+    "테스트하려는 동작에 대해 확신할 때까지 detectNetwork.test.js의 테스트를 검사한 다음 테스트가 통과되도록 만드세요. 이렇게 하려면 몇 가지 테스트를 수정해야 할 겁니다. 그 후에, 다음 네트워크를 구현해보세요.",
+    "",
+    "Discover는 항상 6011, 644에서 649까지의 접두사와 16, 또는 19의 길이를 가집니다.",
+    "Maestro는 항상 5018, 5020, 5038 또는 6304의 접두사와 12에서부터 19까지의 길이를 가집니다.",
+    "",
+    "%cdetectNetwork가 Diner's Club, American Express, Visa, MasterCard, Discover 그리고 Maestro의 모든 접두사와 길이 조합에 대해 올바른 발급기관을 리턴하나요? 모든 조합이 잘 작동되면 이제 nextStep()을 호출해서 다음 단계로 넘어갈 수 있습니다. %c",
+    "",
+    "%c>%c nextStep()"].join("\n"), "font-weight:bold", "font-weight:normal", "color:blue", "color:black")
   }
 
   function g() {
@@ -93,22 +174,48 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function y() {
-    console.log(["STEP FOUR:", "Excellent work! Write your own tests and make them pass for the last two networks:", "", "China UnionPay always has a prefix of 622126-622925, 624-626, or 6282-6288 and a length of 16-19.", "Switch always has a prefix of 4903, 4905, 4911, 4936, 564182, 633110, 6333, or 6759 and a length of 16, 18, or 19.", "", "Heads up! Switch and Visa seem to have some overlapping card numbers - in any apparent conflict, you should choose the network with the longer prefix.", "", "%cWhen detectNetwork returns the correct network for every prefix and length combination for Diner's Club, American Express, Visa, MasterCard, Discover, Maestro, China UnionPay, and Switch you can invoke nextStep: %c", "", "%c>%c nextStep()"].join("\n"), "font-weight:bold", "font-weight:normal", "color:blue", "color:black")
+    console.log(["훌륭합니다! 일단 Pre Course 과정에서는 여기까지만 해도 충분합니다. 수고하셨습니다!",
+    "원한다면 다음의 두 발급기관에 대한 코드와 테스트를 작성해보는 것은 어떨까요?",
+    "",
+    "STEP FOUR:",
+    "",
+    "China UnionPay는 항상 622126-622925, 624-626, 또는 6282-6288의 접두사와 16-19의 길이를 가집니다.",
+    "Switch는 항상 4903, 4905, 4911, 4936, 564182, 633110, 6333, 6759의 접두사와 16, 18, 또는 19의 길이를 가집니다.",
+    "",
+    "잠시만요! Switch와 Visa의 카드번호를 검사할 때에 겹치는 부분이 있는 것 같습니다. 충돌이 있는 경우, 접두어의 길이가 긴 쪽으로 판별해야 합니다.", "",
+    "%ccdetectNetwork가 Diner's Club, American Express, Visa, MasterCard, Discover, Maestro, China UnionPay, 그리고 Switch의 모든 접두사와 길이 조합에 대해 올바른 발급기관을 리턴하나요? 모든 조합이 잘 작동되면 이제 nextStep()을 호출해서 다음 단계로 넘어갈 수 있습니다. %c",
+    "", "%c>%c nextStep()"].join("\n"), "font-weight:bold", "font-weight:normal", "color:blue", "color:black")
   }
 
   function m() {
     return {
-      message: ["Writing all of those tests can be repetitive and exhuasting! Loops are a great way to procedurally generate tests.", "", "This code will help - %cread it carefully, %cand also consider why an IIFE is needed here before moving on.", "", "%cfor (var prefix = 644; prefix <= 649; prefix++) {", "  (function(prefix) {", "    it('has a prefix of ' + prefix + ' and a length of 16');", "    it('has a prefix of ' + prefix + ' and a length of 19');", "  })(prefix)", "}", ""].join("\n"),
-      format: ["font-weight:bold", "font-weight:normal", "color:blue"]
+      message: ["모든 테스트 케이스를 반복적으로 쓸 수도 있겠지만, 우리는 반복문을 배운 사람들이기 때문에, 각 테스트를 반복문을 통해 생성하면 더 좋겠죠?",
+      "",
+      "도움말: 아래 코드는 for 루프 안쪽에 생성되는 테스트의 예제입니다.",
+      "",
+      "%cfor (var prefix = 644; prefix <= 649; prefix++) {",
+      "  it('has a prefix of ' + prefix + ' and a length of 16', function() {",
+      "    console.log(prefix);",
+      "  });",
+      "  it('has a prefix of ' + prefix + ' and a length of 19', function() {",
+      "    console.log(prefix);",
+      "  });",
+      "}",
+      "",
+      "%c위와 같이 코드를 작성하다보면, 콘솔 출력을 하는 prefix와, 테스트 케이스를 만드는 부분의 prefix가 서로 값이 다른 경우가 생길 것입니다.",
+      "이는 scope와 관련된 문제로, it 함수의 인자로 들어가는 함수가 별개의 scope를 생성하기 때문입니다. 이 문제를 해결하려면, let 키워드나, IIFE(즉시 실행 함수)가 필요할 수 있습니다."].join("\n"),
+      format: ["color:blue", "font-weight: normal"]
     }
   }
 
   function b() {
-    console.log(["Solid work writing all those tests, but you forgot to refactor your tests to use only %cshould OR expect%c, not both.", "Please refactor your tests before proceeding."].join("\n"), "font-weight:bold", "font-weight:normal")
+    console.log(["모든 테스트를 꼼꼼하게 작성한 것 같네요. 그런데 한가지 문제가 있어요. 여러분은 테스트를 작성할 때 %cshould 혹은 expect 중에 하나만%c 사용하는것이 좋습니다. 같이 사용하지 마세요.",
+    "",
+    "더 진행하기 전에 테스트를 리팩토링하세요."].join("\n"), "font-weight:bold", "font-weight:normal")
   }
 
   function k() {
-    console.log(["Congratulations! You have finished the exercise!"].join("\n"))
+    console.log(["축하합니다! 여러분들은 이 과제의 모든 부분을 완료했습니다."].join("\n"))
   }
 
   function x() {
