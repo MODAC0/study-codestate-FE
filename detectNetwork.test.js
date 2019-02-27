@@ -64,7 +64,7 @@ describe('American Express', function() {
   // 항상 if/throw 구문으로 오류를 체크하는 것은 귀찮은 일이기 때문에,
   // 여기에 도움을 줄 수 있는 함수를 하나 제공했습니다. 입력값이 true가 아닐 경우 에러를 발생시킵니다.
   var assert = function(isTrue) {
-    if(isTrue) {
+    if(!isTrue) {
       throw new Error('Test failed');
     }
 
