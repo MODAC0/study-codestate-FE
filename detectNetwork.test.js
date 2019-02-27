@@ -1,6 +1,6 @@
 /*
- * You'll eventually be given instructions how to use this file
- * If you want to use it before then, you'll have to figure it out yourself
+ * 이 파일을 어떻게 사용해야 하는지 STEP을 진행하다보면 알 수 있습니다.
+ * 만일 그 전에 이 파일을 이용하고 싶다면 주석을 참고하여 직접 연구해야 합니다.
  */
 
 // You don't actually want to fill *this* value in on line 9, but you'll see
@@ -9,40 +9,40 @@
 var FILL_ME_IN = 'Fill this value in';
 
 describe('Introduction to Mocha Tests - READ ME FIRST', function() {
-  // A Mocha test is just a function!
-  // If the function throws an error when run, it fails.
-  // If it doesn't throw an error when run, it doesn't fail.
-  // To read more about mocha, visit mochajs.org
+  // Mocha 테스트는 그저 다음 기능을 하는 도구입니다!
+  // - 함수를 실행할 때 오류가 발생하면, 실패합니다.
+  // - 오류가 발생하지 않으면, 실패하지 않습니다.
+  // mocha에 대해 더 알고 싶다면 다음을 참고하세요. mochajs.org
 
-  // Once you've read and understood this section, please comment it out.
-  // You will not be able to proceed with a failing test.
+  // 아래 섹션을 이해했으면, 주석 처리해도 좋습니다.
+  // 실패한 테스트가 있는 경우 진행할 수 없기 때문입니다.
 
-  it('Throws an error so it fails', function() {
-    throw new Error('Delete me!');
+  it('오류가 발생하면 테스트가 실패합니다.', function() {
+    throw new Error('저를 지워주세요!');
   });
 
-  it('Doesn\'t throw an error, so it doesn\'t fail', function() {
-    // This test doesn't really test anything at all! It will pass no matter what.
+  it('오류가 발생하지 않으므로, 실패하지 않습니다.', function() {
+    // 이 테스트는 실제로 아무것도 테스트하지 않습니다. 그러므로 그냥 여기는 통과하게 됩니다.
     var even = function(num){
       return num % 2 === 0;
     }
     return even(10) === true;
   });
 
-  // In tests, we want to compare the expected behavior to the actual behavior.
-  // A test should only fail if the expected behavior doesn't match the actual.
-  it('Throws an error when expected behavior does not match actual behavior', function() {
+  // 우리는 테스트에서 예상 동작과 실제 동작을 비교하기를 원할 것입니다.
+  // 예상 동작이 실제 동작과 다르다면, 테스트는 실패해야 합니다.
+  it('예상 동작이 실제 동작과 일치하지 않을 때 오류가 발생합니다.', function() {
     var even = function(num){
-      return num/2 === 0;
+      return num / 2 === 0; // 체크하려는 함수에 뭔가 문제가 있군요!
     }
 
     if(even(10) !== true) {
-      throw new Error('10 should be even!');
+      throw new Error('10은 짝수여야 합니다!');
     }
   });
 });
 describe('Diner\'s Club', function() {
-  // Be careful, tests can have bugs too...
+  // 주의하세요, 테스트에도 버그가 존재할 수 있습니다...
 
   it('has a prefix of 38 and a length of 14', function() {
     throw new Error('Delete me!');
@@ -61,8 +61,8 @@ describe('Diner\'s Club', function() {
 });
 
 describe('American Express', function() {
-  // It can get annoying to keep typing the if/throw, so here is a
-  // helper function to throw an error if the input statement isn't true.
+  // 항상 if/throw 구문으로 오류를 체크하는 것은 귀찮은 일이기 때문에,
+  // 여기에 도움을 줄 수 있는 함수를 하나 제공했습니다. 입력값이 true가 아닐 경우 에러를 발생시킵니다.
   var assert = function(isTrue) {
     if(isTrue) {
       throw new Error('Test failed');
@@ -80,9 +80,9 @@ describe('American Express', function() {
 });
 
 describe('Visa', function() {
-  // Chai is an entire library of helper functions for tests!
-  // Chai provides an assert that acts the same as our previous assert.
-  // Search the documentation to figure out how to access it.
+  // Chai는 테스트에 필요한 헬퍼 함수들이 담긴 라이브러리입니다!
+  // Chai는 이전에 만들었던 assert 함수와 동일한 기능을 하는 assert 함수를 제공합니다.
+  // Chai가 제공하는 assert 함수를 어떻게 사용하는지 웹사이트의 공식 문서를 참고해보세요.
   //   http://chaijs.com/
   var assert = chai.FILL_ME_IN;
 
@@ -101,9 +101,9 @@ describe('Visa', function() {
 });
 
 describe('MasterCard', function() {
-  // Chai lets you write more human-readable tests that throw helpful errors.
-  // Expect syntax is one way to do this, but there are others.
-  // If you want to know more, check out the documentation.
+  // Chai는 좀 더 영어 문법에 가까운 코드로 테스트를 작성할 수 있게 도와줍니다.
+  // Expect 문법은 그 중 한가지이며, 다른 문법도 있습니다.
+  // 이와 관련해 더 알고 싶다면, 공식 문서를 참고하세요.
   //   http://chaijs.com/api/bdd/
   var expect = chai.expect;
 
@@ -120,13 +120,13 @@ describe('MasterCard', function() {
   });
 
 
-  // You can also use should instead of expect, which changes the style
-  // slightly. It really doesn't matter which one you use - check out
-  // http://chaijs.com/guide/styles/ for more info, but it's important
-  // to be consistent (unlike in this file, where we use BOTH expect
-  // and should, but that's just for learning), so once you've gotten
-  // these tests to pass using should syntax, refactor your tests to
-  // use either expect or should, but not both.
+  // expect 대신에 should라는 문법을 사용해서 스타일을 조금 변경할 수도 있습니다.
+  // 사실 둘 중 어떤 것을 사용하는지는 중요하지 않습니다.
+  // 스타일에 관련해서는 다음 사이트를 참조하세요. http://chaijs.com/guide/styles/
+  // 다만 중요한 것은 스타일의 일관성을 유지하는 것입니다.
+  // (우리는 공부를 하는 중이기 때문에 두가지 방법 모두를 사용해 보았습니다.)
+  // 테스트를 작성하는 중에, 두가지 방법을 동시에 사용하려고 하면 진행되지 않을 것입니다.
+  // expect나 should 둘 중에 한가지 방법을 선택해서 사용하세요.
   var should = chai.should();
 
   it('has a prefix of 54 and a length of 16', function() {
@@ -140,8 +140,8 @@ describe('MasterCard', function() {
 });
 
 describe('Discover', function() {
-  // Tests without a function will be marked as "pending" and not run
-  // Implement these tests (and others) and make them pass!
+  // 함수가 없는 테스트는 "pending"이라는 표시가 뜨며 실행되지 않습니다.
+  // 아래 테스트를 작성하고 테스트가 통과하도록 만드십시오.
   it('has a prefix of 6011 and a length of 16');
   it('has a prefix of 6011 and a length of 19');
 });

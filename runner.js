@@ -78,7 +78,8 @@ document.addEventListener("DOMContentLoaded", function () {
       }, n = !1, r = t; r >= e; r--) S(r) && !n && (console.log(["%c%cUh-oh. It looks like you broke something that was previously working.", "", "Fix it before proceeding.", "", "See below for what step is no longer working.", ""].join("\n"), "font-weight:bold", "color:#c00"), e > 2 && i({
       mocha: !0
     }, function () {}), n = !0, o[e]());
-    n || console.log(["Uh oh, it looks like your function %cisn't working properly for all combinations %cof prefix and length.", "Please try again!"].join("\n"), "font-weight:bold", "font-weight:normal")
+    n || console.log(["%c접두사와 길이%c의 모든 조합에 대해 함수가 제대로 작동하지 않는 것 같습니다.",
+    "다시 시도하십시오!"].join("\n"), "font-weight:bold", "font-weight:normal")
   }
 
   function u() {
