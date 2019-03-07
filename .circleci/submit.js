@@ -58,7 +58,7 @@ exec('echo "$airtable_api_key"', (err, apikey) => {
             req.write(
                 JSON.stringify({
                     fields: {
-                        subject: 'recursion',
+                        subject: 'testbuilder',
                         username: username.trim(),
                     }
                 })
