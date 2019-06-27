@@ -5,7 +5,7 @@
 
 /**
  * 11번 줄에 있는 FILL_ME_IN을 수정하실 필요는 없습니다.
- * 하지만 이 파일에서 FILL_ME_IN을 보시게 된다면 다른 것으로 바꾸셔야합니다.
+ * 하지만 이 파일의 다른 곳에서 FILL_ME_IN을 보시게 된다면 다른 것으로 바꾸셔야합니다.
  */
 
 let FILL_ME_IN = "Fill this value in";
