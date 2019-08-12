@@ -510,7 +510,6 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 
   function A(e) {
-    console.log("A works");
     window.localStorage.setItem("testing:" + e, !0);
   }
 
