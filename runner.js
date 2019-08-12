@@ -145,7 +145,7 @@ document.addEventListener("DOMContentLoaded", function() {
         "",
         "지금부터 detectNetwork.js 파일을 살펴보시고, 다음 안내를 따라주세요.",
         "",
-        "dectectNetworks 함수를 작성 완료하셨나요? 작성이 끝나고 테스트할 준비가 완료됬다면, console창에 아래와 같이 입력해보세요",
+        "detectNetwork 함수를 작성 완료하셨나요? 작성이 끝나고 테스트할 준비가 완료됬다면, console창에 아래와 같이 입력해보세요",
         "",
         " %c>%c detectNetwork(%c'38345678901234'%c)",
         "",
