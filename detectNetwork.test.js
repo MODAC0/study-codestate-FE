@@ -16,8 +16,8 @@ describe("Introduction to Mocha Tests - READ ME FIRST", function() {
   // - 오류가 발생하지 않으면, 실패하지 않습니다.
   // mocha에 대해 더 알고 싶다면 다음을 참고하세요. mochajs.org
 
-  // 아래 섹션을 이해했으면, 주석 처리해도 좋습니다.
-  // 실패한 테스트가 있는 경우 진행할 수 없기 때문입니다.
+  // 먼저 아래의 테스트를 수정해 테스트가 정상적으로 작동하도록 해주세요.
+  // 그리고 Diner's club과 American Express 테스트로 넘어가주세요
 
   it("오류가 발생하면 테스트가 실패합니다.", function() {
     throw new Error("저를 지워주세요!");
