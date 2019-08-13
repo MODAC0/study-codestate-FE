@@ -43,6 +43,11 @@ describe("Introduction to Mocha Tests - READ ME FIRST", function() {
     }
   });
 });
+/**
+ * 아래의 테스트들은 detectNetwork 함수를 detectNetwork.js 파일로부터 불러와
+ * 함수가 정상적으로 작동하는지 테스트합니다.
+ * detectNetwork.js파일과 현재 파일을 수정해 모든 테스트가 통과하도록 만들어보세요.
+ */
 describe("Diner's Club", function() {
   // 주의하세요, 테스트에도 버그가 존재할 수 있습니다...
 
