@@ -34,5 +34,5 @@ BeesBeesBees는 연습삼아 해볼 수 있는 가벼운 과제입니다 :) 완�
 
 1. student.json 파일에 필요한 정보를 입력합니다.
 2. REVIEW.md 파일에 이번 Sprint를 마무리하며 review를 작성합니다.
-3. 자신의 remote repo로 push 합니다.
-4. Upstream repo에서 pull request를 만듭니다.
+3. `npm run submit`을 실행시켜 sprint를 제출합니다.
+4. 자신의 github(remote) repo에 push합니다.
