@@ -7,7 +7,7 @@
     "test": "test"
   },
   "scripts": {
-    "test": "node test/student/getReview.js && mocha test/**/*.js",
+    "test": "node test/student/student.js && mocha test/**/*.js",
     "precommit": "lint-staged",
     "lint": "eslint src/",
     "submit-test": "mocha test/**/*.js --reporter reporter.js --exit",
