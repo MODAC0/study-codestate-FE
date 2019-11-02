@@ -343,18 +343,18 @@ function mochaTestFailedDescription(step4) {
   console.log.apply(console, [message].concat(style));
 }
 
-function b() {
-  console.log(
-    [
-      "모든 테스트를 꼼꼼하게 작성해 주셨지만 테스트에 한가지 문제가 있습니다.",
-      "테스트를 작성할 때 %cshould 혹은 expect 중에 하나만%c 사용하는것이 좋습니다. 같이 사용하지 마세요.",
-      "",
-      "더 진행하기 전에 should 혹은 expect 둘 중 하나만 사용하도록 테스트를 수정해주세요."
-    ].join("\n"),
-    "font-weight:bold",
-    "font-weight:normal"
-  );
-}
+// function b() {
+//   console.log(
+//     [
+//       "모든 테스트를 꼼꼼하게 작성해 주셨지만 테스트에 한가지 문제가 있습니다.",
+//       "테스트를 작성할 때 %cshould 혹은 expect 중에 하나만%c 사용하는것이 좋습니다. 같이 사용하지 마세요.",
+//       "",
+//       "더 진행하기 전에 should 혹은 expect 둘 중 하나만 사용하도록 테스트를 수정해주세요."
+//     ].join("\n"),
+//     "font-weight:bold",
+//     "font-weight:normal"
+//   );
+// }
 
 function forLoopDescription() {
   return {

@@ -79,11 +79,11 @@ document.addEventListener("DOMContentLoaded", function() {
       test: checkStep3,
       mocha: true
     },
-    {
-      print: b,
-      test: checkExpectShould,
-      mocha: true
-    },
+    // {
+    //   print: b,
+    //   test: checkExpectShould,
+    //   mocha: true
+    // },
     {
       print: previousStepFailedDescription.bind(null, 3, 4),
       test: checkDetectNetworkFuntion.bind(null, 3, [C, checkDiscover]),
