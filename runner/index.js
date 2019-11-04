@@ -1,11 +1,32 @@
 mocha.setup("bdd");
 
 document.addEventListener("DOMContentLoaded", function() {
+  /**
+   * z
+   */
+  let mochaTests = undefined;
+
+  function handleStepPassed(step, checkTestPassed) {
+    step.mocha && !mochaTests
+      ? ((document.getElementById("mocha").innerHTML = ""),
+        (mochaTests = mocha.run(checkTestPassed)))
+      : checkTestPassed();
+  }
+
+  function checkAllTestPassed() {
+    return (
+      mochaTests &&
+      0 === mochaTests.stats.pending &&
+      0 === mochaTests.stats.failures &&
+      mochaTests.stats.passes === mochaTests.stats.tests
+    );
+  }
+
   function appHandler(appSteps) {
     let stepNumber = 0;
     function handleAppStep(step) {
       step
-        ? i(step, function() {
+        ? handleStepPassed(step, function() {
             if (step.test()) {
               handleAppStep(appSteps[++stepNumber]);
             } else {
@@ -19,12 +40,15 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 
   /**
-   * 아래 Q를 사용하는 이유는 stroge에 해당 스텝의 결과가 저장되 있지 않더라도,
+   * 아래 moveToNextStep을 사용하는 이유는 stroge에 해당 스텝의 결과가 저장되 있지 않더라도,
    * 다음 스텝으로 넘어가기 위해서입니다.
    */
-  let Q = false;
+  let moveToNextStep = false;
   function checkStorage(step) {
-    return !(!checkCurrentStep(step) && !Q) || ((Q = !0), !1);
+    return (
+      !(!checkCurrentStep(step) && !moveToNextStep) ||
+      ((moveToNextStep = !0), !1)
+    );
   }
 
   const appSteps = [
@@ -69,7 +93,7 @@ document.addEventListener("DOMContentLoaded", function() {
       test: checkStorage.bind(null, 3),
       mocha: true
     },
-    // {
+    // { // 모카를 실행시키는 단계입니다. 현재 자동으로 실행되게 변경해두었습니다.
     //   print: p,
     //   test: D,
     //   mocha: !0
@@ -79,14 +103,17 @@ document.addEventListener("DOMContentLoaded", function() {
       test: checkStep3,
       mocha: true
     },
-    // {
+    // { expect와 should가 동시에 쓰였는지 검사하는 단계입니다.
     //   print: b,
     //   test: checkExpectShould,
     //   mocha: true
     // },
     {
       print: previousStepFailedDescription.bind(null, 3, 4),
-      test: checkDetectNetworkFuntion.bind(null, 3, [C, checkDiscover]),
+      test: checkDetectNetworkFuntion.bind(null, 3, [
+        checkAllTestPassed,
+        checkDiscover
+      ]),
       mocha: true
     },
     {
@@ -102,7 +129,7 @@ document.addEventListener("DOMContentLoaded", function() {
     {
       print: previousStepFailedDescription.bind(null, 4, 4),
       test: checkDetectNetworkFuntion.bind(null, 4, [
-        C,
+        checkAllTestPassed,
         checkMaestro,
         checkUnionPay,
         checkSwitch
@@ -126,26 +153,10 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     return (
-      checkCurrentStep(stepNumber) || ((Q = !1), saveCurrentStep(stepNumber)),
+      checkCurrentStep(stepNumber) ||
+        ((moveToNextStep = !1), saveCurrentStep(stepNumber)),
       true
     );
-  }
-
-  let z = false;
-
-  function C() {
-    return (
-      z &&
-      0 === z.stats.pending &&
-      0 === z.stats.failures &&
-      z.stats.passes === z.stats.tests
-    );
-  }
-
-  function i(e, t) {
-    e.mocha && !z
-      ? ((document.getElementById("mocha").innerHTML = ""), (z = mocha.run(t)))
-      : t();
   }
 
   function previousStepFailedDescription(from, to) {
