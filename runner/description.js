@@ -155,8 +155,8 @@ function y() {
       "China UnionPay는 항상 622126-622925, 624-626, 혹은 6282-6288로 시작하고 16-19자리의 숫자입니다.",
       "Switch는 항상 4903, 4905, 4911, 4936, 564182, 633110, 6333 혹은 6759로 시작하고 16, 18, 혹은 19자리의 숫자입니다..",
       "",
-      "잠시만요! Switch와 Visa의 카드번호를 검사할 때에 겹치는 부분이 있는 것 같습니다.",
-      "함수에서 충돌이 있는 경우, prefix의 길이가 긴 쪽으로 판별해야 합니다.",
+      "잠시만요! Switch와 Visa의 카드번호를 검사할 때에 prefix에서 겹치는 부분이 있는 것 같습니다.",
+      "prefix가 겹칠 때는 어떻게 검사를 진행해야할까요?",
       "",
       "%cdetectNetwork 함수가 올바른 발급기관을 리턴하나요?%c",
       "모든 조합이 잘 작동되면 이제 nextStep()을 호출해서 다음 단계로 넘어갈 수 있습니다.",
@@ -343,18 +343,18 @@ function mochaTestFailedDescription(step4) {
   console.log.apply(console, [message].concat(style));
 }
 
-function b() {
-  console.log(
-    [
-      "모든 테스트를 꼼꼼하게 작성해 주셨지만 테스트에 한가지 문제가 있습니다.",
-      "테스트를 작성할 때 %cshould 혹은 expect 중에 하나만%c 사용하는것이 좋습니다. 같이 사용하지 마세요.",
-      "",
-      "더 진행하기 전에 should 혹은 expect 둘 중 하나만 사용하도록 테스트를 수정해주세요."
-    ].join("\n"),
-    "font-weight:bold",
-    "font-weight:normal"
-  );
-}
+// function b() {
+//   console.log(
+//     [
+//       "모든 테스트를 꼼꼼하게 작성해 주셨지만 테스트에 한가지 문제가 있습니다.",
+//       "테스트를 작성할 때 %cshould 혹은 expect 중에 하나만%c 사용하는것이 좋습니다. 같이 사용하지 마세요.",
+//       "",
+//       "더 진행하기 전에 should 혹은 expect 둘 중 하나만 사용하도록 테스트를 수정해주세요."
+//     ].join("\n"),
+//     "font-weight:bold",
+//     "font-weight:normal"
+//   );
+// }
 
 function forLoopDescription() {
   return {

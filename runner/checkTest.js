@@ -80,9 +80,9 @@ function checkSwitchTest() {
   );
 }
 
-function checkExpectShould() {
-  return 0 === chaiSpyExpect.callCount || 0 === chaiSpyShould.callCount;
-}
+// function checkExpectShould() {
+//   return 0 === chaiSpyExpect.callCount || 0 === chaiSpyShould.callCount;
+// }
 
 function checkCombination(prefixs, lengths, spyDetectNetwork) {
   // 모든 카드 조합이 담겨인는 테이블을 만듭니다.
