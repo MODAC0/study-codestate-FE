@@ -148,11 +148,8 @@ describe("Discover", function() {
   it("has a prefix of 6011 and a length of 19");
 });
 
-describe("Maestro", function() {
-  // Maestro 카드를 판별 할 수 있는 모든 경우의 수를 확인할 수 있는 테스트를 작성해보세요.
-});
-
-// China UnionPay와 Switch를 검사하는 것은 Advanced 과제입니다.
+// Maestro, China UnionPay와 Switch를 검사하는 것은 Advanced 과제입니다.
 // 원하시는 분들은 도전해보세요!
+describe("Maestro", function() {});
 describe("should support China UnionPay", function() {});
 describe("should support Switch", function() {});
