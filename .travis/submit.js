@@ -73,7 +73,7 @@ exec('npm test | grep -E "[0-9]+\\s(passing|failing)"', (err, stdout1, stderr) =
         lambdaKey: LAMBDA_KEY,
         passed,
         failed,
-        assessmentId: 12
+        assessmentId: 14
       }
     )
   );
