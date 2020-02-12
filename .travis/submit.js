@@ -1,82 +1,59 @@
 const { exec } = require("child_process");
 const https = require("https");
+const { URCLASS_URL, ASSESSMENT_ID, TRAVIS_PULL_REQUEST_SLUG } = process.env;
 
-exec('npm test | grep -E "[0-9]+\\s(passing|failing)"', (err, stdout1, stderr) => {
-  if (err) {
-    console.log(err);
-    throw new Error("can not take the test result");
-  }
+if (TRAVIS_PULL_REQUEST_SLUG === "\n") {
+  throw new Error("github username is missing");
+}
 
-  // Get test result from the console and cleasing it for spread sheet
-  let matchWithPassing = stdout1.match(/([.\d,]+)[ ]+passing/);
-  let matchWithFailing = stdout1.match(/([.\d,]+)[ ]+failing/);
-  let passed = matchWithPassing ? Number(matchWithPassing[1]) : 0;
-  let failed = matchWithFailing ? Number(matchWithFailing[1]) : 0;
-
-  console.log('passed, failed', passed, failed);
-
-  // Submit result to codestates database
-  const { LAMBDA_URL, LAMBDA_KEY, TRAVIS_PULL_REQUEST_SLUG } = process.env;
-
-  if (LAMBDA_KEY === "\n") {
-    throw new Error("lambda key is missing");
-  }
-
-  if (TRAVIS_PULL_REQUEST_SLUG === "\n") {
-    throw new Error("github username is missing");
-  }
-
-  const username = TRAVIS_PULL_REQUEST_SLUG.split('/')[0];
-  console.log(username);
+exec("mocha .test --reporter json", (err, json, stderr) => {
+  const result = JSON.parse(json);
+  const username = TRAVIS_PULL_REQUEST_SLUG.split("/")[0];
 
   const options = {
-    hostname: LAMBDA_URL,
-    path: "/feature/submition/create",
+    hostname: URCLASS_URL,
+    path: `/Prod/submit/`,
     method: "POST",
     headers: {
-      "Content-Type": "application/json",
+      "Content-Type": "application/json"
     }
   };
 
   console.log(JSON.stringify(options));
+  console.log(result);
 
+  const body = {
+    assessment_id: ASSESSMENT_ID,
+    githubUsername: username,
+    type: "mocha",
+    result: result
+  };
+
+  makeRequest(options, body);
+});
+
+function makeRequest(options, body) {
   const req = https.request(options, res => {
     let data;
-
     res.on("data", chunk => {
       data += chunk;
     });
-
     res.on("end", () => {
-      console.log('data from labmda is ', data);
-
+      console.log("data from urclass is ", data);
       if (res.statusCode >= 400) {
         if (res.statusCode === 400) {
           throw new Error("invalid github username.");
         }
-        throw new Error("There is an error on response from lambda.");
+        throw new Error("There is an error on response from urclass.");
       }
     });
   });
 
   req.on("error", e => {
     console.log(e);
-    throw new Error("data did not send to lambda");
+    throw new Error("data did not send to urclass");
   });
 
-  // send the request
-  req.write(
-    JSON.stringify(
-      {
-        title: "Testbuilder",
-        githubUsername: username,
-        lambdaKey: LAMBDA_KEY,
-        passed,
-        failed,
-        assessmentId: 2
-      }
-    )
-  );
+  req.write(JSON.stringify(body));
   req.end();
-
-});
+}
