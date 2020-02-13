@@ -1,5 +1,5 @@
 {
-  "name": "im11-2019-02-beesbeesbees",
+  "name": "im-sprints-beesbeesbees",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -10,9 +10,7 @@
     "test": "mocha test/**/*.js",
     "precommit": "lint-staged",
     "lint": "eslint src/",
-    "submit-test": "mocha test/**/*.js --reporter reporter.js --exit",
-    "check": "node .airci/submit.js",
-    "submit": "npm-run-all -c -s --silent submit-test check"
+    "submit": "node .travis/submit.js"
   },
   "lint-staged": {
     "linters": {
@@ -28,14 +26,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/codestates/im11-2019-02-beesbeesbees.git"
+    "url": "git+https://github.com/codestates/im-sprints-beesbeesbees.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/codestates/im11-2019-02-beesbeesbees/issues"
+    "url": "https://github.com/codestates/im-sprints-beesbeesbees/issues"
   },
-  "homepage": "https://github.com/codestates/im11-2019-02-beesbeesbees#readme",
+  "homepage": "https://github.com/codestates/im-sprints-beesbeesbees#readme",
   "dependencies": {},
   "devDependencies": {
     "colors": "^1.3.3",
