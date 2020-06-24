@@ -8,7 +8,7 @@
  *
  * 2가지 방법이 있습니다.
  *  1. 앞 자리 숫자들 (이번 과제에서는 prefix라 부릅니다.)
- *  2. 숫자들의 길이 (이번 과제에서는 lenght라고 부릅니다.)
+ *  2. 숫자들의 길이 (이번 과제에서는 length라고 부릅니다.)
  */
 
 function detectNetwork(cardNumber) {
