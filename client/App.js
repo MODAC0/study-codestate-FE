@@ -12,7 +12,7 @@ class App {
       method: 'POST',
       body: JSON.stringify(body),
       headers: {
-        'content-type': 'text/json'
+        'Content-Type': 'application/json'
       }
     })
       .then(res => res.json())
