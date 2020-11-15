@@ -1,0 +1,22 @@
+{
+  "name": "mini-node-server",
+  "version": "1.0.0",
+  "description": "Codestates Immersive Course Sprint",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "submit": "node .travis/submit.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/codestates/sw-sprints-mini-node-server.git"
+  },
+  "author": "Codestates",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/codestates/sw-sprints-mini-node-server/issues"
+  },
+  "homepage": "https://github.com/codestates/sw-sprints-mini-node-server#readme"
+}
