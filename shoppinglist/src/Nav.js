@@ -24,7 +24,7 @@ function Nav(props) {
 
 const mapStateToProps = state => {
     return {
-        value: state.value,
+        value: state.value
     }
 }
 
