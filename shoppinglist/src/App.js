@@ -1,6 +1,7 @@
 import React from 'react';
 import Nav from '../src/Nav';
 import ItemList from '../src/pages/ItemList';
+import store from '../src/store/store';
 import './App.css';
 import {
   BrowserRouter as Router,

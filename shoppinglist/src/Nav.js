@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { setDiff } from './actions/index';
 import './Nav.css';
 import logo from './logo.png';
 
@@ -20,7 +19,7 @@ function Nav(props) {
 
 const mapStateToProps = state => {
     return {
-        value: state.value,
+        value: state.value
     }
 }
 

@@ -2,25 +2,16 @@ import { INCREMENT, DECREMENT, SET_DIFF } from "../actions/index";
 
 const initialState = {
     items: [],
-    value: 1,
-    diff: 0
+    value: 0
 }
 
 const counterReducer = (state = initialState, action) => {
     switch (action.type) {
         case INCREMENT:
             return Object.assign({}, state, {
-                value: state.value + state.diff
+                value: state.value + 1
             });
     }
-
-    
-    // switch (action.type) {
-    //     case DECREMENT:
-    //         return Object.assign({}, state, {
-    //             value: state.value - state.diff
-    //         });
-    // }
     return state
 }
 

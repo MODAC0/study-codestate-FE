@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-// import { setDiff } from '../actions/index';
 import './Item.css';
 import { increment } from '../actions/index'
 
@@ -15,8 +14,6 @@ function Item(props) {
     );
 }
 
-export default Item;
-
 const mapDispatchToProps = (dispatch) => {
     return {
         onIncrement: () => dispatch(increment())
@@ -24,3 +21,5 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 Item = connect(null, mapDispatchToProps)(Item);
+
+export default Item;
