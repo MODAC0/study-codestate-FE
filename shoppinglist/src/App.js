@@ -1,6 +1,6 @@
 import React from 'react';
 import Nav from '../src/Nav';
-import ItemList from '../src/pages/ItemList';
+import ItemList from './pages/ItemList';
 import './App.css';
 import {
   BrowserRouter as Router,
@@ -8,18 +8,22 @@ import {
   Route,
   Link
 } from "react-router-dom";
+import ShoppingCart from './pages/ShoppingCart';
 
 function App() {
   return (
     <Router>
-      <Switch>
-        <Route exact path="/">
-          <div className="App">
-            <Nav />
+      <div className="App">
+        <Nav />
+        <Switch>
+          <Route exact={true} path="/">
             <ItemList />
-          </div>
-        </Route>
-      </Switch>
+          </Route>
+          <Route path="/shoppingcart">
+            <ShoppingCart />
+          </Route>
+        </Switch>
+      </div>
     </Router>
 
   );

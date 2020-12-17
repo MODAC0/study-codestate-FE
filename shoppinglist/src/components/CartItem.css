@@ -1,12 +1,13 @@
 .cart-item-body{
+    padding: 0.5rem;
     margin:10px;
-    width: 500px;
-    height: 130px;
+    width: 700px;
+    height: 170px;
     list-style-type: none;
     background: #ffffff;
-    box-shadow:0 1 1 1 lightslategrey;
+    border: 0.2px solid #6d6d6d;
     box-sizing: border-box;
-    
+    display: inline-block;
 }
 
 .cart-item-info{
@@ -19,8 +20,6 @@
 }
 
 .cart-item-title{
-    width: 59px;
-    height: 14px;
     font-style: normal;
     font-weight: bold;
     font-size: 12px;
@@ -30,7 +29,6 @@
 }
 .cart-item-price{
     height: 14px;
-    
     font-style: normal;
     font-weight: bold;
     font-size: 12px;
@@ -48,8 +46,8 @@
 
 .cart-item-thumbnail{
     padding: 10px;
-    width: 80px;
-    height: 80px;
+    width: 130px;
+    height: 130px;
     float: left;
     position: relative;
     top: 50%;
