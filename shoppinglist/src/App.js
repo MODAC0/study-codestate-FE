@@ -1,13 +1,27 @@
 import React from 'react';
-import logo from './logo.svg';
-import { Counter } from './features/counter/Counter';
+import Nav from '../src/Nav';
+import ItemList from '../src/pages/ItemList';
 import './App.css';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 
 function App() {
   return (
-    <div className="App">
-      hello world
-    </div>
+    <Router>
+      <Switch>
+        <Route exact path="/">
+          <div className="App">
+            <Nav />
+            <ItemList />
+          </div>
+        </Route>
+      </Switch>
+    </Router>
+
   );
 }
 
