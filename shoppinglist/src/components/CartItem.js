@@ -4,19 +4,26 @@ import './CartItem.css'
 
 export default function CartItem({
     product,
-    index,
     checkedItem,
-    setCheckedItem,
     handleSingleCheck,
 }) {
     //체크상태에 따라 합계에 quantity * price가 sum되게 만들어야함!
     const [quantity, setQuantity] = useState(1)
-    const [sum, setSum] = useState(product.price * quantity)
-    console.log(sum)
+    const [checked, setChecked] = useState(true)
+
+    useEffect(() => {
+        handleSingleCheck(checked, product, quantity)
+        return () => {
+
+        }
+    }, [quantity, checked])
+
     return (
         <li className="cart-item-body">
-            <input type="checkbox" className="cart-item-checkbox" onChange={(e) => handleSingleCheck(e.target.checked, product.name)}
-                checked={checkedItem.includes(product.name) ? true : false} ></input>
+            <input type="checkbox" className="cart-item-checkbox" onChange={(e) => {
+                setChecked(e.target.checked)
+            }}
+                checked={checkedItem.map(el => el.name).includes(product.name) ? true : false} ></input>
             <div className="cart-item-thumbnail">
                 <img src={product.img} />
             </div>
@@ -28,8 +35,7 @@ export default function CartItem({
                 className="cart-item-quantity"
                 defaultValue={1}
                 onChange={(e) => {
-                    setQuantity(e.target.value);
-                    setSum(quantity * product.price)
+                    setQuantity(Number(e.target.value));
                 }}></input>
         </li >
     )
