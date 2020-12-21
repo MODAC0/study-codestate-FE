@@ -1,11 +1,11 @@
 .cart-item-body{
     padding: 0.5rem;
     margin:10px;
-    width: 700px;
+    width: 800px;
     height: 170px;
     list-style-type: none;
     background: #ffffff;
-    border: 0.2px solid #6d6d6d;
+    border: solid rgb(202, 202, 202) 0.1rem;
     box-sizing: border-box;
     display: inline-flexbox;
     
@@ -78,10 +78,10 @@
 
 #order-summary-container{
     padding: 1rem;
-    width: 250px;
+    width: 330px;
     height: 300px;
     float: right;
-    border: 0.2px solid #6d6d6d;
+    border: solid rgb(202, 202, 202) 0.1rem;
 
 }
 

@@ -1,7 +1,8 @@
 #itemListBody {
     background-color: #bc9eff0e;
     padding: 5rem;
-    width: 70rem;
+    width: 80rem;
+    margin: 0 auto;
 }
 
 #itemListTitle {
