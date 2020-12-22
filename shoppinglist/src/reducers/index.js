@@ -1,7 +1,17 @@
 import { INCREMENT, DECREMENT, SET_DIFF } from "../actions/index";
 
 const initialState = {
-    items: [],
+    items: [{
+        id: 1,
+        name: '박진영 쿠션',
+        price: 9900
+    },
+    {
+        id: 2,
+        name: '개구리안대',
+        price: 9900
+    }
+    ],
     value: 0
 }
 
