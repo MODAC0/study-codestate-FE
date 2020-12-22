@@ -11,9 +11,10 @@ const itemReducer = (state = initialState, action) => {
 
     switch (action.type) {
         case SELECT_ITEM:
-            return Object.assign({}, state, {
-                selectedItems: [...state.selectedItems, action.data]
-            });
+            if (!state.selectedItems.includes(action.data))
+                return Object.assign({}, state, {
+                    selectedItems: [...state.selectedItems, action.data]
+                });
     }
     return state
 }

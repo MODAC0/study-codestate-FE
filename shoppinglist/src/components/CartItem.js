@@ -13,9 +13,6 @@ export default function CartItem({
 
     useEffect(() => {
         handleSingleCheck(checked, item, quantity)
-        return () => {
-
-        }
     }, [quantity, checked])
 
     return (
@@ -23,7 +20,7 @@ export default function CartItem({
             <input type="checkbox" className="cart-item-checkbox" onChange={(e) => {
                 setChecked(e.target.checked)
             }}
-                checked={checkedItems.map(el => el.name).includes(item.name) ? true : false} ></input>
+                checked={checkedItems.includes(item) ? true : false} ></input>
             <div className="cart-item-thumbnail">
                 <img src={item.img} />
             </div>

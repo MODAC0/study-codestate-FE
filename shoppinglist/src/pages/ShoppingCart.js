@@ -7,23 +7,30 @@ export default function ShoppingCart() {
 
     const state = useSelector(state => state.itemReducer);
 
-    const [checkedItems, setCheckedItems] = useState(state.selectedItems.map(item => {
-        item.sum = item.price
-        item.quantity = 1
-        return item
-    }))
-    console.log(state);
+    const [checkedItems, setCheckedItems] = useState([...state.selectedItems])
     const [total, setTotal] = useState(checkedItems.reduce((acc, cur) => acc + Number(cur.sum), 0))
     const [totalQty, setTotalQty] = useState(checkedItems.length)
 
     const handleSingleCheck = (checked, item, quantity) => {
         if (checked) {
-            let copy = [...checkedItems].filter((el) => el.name !== item.name)
             item.sum = quantity * item.price;
-            item.quantity = quantity
-            copy.push(item)
-            setCheckedItems(copy);
-        } else {
+            item.quantity = quantity //Object.assign?
+
+            if (!checkedItems.includes(item)) {
+                setCheckedItems([...checkedItems, item])
+            }
+            else {
+                let copyArray = [...checkedItems]
+
+                for (let i = 0; i < copyArray.length; i++) {
+                    if (copyArray[i].name === item.name) {
+                        copyArray.splice(i, 1, item);
+                    }
+                }
+                setCheckedItems(copyArray);
+            }
+        }
+        else {
             setCheckedItems(checkedItems.filter((el) => el.name !== item.name));
         }
     };
@@ -51,8 +58,8 @@ export default function ShoppingCart() {
 
 
     return (
-        <div id="itemListBody">
-            <div id="itemListTitle">장바구니</div>
+        <div id="item-list-body">
+            <div id="item-list-title">장바구니</div>
             <span id="shopping-cart-select-all">
                 <input type="checkbox" checked={
                     checkedItems.length === state.selectedItems.length
@@ -64,7 +71,7 @@ export default function ShoppingCart() {
             <div id="shopping-cart-container">
 
                 <OrderSummary total={total} totalQty={totalQty} />
-                {checkedItems.map((item) => <CartItem
+                {state.selectedItems.map((item) => <CartItem
                     handleSingleCheck={handleSingleCheck}
                     item={item}
                     checkedItems={checkedItems}
