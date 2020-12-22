@@ -1,20 +1,38 @@
-import React from 'react';
-// import Item from '../components/Item';
-import { increment } from '../actions/index'
-import { connect } from 'react-redux';
-import '../components/Item.css';
+import React, { useEffect, useState } from 'react';
+import { SELECT_ITEM, selectItem } from '../actions/index';
+import { useSelector, useDispatch } from 'react-redux';
+import './ItemList.css';
 
-function ItemList(props) {
-    
-    const items = props.items.map((item) => {
-        return <div className="item">
-                    <img className="itemImg"></img>
-                    <span className="itemName">{item.name}</span>
-                    <span className="price">{item.price}</span>
-                    <div><button onClick={props.onIncrement}>장바구니 담기</button></div>
-                </div> 
-        
+function ItemListContainer() {
+
+    const state = useSelector(state => state.itemReducer);
+    const [selectedItems, setSelectedItems] = useState([])
+
+    // console.log(state.selectedItems)
+
+    function handleClick(e) {
+        e.preventDefault();
+        // ! 클릭한 아이템만 selectedItems 장바구니에 추가하기
+        console.log(e.target.parentElement)
+        setSelectedItems([...selectedItems,])
+
+        dispatch({ type: SELECT_ITEM })
+    }
+
+    const dispatch = useDispatch();
+
+    const items = state.items.map((item) => {
+        return <div key={item.id} className="item">
+            <img className="itemImg" src={item.img}></img>
+            <span className="itemName">{item.name}</span>
+            <span className="price">{item.price}</span>
+            <button onClick={handleClick}>
+                장바구니 담기
+                    </button>
+        </div>
+
     })
+
     return (
         <div id="itemListBody">
             <div id="itemListTitle">쓸모없는 선물 모음</div>
@@ -23,20 +41,4 @@ function ItemList(props) {
     );
 }
 
-// 여기서 mapstateprops로 장바구니 클릭한거 state값 변경
-const mapStateToProps = state => {
-    return { 
-        items: state.items
-   };
-  };
-
-const mapDispatchToProps = (dispatch) => {
-    return {
-        onIncrement: () => dispatch(increment())
-    }
-}
-
-ItemList = connect(mapStateToProps, mapDispatchToProps)(ItemList);
-
-
-export default ItemList;
+export default ItemListContainer;

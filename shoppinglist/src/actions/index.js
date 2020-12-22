@@ -1,24 +1,9 @@
 // action types
-export const INCREMENT = "INCREMENT";
-export const DECREMENT = "DECREMENT";
-export const SET_DIFF = "SET_DIFF";
+export const SELECT_ITEM = "SELECT_ITEM";
 
 // actions creator functions
-export function increment() {
+export function selectItem() {
     return {
-        type: INCREMENT
-    };
-}
-
-export function decrement() {
-    return {
-        type: DECREMENT
-    };
-}
-
-export function setDiff(diffValue) {
-    return {
-        type: SET_DIFF,
-        diff: diffValue
-    };
+        type: SELECT_ITEM,
+    }
 }
