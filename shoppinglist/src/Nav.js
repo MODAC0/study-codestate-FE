@@ -13,10 +13,10 @@ function Nav() {
         <div id="navbody">
             <span id="title"><img id="logo" src={logo} /><span id="name">Shoppingstates</span></span>
             <div id="menu">
-                <a href="/">상품리스트</a>
-                <a href="/shoppingcart">장바구니
+                <Link to="/">상품리스트</Link>
+                <Link to="/shoppingcart">장바구니
                     <span id="itemCount">{state.selectedItems.length}</span>
-                </a>
+                </Link>
             </div>
         </div>
     );

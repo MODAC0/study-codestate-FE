@@ -6,7 +6,6 @@ import './ItemList.css';
 function ItemListContainer() {
 
     const state = useSelector(state => state.itemReducer);
-    const [selectedItems, setSelectedItems] = useState(state.selectedItems)
     const dispatch = useDispatch();
 
 
@@ -14,10 +13,10 @@ function ItemListContainer() {
         e.preventDefault();
         // ! 클릭한 아이템만 selectedItems 장바구니에 추가하기
         console.log(e.target.parentElement)
+        item.sum = item.price
+        item.quantity = 1
         dispatch({ type: SELECT_ITEM, data: item })
-        console.log(selectedItems)
-        console.log(state.selectedItems)
-
+        console.log(state)
     }
 
 
