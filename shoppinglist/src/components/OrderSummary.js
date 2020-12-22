@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-export default function OrderSummary({ checkedItem, totalQty, total }) {
+export default function OrderSummary({ totalQty, total }) {
     return (
         <div id="order-summary-container">
             주문 합계

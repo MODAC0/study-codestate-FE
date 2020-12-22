@@ -8,11 +8,11 @@ const initialState = {
 }
 
 const itemReducer = (state = initialState, action) => {
-    console.log(state.selectedItems)
+
     switch (action.type) {
         case SELECT_ITEM:
             return Object.assign({}, state, {
-                selectedItems: ''
+                selectedItems: [...state.selectedItems, action.data]
             });
     }
     return state
