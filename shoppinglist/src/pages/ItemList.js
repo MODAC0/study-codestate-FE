@@ -11,12 +11,9 @@ function ItemListContainer() {
 
     function handleClick(e, item) {
         e.preventDefault();
-        // ! 클릭한 아이템만 selectedItems 장바구니에 추가하기
-        console.log(e.target.parentElement)
         item.sum = item.price
         item.quantity = 1
         dispatch({ type: SELECT_ITEM, data: item })
-        console.log(state)
     }
 
 

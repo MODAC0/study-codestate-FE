@@ -1,39 +1,36 @@
 import React, { useState, useEffect } from 'react'
+import { useDispatch } from 'react-redux';
+import { DELETE_ITEM } from '../actions';
 import './CartItem.css'
-
 
 export default function CartItem({
     item,
     checkedItems,
-    handleSingleCheck,
+    handleCheckChange,
+    handleQuantityChange,
+    handleDelete,
 }) {
-    //체크상태에 따라 합계에 quantity * price가 sum되게 만들어야함!
-    const [quantity, setQuantity] = useState(1)
-    const [checked, setChecked] = useState(true)
-
-    useEffect(() => {
-        handleSingleCheck(checked, item, quantity)
-    }, [quantity, checked])
-
     return (
         <li className="cart-item-body">
             <input type="checkbox" className="cart-item-checkbox" onChange={(e) => {
-                setChecked(e.target.checked)
+                handleCheckChange(e.target.checked, item)
             }}
                 checked={checkedItems.includes(item) ? true : false} ></input>
             <div className="cart-item-thumbnail">
-                <img src={item.img} />
+                <img src={item.img} alt={item.name} />
             </div>
+            <button onClick={() => { handleDelete(item) }}>삭제</button>
             <div className="cart-item-info">
                 <div className="cart-item-title">{item.name}</div>
                 <div className="cart-item-price">{item.price} 원</div>
             </div>
             <input type="number" min="1"
                 className="cart-item-quantity"
-                defaultValue={1}
+                defaultValue={item.quantity}
                 onChange={(e) => {
-                    setQuantity(Number(e.target.value));
+                    handleQuantityChange(Number(e.target.value), item)
                 }}></input>
+
         </li >
     )
 }

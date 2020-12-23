@@ -1,34 +1,21 @@
 import React, { useState, useEffect, } from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { DELETE_ITEM, SET_QUANTITY } from '../actions';
 import CartItem from '../components/CartItem'
 import OrderSummary from '../components/OrderSummary'
 
 export default function ShoppingCart() {
 
     const state = useSelector(state => state.itemReducer);
+    const dispatch = useDispatch();
 
     const [checkedItems, setCheckedItems] = useState([...state.selectedItems])
     const [total, setTotal] = useState(checkedItems.reduce((acc, cur) => acc + Number(cur.sum), 0))
     const [totalQty, setTotalQty] = useState(checkedItems.length)
 
-    const handleSingleCheck = (checked, item, quantity) => {
+    const handleCheckChange = (checked, item) => {
         if (checked) {
-            item.sum = quantity * item.price;
-            item.quantity = quantity //Object.assign?
-
-            if (!checkedItems.includes(item)) {
-                setCheckedItems([...checkedItems, item])
-            }
-            else {
-                let copyArray = [...checkedItems]
-
-                for (let i = 0; i < copyArray.length; i++) {
-                    if (copyArray[i].name === item.name) {
-                        copyArray.splice(i, 1, item);
-                    }
-                }
-                setCheckedItems(copyArray);
-            }
+            setCheckedItems([...checkedItems, item]);
         }
         else {
             setCheckedItems(checkedItems.filter((el) => el.name !== item.name));
@@ -37,24 +24,34 @@ export default function ShoppingCart() {
 
     const handleAllCheck = (checked) => {
         if (checked) {
-            const itemArray = [];
-
-            state.selectedItems.forEach((el) => itemArray.push(el));
-            setCheckedItems(itemArray);
+            setCheckedItems([...state.selectedItems]);
         }
         else {
             setCheckedItems([]);
         }
     };
 
+    const handleQuantityChange = (quantity, item) => {
+        item.quantity = quantity;
+        item.sum = item.price * quantity;
+        dispatch({
+            type: SET_QUANTITY,
+            data: item
+        });
+    }
+    const handleDelete = (item) => {
+        setCheckedItems(checkedItems.filter((el) => el.id !== item.id))
+        dispatch({
+            type: DELETE_ITEM,
+            data: item
+        })
+    }
+
     useEffect(() => {
+
         setTotal(checkedItems.reduce((acc, cur) => acc + cur.sum, 0))
         setTotalQty(checkedItems.reduce((acc, cur) => acc + cur.quantity, 0))
-        return () => {
-
-        }
-    }, [checkedItems])
-
+    }, [state.selectedItems])
 
 
     return (
@@ -72,7 +69,9 @@ export default function ShoppingCart() {
 
                 <OrderSummary total={total} totalQty={totalQty} />
                 {state.selectedItems.map((item) => <CartItem
-                    handleSingleCheck={handleSingleCheck}
+                    handleCheckChange={handleCheckChange}
+                    handleQuantityChange={handleQuantityChange}
+                    handleDelete={handleDelete}
                     item={item}
                     checkedItems={checkedItems}
                 />)}

@@ -1,5 +1,5 @@
 import items from './initialState.js';
-import { SELECT_ITEM } from "../actions/index";
+import { DELETE_ITEM, SELECT_ITEM, SET_QUANTITY } from "../actions/index";
 
 const initialState = {
     items: items,
@@ -14,9 +14,22 @@ const itemReducer = (state = initialState, action) => {
             if (!state.selectedItems.includes(action.data))
                 return Object.assign({}, state, {
                     selectedItems: [...state.selectedItems, action.data]
-                });
+                })
+            return state;
+        case DELETE_ITEM:
+            return Object.assign({}, state, {
+                selectedItems: state.selectedItems.filter(el => el.id !== action.data.id)
+            });
+        case SET_QUANTITY:
+            let idx = state.selectedItems.indexOf(action.data)
+            return Object.assign({}, state, {
+                selectedItems: [...state.selectedItems.slice(0, idx),
+                action.data,
+                ...state.selectedItems.slice(idx + 1)]
+            });
+        default:
+            return state;
     }
-    return state
 }
 
 export default itemReducer;
