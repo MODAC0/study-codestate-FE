@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { SELECT_ITEM, selectItem } from '../actions/index';
 import { useSelector, useDispatch } from 'react-redux';
-import './ItemList.css';
+import './ItemListContainer.css';
 
 function ItemListContainer() {
 

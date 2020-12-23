@@ -1,6 +1,6 @@
 import React from 'react';
 import Nav from '../src/Nav';
-import ItemList from '../src/pages/ItemList';
+import ItemListContainer from './pages/ItemListContainer';
 import store from '../src/store/store';
 import './App.css';
 import {
@@ -18,7 +18,7 @@ function App() {
         <Nav />
         <Switch>
           <Route exact={true} path="/">
-            <ItemList />
+            <ItemListContainer />
           </Route>
           <Route path="/shoppingcart">
             <ShoppingCart />
