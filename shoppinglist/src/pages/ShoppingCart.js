@@ -51,7 +51,7 @@ export default function ShoppingCart() {
 
         setTotal(checkedItems.reduce((acc, cur) => acc + cur.sum, 0))
         setTotalQty(checkedItems.reduce((acc, cur) => acc + cur.quantity, 0))
-    }, [state.selectedItems])
+    }, [checkedItems])
 
 
     return (
@@ -68,13 +68,15 @@ export default function ShoppingCart() {
             <div id="shopping-cart-container">
 
                 <OrderSummary total={total} totalQty={totalQty} />
-                {state.selectedItems.map((item) => <CartItem
-                    handleCheckChange={handleCheckChange}
-                    handleQuantityChange={handleQuantityChange}
-                    handleDelete={handleDelete}
-                    item={item}
-                    checkedItems={checkedItems}
-                />)}
+                {state.selectedItems.map((item) =>
+                    <CartItem
+                        handleCheckChange={handleCheckChange}
+                        handleQuantityChange={handleQuantityChange}
+                        handleDelete={handleDelete}
+                        item={item}
+                        checkedItems={checkedItems}
+                    />
+                )}
 
             </div>
         </div >

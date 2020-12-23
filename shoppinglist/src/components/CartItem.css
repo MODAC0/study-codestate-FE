@@ -41,15 +41,17 @@
     color: #000000;
 }
 .cart-item-quantity{
-    position: unset;;
-    margin-right: 20px;
-    width: 70px;
+    margin-right: -2.5rem;
+    width: 100px;
     float: right;
     background: #F9F9F9;
+    position: relative;
+    top: 50%;
+    text-align: center;
+    transform: translateY(-50%);
 }
 
 .cart-item-thumbnail{
-    position: sticky;
     padding: 10px;
     width: 130px;
     height: 130px;
@@ -69,6 +71,14 @@
     top: 50%;
     transform: translateY(-50%);
     float: left;
+}
+
+.cart-item-delete{
+    float: right;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 100%;
+    margin: 0  auto;
 }
 
 #shopping-cart-container{
