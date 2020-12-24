@@ -1,7 +1,6 @@
 import React from 'react';
 import { SELECT_ITEM } from '../actions/index';
 import { useSelector, useDispatch } from 'react-redux';
-import './ItemListContainer.css';
 import Item from '../components/Item';
 
 function ItemListContainer() {
