@@ -54,39 +54,41 @@ export default function ShoppingCart() {
 	}, [checkedItems, state.selectedItems])
 
 	return (
-		<div id="item-list-body">
-			<div id="item-list-title">장바구니</div>
-			{!state.selectedItems.length ? (
-				<div id="item-list-text">
-					장바구니에 아이템이 없습니다.
-				</div>
-			) : (
-					<>
-						<span id="shopping-cart-select-all">
-							<input
-								type="checkbox"
-								checked={
-									checkedItems.length === state.selectedItems.length
-										? true
-										: false
-								}
-								onChange={(e) => handleAllCheck(e.target.checked)} >
-							</input>
-							<label >전체선택</label>
-						</span>
-						<div id="shopping-cart-container">
-							<OrderSummary total={total} totalQty={totalQty} />
-							{state.selectedItems.map((item) =>
-								<CartItem
-									handleCheckChange={handleCheckChange}
-									handleQuantityChange={handleQuantityChange}
-									handleDelete={handleDelete}
-									item={item}
-									checkedItems={checkedItems}
-								/>)}
+		<div id="item-list-container">
+			<div id="item-list-body">
+				<div id="item-list-title">장바구니</div>
+				<span id="shopping-cart-select-all">
+					<input
+						type="checkbox"
+						checked={
+							checkedItems.length === state.selectedItems.length
+								? true
+								: false
+						}
+						onChange={(e) => handleAllCheck(e.target.checked)} >
+					</input>
+					<label >전체선택</label>
+				</span>
+				<div id="shopping-cart-container">
+					<OrderSummary total={total} totalQty={totalQty} />
+					{!state.selectedItems.length ? (
+						<div id="item-list-text">
+							장바구니에 아이템이 없습니다.
 						</div>
-					</>
-				)}
-		</div >
+					) : (
+							<div >
+								{state.selectedItems.map((item) =>
+									<CartItem
+										handleCheckChange={handleCheckChange}
+										handleQuantityChange={handleQuantityChange}
+										handleDelete={handleDelete}
+										item={item}
+										checkedItems={checkedItems}
+									/>)}
+							</div>
+						)}
+				</div>
+			</div >
+		</div>
 	)
 }

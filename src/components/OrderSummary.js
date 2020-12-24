@@ -3,7 +3,7 @@ import React from 'react'
 export default function OrderSummary({ totalQty, total }) {
 	return (
 		<section id="order-summary-container">
-			주문 합계
+			<h4>주문 합계</h4>
 			<div id="order-summary">
 				총 아이템 개수 : <span className="order-summary-text">{totalQty} 개</span>
 				<hr></hr>
