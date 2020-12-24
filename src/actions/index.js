@@ -6,19 +6,19 @@ export const SET_QUANTITY = "SET_QUANTITY";
 
 // actions creator functions
 export function selectItem() {
-    return {
-        type: SELECT_ITEM,
-    }
+	return {
+		type: SELECT_ITEM,
+	}
 }
 
 export function deleteItem() {
-    return {
-        type: DELETE_ITEM,
-    }
+	return {
+		type: DELETE_ITEM,
+	}
 }
 
 export function setQuantity() {
-    return {
-        type: SET_QUANTITY,
-    }
+	return {
+		type: SET_QUANTITY,
+	}
 }

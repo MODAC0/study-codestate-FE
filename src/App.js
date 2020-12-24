@@ -1,7 +1,7 @@
 import React from 'react';
-import Nav from '../src/Nav';
+import Nav from './Nav';
 import ItemListContainer from './pages/ItemListContainer';
-import store from '../src/store/store';
+import store from './store/store';
 import './App.css';
 import {
   BrowserRouter as Router,
@@ -12,6 +12,7 @@ import {
 import ShoppingCart from './pages/ShoppingCart';
 
 function App() {
+
   return (
     <Router>
       <div className="App">
