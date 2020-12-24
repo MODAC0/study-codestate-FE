@@ -1,4 +1,4 @@
-#navbody {
+#nav-body {
     background-color: white;
     width: 100%;
     height: 4rem;
@@ -40,16 +40,17 @@ a:hover {
     color: #4000c7
 }
 
-#itemCount {
+#nav-item-counter {
     font-size: 0.7rem;
     font-weight: 700;
     color: white;
     background-color: #4000c7;
     border-radius: 1rem;
-    margin-left: 0.2rem;
+    margin-left: 0.3rem;
     text-align: center;
-    vertical-align: middle;
+    vertical-align: text-top;
     display: inline-block;
     height: 1rem;
     width: 1rem;
+    line-height: 1rem;
 }
