@@ -70,13 +70,12 @@ export default function ShoppingCart() {
 					<label >전체선택</label>
 				</span>
 				<div id="shopping-cart-container">
-					<OrderSummary total={total} totalQty={totalQty} />
 					{!state.selectedItems.length ? (
 						<div id="item-list-text">
 							장바구니에 아이템이 없습니다.
 						</div>
 					) : (
-							<div >
+							<div id="cart-item-list">
 								{state.selectedItems.map((item) =>
 									<CartItem
 										handleCheckChange={handleCheckChange}
@@ -87,6 +86,9 @@ export default function ShoppingCart() {
 									/>)}
 							</div>
 						)}
+					<div>
+						<OrderSummary total={total} totalQty={totalQty} />
+					</div>
 				</div>
 			</div >
 		</div>
