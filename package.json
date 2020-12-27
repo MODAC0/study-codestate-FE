@@ -3,11 +3,12 @@
   "version": "1.0.0",
   "description": "Codestates Immersive Course Sprint",
   "main": "index.js",
-  "dependencies": {},
-  "devDependencies": {},
+  "dependencies": {
+    "@codestates-cc/submission-npm": "^1.1.2"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "submit": "node .travis/submit.js"
+    "test": "echo no test",
+    "submit": "echo you don\\'t need to submit"
   },
   "repository": {
     "type": "git",
