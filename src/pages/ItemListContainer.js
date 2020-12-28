@@ -10,9 +10,11 @@ function ItemListContainer() {
 
 	function handleClick(e, item) {
 		e.preventDefault();
-		item.sum = item.price
-		item.quantity = 1
-		dispatch({ type: SELECT_ITEM, data: item })
+		let selectedItem = Object.assign({}, item, {
+			sum: item.price,
+			quantity: 1
+		})
+		dispatch({ type: SELECT_ITEM, data: selectedItem })
 	}
 
 	return (

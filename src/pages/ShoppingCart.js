@@ -32,11 +32,13 @@ export default function ShoppingCart() {
 	};
 
 	const handleQuantityChange = (quantity, item) => {
-		item.quantity = quantity;
-		item.sum = item.price * quantity;
+		let selectedItem = Object.assign(item, {
+			quantity: quantity,
+			sum: item.price * quantity
+		})
 		dispatch({
 			type: SET_QUANTITY,
-			data: item
+			data: selectedItem
 		});
 	}
 
