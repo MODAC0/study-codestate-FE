@@ -1,6 +1,6 @@
 import React, { useState, useEffect, } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { DELETE_ITEM, SET_QUANTITY } from '../actions';
+import { DELETE_FROM_CART, SET_QUANTITY } from '../actions';
 import CartItem from '../components/CartItem'
 import OrderSummary from '../components/OrderSummary'
 
@@ -9,7 +9,7 @@ export default function ShoppingCart() {
 	const state = useSelector(state => state.itemReducer);
 	const dispatch = useDispatch();
 
-	const [checkedItems, setCheckedItems] = useState([...state.selectedItems])
+	const [checkedItems, setCheckedItems] = useState([...state.cartItems])
 	const [total, setTotal] = useState(checkedItems.reduce((acc, cur) => acc + Number(cur.total), 0))
 	const [totalQty, setTotalQty] = useState(checkedItems.length)
 
@@ -24,7 +24,7 @@ export default function ShoppingCart() {
 
 	const handleAllCheck = (checked) => {
 		if (checked) {
-			setCheckedItems([...state.selectedItems]);
+			setCheckedItems([...state.cartItems]);
 		}
 		else {
 			setCheckedItems([]);
@@ -45,7 +45,7 @@ export default function ShoppingCart() {
 	const handleDelete = (item) => {
 		setCheckedItems(checkedItems.filter((el) => el.id !== item.id))
 		dispatch({
-			type: DELETE_ITEM,
+			type: DELETE_FROM_CART,
 			payload: item
 		})
 	}
@@ -53,7 +53,7 @@ export default function ShoppingCart() {
 	useEffect(() => {
 		setTotal(checkedItems.reduce((acc, cur) => acc + cur.total, 0))
 		setTotalQty(checkedItems.reduce((acc, cur) => acc + cur.quantity, 0))
-	}, [checkedItems, state.selectedItems])
+	}, [checkedItems, state.cartItems])
 
 	return (
 		<div id="item-list-container">
@@ -63,7 +63,7 @@ export default function ShoppingCart() {
 					<input
 						type="checkbox"
 						checked={
-							checkedItems.length === state.selectedItems.length
+							checkedItems.length === state.cartItems.length
 								? true
 								: false
 						}
@@ -72,13 +72,13 @@ export default function ShoppingCart() {
 					<label >전체선택</label>
 				</span>
 				<div id="shopping-cart-container">
-					{!state.selectedItems.length ? (
+					{!state.cartItems.length ? (
 						<div id="item-list-text">
 							장바구니에 아이템이 없습니다.
 						</div>
 					) : (
 							<div id="cart-item-list">
-								{state.selectedItems.map((item, idx) =>
+								{state.cartItems.map((item, idx) =>
 									<CartItem
 										key={idx}
 										handleCheckChange={handleCheckChange}

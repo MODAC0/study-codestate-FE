@@ -15,7 +15,7 @@ function Nav() {
 			<div id="menu">
 				<Link to="/">상품리스트</Link>
 				<Link to="/shoppingcart">
-					장바구니<span id="nav-item-counter">{state.selectedItems.length}</span>
+					장바구니<span id="nav-item-counter">{state.cartItems.length}</span>
 				</Link>
 			</div>
 		</div>

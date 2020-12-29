@@ -1,5 +1,5 @@
 import React from 'react';
-import { SELECT_ITEM } from '../actions/index';
+import { ADD_TO_CART } from '../actions/index';
 import { useSelector, useDispatch } from 'react-redux';
 import Item from '../components/Item';
 
@@ -14,7 +14,7 @@ function ItemListContainer() {
 			total: item.price,
 			quantity: 1
 		})
-		dispatch({ type: SELECT_ITEM, payload: selectedItem })
+		dispatch({ type: ADD_TO_CART, payload: selectedItem })
 	}
 
 	return (
