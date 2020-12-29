@@ -10,7 +10,7 @@ export default function ShoppingCart() {
 	const dispatch = useDispatch();
 
 	const [checkedItems, setCheckedItems] = useState([...state.selectedItems])
-	const [total, setTotal] = useState(checkedItems.reduce((acc, cur) => acc + Number(cur.sum), 0))
+	const [total, setTotal] = useState(checkedItems.reduce((acc, cur) => acc + Number(cur.total), 0))
 	const [totalQty, setTotalQty] = useState(checkedItems.length)
 
 	const handleCheckChange = (checked, item) => {
@@ -34,7 +34,7 @@ export default function ShoppingCart() {
 	const handleQuantityChange = (quantity, item) => {
 		let selectedItem = Object.assign(item, {
 			quantity: quantity,
-			sum: item.price * quantity
+			total: item.price * quantity
 		})
 		dispatch({
 			type: SET_QUANTITY,
@@ -51,7 +51,7 @@ export default function ShoppingCart() {
 	}
 
 	useEffect(() => {
-		setTotal(checkedItems.reduce((acc, cur) => acc + cur.sum, 0))
+		setTotal(checkedItems.reduce((acc, cur) => acc + cur.total, 0))
 		setTotalQty(checkedItems.reduce((acc, cur) => acc + cur.quantity, 0))
 	}, [checkedItems, state.selectedItems])
 

@@ -11,7 +11,7 @@ function ItemListContainer() {
 	function handleClick(e, item) {
 		e.preventDefault();
 		let selectedItem = Object.assign({}, item, {
-			sum: item.price,
+			total: item.price,
 			quantity: 1
 		})
 		dispatch({ type: SELECT_ITEM, data: selectedItem })
