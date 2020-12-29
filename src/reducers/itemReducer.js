@@ -11,20 +11,20 @@ const itemReducer = (state = initialState, action) => {
 
 	switch (action.type) {
 		case SELECT_ITEM:
-			if (!state.selectedItems.includes(action.data))
+			if (!state.selectedItems.includes(action.payload))
 				return Object.assign({}, state, {
-					selectedItems: [...state.selectedItems, action.data]
+					selectedItems: [...state.selectedItems, action.payload]
 				})
 			return state;
 		case DELETE_ITEM:
 			return Object.assign({}, state, {
-				selectedItems: state.selectedItems.filter(el => el.id !== action.data.id)
+				selectedItems: state.selectedItems.filter(el => el.id !== action.payload.id)
 			});
 		case SET_QUANTITY:
-			let idx = state.selectedItems.indexOf(action.data)
+			let idx = state.selectedItems.indexOf(action.payload)
 			return Object.assign({}, state, {
 				selectedItems: [...state.selectedItems.slice(0, idx),
-				action.data,
+				action.payload,
 				...state.selectedItems.slice(idx + 1)]
 			});
 		default:

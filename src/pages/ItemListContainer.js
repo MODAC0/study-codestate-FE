@@ -14,14 +14,14 @@ function ItemListContainer() {
 			total: item.price,
 			quantity: 1
 		})
-		dispatch({ type: SELECT_ITEM, data: selectedItem })
+		dispatch({ type: SELECT_ITEM, payload: selectedItem })
 	}
 
 	return (
 		<div id="item-list-container">
 			<div id="item-list-body">
 				<div id="item-list-title">쓸모없는 선물 모음</div>
-				{state.items.map((item) => <Item item={item} handleClick={handleClick} />)}
+				{state.items.map((item, idx) => <Item item={item} key={idx} handleClick={handleClick} />)}
 			</div>
 		</div>
 	);

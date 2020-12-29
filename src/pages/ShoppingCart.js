@@ -38,7 +38,7 @@ export default function ShoppingCart() {
 		})
 		dispatch({
 			type: SET_QUANTITY,
-			data: selectedItem
+			payload: selectedItem
 		});
 	}
 
@@ -46,7 +46,7 @@ export default function ShoppingCart() {
 		setCheckedItems(checkedItems.filter((el) => el.id !== item.id))
 		dispatch({
 			type: DELETE_ITEM,
-			data: item
+			payload: item
 		})
 	}
 
@@ -78,8 +78,9 @@ export default function ShoppingCart() {
 						</div>
 					) : (
 							<div id="cart-item-list">
-								{state.selectedItems.map((item) =>
+								{state.selectedItems.map((item, idx) =>
 									<CartItem
+										key={idx}
 										handleCheckChange={handleCheckChange}
 										handleQuantityChange={handleQuantityChange}
 										handleDelete={handleDelete}
