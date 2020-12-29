@@ -10,7 +10,7 @@ function ItemListContainer() {
 
 	function handleClick(e, item) {
 		e.preventDefault();
-		let selectedItem = Object.assign({}, item, {
+		let selectedItem = Object.assign(item, {
 			total: item.price,
 			quantity: 1
 		})

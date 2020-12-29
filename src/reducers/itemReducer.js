@@ -1,31 +1,31 @@
 import items from './initialState.js';
-import { DELETE_ITEM, SELECT_ITEM, SET_QUANTITY } from "../actions/index";
+import { REMOVE_FROM_CART, ADD_TO_CART, SET_QUANTITY } from "../actions/index";
 
 const initialState = {
 	items: items,
-	selectedItems: [],
-	// 여기서 selectedItems 의 length로 갯수 세주기
+	cartItems: [],
+	// 여기서 cartItems 의 length로 갯수 세주기
 }
 
 const itemReducer = (state = initialState, action) => {
 
 	switch (action.type) {
-		case SELECT_ITEM:
-			if (!state.selectedItems.includes(action.payload))
+		case ADD_TO_CART:
+			if (!state.cartItems.includes(action.payload))
 				return Object.assign({}, state, {
-					selectedItems: [...state.selectedItems, action.payload]
+					cartItems: [...state.cartItems, action.payload]
 				})
 			return state;
-		case DELETE_ITEM:
+		case REMOVE_FROM_CART:
 			return Object.assign({}, state, {
-				selectedItems: state.selectedItems.filter(el => el.id !== action.payload.id)
+				cartItems: state.cartItems.filter(el => el.id !== action.payload.id)
 			});
 		case SET_QUANTITY:
-			let idx = state.selectedItems.indexOf(action.payload)
+			let idx = state.cartItems.indexOf(action.payload)
 			return Object.assign({}, state, {
-				selectedItems: [...state.selectedItems.slice(0, idx),
+				cartItems: [...state.cartItems.slice(0, idx),
 				action.payload,
-				...state.selectedItems.slice(idx + 1)]
+				...state.cartItems.slice(idx + 1)]
 			});
 		default:
 			return state;

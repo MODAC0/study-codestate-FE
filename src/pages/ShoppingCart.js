@@ -1,6 +1,6 @@
 import React, { useState, useEffect, } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { DELETE_FROM_CART, SET_QUANTITY } from '../actions';
+import { REMOVE_FROM_CART, SET_QUANTITY } from '../actions';
 import CartItem from '../components/CartItem'
 import OrderSummary from '../components/OrderSummary'
 
@@ -45,7 +45,7 @@ export default function ShoppingCart() {
 	const handleDelete = (item) => {
 		setCheckedItems(checkedItems.filter((el) => el.id !== item.id))
 		dispatch({
-			type: DELETE_FROM_CART,
+			type: REMOVE_FROM_CART,
 			payload: item
 		})
 	}
