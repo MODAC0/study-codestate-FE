@@ -1,11 +1,5 @@
-import items from './initialState.js';
 import { REMOVE_FROM_CART, ADD_TO_CART, SET_QUANTITY } from "../actions/index";
-
-const initialState = {
-	items: items,
-	cartItems: [],
-	// 여기서 cartItems 의 length로 갯수 세주기
-}
+import initialState from "./initialState";
 
 const itemReducer = (state = initialState, action) => {
 
@@ -13,7 +7,7 @@ const itemReducer = (state = initialState, action) => {
 		case ADD_TO_CART:
 			if (!state.cartItems.includes(action.payload))
 				return Object.assign({}, state, {
-					cartItems: [...state.cartItems, action.payload]
+					cartItems: [...state.data.cartItems, action.payload]
 				})
 			return state;
 		case REMOVE_FROM_CART:
