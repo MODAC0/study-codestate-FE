@@ -6,23 +6,23 @@ export const SET_QUANTITY = "SET_QUANTITY";
 
 // actions creator functions
 export function addToCart() {
-	return {
-		type: ADD_TO_CART,
-		itemId
-	}
+  return {
+    type: ADD_TO_CART,
+    itemId
+  }
 }
 
 export function removeFromCart() {
-	return {
-		type: REMOVE_FROM_CART,
-		itemId
-	}
+  return {
+    type: REMOVE_FROM_CART,
+    itemId
+  }
 }
 
 export function setQuantity() {
-	return {
-		type: SET_QUANTITY,
-		itemId,
-		quantity
-	}
+  return {
+    type: SET_QUANTITY,
+    itemId,
+    quantity
+  }
 }
