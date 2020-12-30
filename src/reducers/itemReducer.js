@@ -14,7 +14,7 @@ const itemReducer = (state = initialState, action) => {
 			});
 		case SET_QUANTITY:
 			return Object.assign({}, state, {
-				cartItems: [state.cartItems.filter(el => el.itemId !== action.payload.itemId), action.payload]
+				cartItems: [...state.cartItems.filter(el => el.itemId !== action.payload.itemId), action.payload]
 			});
 		default:
 			return state;

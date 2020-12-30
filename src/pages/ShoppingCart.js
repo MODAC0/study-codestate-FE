@@ -10,23 +10,24 @@ export default function ShoppingCart() {
 	const dispatch = useDispatch();
 
 	const [cartItems, setCartItems] = useState(state.items.filter((item) => state.cartItems.map((el) => el.itemId).indexOf(item.id) !== -1))
-	const [checkedItems, setCheckedItems] = useState([...state.cartItems])
-	const [total, setTotal] = useState(checkedItems.reduce((acc, cur) => acc + Number(cur.total), 0))
-	const [totalQty, setTotalQty] = useState(checkedItems.length)
+	const [checkedItems, setCheckedItems] = useState(state.cartItems.map((cartItem) => cartItem.itemId))
+	//const [total, setTotal] = useState(checkedItems.reduce((acc, cur) => acc + Number(cur.total), 0))
+	const [totalQty, setTotalQty] = useState(state.cartItems.filter((item) => checkedItems.indexOf(item.itemId) > -1).reduce((acc, cur) => acc + cur.quantity, 0))
 
-
-	const handleCheckChange = (checked, item) => {
+	const handleCheckChange = (checked, itemId) => {
 		if (checked) {
-			setCheckedItems([...checkedItems, item]);
+			setCheckedItems([...checkedItems, itemId]);
+			console.log(checkedItems);
 		}
 		else {
-			setCheckedItems(checkedItems.filter((el) => el.name !== item.name));
+			setCheckedItems(checkedItems.filter((id) => id !== itemId));
+			console.log(checkedItems);
 		}
 	};
 
 	const handleAllCheck = (checked) => {
 		if (checked) {
-			setCheckedItems([...state.cartItems]);
+			setCheckedItems(state.cartItems.map((item) => item.id))
 		}
 		else {
 			setCheckedItems([]);
@@ -44,7 +45,7 @@ export default function ShoppingCart() {
 	}
 
 	const handleDelete = (itemId) => {
-		//		setCheckedItems(checkedItems.filter((el) => el.id !== item.id))
+		setCheckedItems(checkedItems.filter((id) => id !== itemId))
 		dispatch({
 			type: REMOVE_FROM_CART,
 			payload: {
@@ -54,8 +55,9 @@ export default function ShoppingCart() {
 	}
 
 	useEffect(() => {
-		setTotal(checkedItems.reduce((acc, cur) => acc + cur.total, 0))
-		setTotalQty(checkedItems.reduce((acc, cur) => acc + cur.quantity, 0))
+		setCartItems(state.items.filter((item) => state.cartItems.map((el) => el.itemId).indexOf(item.id) !== -1))
+		//setTotal(checkedItems.reduce((acc, cur) => acc + cur.total, 0))
+		setTotalQty(state.cartItems.filter((item) => checkedItems.indexOf(item.itemId) > -1).reduce((acc, cur) => acc + cur.quantity, 0))
 	}, [checkedItems, state.cartItems])
 
 	return (
@@ -66,9 +68,7 @@ export default function ShoppingCart() {
 					<input
 						type="checkbox"
 						checked={
-							checkedItems.length === cartItems.length
-								? true
-								: false
+							checkedItems.length === state.cartItems.length ? true : false
 						}
 						onChange={(e) => handleAllCheck(e.target.checked)} >
 					</input>
@@ -93,7 +93,7 @@ export default function ShoppingCart() {
 							</div>
 						)}
 					<div>
-						<OrderSummary total={total} totalQty={totalQty} />
+						<OrderSummary /*total={total}*/ totalQty={totalQty} />
 					</div>
 				</div>
 			</div >
