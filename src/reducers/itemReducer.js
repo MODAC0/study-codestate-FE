@@ -1,5 +1,5 @@
 import { REMOVE_FROM_CART, ADD_TO_CART, SET_QUANTITY } from "../actions/index";
-import initialState from "./initialState";
+import { initialState } from "./initialState";
 
 const itemReducer = (state = initialState, action) => {
 

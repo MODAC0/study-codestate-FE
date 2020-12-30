@@ -11,7 +11,6 @@ export default function CartItem({
 }) {
 	const state = useSelector(state => state.itemReducer);
 	const cartItem = state.cartItems.filter(el => el.itemId === item.id)[0]
-	const itemTotal = cartItem.quantity * item.price
 
 	return (
 		<li className="cart-item-body">

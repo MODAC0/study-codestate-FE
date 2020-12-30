@@ -1,6 +1,5 @@
-import React, { useState, useEffect, } from 'react'
+import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { combineReducers } from 'redux';
 import { REMOVE_FROM_CART, SET_QUANTITY } from '../actions';
 import CartItem from '../components/CartItem'
 import OrderSummary from '../components/OrderSummary'
@@ -10,7 +9,7 @@ export default function ShoppingCart() {
 	const state = useSelector(state => state.itemReducer);
 	const { cartItems, items } = state
 	const dispatch = useDispatch();
-	const [checkedItems, setCheckedItems] = useState(cartItems.map((el, idx) => idx)) //idx로
+	const [checkedItems, setCheckedItems] = useState(cartItems.map((el, idx) => idx))
 
 	const handleCheckChange = (checked, idx) => {
 		if (checked) {
@@ -55,18 +54,17 @@ export default function ShoppingCart() {
 			price: 0,
 			quantity: 0,
 		}
-
 		for (let i = 0; i < checkedItems.length; i++) {
 			if (cartItems[checkedItems[i]]) {
 				let quantity = cartItems[checkedItems[i]].quantity
 				let price = items.filter((el) => el.id === cartItems[checkedItems[i]].itemId)[0].price
+
 				total.price = total.price + quantity * price
 				total.quantity = total.quantity + quantity
 			}
 		}
 		return total
 	}
-
 
 	const renderItems = items.filter((el) => cartItems.map((el) => el.itemId).indexOf(el.id) > -1)
 	const total = getTotal()
