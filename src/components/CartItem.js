@@ -2,6 +2,7 @@ import React from 'react'
 import { useSelector } from 'react-redux';
 
 export default function CartItem({
+	idx,
 	item,
 	checkedItems,
 	handleCheckChange,
@@ -18,9 +19,9 @@ export default function CartItem({
 				type="checkbox"
 				className="cart-item-checkbox"
 				onChange={(e) => {
-					handleCheckChange(e.target.checked, item.id, itemTotal)
+					handleCheckChange(e.target.checked, idx)
 				}}
-				checked={checkedItems.includes(item.id) ? true : false} >
+				checked={checkedItems.includes(idx) ? true : false} >
 			</input>
 			<div className="cart-item-thumbnail">
 				<img src={item.img} alt={item.name} />

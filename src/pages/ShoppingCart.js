@@ -1,5 +1,6 @@
 import React, { useState, useEffect, } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { combineReducers } from 'redux';
 import { REMOVE_FROM_CART, SET_QUANTITY } from '../actions';
 import CartItem from '../components/CartItem'
 import OrderSummary from '../components/OrderSummary'
@@ -7,27 +8,22 @@ import OrderSummary from '../components/OrderSummary'
 export default function ShoppingCart() {
 
 	const state = useSelector(state => state.itemReducer);
+	const { cartItems, items } = state
 	const dispatch = useDispatch();
+	const [checkedItems, setCheckedItems] = useState(cartItems.map((el, idx) => idx)) //idx로
 
-	const [cartItems, setCartItems] = useState(state.items.filter((item) => state.cartItems.map((el) => el.itemId).indexOf(item.id) !== -1))
-	const [checkedItems, setCheckedItems] = useState(state.cartItems.map((cartItem) => cartItem.itemId))
-	//const [total, setTotal] = useState(checkedItems.reduce((acc, cur) => acc + Number(cur.total), 0))
-	const [totalQty, setTotalQty] = useState(state.cartItems.filter((item) => checkedItems.indexOf(item.itemId) > -1).reduce((acc, cur) => acc + cur.quantity, 0))
-
-	const handleCheckChange = (checked, itemId) => {
+	const handleCheckChange = (checked, idx) => {
 		if (checked) {
-			setCheckedItems([...checkedItems, itemId]);
-			console.log(checkedItems);
+			setCheckedItems([...checkedItems, idx]);
 		}
 		else {
-			setCheckedItems(checkedItems.filter((id) => id !== itemId));
-			console.log(checkedItems);
+			setCheckedItems(checkedItems.filter((el) => el !== idx));
 		}
 	};
 
 	const handleAllCheck = (checked) => {
 		if (checked) {
-			setCheckedItems(state.cartItems.map((item) => item.id))
+			setCheckedItems(cartItems.map((item, idx) => idx))
 		}
 		else {
 			setCheckedItems([]);
@@ -54,11 +50,26 @@ export default function ShoppingCart() {
 		})
 	}
 
-	useEffect(() => {
-		setCartItems(state.items.filter((item) => state.cartItems.map((el) => el.itemId).indexOf(item.id) !== -1))
-		//setTotal(checkedItems.reduce((acc, cur) => acc + cur.total, 0))
-		setTotalQty(state.cartItems.filter((item) => checkedItems.indexOf(item.itemId) > -1).reduce((acc, cur) => acc + cur.quantity, 0))
-	}, [checkedItems, state.cartItems])
+	const getTotal = () => {
+		let total = {
+			price: 0,
+			quantity: 0,
+		}
+
+		for (let i = 0; i < checkedItems.length; i++) {
+			if (cartItems[checkedItems[i]]) {
+				let quantity = cartItems[checkedItems[i]].quantity
+				let price = items.filter((el) => el.id === cartItems[checkedItems[i]].itemId)[0].price
+				total.price = total.price + quantity * price
+				total.quantity = total.quantity + quantity
+			}
+		}
+		return total
+	}
+
+
+	const renderItems = items.filter((el) => cartItems.map((el) => el.itemId).indexOf(el.id) > -1)
+	const total = getTotal()
 
 	return (
 		<div id="item-list-container">
@@ -81,9 +92,10 @@ export default function ShoppingCart() {
 						</div>
 					) : (
 							<div id="cart-item-list">
-								{cartItems.map((item, idx) =>
+								{renderItems.map((item, idx) =>
 									<CartItem
 										key={idx}
+										idx={idx}
 										handleCheckChange={handleCheckChange}
 										handleQuantityChange={handleQuantityChange}
 										handleDelete={handleDelete}
@@ -93,7 +105,7 @@ export default function ShoppingCart() {
 							</div>
 						)}
 					<div>
-						<OrderSummary /*total={total}*/ totalQty={totalQty} />
+						<OrderSummary total={total.price} totalQty={total.quantity} />
 					</div>
 				</div>
 			</div >
