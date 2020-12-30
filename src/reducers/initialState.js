@@ -53,7 +53,7 @@ export default
 		"cartItems": [
 			{
 				"itemId": 1,
-				"quantity": 2
+				"quantity": 1
 			}
 		]
 	}

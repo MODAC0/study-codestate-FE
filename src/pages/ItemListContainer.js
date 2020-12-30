@@ -8,13 +8,18 @@ function ItemListContainer() {
 	const state = useSelector(state => state.itemReducer);
 	const dispatch = useDispatch();
 
-	function handleClick(e, item) {
+	function handleClick(e, itemId) {
 		e.preventDefault();
-		let selectedItem = Object.assign(item, {
-			total: item.price,
-			quantity: 1
-		})
-		dispatch({ type: ADD_TO_CART, payload: selectedItem })
+
+		if (!state.cartItems.map((el) => el.itemId).includes(itemId)) {
+			dispatch({
+				type: ADD_TO_CART,
+				payload: { itemId, quantity: 1 }
+			})
+		}
+		else {
+			alert('이미 추가된 상품입니다.')
+		}
 	}
 
 	return (

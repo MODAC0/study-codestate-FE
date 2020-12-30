@@ -9,9 +9,11 @@ export default function ShoppingCart() {
 	const state = useSelector(state => state.itemReducer);
 	const dispatch = useDispatch();
 
+	const [cartItems, setCartItems] = useState(state.items.filter((item) => state.cartItems.map((el) => el.itemId).indexOf(item.id) !== -1))
 	const [checkedItems, setCheckedItems] = useState([...state.cartItems])
 	const [total, setTotal] = useState(checkedItems.reduce((acc, cur) => acc + Number(cur.total), 0))
 	const [totalQty, setTotalQty] = useState(checkedItems.length)
+
 
 	const handleCheckChange = (checked, item) => {
 		if (checked) {
@@ -31,22 +33,23 @@ export default function ShoppingCart() {
 		}
 	};
 
-	const handleQuantityChange = (quantity, item) => {
-		let selectedItem = Object.assign(item, {
-			quantity: quantity,
-			total: item.price * quantity
-		})
+	const handleQuantityChange = (quantity, itemId) => {
 		dispatch({
 			type: SET_QUANTITY,
-			payload: selectedItem
+			payload: {
+				itemId,
+				quantity: quantity
+			}
 		});
 	}
 
-	const handleDelete = (item) => {
-		setCheckedItems(checkedItems.filter((el) => el.id !== item.id))
+	const handleDelete = (itemId) => {
+		//		setCheckedItems(checkedItems.filter((el) => el.id !== item.id))
 		dispatch({
 			type: REMOVE_FROM_CART,
-			payload: item
+			payload: {
+				itemId
+			}
 		})
 	}
 
@@ -63,7 +66,7 @@ export default function ShoppingCart() {
 					<input
 						type="checkbox"
 						checked={
-							checkedItems.length === state.cartItems.length
+							checkedItems.length === cartItems.length
 								? true
 								: false
 						}
@@ -78,7 +81,7 @@ export default function ShoppingCart() {
 						</div>
 					) : (
 							<div id="cart-item-list">
-								{state.cartItems.map((item, idx) =>
+								{cartItems.map((item, idx) =>
 									<CartItem
 										key={idx}
 										handleCheckChange={handleCheckChange}

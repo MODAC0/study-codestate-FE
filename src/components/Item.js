@@ -7,7 +7,7 @@ export default function Item({ item, handleClick }) {
 			<img className="item-img" src={item.img} alt={item.name}></img>
 			<span className="item-name">{item.name}</span>
 			<span className="item-price">{item.price}</span>
-			<button onClick={(e) => handleClick(e, item)}>장바구니 담기</button>
+			<button onClick={(e) => handleClick(e, item.id)}>장바구니 담기</button>
 		</div>
 	)
 }

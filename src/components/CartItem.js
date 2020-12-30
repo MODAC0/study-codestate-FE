@@ -19,13 +19,13 @@ export default function CartItem({
 				<img src={item.img} alt={item.name} />
 			</div>
 			<span>
-				<button className="cart-item-delete" onClick={() => { handleDelete(item) }}>삭제</button>
+				<button className="cart-item-delete" onClick={() => { handleDelete(item.id) }}>삭제</button>
 				<input
 					type="number"
 					min="1"
 					className="cart-item-quantity"
 					defaultValue={item.quantity}
-					onChange={(e) => { handleQuantityChange(Number(e.target.value), item) }}>
+					onChange={(e) => { handleQuantityChange(Number(e.target.value), item.id) }}>
 				</input>
 			</span>
 			<div className="cart-item-info">
