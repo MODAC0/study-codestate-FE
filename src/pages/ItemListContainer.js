@@ -1,5 +1,5 @@
 import React from 'react';
-import { ADD_TO_CART } from '../actions/index';
+import { addToCart } from '../actions/index';
 import { useSelector, useDispatch } from 'react-redux';
 import Item from '../components/Item';
 
@@ -11,12 +11,8 @@ function ItemListContainer() {
 
   const handleClick = (e, itemId) => {
     e.preventDefault();
-
     if (!cartItems.map((el) => el.itemId).includes(itemId)) {
-      dispatch({
-        type: ADD_TO_CART,
-        payload: { itemId, quantity: 1 }
-      })
+      dispatch(addToCart(itemId))
     }
     else {
       alert('이미 추가된 상품입니다.')

@@ -5,24 +5,31 @@ export const SET_QUANTITY = "SET_QUANTITY";
 
 
 // actions creator functions
-export function addToCart() {
+export const addToCart = (itemId) => {
   return {
     type: ADD_TO_CART,
-    itemId
+    payload: {
+      quantity: 1,
+      itemId
+    }
   }
 }
 
-export function removeFromCart() {
+export const removeFromCart = (itemId) => {
   return {
     type: REMOVE_FROM_CART,
-    itemId
+    payload: {
+      itemId
+    }
   }
 }
 
-export function setQuantity() {
+export const setQuantity = (itemId, quantity) => {
   return {
     type: SET_QUANTITY,
-    itemId,
-    quantity
+    payload: {
+      itemId,
+      quantity
+    }
   }
 }
