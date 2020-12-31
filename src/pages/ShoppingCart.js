@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { REMOVE_FROM_CART, SET_QUANTITY } from '../actions';
+import { removeFromCart, setQuantity } from '../actions';
 import CartItem from '../components/CartItem'
 import OrderSummary from '../components/OrderSummary'
 
@@ -30,23 +30,12 @@ export default function ShoppingCart() {
   };
 
   const handleQuantityChange = (quantity, itemId) => {
-    dispatch({
-      type: SET_QUANTITY,
-      payload: {
-        itemId,
-        quantity: quantity
-      }
-    });
+    dispatch(setQuantity(itemId, quantity));
   }
 
   const handleDelete = (itemId) => {
     setCheckedItems(checkedItems.filter((id) => id !== itemId))
-    dispatch({
-      type: REMOVE_FROM_CART,
-      payload: {
-        itemId
-      }
-    })
+    dispatch(removeFromCart(itemId))
   }
 
   const getTotal = () => {

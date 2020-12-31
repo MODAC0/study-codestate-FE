@@ -3,25 +3,34 @@ export const ADD_TO_CART = "ADD_TO_CART";
 export const REMOVE_FROM_CART = "REMOVE_FROM_CART";
 export const SET_QUANTITY = "SET_QUANTITY";
 
-
 // actions creator functions
-export function addToCart() {
+export const addToCart = (itemId) => {
   return {
     type: ADD_TO_CART,
+    payload: {
+      quantity: 1,
+      itemId
+    }
+  }
+}
+
+export const removeFromCart = (itemId) => {
+  return {
     //TODO
-  }
-}
-
-export function removeFromCart() {
-  return {
     type: REMOVE_FROM_CART,
-    //TODO 
+    payload: {
+      itemId
+    }
   }
 }
 
-export function setQuantity() {
+export const setQuantity = (itemId, quantity) => {
   return {
+    //TODO
     type: SET_QUANTITY,
-    //TODO    
+    payload: {
+      itemId,
+      quantity
+    }
   }
 }
