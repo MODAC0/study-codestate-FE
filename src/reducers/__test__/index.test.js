@@ -1,8 +1,9 @@
+import React from 'react';
 import { ADD_TO_CART, REMOVE_FROM_CART, SET_QUANTITY } from "../../actions/index";
 import { initialState } from "../initialState";
 import itemReducer from "../itemReducer";
 
-describe("item reducer", () => {
+describe("Item Reducer", () => {
   it("ADD_TO_CART 액션에 따라 cartItems 상태가 변해야 합니다", () => {
     expect(
       itemReducer(
