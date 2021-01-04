@@ -9,20 +9,20 @@ export default function ShoppingCart() {
   const state = useSelector(state => state.itemReducer);
   const { cartItems, items } = state
   const dispatch = useDispatch();
-  const [checkedItems, setCheckedItems] = useState(cartItems.map((el, idx) => idx))
+  const [checkedItems, setCheckedItems] = useState(cartItems.map((el) => el.itemId))
 
-  const handleCheckChange = (checked, idx) => {
+  const handleCheckChange = (checked, id) => {
     if (checked) {
-      setCheckedItems([...checkedItems, idx]);
+      setCheckedItems([...checkedItems, id]);
     }
     else {
-      setCheckedItems(checkedItems.filter((el) => el !== idx));
+      setCheckedItems(checkedItems.filter((el) => el !== id));
     }
   };
 
   const handleAllCheck = (checked) => {
     if (checked) {
-      setCheckedItems(cartItems.map((item, idx) => idx))
+      setCheckedItems(cartItems.map((el) => el.itemId))
     }
     else {
       setCheckedItems([]);
@@ -34,19 +34,20 @@ export default function ShoppingCart() {
   }
 
   const handleDelete = (itemId) => {
-    setCheckedItems(checkedItems.filter((id) => id !== itemId))
+    setCheckedItems(checkedItems.filter((el) => el !== itemId))
     dispatch(removeFromCart(itemId))
   }
 
   const getTotal = () => {
+    let cartIdArr = cartItems.map((el) => el.itemId)
     let total = {
       price: 0,
       quantity: 0,
     }
-    for (let i = 0; i < checkedItems.length; i++) {
-      if (cartItems[checkedItems[i]]) {
-        let quantity = cartItems[checkedItems[i]].quantity
-        let price = items.filter((el) => el.id === cartItems[checkedItems[i]].itemId)[0].price
+    for (let i = 0; i < cartIdArr.length; i++) {
+      if (checkedItems.indexOf(cartIdArr[i]) > -1) {
+        let quantity = cartItems[i].quantity
+        let price = items.filter((el) => el.id === cartItems[i].itemId)[0].price
 
         total.price = total.price + quantity * price
         total.quantity = total.quantity + quantity
@@ -57,7 +58,8 @@ export default function ShoppingCart() {
 
   const renderItems = items.filter((el) => cartItems.map((el) => el.itemId).indexOf(el.id) > -1)
   const total = getTotal()
-
+  console.log(renderItems);
+  console.log(checkedItems, cartItems);
   return (
     <div id="item-list-container">
       <div id="item-list-body">
@@ -66,14 +68,14 @@ export default function ShoppingCart() {
           <input
             type="checkbox"
             checked={
-              checkedItems.length === state.cartItems.length ? true : false
+              checkedItems.length === cartItems.length ? true : false
             }
             onChange={(e) => handleAllCheck(e.target.checked)} >
           </input>
           <label >전체선택</label>
         </span>
         <div id="shopping-cart-container">
-          {!state.cartItems.length ? (
+          {!cartItems.length ? (
             <div id="item-list-text">
               장바구니에 아이템이 없습니다.
             </div>
@@ -88,6 +90,7 @@ export default function ShoppingCart() {
                     handleDelete={handleDelete}
                     item={item}
                     checkedItems={checkedItems}
+                    cartItems={cartItems}
                   />)}
               </div>
             )}

@@ -8,8 +8,8 @@ export const addToCart = (itemId) => {
   return {
     type: ADD_TO_CART,
     payload: {
-      quantity: 1,
-      itemId
+      itemId,
+      quantity: 1
     }
   }
 }

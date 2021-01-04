@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux';
 
 export default function CartItem({
@@ -8,9 +8,10 @@ export default function CartItem({
   handleCheckChange,
   handleQuantityChange,
   handleDelete,
+  cartItems
 }) {
-  const state = useSelector(state => state.itemReducer);
-  const cartItem = state.cartItems.filter(el => el.itemId === item.id)[0]
+  const defaultValue = cartItems.filter(el => el.itemId === item.id)[0].quantity
+  const [quantity, setQuantity] = useState(defaultValue)
 
   return (
     <li className="cart-item-body">
@@ -18,9 +19,9 @@ export default function CartItem({
         type="checkbox"
         className="cart-item-checkbox"
         onChange={(e) => {
-          handleCheckChange(e.target.checked, idx)
+          handleCheckChange(e.target.checked, item.id)
         }}
-        checked={checkedItems.includes(idx) ? true : false} >
+        checked={checkedItems.includes(item.id) ? true : false} >
       </input>
       <div className="cart-item-thumbnail">
         <img src={item.img} alt={item.name} />
@@ -31,8 +32,10 @@ export default function CartItem({
           type="number"
           min={1}
           className="cart-item-quantity"
-          defaultValue={cartItem.quantity}
-          onChange={(e) => { handleQuantityChange(Number(e.target.value), item.id) }}>
+          defaultValue={quantity}
+          onChange={(e) => {
+            handleQuantityChange(Number(e.target.value), item.id)
+          }}>
         </input>
       </span>
       <div className="cart-item-info">
