@@ -1,18 +1,13 @@
-import React, { useEffect, useState } from 'react'
-import { useSelector } from 'react-redux';
+import React from 'react'
 
 export default function CartItem({
-  idx,
   item,
   checkedItems,
   handleCheckChange,
   handleQuantityChange,
   handleDelete,
-  cartItems
+  quantity
 }) {
-  const defaultValue = cartItems.filter(el => el.itemId === item.id)[0].quantity
-  const [quantity, setQuantity] = useState(defaultValue)
-
   return (
     <li className="cart-item-body">
       <input
@@ -32,7 +27,7 @@ export default function CartItem({
           type="number"
           min={1}
           className="cart-item-quantity"
-          defaultValue={quantity}
+          value={quantity}
           onChange={(e) => {
             handleQuantityChange(Number(e.target.value), item.id)
           }}>

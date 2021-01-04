@@ -58,8 +58,7 @@ export default function ShoppingCart() {
 
   const renderItems = items.filter((el) => cartItems.map((el) => el.itemId).indexOf(el.id) > -1)
   const total = getTotal()
-  console.log(renderItems);
-  console.log(checkedItems, cartItems);
+
   return (
     <div id="item-list-container">
       <div id="item-list-body">
@@ -81,17 +80,18 @@ export default function ShoppingCart() {
             </div>
           ) : (
               <div id="cart-item-list">
-                {renderItems.map((item, idx) =>
-                  <CartItem
+                {renderItems.map((item, idx) => {
+                  const quantity = cartItems.filter(el => el.itemId === item.id)[0].quantity
+                  return <CartItem
                     key={idx}
-                    idx={idx}
                     handleCheckChange={handleCheckChange}
                     handleQuantityChange={handleQuantityChange}
                     handleDelete={handleDelete}
                     item={item}
                     checkedItems={checkedItems}
-                    cartItems={cartItems}
-                  />)}
+                    quantity={quantity}
+                  />
+                })}
               </div>
             )}
           <div>
