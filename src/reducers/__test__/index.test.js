@@ -1,4 +1,3 @@
-import React from 'react';
 import { ADD_TO_CART, REMOVE_FROM_CART, SET_QUANTITY } from "../../actions/index";
 import { initialState } from "../initialState";
 import itemReducer from "../itemReducer";
