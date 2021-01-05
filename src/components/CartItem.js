@@ -34,7 +34,7 @@ export default function CartItem({
         </input>
       </span>
       <div className="cart-item-info">
-        <div className="cart-item-title">{item.name}</div>
+        <div className="cart-item-title" data-testid={item.name}>{item.name}</div>
         <div className="cart-item-price">{item.price} 원</div>
       </div>
     </li >

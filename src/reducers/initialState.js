@@ -3,8 +3,8 @@ export const initialState =
   "items": [
     {
       "id": 1,
-      "name": "박진영 쿠션",
-      "img": "../images/jyp.png",
+      "name": "노른자 분리기",
+      "img": "../images/egg.png",
       "price": 9900
     },
     {

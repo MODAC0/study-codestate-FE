@@ -2,7 +2,7 @@ import * as actions from "../../actions";
 import * as reactRedux from 'react-redux';
 import { shallow, configure, mount } from "enzyme";
 import CartItem from "../../components/CartItem";
-import { fireEvent, render } from "@testing-library/react";
+import { fireEvent, render, screen, } from "@testing-library/react";
 import App from "../../App";
 import store from "../../store/store"
 import React from "react"
@@ -24,9 +24,8 @@ describe("Shopping Cart components", () => {
       </reactRedux.Provider>)
   })
 
-
   test('ShoppingCart에 cartItems가 렌더되어야합니다.', () => {
-    const cartItemElement1 = utils.queryByText("박진영 쿠션")
+    const cartItemElement1 = utils.queryByText("노른자 분리기")
     const cartItemElement2 = utils.queryByText("2020년 달력")
     const cartItemElement3 = utils.queryByText("칼라 립스틱")
     const cartItemElement4 = utils.queryByText("개구리 안대")
@@ -36,30 +35,39 @@ describe("Shopping Cart components", () => {
     expect(cartItemElement4).not.toBeInTheDocument()
   })
 
+  test('ADD_TO_CART 액션에 따라 ShoppingCart가 렌더되어야 합니다.', () => {
+    const itemListUtils = render(
+      <reactRedux.Provider store={store}>
+        <ItemListContainer />
+      </reactRedux.Provider>
+    )
+    const target = itemListUtils.getAllByText("장바구니 담기")[2]
+    fireEvent.click(target)
+    expect(utils.getByTestId("개구리 안대")).toBeInTheDocument()
+  })
+
   test('REMOVE_FROM_CART 액션에 따라 ShoppingCart가 렌더되어야 합니다.', () => {
     const target = utils.getAllByText("삭제")[0]
-
     fireEvent.click(target)
-    const cartItemElement1 = utils.queryByText("박진영 쿠션")
+    const cartItemElement1 = utils.queryByText("노른자 분리기")
     expect(cartItemElement1).not.toBeInTheDocument()
-
-    //test('It should keep a $ in front of the input', () => {
-    //  const { input } = setup()
-    //  fireEvent.change(input, { target: { value: '23' } })
-    //  expect(input.value).toBe('$23')
   })
+
   test('SET_QUANTITY 액션에 따라 OrderSummary가 렌더되어야 합니다.', () => {
     const target = utils.getByDisplayValue("7")
-    const totalPrice = utils.getByText("56300 원")
-    const totalQtY = utils.getByText("10 개")
+    const totalPrice = utils.getByText("59200 원")
+    const totalQtY = utils.getByText("11 개")
     fireEvent.change(target, { target: { value: 23 } })
-    expect(totalPrice.textContent).toBe("102700 원")
-    expect(totalQtY.textContent).toBe("26 개")
+    expect(totalPrice.textContent).toBe("105600 원")
+    expect(totalQtY.textContent).toBe("27 개")
   })
+
   test('Checkbox의 상태에 따라 OrderSummary가 렌더되어야 합니다.', () => {
-    const { queryByText } = render(
-      <reactRedux.Provider store={store}>
-        <ShoppingCart />
-      </reactRedux.Provider>)
+    const target = utils.getAllByRole('checkbox')[1]
+    const totalPrice = utils.getByText("105600 원")
+    const totalQtY = utils.getByText("27 개")
+    fireEvent.click(target)
+    expect(totalPrice.textContent).toBe("69600 원")
+    expect(totalQtY.textContent).toBe("24 개")
   })
 });
