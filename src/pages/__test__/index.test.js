@@ -14,29 +14,37 @@ import ShoppingCart from "../ShoppingCart";
 configure({ adapter: new Adapter() });
 
 describe("Shopping Cart components", () => {
-  test('ShoppingCart에 cartItems가 렌더되어야합니다.', () => {
-    const { queryByText } = render(
+  let utils
+
+  beforeEach(() => {
+    utils = render(
       <reactRedux.Provider store={store}>
         <ShoppingCart />
       </reactRedux.Provider>)
+  })
 
-    const cartItemElement1 = queryByText("박진영 쿠션")
-    const cartItemElement2 = queryByText("2020년 달력")
-    const cartItemElement3 = queryByText("칼라 립스틱")
-    const cartItemElement4 = queryByText("개구리 안대")
-
+  test('ShoppingCart에 cartItems가 렌더되어야합니다.', () => {
+    const cartItemElement1 = utils.queryByText("박진영 쿠션")
+    const cartItemElement2 = utils.queryByText("2020년 달력")
+    const cartItemElement3 = utils.queryByText("칼라 립스틱")
+    const cartItemElement4 = utils.queryByText("개구리 안대")
     expect(cartItemElement1).toBeInTheDocument()
     expect(cartItemElement2).toBeInTheDocument()
     expect(cartItemElement3).toBeInTheDocument()
     expect(cartItemElement4).not.toBeInTheDocument()
   })
+
   test('REMOVE_FROM_CART 액션에 따라 ShoppingCart가 렌더되어야 합니다.', () => {
-    const { queryByText } = render(
-      <reactRedux.Provider store={store}>
-        <ShoppingCart />
-      </reactRedux.Provider>)
 
+    const target = utils.queryAllByText("삭제").firstNode
+    fireEvent.click(target)
+    const cartItemElement1 = utils.queryByText("박진영 쿠션")
+    expect(cartItemElement1).not.toBeInTheDocument()
 
+    //test('It should keep a $ in front of the input', () => {
+    //  const { input } = setup()
+    //  fireEvent.change(input, { target: { value: '23' } })
+    //  expect(input.value).toBe('$23')
   })
   test('SET_QUANTITY 액션에 따라 OrderSummary가 렌더되어야 합니다.', () => {
     const { queryByText } = render(
@@ -51,7 +59,5 @@ describe("Shopping Cart components", () => {
       <reactRedux.Provider store={store}>
         <ShoppingCart />
       </reactRedux.Provider>)
-
-
   })
 });
