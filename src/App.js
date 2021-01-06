@@ -13,17 +13,15 @@ function App() {
 
   return (
     <Router>
-      <div className="App">
-        <Nav />
-        <Switch>
-          <Route exact={true} path="/">
-            <ItemListContainer />
-          </Route>
-          <Route path="/shoppingcart">
-            <ShoppingCart />
-          </Route>
-        </Switch>
-      </div>
+      <Nav />
+      <Switch>
+        <Route exact={true} path="/">
+          <ItemListContainer />
+        </Route>
+        <Route path="/shoppingcart">
+          <ShoppingCart />
+        </Route>
+      </Switch>
     </Router>
   );
 }
