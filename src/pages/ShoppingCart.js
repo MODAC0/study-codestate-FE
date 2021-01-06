@@ -94,9 +94,7 @@ export default function ShoppingCart() {
                 })}
               </div>
             )}
-          <div>
-            <OrderSummary total={total.price} totalQty={total.quantity} />
-          </div>
+          <OrderSummary total={total.price} totalQty={total.quantity} />
         </div>
       </div >
     </div>
