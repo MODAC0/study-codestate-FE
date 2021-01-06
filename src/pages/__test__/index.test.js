@@ -15,6 +15,7 @@ import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import itemReducer from "../../reducers/itemReducer";
 import rootReducer from "../../reducers";
 import createMockStore from "redux-mock-store";
+import store from "../../store/store"
 configure({ adapter: new Adapter() });
 const fakeData = {
   "items": [
@@ -45,17 +46,16 @@ const fakeData = {
   ]
 }
 
-const mockStore = createMockStore(itemReducer);
-const store = mockStore({ itemReducer: { ...fakeData } })
 
 describe("Shopping Cart components", () => {
-  let utils
+  let utils, itemList
+  //const mockStore = createMockStore(itemReducer);
+  //const store = mockStore({ itemReducer: { ...fakeData } })
   const spyDispatch = jest.spyOn(store, "dispatch")
 
   beforeEach(() => {
     utils = render(
       <reactRedux.Provider store={store}>
-        <ItemListContainer />
         <ShoppingCart />
       </reactRedux.Provider>)
   })
@@ -65,15 +65,19 @@ describe("Shopping Cart components", () => {
     const cartItemElement2 = utils.queryByTestId("cart-2020년 달력")
     const cartItemElement3 = utils.queryByTestId("cart-개구리 안대")
     expect(cartItemElement1).toBeInTheDocument()
-    expect(cartItemElement2).not.toBeInTheDocument()
+    expect(cartItemElement2).toBeInTheDocument()
     expect(cartItemElement3).not.toBeInTheDocument()
   })
 
   test('ADD_TO_CART 액션에 따라 ShoppingCart가 렌더되어야 합니다.', () => {
+    itemList = render(
+      <reactRedux.Provider store={store}>
+        <ItemListContainer />
+      </reactRedux.Provider>)
+    const frog = itemList.getAllByText("장바구니 담기")[2]
 
-    const target = utils.queryAllByText("장바구니 담기")[2]
-    fireEvent.click(target)
-    utils.getByTestId("cart-개구리 안대")
+    fireEvent.click(frog)
+
     expect(utils.queryByTestId("cart-개구리 안대")).toBeInTheDocument()
     expect(spyDispatch).toHaveBeenCalled()
   })
@@ -104,7 +108,9 @@ describe("Shopping Cart components", () => {
     const target = utils.queryAllByRole('checkbox')[1]
     const totalPrice = utils.queryByText("105600 원")
     const totalQtY = utils.queryByText("27 개")
+
     fireEvent.click(target)
+
     expect(totalPrice.textContent).toBe("69600 원")
     expect(totalQtY.textContent).toBe("24 개")
   })
