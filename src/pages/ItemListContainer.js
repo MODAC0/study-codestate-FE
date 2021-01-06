@@ -3,19 +3,20 @@ import { addToCart } from '../actions/index';
 import { useSelector, useDispatch } from 'react-redux';
 import Item from '../components/Item';
 
-function ItemListContainer() {
-
+function ItemListContainer(props) {
+  const { handleToast } = props;
   const state = useSelector(state => state.itemReducer);
-  const { items, cartItems } = state
+  const { items, cartItems } = state;
   const dispatch = useDispatch();
 
   const handleClick = (e, itemId) => {
     e.preventDefault();
     if (!cartItems.map((el) => el.itemId).includes(itemId)) {
       dispatch(addToCart(itemId))
+      handleToast('success')
     }
     else {
-      alert('이미 추가된 상품입니다.')
+      handleToast('danger')
     }
   }
 
@@ -23,7 +24,12 @@ function ItemListContainer() {
     <div id="item-list-container">
       <div id="item-list-body">
         <div id="item-list-title">쓸모없는 선물 모음</div>
-        {items.map((item, idx) => <Item item={item} key={idx} handleClick={handleClick} />)}
+        {items.map((item, idx) =>
+          <Item
+            item={item}
+            key={idx}
+            handleClick={handleClick}
+          />)}
       </div>
     </div>
   );
