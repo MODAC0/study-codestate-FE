@@ -51,6 +51,7 @@
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.5",
     "identity-obj-proxy": "^3.0.0",
-    "jest": "^26.6.0"
+    "jest": "^26.6.0",
+    "redux-mock-store": "^1.5.4"
   }
 }
