@@ -16,14 +16,12 @@ export const addToCart = (itemId) => {
 
 export const removeFromCart = (itemId) => {
   return {
-    type: REMOVE_FROM_CART,
     //TODO
   }
 }
 
 export const setQuantity = (itemId, quantity) => {
   return {
-    type: SET_QUANTITY,
     //TODO
   }
 }

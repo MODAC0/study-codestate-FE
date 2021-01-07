@@ -5,9 +5,9 @@ const itemReducer = (state = initialState, action) => {
 
   switch (action.type) {
     case ADD_TO_CART:
-      return Object.assign({}, state, {
-        cartItems: [...state.cartItems, action.payload]
-      })
+      //TODO
+
+      break;
     case REMOVE_FROM_CART:
       //TODO
 

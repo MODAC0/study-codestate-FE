@@ -1,6 +1,6 @@
 import * as actions from "../index";
 
-describe("Shopping Cart actions", () => {
+describe("Shopping Cart Actions", () => {
   it("addToCart는 ADD_TO_CART 액션을 생성해야 합니다", () => {
     expect(actions.addToCart(3)).toEqual({
       type: "ADD_TO_CART",

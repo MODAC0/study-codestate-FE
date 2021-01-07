@@ -6,7 +6,7 @@ import ItemListContainer from "../ItemListContainer"
 import ShoppingCart from "../ShoppingCart";
 import store from "../../store/store"
 
-describe("Shopping Cart components", () => {
+describe("Shopping Pages", () => {
   let utils, itemList
   const spyDispatch = jest.spyOn(store, "dispatch")
 
