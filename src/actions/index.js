@@ -3,8 +3,8 @@ export const ADD_TO_CART = "ADD_TO_CART";
 export const REMOVE_FROM_CART = "REMOVE_FROM_CART";
 export const SET_QUANTITY = "SET_QUANTITY";
 export const NOTIFY = "NOTIFY";
-export const PUSH_NOTIFICATION = "PUSH_NOTIFICATION";
-export const POP_NOTIFICATION = "POP_NOTIFICATION";
+export const ENQUEUE_NOTIFICATION = "ENQUEUE_NOTIFICATION";
+export const DEQUEUE_NOTIFICATION = "DEQUEUE_NOTIFICATION";
 
 // actions creator functions
 export const addToCart = (itemId) => {
@@ -40,15 +40,15 @@ export const setQuantity = (itemId, quantity) => {
 
 export const notify = (message, dismissTime = 5000) => dispatch => {
   const uuid = Math.random()
-  dispatch(pushNotification(message, dismissTime, uuid))
+  dispatch(enqueueNotification(message, dismissTime, uuid))
   setTimeout(() => {
-    dispatch(popNotification())
+    dispatch(dequeueNotification())
   }, dismissTime)
 }
 
-export const pushNotification = (message, dismissTime, uuid) => {
+export const enqueueNotification = (message, dismissTime, uuid) => {
   return {
-    type: PUSH_NOTIFICATION,
+    type: ENQUEUE_NOTIFICATION,
     payload: {
       message,
       dismissTime,
@@ -57,8 +57,8 @@ export const pushNotification = (message, dismissTime, uuid) => {
   }
 }
 
-export const popNotification = () => {
+export const dequeueNotification = () => {
   return {
-    type: POP_NOTIFICATION
+    type: DEQUEUE_NOTIFICATION
   }
 }

@@ -1,14 +1,14 @@
-import { PUSH_NOTIFICATION, POP_NOTIFICATION } from "../actions/index";
+import { ENQUEUE_NOTIFICATION, DEQUEUE_NOTIFICATION } from "../actions/index";
 import { initialState } from "./initialState";
 
 const notificationReducer = (state = initialState, action) => {
 
   switch (action.type) {
-    case PUSH_NOTIFICATION:
+    case ENQUEUE_NOTIFICATION:
       return Object.assign({}, state, {
         notifications: [...state.notifications, action.payload]
       })
-    case POP_NOTIFICATION:
+    case DEQUEUE_NOTIFICATION:
       return Object.assign({}, state, {
         notifications: state.notifications.slice(1)
       })
