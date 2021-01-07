@@ -1,56 +1,13 @@
-import * as actions from "../../actions";
 import * as reactRedux from 'react-redux';
-import { shallow, configure, mount } from "enzyme";
-import CartItem from "../../components/CartItem";
-import { fireEvent, queryByTestId, render, screen, } from "@testing-library/react";
-import App from "../../App";
+import { fireEvent, render, } from "@testing-library/react";
 import React from "react"
 import "@testing-library/jest-dom/extend-expect"
-import Adapter from "@wojtekmaj/enzyme-adapter-react-17"
 import ItemListContainer from "../ItemListContainer"
-import { initialState } from "../../reducers/initialState";
 import ShoppingCart from "../ShoppingCart";
-import OrderSummary from "../../components/OrderSummary";
-import { combineReducers, configureStore } from "@reduxjs/toolkit";
-import itemReducer from "../../reducers/itemReducer";
-import rootReducer from "../../reducers";
-import createMockStore from "redux-mock-store";
 import store from "../../store/store"
-configure({ adapter: new Adapter() });
-const fakeData = {
-  "items": [
-    {
-      "id": 1,
-      "name": "노른자 분리기",
-      "img": "../images/egg.png",
-      "price": 9900
-    },
-    {
-      "id": 2,
-      "name": "2020년 달력",
-      "img": "../images/2020.jpg",
-      "price": 12000
-    },
-    {
-      "id": 3,
-      "name": "개구리 안대",
-      "img": "../images/frog.jpg",
-      "price": 2900
-    },
-  ],
-  "cartItems": [
-    {
-      "itemId": 1,
-      "quantity": 7
-    },
-  ]
-}
-
 
 describe("Shopping Cart components", () => {
   let utils, itemList
-  //const mockStore = createMockStore(itemReducer);
-  //const store = mockStore({ itemReducer: { ...fakeData } })
   const spyDispatch = jest.spyOn(store, "dispatch")
 
   beforeEach(() => {
@@ -72,7 +29,7 @@ describe("Shopping Cart components", () => {
   test('ADD_TO_CART 액션에 따라 ShoppingCart가 렌더되어야 합니다.', () => {
     itemList = render(
       <reactRedux.Provider store={store}>
-        <ItemListContainer />
+        <ItemListContainer handleToast={() => { }} />
       </reactRedux.Provider>)
     const frog = itemList.getAllByText("장바구니 담기")[2]
 
