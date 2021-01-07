@@ -88,5 +88,34 @@ describe("Item Reducer", () => {
       mustkeep: "other states",
       cartItems: [{ itemId: 6, quantity: 1 }],
     });
+    expect(
+      itemReducer(
+        { mustkeep: "other states", cartItems: [] },
+        {
+          type: SET_QUANTITY,
+          payload: {
+            itemId: 6,
+            quantity: 3
+          }
+        }
+      )
+    ).toEqual({
+      mustkeep: "other states",
+      cartItems: [{ itemId: 6, quantity: 3 }],
+    });
+    expect(
+      itemReducer(
+        { mustkeep: "other states", cartItems: [] },
+        {
+          type: REMOVE_FROM_CART,
+          payload: {
+            itemId: 1,
+          }
+        }
+      )
+    ).toEqual({
+      mustkeep: "other states",
+      cartItems: [],
+    });
   });
 });
