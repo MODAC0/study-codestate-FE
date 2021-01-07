@@ -1,6 +1,7 @@
 import React from 'react';
 import Nav from './components/Nav';
 import ItemListContainer from './pages/ItemListContainer';
+import NotificationCenter from './components/NotificationCenter';
 import './App.css';
 import {
   BrowserRouter as Router,
@@ -22,6 +23,7 @@ function App() {
           <ShoppingCart />
         </Route>
       </Switch>
+      <NotificationCenter />
     </Router>
   );
 }

@@ -289,3 +289,60 @@ a:hover {
     display: block;
   }
 }
+
+.notification-container {
+	font-size: 14px;
+	box-sizing: border-box;
+	position: fixed;
+	z-index: 999999;
+  top: 100px;
+}
+
+.top-right {
+	right: 12px;
+	transition: transform .6s ease-in-out;
+	animation: toast-in-right .6s;
+}
+.notification {
+	background: #4000c7;
+	transition: .3s ease;
+	position: relative;
+	pointer-events: auto;
+	overflow: hidden;
+	margin: 0 0 6px;
+	padding: 30px;
+	margin-bottom: 15px;
+  width: 20rem;
+  height: 4rem;
+  border-radius: 20px;
+	box-shadow: 0 0 10px #999;
+	color: #000;
+	opacity: .9;
+	background-position: 15px;
+	background-repeat: no-repeat;
+}
+
+.notification-title {
+	font-weight: 500;
+  font-size: 1rem;
+	text-align: center;
+  margin: 0 auto;
+  line-height: 100%;
+}
+
+.toast {
+  height: 50px;
+  width: 365px;
+  color: #fff;
+  padding: 20px 15px 10px 10px;
+}
+
+@keyframes toast-in-right {
+  from {
+    transform: translateX(100%);
+
+  }
+  to {
+    transform: translateX(0);
+  }
+}

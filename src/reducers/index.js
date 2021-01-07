@@ -1,8 +1,10 @@
 import { combineReducers } from 'redux';
 import itemReducer from './itemReducer';
+import notificationReducer from './notificationReducer';
 
 const rootReducer = combineReducers({
-  itemReducer
+  itemReducer,
+  notificationReducer
 });
 
 export default rootReducer;
