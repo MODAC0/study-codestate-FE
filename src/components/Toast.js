@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 export default function Toast(props) {
-  const { toastList, position } = props;
+  const { toastList } = props;
   const [list, setList] = useState(toastList);
   const dismissTime = 3000
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -31,12 +31,12 @@ export default function Toast(props) {
 
 
   return (
-    <div className={`notification-container ${position}`} >
+    <div className={`notification-container top-right`} >
       {
         list.map((toast, i) =>
           <div
             key={i}
-            className={`notification toast ${position}`}
+            className={`notification toast top-right`}
           >
             <div>
               <p className="notification-title">{toast.title}</p>

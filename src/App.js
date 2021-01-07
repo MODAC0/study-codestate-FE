@@ -11,11 +11,10 @@ import ShoppingCart from './pages/ShoppingCart';
 import Toast from './components/Toast';
 
 function App() {
-  const position = 'top-right';
   const [toastList, setToastList] = useState([]);
   let toastProperties = null;
 
-  const showToast = type => {
+  const handleToast = (type) => {
     const id = Math.floor((Math.random() * 101) + 1);
 
     switch (type) {
@@ -37,19 +36,16 @@ function App() {
     setToastList([...toastList, toastProperties]);
   }
 
-
   return (
     <Router>
       <div className="App">
         <Nav />
-        {showToast &&
-          <Toast
-            toastList={toastList}
-            position={position}
-          />}
+        <Toast
+          toastList={toastList}
+        />
         <Switch>
           <Route exact={true} path="/">
-            <ItemListContainer handleToast={showToast} />
+            <ItemListContainer handleToast={handleToast} />
           </Route>
           <Route path="/shoppingcart">
             <ShoppingCart />
