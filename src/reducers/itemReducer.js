@@ -13,6 +13,9 @@ const itemReducer = (state = initialState, action) => {
 
       break;
     case SET_QUANTITY:
+      let idx = state.cartItems.findIndex((el) => {
+        return el.itemId === action.payload.itemId
+      })
       //TODO
 
       break;
