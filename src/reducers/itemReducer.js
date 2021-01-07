@@ -10,16 +10,12 @@ const itemReducer = (state = initialState, action) => {
       })
     case REMOVE_FROM_CART:
       //TODO
-      return Object.assign({}, state, {
-        cartItems: state.cartItems.filter(el => el.itemId !== action.payload.itemId)
-      });
+
+      break;
     case SET_QUANTITY:
       //TODO
-      let idx = state.cartItems.map((el) => el.itemId).indexOf(action.payload.itemId)
-      return Object.assign({}, state, {
-        cartItems: [...state.cartItems.slice(0, idx), action.payload,
-        ...state.cartItems.slice(idx + 1)]
-      });
+
+      break;
     default:
       return state;
   }

@@ -16,21 +16,14 @@ export const addToCart = (itemId) => {
 
 export const removeFromCart = (itemId) => {
   return {
-    //TODO
     type: REMOVE_FROM_CART,
-    payload: {
-      itemId
-    }
+    //TODO
   }
 }
 
 export const setQuantity = (itemId, quantity) => {
   return {
-    //TODO
     type: SET_QUANTITY,
-    payload: {
-      itemId,
-      quantity
-    }
+    //TODO
   }
 }

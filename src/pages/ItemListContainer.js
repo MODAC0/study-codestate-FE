@@ -12,8 +12,8 @@ function ItemListContainer(props) {
   const handleClick = (e, itemId) => {
     e.preventDefault();
     if (!cartItems.map((el) => el.itemId).includes(itemId)) {
-      dispatch(addToCart(itemId))
       handleToast('success')
+      //TODO: dispatch 함수를 호출하여 액션을 전달하세요.
     }
     else {
       handleToast('danger')
