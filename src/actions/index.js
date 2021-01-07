@@ -38,17 +38,22 @@ export const setQuantity = (itemId, quantity) => {
   }
 }
 
-export const notify = (message, dismissTime = 2000) => dispatch => {
-  dispatch(pushNotification(message))
+export const notify = (message, dismissTime = 5000) => dispatch => {
+  const uuid = Math.random()
+  dispatch(pushNotification(message, dismissTime, uuid))
   setTimeout(() => {
     dispatch(popNotification())
   }, dismissTime)
 }
 
-export const pushNotification = message => {
+export const pushNotification = (message, dismissTime, uuid) => {
   return {
     type: PUSH_NOTIFICATION,
-    payload: message
+    payload: {
+      message,
+      dismissTime,
+      uuid
+    }
   }
 }
 
