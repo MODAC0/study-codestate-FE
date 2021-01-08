@@ -17,7 +17,8 @@ describe("Item Reducer", () => {
       )
     ).toEqual({
       items: initialState.items,
-      cartItems: [...initialState.cartItems, { itemId: 4, quantity: 1 }]
+      cartItems: [...initialState.cartItems, { itemId: 4, quantity: 1 }],
+      notifications: []
     });
   });
   it("REMOVE_FROM_CART 액션에 따라 cartItems 상태가 변해야 합니다", () => {
@@ -41,7 +42,8 @@ describe("Item Reducer", () => {
         {
           "itemId": 2,
           "quantity": 3
-        }]
+        }],
+      notifications: []
     });
   });
   it("SET_QUANTITY 액션에 따라 cartItems 상태가 변해야 합니다", () => {
@@ -69,13 +71,16 @@ describe("Item Reducer", () => {
       {
         "itemId": 2,
         "quantity": 3
-      }]
+      }],
+      notifications: []
     });
   });
   it("리듀서는 다른 상태의 값을 보존해야 합니다", () => {
     expect(
       itemReducer(
-        { mustkeep: "other states", cartItems: [] },
+        {
+          mustkeep: "other states", cartItems: [],
+        },
         {
           type: ADD_TO_CART,
           payload: {
