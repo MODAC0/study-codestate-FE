@@ -30,12 +30,12 @@ export default function ShoppingCart() {
   };
 
   const handleQuantityChange = (quantity, itemId) => {
-    dispatch(setQuantity(itemId, quantity));
+    //TODO: dispatch 함수를 호출하여 액션을 전달하세요.
   }
 
   const handleDelete = (itemId) => {
     setCheckedItems(checkedItems.filter((el) => el !== itemId))
-    dispatch(removeFromCart(itemId))
+    //TODO: dispatch 함수를 호출하여 액션을 전달하세요.
   }
 
   const getTotal = () => {
