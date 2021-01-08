@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Nav from './components/Nav';
 import ItemListContainer from './pages/ItemListContainer';
+import NotificationCenter from './components/NotificationCenter';
 import './App.css';
 import {
   BrowserRouter as Router,
@@ -8,50 +9,21 @@ import {
   Route,
 } from "react-router-dom";
 import ShoppingCart from './pages/ShoppingCart';
-import Toast from './components/Toast';
 
 function App() {
-  const [toastList, setToastList] = useState([]);
-  let toastProperties = null;
-
-  const handleToast = (type) => {
-    const id = Math.floor((Math.random() * 101) + 1);
-
-    switch (type) {
-      case 'success':
-        toastProperties = {
-          id,
-          title: '장바구니에 상품이 추가되었습니다.',
-        }
-        break;
-      case 'danger':
-        toastProperties = {
-          id,
-          title: '이미 장바구니에 추가된 아이템입니다',
-        }
-        break;
-      default:
-        setToastList([]);
-    }
-    setToastList([...toastList, toastProperties]);
-  }
 
   return (
     <Router>
-      <div className="App">
-        <Nav />
-        <Toast
-          toastList={toastList}
-        />
-        <Switch>
-          <Route exact={true} path="/">
-            <ItemListContainer handleToast={handleToast} />
-          </Route>
-          <Route path="/shoppingcart">
-            <ShoppingCart />
-          </Route>
-        </Switch>
-      </div>
+      <Nav />
+      <Switch>
+        <Route exact={true} path="/">
+          <ItemListContainer />
+        </Route>
+        <Route path="/shoppingcart">
+          <ShoppingCart />
+        </Route>
+      </Switch>
+      <NotificationCenter />
     </Router>
   );
 }
