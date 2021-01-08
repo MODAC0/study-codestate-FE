@@ -13,9 +13,7 @@ const itemReducer = (state = initialState, action) => {
         cartItems: state.cartItems.filter(el => el.itemId !== action.payload.itemId)
       });
     case SET_QUANTITY:
-      let idx = state.cartItems.findIndex((el) => {
-        return el.itemId === action.payload.itemId
-      })
+      let idx = state.cartItems.findIndex(el => el.itemId === action.payload.itemId)
       return Object.assign({}, state, {
         cartItems: [...state.cartItems.slice(0, idx), action.payload,
         ...state.cartItems.slice(idx + 1)]
