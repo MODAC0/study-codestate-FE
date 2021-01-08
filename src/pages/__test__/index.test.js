@@ -44,8 +44,11 @@ describe("Shopping Pages", () => {
 
     fireEvent.click(target)
 
-    const cartItemElement1 = utils.queryByText("cart-노른자 분리기")
+    const cartItemElement1 = utils.queryByTestId("cart-노른자 분리기")
+    const cartItemElement2 = utils.queryByTestId("cart-개구리 안대")
+
     expect(cartItemElement1).not.toBeInTheDocument()
+    expect(cartItemElement2).toBeInTheDocument()
     expect(spyDispatch).toHaveBeenCalled()
   })
 
