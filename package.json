@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@babel/preset-react": "^7.12.10",
+    "@codestates-cc/submission-npm": "^1.1.2",
     "@reduxjs/toolkit": "^1.1.0",
     "axios": "^0.21.0",
     "react": "^17.0.1",
@@ -18,7 +19,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "jest src/index.test.js --verbose",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "report": "jest src/index.test.js --verbose --json --outputFile=report.jest.json",
+    "submit": "codestates-submission"
   },
   "eslintConfig": {
     "extends": "react-app"
