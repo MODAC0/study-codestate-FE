@@ -95,7 +95,18 @@ describe("Item Reducer", () => {
     });
     expect(
       itemReducer(
-        { mustkeep: "other states", cartItems: [] },
+        {
+          mustkeep: "other states", cartItems: [
+            {
+              itemId: 6,
+              quantity: 1
+            },
+            {
+              itemId: 1,
+              quantity: 1
+            }
+          ]
+        },
         {
           type: REMOVE_FROM_CART,
           payload: {
@@ -105,7 +116,12 @@ describe("Item Reducer", () => {
       )
     ).toEqual({
       mustkeep: "other states",
-      cartItems: [],
+      cartItems: [
+        {
+          itemId: 6,
+          quantity: 1
+        }
+      ],
     });
   });
 });
