@@ -1,11 +1,10 @@
 require('mocha');
-var chai = require('chai')
-var expect = chai.expect
-var ForagerBee = require('../../src/pseudoclassical/ForagerBee')
-var verifyClass = require('./verifyClass')
+var chai = require('chai');
+var expect = chai.expect;
+var ForagerBee = require('../../src/pseudoclassical/ForagerBee');
+var verifyClass = require('./verifyClass');
 
 describe('ForagerBee class functionality', function() {
-
   verifyClass(ForagerBee).followsPattern('pseudoclassical', {}, false);
 
   beforeEach(function() {
@@ -51,6 +50,8 @@ describe('ForagerBee class functionality', function() {
     foragerBee.forage('flowers');
     foragerBee.forage('gold');
     expect(foragerBee.treasureChest).to.have.length(3);
+    expect(foragerBee.treasureChest[0]).to.equal('pollen');
+    expect(foragerBee.treasureChest[1]).to.equal('flowers');
+    expect(foragerBee.treasureChest[2]).to.equal('gold');
   });
-
 });

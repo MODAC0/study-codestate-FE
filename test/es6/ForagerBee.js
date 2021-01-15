@@ -1,12 +1,12 @@
-require('mocha')
-const chai = require('chai')
-const expect = chai.expect
-const ForagerBee = require('../../src/es6/ForagerBee')
+require('mocha');
+const chai = require('chai');
+const expect = chai.expect;
+const ForagerBee = require('../../src/es6/ForagerBee');
 
 describe('ForagerBee class functionality', () => {
   var foragerBee;
 
-  beforeEach(() => foragerBee = new ForagerBee());
+  beforeEach(() => (foragerBee = new ForagerBee()));
 
   /*  Overwrite methods from superclass  */
 
@@ -47,6 +47,8 @@ describe('ForagerBee class functionality', () => {
     foragerBee.forage('flowers');
     foragerBee.forage('gold');
     expect(foragerBee.treasureChest).to.have.length(3);
+    expect(foragerBee.treasureChest[0]).to.equal('pollen');
+    expect(foragerBee.treasureChest[1]).to.equal('flowers');
+    expect(foragerBee.treasureChest[2]).to.equal('gold');
   });
-
 });
