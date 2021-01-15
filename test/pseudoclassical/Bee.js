@@ -34,8 +34,8 @@ describe('Bee class functionality', function() {
 
   /*  New methods and properties  */
 
-  it('should have a `job` property that is set to `keep on growing`', function() {
-    expect(bee.job).to.equal('keep on growing');
+  it('should have a `job` property that is set to `Keep on growing`', function() {
+    expect(bee.job).to.equal('Keep on growing');
   });
 
 });
