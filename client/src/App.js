@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Nav from './components/Nav';
 import ItemListContainer from './pages/ItemListContainer';
 import NotificationCenter from './components/NotificationCenter';
