@@ -2,12 +2,18 @@ var models = require("../models");
 
 module.exports = {
     get: function(req, res) {
-      models.orders.get(function(err, results) {
-        if (err) {
-          /* do something */
-        }
-        res.json(results);
-      });
+      const id = parseInt(req.params.id, 10);
+      if (!id){
+        return res.status(400).json({err: `Incorrect id`});
+      }
+      else {
+        models.get(function(err, results) {
+          if (err) {
+            
+          }
+          res.json(results);
+        });  
+      }
     },
     post: function(req, res) {
         //var params = [req.body.text, req.body.username, req.body.roomname];
