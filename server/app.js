@@ -16,7 +16,7 @@ app.use(morgan('dev'));
 app.use(parser.json());
 
 // Set up our routes
-app.use('/', router);
+
 
 // Serve the client files
 app.use(express.static(__dirname + '/../client'));
@@ -34,7 +34,5 @@ app.post('/users/:id', controller.post);
 
 
 
-
-module.exports = router;
 
 

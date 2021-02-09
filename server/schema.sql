@@ -4,7 +4,7 @@ USE cmarket;
 
 CREATE TABLE users (
   id INT AUTO_INCREMENT,
-  name varchar(255),
+  username varchar(255),
   PRIMARY KEY (id)
 );
 

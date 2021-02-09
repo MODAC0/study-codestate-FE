@@ -7,7 +7,7 @@ module.exports = {
         return res.status(400).json({err: `Incorrect id`});
       }
       else {
-        models.get(function(err, results) {
+        models.get(id, function(err, results) {
           if (err) {
             res.send(err);
           }
@@ -16,6 +16,7 @@ module.exports = {
       }
     },
     post: function(req, res) {
+
         //var params = [req.body.text, req.body.username, req.body.roomname];
         //models.cart.post(params, function(err) {
         //  if (err) {
