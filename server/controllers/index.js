@@ -9,7 +9,7 @@ module.exports = {
       else {
         models.get(function(err, results) {
           if (err) {
-            
+            res.send(err);
           }
           res.json(results);
         });  

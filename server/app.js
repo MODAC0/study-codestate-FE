@@ -28,8 +28,8 @@ if (!module.parent) {
 }
 
 //Connect controller methods to their corresponding routes
-app.get('/orders', controller.orders.get);
-app.post('/orders', controller.cart.post);
+app.get('/users/:id', controller.get);
+app.post('/users/:id', controller.post);
 
 
 

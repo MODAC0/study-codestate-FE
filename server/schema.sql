@@ -18,19 +18,18 @@ CREATE TABLE items (
 );
 
 CREATE TABLE orders (
-  order INT AUTO_INCREMENT,
+  id INT AUTO_INCREMENT,
   user_id INT,
   total_price INT,
   created_at datetime DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (order)
+  PRIMARY KEY (id)
 );
 
 CREATE TABLE order_items (
   id INT AUTO_INCREMENT,
-  order_no INT,
+  order_id INT,
   item_id INT,
   order_quantity INT,
-  PRIMARY KEY (id)
 );
 
 ALTER TABLE orders ADD FOREIGN KEY (user_id) REFERENCES users (id);
