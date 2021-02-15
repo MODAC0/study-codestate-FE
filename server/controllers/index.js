@@ -36,12 +36,17 @@ module.exports = {
     },
     post: (req, res) => {
       // req.body에 어떤 형식으로 담아올지 정해야할 듯
-      const datas = [...req.body.orders];
+      const userId = req.body.userId;
+      const datas = req.body.orders.map(order => {
+        order = [order.itemId, order.quantity];
+        return order;
+      });
+      const totalPrice = req.body.totalPrice;
 
       if (datas.length === 0) {
         return res.status(409).send("not found");
       } else {
-        models.orders.post(datas, (error, result) => {
+        models.orders.post(userId, datas, totalPrice, (error, result) => {
           if (error) {
             res.status(409).send("not found");
           } else {
@@ -53,8 +58,7 @@ module.exports = {
   },
   items: {
     get: (req, res) => {
-      
-      models.items.getItems((error, result) => {
+      models.items.get((error, result) => {
         if (error) {
           res.status(409).send("not found");
         } else {

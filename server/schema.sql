@@ -14,7 +14,6 @@ CREATE TABLE items (
   name varchar(255),
   price INT,
   image BLOB,
-  item_quantity INT,
   PRIMARY KEY (id)
 );
 

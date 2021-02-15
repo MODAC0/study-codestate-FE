@@ -9,7 +9,7 @@ module.exports = {
   orders: {
     get: (userId, callback) => {
       // userId로 전체 주문 내역 조회
-      const queryString = ``;
+      const queryString = `SELECT * FROM orders where (user_id = ${userId})`;
 
       // db query
       db.query(queryString, (error, result) => {
@@ -18,17 +18,17 @@ module.exports = {
     },
     getDetail: (orderId, callback) => {
       // orderId에 따라서 상세 내용 조회하기
-      const queryString = `SELECT * FROM items INNER JOIN order_items ON (order_items.item_id = items.id)
+      const queryString = `SELECT * FROM items 
+      RIGHT JOIN order_items ON (order_items.item_id = items.id)
       INNER JOIN orders ON (orders.id = order_items.order_id)
-      INNER JOIN users ON (orders.user_id = users.id)
-      WHERE (users.id = ${orderId})`;
+      WHERE (orders.id = ${orderId})`;
 
       // db query
       db.query(queryString, (error, result) => {
         callback(error, result);
       });
     },
-    post: (datas, callback) => {
+    post: (userId, datas, totalPrice, callback) => {
       // orderData -> order_items 테이블에 기록
       const queryString = ``;
 
@@ -39,10 +39,10 @@ module.exports = {
     },
   },
   items: {
-    getItems: callback => {
+    get: callback => {
       // items 테이블을 다 조회해서 가져다 주기
       const queryString = `SELECT * FROM items`;
-      
+
       // query
       db.query(queryString, (error, result) => {
         callback(error, result);
