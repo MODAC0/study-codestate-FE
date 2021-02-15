@@ -38,13 +38,16 @@ module.exports = {
 
       // db query
       db.query(queryString, params, (error, results) => {
-        const params = datas;
-        const id = results.insertId;
+        // const params = datas;
+        // const id = results.insertId;
+        // w3school -> bulk insert를 예시로 컨텐츠에서 제공
+        const params = datas.map(data => {
+          return [results.insertId, ...data];
+        });
 
-        console.log(params);
-        const queryString = `INSERT INTO order_items (order_id, item_id, order_quantity) VALUES (?,?)`;
+        const queryString = `INSERT INTO order_items (order_id, item_id, order_quantity) VALUES ?;`;
 
-        db.query(queryString, [id, params], (error, results) => {
+        db.query(queryString, [params], (error, results) => {
           callback(error, results);
         });
       });
