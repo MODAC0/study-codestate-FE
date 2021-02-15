@@ -41,6 +41,7 @@ module.exports = {
         order = [order.itemId, order.quantity];
         return order;
       });
+      // console.log(datas);
       const totalPrice = req.body.totalPrice;
 
       if (datas.length === 0) {

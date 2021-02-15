@@ -30,11 +30,23 @@ module.exports = {
     },
     post: (userId, datas, totalPrice, callback) => {
       // orderData -> order_items 테이블에 기록
-      const queryString = ``;
+
+      // 1. orders에 레코드 생성 (userId, totalPrice)
+      // 2. order_items에 추가 (datas)
+      const queryString = `INSERT INTO orders (user_id, total_price) VALUES (?, ?)`;
+      const params = [userId, totalPrice];
 
       // db query
-      db.query(queryString, datas, (error, result) => {
-        callback(error, result);
+      db.query(queryString, params, (error, results) => {
+        const params = datas;
+        const id = results.insertId;
+
+        console.log(params);
+        const queryString = `INSERT INTO order_items (order_id, item_id, order_quantity) VALUES (?,?)`;
+
+        db.query(queryString, [id, params], (error, results) => {
+          callback(error, results);
+        });
       });
     },
   },

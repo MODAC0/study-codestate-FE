@@ -1,7 +1,7 @@
--- DROP DATABASE IF EXISTS cmarket;
+DROP DATABASE IF EXISTS cmarket;
 CREATE DATABASE cmarket;
 USE cmarket;
--- schema.sql을 수강생이 작성하게 하는건지?
+
 
 CREATE TABLE users (
   id INT AUTO_INCREMENT,
@@ -21,7 +21,7 @@ CREATE TABLE orders (
   id INT AUTO_INCREMENT,
   user_id INT,
   total_price INT,
-  -- created_at datetime DEFAULT CURRENT_TIMESTAMP,
+  created_at datetime DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (id)
 );
 
@@ -30,6 +30,7 @@ CREATE TABLE order_items (
   order_id INT,
   item_id INT,
   order_quantity INT,
+  PRIMARY KEY (id)
 );
 
 ALTER TABLE orders ADD FOREIGN KEY (user_id) REFERENCES users (id);
