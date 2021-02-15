@@ -42,7 +42,7 @@ module.exports = {
     getItems: callback => {
       // items 테이블을 다 조회해서 가져다 주기
       const queryString = `SELECT * FROM items`;
-
+      
       // query
       db.query(queryString, (error, result) => {
         callback(error, result);

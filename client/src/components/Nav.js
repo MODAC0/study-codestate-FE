@@ -14,6 +14,9 @@ function Nav() {
       </span>
       <div id="menu">
         <Link to="/">상품리스트</Link>
+        <Link to="/orderlist">
+          주문내역
+        </Link>
         <Link to="/shoppingcart">
           장바구니<span id="nav-item-counter">{state.cartItems.length}</span>
         </Link>

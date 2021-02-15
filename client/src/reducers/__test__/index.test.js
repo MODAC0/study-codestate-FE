@@ -1,11 +1,11 @@
 import { ADD_TO_CART, REMOVE_FROM_CART, SET_QUANTITY } from "../../actions/index";
 import { initialState } from "../initialState";
-import itemReducer from "../itemReducer";
+import cartReducer from "../cartReducer";
 
 describe("Item Reducer", () => {
   it("ADD_TO_CART 액션에 따라 cartItems 상태가 변해야 합니다", () => {
     expect(
-      itemReducer(
+      cartReducer(
         initialState,
         {
           type: ADD_TO_CART,
@@ -23,7 +23,7 @@ describe("Item Reducer", () => {
   });
   it("REMOVE_FROM_CART 액션에 따라 cartItems 상태가 변해야 합니다", () => {
     expect(
-      itemReducer(
+      cartReducer(
         initialState,
         {
           type: REMOVE_FROM_CART,
@@ -48,7 +48,7 @@ describe("Item Reducer", () => {
   });
   it("SET_QUANTITY 액션에 따라 cartItems 상태가 변해야 합니다", () => {
     expect(
-      itemReducer(
+      cartReducer(
         initialState,
         {
           type: SET_QUANTITY,
@@ -77,7 +77,7 @@ describe("Item Reducer", () => {
   });
   it("리듀서는 다른 상태의 값을 보존해야 합니다", () => {
     expect(
-      itemReducer(
+      cartReducer(
         {
           mustkeep: "other states", cartItems: [],
         },
@@ -94,7 +94,7 @@ describe("Item Reducer", () => {
       cartItems: [{ itemId: 6, quantity: 1 }],
     });
     expect(
-      itemReducer(
+      cartReducer(
         {
           mustkeep: "other states", cartItems: [
             {

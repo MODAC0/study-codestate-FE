@@ -97,11 +97,14 @@ body {
   display: flex;
 }
 
+#order-summary-box{
+  flex: 0 1 350px;
+  float: right;
+}
+
 #order-summary-container{
   padding: 0.7rem 1.4rem;
-  flex: 0 1 350px;
   height: 200px;
-  float: right;
   border: solid rgb(238, 238, 238) 0.2rem;
   font-size: 1.5rem;
   font-weight: 800;
@@ -127,6 +130,11 @@ body {
 
 .order-summary-text{
   float: right;
+}
+
+#order-item-btn{
+  height: 60px;
+  width: 18rem;
 }
 
 #shopping-cart-select-all{

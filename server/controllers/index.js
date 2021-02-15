@@ -53,6 +53,7 @@ module.exports = {
   },
   items: {
     get: (req, res) => {
+      
       models.items.getItems((error, result) => {
         if (error) {
           res.status(409).send("not found");

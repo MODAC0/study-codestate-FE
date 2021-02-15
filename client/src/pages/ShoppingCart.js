@@ -6,8 +6,10 @@ import OrderSummary from '../components/OrderSummary'
 
 export default function ShoppingCart() {
 
-  const state = useSelector(state => state.itemReducer);
-  const { cartItems, items } = state
+  const itemState = useSelector(state => state.itemReducer);
+  const cartState = useSelector(state => state.cartReducer);
+  const { items } = itemState;
+  const { cartItems } = cartState;
   const dispatch = useDispatch();
   const [checkedItems, setCheckedItems] = useState(cartItems.map((el) => el.itemId))
 
@@ -94,7 +96,7 @@ export default function ShoppingCart() {
                 })}
               </div>
             )}
-          <OrderSummary total={total.price} totalQty={total.quantity} />
+          <OrderSummary total={total.price} totalQty={total.quantity} cartItems={cartItems} />
         </div>
       </div >
     </div>

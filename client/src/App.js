@@ -9,6 +9,7 @@ import {
   Route,
 } from "react-router-dom";
 import ShoppingCart from './pages/ShoppingCart';
+import OrderList from './pages/OrderList';
 
 function App() {
 
@@ -21,6 +22,9 @@ function App() {
         </Route>
         <Route path="/shoppingcart">
           <ShoppingCart />
+        </Route>
+        <Route path="/orderlist">
+          <OrderList />
         </Route>
       </Switch>
       <NotificationCenter />
