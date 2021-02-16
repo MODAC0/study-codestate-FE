@@ -2,6 +2,7 @@ import React from 'react'
 
 export default function CartItem({
   item,
+  cartItems,
   checkedItems,
   handleCheckChange,
   handleQuantityChange,
@@ -14,9 +15,10 @@ export default function CartItem({
         type="checkbox"
         className="cart-item-checkbox"
         onChange={(e) => {
-          handleCheckChange(e.target.checked, item.id)
+          const targetItem = cartItems.filter((el) => el.itemId === item.id)[0]
+          handleCheckChange(e.target.checked, targetItem)
         }}
-        checked={checkedItems.includes(item.id) ? true : false} >
+        checked={checkedItems.findIndex(el => el.itemId === item.id) > -1} >
       </input>
       <div className="cart-item-thumbnail">
         <img src={item.img} alt={item.name} />

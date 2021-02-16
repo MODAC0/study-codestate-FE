@@ -4,9 +4,15 @@ export default function Order({order}) {
   
   return (
     <div>
-      {order.orderId}
-      {order.orderDate}
-      {order.totalPrice}
+      <div>
+      {order.id}
+      </div>
+      <div>
+      {order.created_at}
+      </div>
+      <div>
+      {order.total_price}
+      </div>
     </div>
   )
 }
