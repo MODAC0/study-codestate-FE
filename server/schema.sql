@@ -12,7 +12,7 @@ CREATE TABLE items (
   id INT AUTO_INCREMENT,
   name varchar(255),
   price INT,
-  image BLOB,
+  image varchar(255),
   PRIMARY KEY (id)
 );
 
@@ -39,5 +39,5 @@ ALTER TABLE order_items ADD FOREIGN KEY (order_id) REFERENCES orders (id);
 ALTER TABLE order_items ADD FOREIGN KEY (item_id) REFERENCES items (id);
 
 /*  Execute this file from the command line by typing:
- *    mysql -u root < server/schema.sql
+ *    mysql -u root < server/schema.sql -p
  *  to create the database and the tables.*/
