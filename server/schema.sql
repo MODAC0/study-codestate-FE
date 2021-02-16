@@ -39,6 +39,8 @@ ALTER TABLE order_items ADD FOREIGN KEY (order_id) REFERENCES orders (id);
 
 ALTER TABLE order_items ADD FOREIGN KEY (item_id) REFERENCES items (id);
 
+INSERT INTO items (name, price, image) VALUES ('test', 23429, '../images/egg.png');
+
 /*  Execute this file from the command line by typing:
  *    mysql -u root < server/schema.sql
  *  to create the database and the tables.*/

@@ -18,10 +18,18 @@ module.exports = {
     },
     getDetail: (orderId, callback) => {
       // orderId에 따라서 상세 내용 조회하기
-      const queryString = `SELECT * FROM items 
-      RIGHT JOIN order_items ON (order_items.item_id = items.id)
+      // order_quantity
+      // const params = [orderId];
+      // inner join & right join 둘 다 적용이 된다.
+      const queryString = `SELECT order_items.order_quantity, items.name, items.price, items.image FROM items 
+      INNER JOIN order_items ON (order_items.item_id = items.id)
       INNER JOIN orders ON (orders.id = order_items.order_id)
-      WHERE (orders.id = ${orderId})`;
+      WHERE (orders.id = ${orderId});
+      `;
+      // SELECT * FROM items
+      // RIGHT JOIN order_items ON (order_items.item_id = items.id)
+      // INNER JOIN orders ON (orders.id = order_items.order_id)
+      // WHERE (orders.id = ${orderId})`
 
       // db query
       db.query(queryString, (error, result) => {

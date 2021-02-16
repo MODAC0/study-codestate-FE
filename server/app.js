@@ -13,8 +13,9 @@ app.use(
 );
 app.use(cors());
 app.use(parser.json());
-app.use("/orders", router);
+
 app.get("/main", controller.items.get);
+app.use("/orders", router);
 
 app.listen(port, () => {
   console.log(`🚀 Server is starting on ${port}`);

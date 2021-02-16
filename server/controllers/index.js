@@ -20,10 +20,10 @@ module.exports = {
       }
     },
     getDetail: (req, res) => {
-      const orderId = req.params.id;
+      const orderId = req.params.orderId;
 
       if (!orderId) {
-        return res.status(409).send("order is not found");
+        return res.status(409).send("orderId is not found");
       } else {
         models.orders.getDetail(orderId, (error, result) => {
           if (error) {
