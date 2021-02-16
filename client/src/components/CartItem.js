@@ -21,7 +21,7 @@ export default function CartItem({
         checked={checkedItems.findIndex(el => el.itemId === item.id) > -1} >
       </input>
       <div className="cart-item-thumbnail">
-        <img src={item.img} alt={item.name} />
+        <img src={item.image} alt={item.name} />
       </div>
       <div className="cart-item-info">
         <div className="cart-item-title" data-testid={`cart-${item.name}`}>{item.name}</div>

@@ -1,24 +1,29 @@
 import React from 'react'
 import { useDispatch } from 'react-redux';
-import { fetchData, removeFromCart, setOrders } from '../actions';
+import { Redirect, useHistory } from 'react-router-dom';
+import { fetchData, notify, removeFromCart, setOrders } from '../actions';
 
-export default function OrderSummary({ totalQty, total, orderItems }) {
+export default function OrderSummary({ totalQty, total, cartItems }) {
   const userId = 1;
   const dispatch = useDispatch();
+  const history = useHistory()
   const handleOrder = (orders, totalPrice) => {
-    dispatch(fetchData(`http://localhost:4000/orders/new`, setOrders, {
+    const payload = JSON.stringify({
+      orders, 
+      totalPrice
+    })
+    return fetch(`http://localhost:4000/users/${userId}/orders/new`,{
       method: 'POST',
       headers: {
           'Content-Type': 'application/json',
       },
-      body: JSON.stringify({
-        userId,
-        orders, 
-        totalPrice
-      }), 
+      body: payload, 
     })
-    )
-    orders.forEach((el) => dispatch(removeFromCart(el.itemId)))
+    .then(orders.forEach(el => dispatch(removeFromCart(el.itemId))))
+    .then(dispatch(notify(`주문이 완료되었습니다.`)))
+    .then(dispatch(fetchData(`http://localhost:4000/users/${userId}/orders`,setOrders)))
+    .then(history.push('/orderlist'))
+    .catch(err => console.log(err))
   }
 
   return (
@@ -33,7 +38,7 @@ export default function OrderSummary({ totalQty, total, orderItems }) {
           </div>
         </div>
       </div >
-      <button id="order-item-btn" onClick={() => handleOrder(orderItems, total)}><h2>{totalQty}개의 상품 구매하기</h2></button>
+      <button id="order-item-btn" onClick={() => handleOrder(cartItems, total)}><h2>{totalQty}개의 상품 구매하기</h2></button>
     </section>
   )
 }

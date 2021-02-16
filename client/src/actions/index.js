@@ -10,11 +10,12 @@ export const ENQUEUE_NOTIFICATION = "ENQUEUE_NOTIFICATION";
 export const DEQUEUE_NOTIFICATION = "DEQUEUE_NOTIFICATION";
 
 // actions creator functions
-export const fetchData = (api, action, request) => dispatch => {
-  return fetch(api, request)
+export const fetchData = (api, action) => dispatch => {
+  return fetch(api)
   .then(res => res.json())
-  .then(data => dispatch(action(data)))
-  .catch(err => alert(err))
+  .then(data => {
+    dispatch(action(data))})
+  .catch(err => console.log(err))
 }
 
 export const setProducts = (items) => {
@@ -26,7 +27,17 @@ export const setProducts = (items) => {
   }
 }
 
-export const setOrders = (orders) => {
+export const setOrders = (data) => {
+  const orders = data.reduce((acc,cur) => {
+    if (acc[cur.id]){
+      console.log(cur);
+      acc[cur.id].push(cur)
+    } else {
+      acc[cur.id] = [cur];
+    }
+    return acc
+  }, {})
+  console.log(orders);
   return {
     type: SET_ORDERS,
     payload: {

@@ -60,7 +60,6 @@ export default function ShoppingCart() {
 
   const renderItems = items.filter((el) => cartItems.map((el) => el.itemId).indexOf(el.id) > -1)
   const total = getTotal()
-  const orderItems = cartItems.filter((el) => checkedItems.indexOf(el.itemId) > -1)
   
   return (
     <div id="item-list-container">
@@ -98,7 +97,7 @@ export default function ShoppingCart() {
                 })}
               </div>
             )}
-          <OrderSummary total={total.price} totalQty={total.quantity} orderItems={orderItems} />
+          <OrderSummary total={total.price} totalQty={total.quantity} cartItems={cartItems} />
         </div>
       </div >
     </div>

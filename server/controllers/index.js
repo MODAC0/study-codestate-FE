@@ -21,12 +21,13 @@ module.exports = {
     },
     post: (req, res) => {
       // req.body에 어떤 형식으로 담아올지 정해야할 듯
-      const userId = req.body.userId;
+      console.log(req.body);
+      const userId = req.params.userId;
       const datas = req.body.orders.map(order => {
         order = [order.itemId, order.quantity];
         return order;
       });
-       console.log(req.body);
+      
       const totalPrice = req.body.totalPrice;
 
       if (datas.length === 0) {

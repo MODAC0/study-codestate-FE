@@ -39,7 +39,7 @@ module.exports = {
             return [results.insertId, ...data];
           });
           
-          db.query(queryString, [params], (error, results) => {
+          return db.query(queryString, [params], (error, results) => {
             callback(error, results);
           });   
         }
