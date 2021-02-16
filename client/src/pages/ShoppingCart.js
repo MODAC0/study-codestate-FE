@@ -11,20 +11,20 @@ export default function ShoppingCart() {
   const { items } = itemState;
   const { cartItems } = cartState;
   const dispatch = useDispatch();
-  const [checkedItems, setCheckedItems] = useState(cartItems.map((el) => el.itemId))
+  const [checkedItems, setCheckedItems] = useState([...cartItems])
 
-  const handleCheckChange = (checked, id) => {
+  const handleCheckChange = (checked, item) => {
     if (checked) {
-      setCheckedItems([...checkedItems, id]);
+      setCheckedItems([...checkedItems, item]);
     }
     else {
-      setCheckedItems(checkedItems.filter((el) => el !== id));
+      setCheckedItems(checkedItems.filter((el) => el.itemId !== item.itemId));
     }
   };
 
   const handleAllCheck = (checked) => {
     if (checked) {
-      setCheckedItems(cartItems.map((el) => el.itemId))
+      setCheckedItems([...cartItems])
     }
     else {
       setCheckedItems([]);
@@ -36,8 +36,8 @@ export default function ShoppingCart() {
   }
 
   const handleDelete = (itemId) => {
-    setCheckedItems(checkedItems.filter((el) => el !== itemId))
-    dispatch(removeFromCart(itemId))
+    setCheckedItems(checkedItems.filter((el) => el.itemId !== itemId))
+    dispatch(removeFromCart(itemId));
   }
 
   const getTotal = () => {
@@ -47,7 +47,7 @@ export default function ShoppingCart() {
       quantity: 0,
     }
     for (let i = 0; i < cartIdArr.length; i++) {
-      if (checkedItems.indexOf(cartIdArr[i]) > -1) {
+      if (checkedItems.findIndex((el) => el.itemId === cartIdArr[i]) > -1) {
         let quantity = cartItems[i].quantity
         let price = items.filter((el) => el.id === cartItems[i].itemId)[0].price
 
@@ -60,7 +60,8 @@ export default function ShoppingCart() {
 
   const renderItems = items.filter((el) => cartItems.map((el) => el.itemId).indexOf(el.id) > -1)
   const total = getTotal()
-
+  const orderItems = cartItems.filter((el) => checkedItems.indexOf(el.itemId) > -1)
+  
   return (
     <div id="item-list-container">
       <div id="item-list-body">
@@ -92,11 +93,12 @@ export default function ShoppingCart() {
                     item={item}
                     checkedItems={checkedItems}
                     quantity={quantity}
+                    cartItems={cartItems}
                   />
                 })}
               </div>
             )}
-          <OrderSummary total={total.price} totalQty={total.quantity} cartItems={cartItems} />
+          <OrderSummary total={total.price} totalQty={total.quantity} orderItems={orderItems} />
         </div>
       </div >
     </div>

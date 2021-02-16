@@ -13,7 +13,7 @@ app.use(
 );
 app.use(cors());
 app.use(parser.json());
-app.use("/orders", router);
+app.use("/users", router);
 app.get("/main", controller.items.get);
 
 app.listen(port, () => {

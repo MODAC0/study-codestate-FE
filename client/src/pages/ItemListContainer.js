@@ -25,7 +25,6 @@ function ItemListContainer() {
   }
   
   return (
-    
     <div id="item-list-container">
       <div id="item-list-body">
         <div id="item-list-title">쓸모없는 선물 모음</div>

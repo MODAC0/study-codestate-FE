@@ -9,20 +9,12 @@ module.exports = {
   orders: {
     get: (userId, callback) => {
       // userId로 전체 주문 내역 조회
-      const queryString = `SELECT * FROM orders where (user_id = ${userId})`;
-
-      // db query
-      db.query(queryString, (error, result) => {
-        callback(error, result);
-      });
-    },
-    getDetail: (orderId, callback) => {
-      // orderId에 따라서 상세 내용 조회하기
-      const queryString = `SELECT * FROM items 
-      RIGHT JOIN order_items ON (order_items.item_id = items.id)
+      const queryString = 
+      `SELECT orders.id, orders.created_at, orders.total_price, items.name, items.price, items.image, order_items.order_quantity FROM items 
+      INNER JOIN order_items ON (order_items.item_id = items.id)
       INNER JOIN orders ON (orders.id = order_items.order_id)
-      WHERE (orders.id = ${orderId})`;
-
+      INNER JOIN users ON (orders.user_id = users.id)
+      WHERE (users.id = ${userId})`;
       // db query
       db.query(queryString, (error, result) => {
         callback(error, result);
@@ -41,15 +33,17 @@ module.exports = {
         // const params = datas;
         // const id = results.insertId;
         // w3school -> bulk insert를 예시로 컨텐츠에서 제공
-        const params = datas.map(data => {
-          return [results.insertId, ...data];
-        });
-
-        const queryString = `INSERT INTO order_items (order_id, item_id, order_quantity) VALUES ?;`;
-
-        db.query(queryString, [params], (error, results) => {
-          callback(error, results);
-        });
+        if (results) {
+          const queryString = `INSERT INTO order_items (order_id, item_id, order_quantity) VALUES ?;`;
+          const params = datas.map(data => {
+            return [results.insertId, ...data];
+          });
+          
+          db.query(queryString, [params], (error, results) => {
+            callback(error, results);
+          });   
+        }
+        callback(error,results)
       });
     },
   },
@@ -57,7 +51,6 @@ module.exports = {
     get: callback => {
       // items 테이블을 다 조회해서 가져다 주기
       const queryString = `SELECT * FROM items`;
-
       // query
       db.query(queryString, (error, result) => {
         callback(error, result);

@@ -5,29 +5,14 @@ module.exports = {
     get: (req, res) => {
       // params에 id로 구분해서 들어오는?
       // 기본적으로 주는 내용으로 하는 건 어떤지?
-      const userId = req.params.id;
-
+      const userId = req.params.userId;
+      
       if (!userId) {
-        return res.status(409).send("user is not found");
+        return res.status(401).send("Unauthorized user.");
       } else {
         models.orders.get(userId, (error, result) => {
           if (error) {
-            res.status(409).send("user data is not found");
-          } else {
-            res.status(200).json(result);
-          }
-        });
-      }
-    },
-    getDetail: (req, res) => {
-      const orderId = req.params.id;
-
-      if (!orderId) {
-        return res.status(409).send("order is not found");
-      } else {
-        models.orders.getDetail(orderId, (error, result) => {
-          if (error) {
-            res.status(409).send("order is not found");
+            res.status(404).send("No orders found.");
           } else {
             res.status(200).json(result);
           }
@@ -41,17 +26,17 @@ module.exports = {
         order = [order.itemId, order.quantity];
         return order;
       });
-      // console.log(datas);
+       console.log(req.body);
       const totalPrice = req.body.totalPrice;
 
       if (datas.length === 0) {
-        return res.status(409).send("not found");
+        return res.status(400).send("Bad request.");
       } else {
         models.orders.post(userId, datas, totalPrice, (error, result) => {
           if (error) {
-            res.status(409).send("not found");
+            res.status(404).send("Not found");
           } else {
-            res.status(201).send("order is success");
+            res.status(201).send("Order has been placed.");
           }
         });
       }
@@ -61,7 +46,7 @@ module.exports = {
     get: (req, res) => {
       models.items.get((error, result) => {
         if (error) {
-          res.status(409).send("not found");
+          res.status(404).send("Not found");
         } else {
           res.status(200).json(result);
         }

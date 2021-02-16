@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 function Nav() {
 
-  const state = useSelector(state => state.itemReducer);
+  const state = useSelector(state => state.cartReducer);
 
   return (
     <div id="nav-body">
