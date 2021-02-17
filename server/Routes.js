@@ -1,9 +1,9 @@
 const router = require("express").Router();
 const controller = require("./controllers");
 
-// userid -> user의 모든 주문 내역만 조회 -> 예시로 제공?
+// userId로 전체 주문 내역을 조회하는 라우팅
 router.get("/:userId/orders", controller.orders.get);
-// [items] -> 주문하기 버튼 누르면 데이터 저장 -> todo
+// 쇼핑 카트에서 새로운 주문을 생성하는 라우팅
 router.post("/:userId/orders/new", controller.orders.post);
 
 module.exports = router;

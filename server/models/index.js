@@ -1,57 +1,45 @@
 const db = require("../db");
 
 module.exports = {
-  // controller에서 db에 요청을 보내는 models
-  // 데이터베이스에서 데이터를 가지고 와서 다른 객체에 전달하는 역할
-  // query string이 여기에 와야함
-
-  // userId로 주문 조회하기
   orders: {
     get: (userId, callback) => {
-      // userId로 전체 주문 내역 조회
-      const queryString = 
-      `SELECT orders.id, orders.created_at, orders.total_price, items.name, items.price, items.image, order_items.order_quantity FROM items 
+      const queryString = `SELECT orders.id, orders.created_at, orders.total_price, items.name, items.price, items.image, order_items.order_quantity FROM items 
       INNER JOIN order_items ON (order_items.item_id = items.id)
       INNER JOIN orders ON (orders.id = order_items.order_id)
       INNER JOIN users ON (orders.user_id = users.id)
-      WHERE (users.id = ${userId})`;
-      // db query
-      db.query(queryString, (error, result) => {
+      WHERE (users.id = ?)`;
+
+      const params = [userId];
+
+      db.query(queryString, params, (error, result) => {
         callback(error, result);
       });
     },
-    post: (userId, datas, totalPrice, callback) => {
-      // orderData -> order_items 테이블에 기록
-
-      // 1. orders에 레코드 생성 (userId, totalPrice)
-      // 2. order_items에 추가 (datas)
+    post: (userId, orders, totalPrice, callback) => {
       const queryString = `INSERT INTO orders (user_id, total_price) VALUES (?, ?)`;
       const params = [userId, totalPrice];
 
-      // db query
-      db.query(queryString, params, (error, results) => {
-        // const params = datas;
-        // const id = results.insertId;
-        // w3school -> bulk insert를 예시로 컨텐츠에서 제공
-        if (results) {
+      db.query(queryString, params, (error, result) => {
+        if (result) {
           const queryString = `INSERT INTO order_items (order_id, item_id, order_quantity) VALUES ?;`;
-          const params = datas.map(data => {
-            return [results.insertId, ...data];
+          const params = orders.map(order => [
+            result.insertId,
+            order.itemId,
+            order.quantity,
+          ]);
+
+          return db.query(queryString, [params], (error, result) => {
+            callback(error, result);
           });
-          
-          return db.query(queryString, [params], (error, results) => {
-            callback(error, results);
-          });   
         }
-        callback(error,results)
+        callback(error, null);
       });
     },
   },
   items: {
     get: callback => {
-      // items 테이블을 다 조회해서 가져다 주기
       const queryString = `SELECT * FROM items`;
-      // query
+
       db.query(queryString, (error, result) => {
         callback(error, result);
       });
