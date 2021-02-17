@@ -154,6 +154,7 @@ body {
   background-color: #bc9eff0e;
   padding: 5rem;
   width: 100%;
+  min-height: 100vh;
   height: 100%;
 }
 
@@ -350,7 +351,7 @@ a:hover {
   background: #ffffff;
   border: solid rgb(238 238 238) 0.2rem;
   display: flex;
-  max-width: 1200px;
+  max-width: 100%;
   min-width: 500px;
   flex-direction: row;
   text-align: center;
