@@ -28,6 +28,7 @@ export const setProducts = (items) => {
 }
 
 export const setOrders = (data) => {
+  
   const orders = data.reduce((acc,cur) => {
     if (acc[cur.id]){
       console.log(cur);
@@ -37,7 +38,7 @@ export const setOrders = (data) => {
     }
     return acc
   }, {})
-  console.log(orders);
+  
   return {
     type: SET_ORDERS,
     payload: {
