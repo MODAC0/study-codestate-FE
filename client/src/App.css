@@ -370,10 +370,14 @@ a:hover {
   flex-direction: row;
   background-color: #f9f9f9;
   margin: 0.3rem;
-  flex: 1;
 }
 
 .order-item-info {
-  flex: 1 1;
   margin: auto 1rem;
+  flex: 1 1;
+}
+
+.order-item-container {
+  flex-direction: column;
+  flex: 1 1;
 }

@@ -13,14 +13,16 @@ export default function Order({ order, id, orderDate, totalPrice }) {
         <h3>Order. {id}</h3>
         <div>{formatDate(orderDate)}</div>
       </div>
-      {order.map((item) => (
-        <div className="order-item-body">
-          <div className="order-item-info">{item.name}</div>
-          <img src={item.image} className="item-img" alt={item.name} />
-          <div className="order-item-info">{item.price}원</div>
-          <div className="order-item-info">{item.order_quantity}개</div>
-        </div>
-      ))}
+      <div className="order-item-container">
+        {order.map((item) => (
+          <div className="order-item-body">
+            <div className="order-item-info">{item.name}</div>
+            <img src={item.image} className="item-img" alt={item.name} />
+            <div className="order-item-info">{item.price}원</div>
+            <div className="order-item-info">{item.order_quantity}개</div>
+          </div>
+        ))}
+      </div>
       <div className="order-list-info">
         <h3>Total</h3>
         <div>{totalPrice}원</div>
