@@ -20,12 +20,6 @@ module.exports = {
     post: (req, res) => {
       const userId = req.params.userId;
       const { orders, totalPrice } = req.body;
-      // const userId = req.params.userId;
-      // const orderDatas = req.body.orders.map(order => [
-      //   order.itemId,
-      //   order.quantity,
-      // ]);
-      // const totalPrice = req.body.totalPrice;
 
       if (orders.length === 0) {
         return res.status(400).send("Bad request.");
