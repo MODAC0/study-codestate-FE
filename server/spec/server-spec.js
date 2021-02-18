@@ -2,107 +2,118 @@
  * for these tests to pass. */
 
 const mysql = require("mysql");
-const request = require("request"); // You might need to npm install the request module!
+const axios = require("axios"); // You might need to npm install the request module!
 const expect = require("chai").expect;
+const fs = require("fs");
+const schema = fs.readFileSync("./schema.sql").toString();
+const seed = fs.readFileSync("./seed.sql").toString();
+const testDB = "cmarket_test";
 
 describe("Sprint-Cmarket-Database", () => {
   var dbConnection;
 
   describe("Persistent Cmarket Server", function () {
-    before(function (done) {
+    before((done) => {
+      console.log("before");
       dbConnection = mysql.createConnection({
         user: "root",
         password: process.env.DATABASE_SPRINT_PASSWORD,
-        database: "cmarket",
+        database: testDB,
         multipleStatements: true,
       });
-      dbConnection.connect();
-
+      dbConnection.connect(done);
+    });
+    beforeEach((done) => {
       /* Empty the db table befo test so that multiple tests
        * (or repeated runs of the tests) won't screw each other up: */
-
+      console.log("beforeEach");
       dbConnection.query(
-        `SET FOREIGN_KEY_CHECKS = 0;
-        TRUNCATE orders;
-        TRUNCATE order_items;
-        SET FOREIGN_KEY_CHECKS = 1`,
+        `DROP DATABASE IF EXISTS ${testDB};
+        CREATE DATABASE ${testDB};
+        USE ${testDB};
+        ${schema}
+        ${seed}`,
         done
       );
     });
-
     after(function () {
+      console.log("after");
       dbConnection.end();
     });
 
-    it("Should insert placed order to the DB", function (done) {
+    it("주문내역을 데이터베이스에 저장해야합니다.", function (done) {
       // Place the order to the cmarket server.
-      request(
-        {
-          method: "POST",
-          uri: "http://127.0.0.1:4000/users/1/orders/new",
-          json: {
-            orders: [
-              { itemId: 1, quantity: 2 },
-              { itemId: 2, quantity: 5 },
-            ],
-            totalPrice: 79800,
-          },
+      axios({
+        method: "post",
+        url: "http://localhost:4000/users/1/orders/new",
+        data: {
+          orders: [
+            { itemId: 1, quantity: 2 },
+            { itemId: 2, quantity: 5 },
+          ],
+          totalPrice: 79800,
         },
-        () => {
-          // Now if we look in the database, we should find the
-          // placed order there.
-
+      })
+        .then(() => {
           const queryString = "SELECT * FROM orders";
-
           dbConnection.query(queryString, function (err, result) {
             // Should have one result:
             expect(result.length).to.equal(1);
             expect(result[0].total_price).to.equal(79800);
-
-            const queryString = "SELECT * FROM order_items";
-            dbConnection.query(queryString, function (err, result) {
-              expect(result.length).to.equal(2);
-              expect(result[0].order_id).to.equal(1);
-              expect(result[1].order_id).to.equal(1);
-              expect(result[1].item_id).to.equal(2);
-              expect(result[1].order_quantity).to.equal(5);
-              done();
-            });
           });
-        }
-      );
+        })
+        .then(() => {
+          const queryString = "SELECT * FROM order_items";
+          dbConnection.query(queryString, function (err, result) {
+            expect(result.length).to.equal(2);
+            expect(result[0].order_id).to.equal(1);
+            expect(result[1].order_id).to.equal(1);
+            expect(result[1].item_id).to.equal(2);
+            expect(result[1].order_quantity).to.equal(5);
+          });
+        })
+        .then(done);
     });
 
-    it("Should output all orders from the DB", function (done) {
-      request(
-        {
-          method: "POST",
-          uri: "http://127.0.0.1:4000/users/1/orders/new",
-          json: {
-            orders: [
-              { itemId: 5, quantity: 1 },
-              { itemId: 6, quantity: 2 },
-            ],
-            totalPrice: 10700,
-          },
-        },
-        () => {
-          request(
-            "http://127.0.0.1:4000/users/1/orders",
-            function (error, response, body) {
-              const orders = JSON.parse(body);
+    it("데이터베이스에 저장된 주문내역을 가져와야합니다.", function (done) {
+      const postOrder = (data) => {
+        return axios({
+          method: "post",
+          url: "http://127.0.0.1:4000/users/1/orders/new",
+          data,
+        });
+      };
 
-              expect(orders[0].name).to.equal("노른자 분리기");
-              expect(orders[0].id).to.equal(1);
-              expect(orders[3].id).to.equal(2);
-              expect(orders[3].order_quantity).to.equal(2);
-              done();
-            }
-          );
-        }
-      );
+      axios
+        .all(
+          [
+            {
+              orders: [
+                { itemId: 1, quantity: 2 },
+                { itemId: 2, quantity: 5 },
+              ],
+              totalPrice: 79800,
+            },
+            {
+              orders: [
+                { itemId: 5, quantity: 1 },
+                { itemId: 6, quantity: 2 },
+              ],
+              totalPrice: 10700,
+            },
+          ].map(postOrder)
+        )
+        .then(() => {
+          axios.get("http://127.0.0.1:4000/users/1/orders");
+        })
+        .then((res) => {
+          expect(res[0].name).to.equal("노른자 분리기");
+          expect(res[0].id).to.equal(1);
+          expect(res[3].id).to.equal(2);
+          expect(res[3].order_quantity).to.equal(2);
+          console.log("get", res.data);
+        })
+        .then(done);
     });
-    // Now query the Cmarket server and see if it returns
-    // the order we just inserted:
   });
 });

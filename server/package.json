@@ -15,11 +15,13 @@
     "express": "^4.17.1",
     "morgan": "^1.10.0",
     "mysql": "^2.18.1",
-    "nodemon": "^2.0.7"
+    "nodemon": "^2.0.7",
+    "path": "^0.12.7"
   },
   "devDependencies": {
+    "axios": "^0.21.1",
     "chai": "^4.3.0",
-    "mocha": "^8.3.0",
-    "request": "^2.88.2"
+    "fs": "0.0.1-security",
+    "mocha": "^8.3.0"
   }
 }
