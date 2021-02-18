@@ -101,18 +101,19 @@ describe("Sprint-Cmarket-Database", () => {
               ],
               totalPrice: 10700,
             },
-          ].map(postOrder)
+          ].map(postOrder),
+          axios.get("http://127.0.0.1:4000/users/1/orders")
         )
-        .then(() => {
-          axios.get("http://127.0.0.1:4000/users/1/orders");
-        })
-        .then((res) => {
-          expect(res[0].name).to.equal("노른자 분리기");
-          expect(res[0].id).to.equal(1);
-          expect(res[3].id).to.equal(2);
-          expect(res[3].order_quantity).to.equal(2);
-          console.log("get", res.data);
-        })
+        .then(
+          axios.spread((...res) => {
+            const orders = res;
+            console.log(orders);
+            expect(orders[0].name).to.equal("노른자 분리기");
+            expect(orders[0].id).to.equal(1);
+            expect(orders[3].id).to.equal(2);
+            expect(orders[3].order_quantity).to.equal(2);
+          })
+        )
         .then(done);
     });
   });
