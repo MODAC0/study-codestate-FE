@@ -4,7 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "mocha spec/server-spec.js --timeout 20000 --exit",
+    "test": "export NODE_ENV=test && mocha spec/server-spec.js --timeout 20000 --exit && unset NODE_ENV",
     "start": "nodemon app.js"
   },
   "author": "",

@@ -9,13 +9,12 @@ const app = express();
 const port = 4000;
 
 app.use(
-  morgan(":method :url :status :res[content-length] - :response-time ms"),
+  morgan(":method :url :status :res[content-length] - :response-time ms")
 );
 app.use(cors());
 app.use(parser.json());
 app.use("/users", router);
 app.get("/main", controller.items.get);
-
-app.listen(port, () => {
+module.exports = app.listen(port, () => {
   console.log(`🚀 Server is starting on ${port}`);
 });

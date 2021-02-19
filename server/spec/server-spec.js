@@ -8,13 +8,13 @@ const fs = require("fs");
 const schema = fs.readFileSync("./schema.sql").toString();
 const seed = fs.readFileSync("./seed.sql").toString();
 const testDB = "cmarket_test";
+const app = require("../app");
 
 describe("Sprint-Cmarket-Database", () => {
   var dbConnection;
 
   describe("Persistent Cmarket Server", function () {
     before((done) => {
-      console.log("before");
       dbConnection = mysql.createConnection({
         user: "root",
         password: process.env.DATABASE_SPRINT_PASSWORD,
@@ -26,7 +26,6 @@ describe("Sprint-Cmarket-Database", () => {
     beforeEach((done) => {
       /* Empty the db table befo test so that multiple tests
        * (or repeated runs of the tests) won't screw each other up: */
-      console.log("beforeEach");
       dbConnection.query(
         `DROP DATABASE IF EXISTS ${testDB};
         CREATE DATABASE ${testDB};
@@ -37,12 +36,13 @@ describe("Sprint-Cmarket-Database", () => {
       );
     });
     after(function () {
-      console.log("after");
       dbConnection.end();
+      app.close();
     });
 
     it("주문내역을 데이터베이스에 저장해야합니다.", function (done) {
       // Place the order to the cmarket server.
+      console.log(process.env.DATABASE_SPRINT_PASSWORD);
       axios({
         method: "post",
         url: "http://localhost:4000/users/1/orders/new",
@@ -75,7 +75,7 @@ describe("Sprint-Cmarket-Database", () => {
         .then(done);
     });
 
-    it("데이터베이스에 저장된 주문내역을 가져와야합니다.", function (done) {
+    it("데이터베이스에 저장된 주문내역을 가져와야합니다.", async function () {
       const postOrder = (data) => {
         return axios({
           method: "post",
@@ -84,37 +84,31 @@ describe("Sprint-Cmarket-Database", () => {
         });
       };
 
-      axios
-        .all(
-          [
-            {
-              orders: [
-                { itemId: 1, quantity: 2 },
-                { itemId: 2, quantity: 5 },
-              ],
-              totalPrice: 79800,
-            },
-            {
-              orders: [
-                { itemId: 5, quantity: 1 },
-                { itemId: 6, quantity: 2 },
-              ],
-              totalPrice: 10700,
-            },
-          ].map(postOrder),
-          axios.get("http://127.0.0.1:4000/users/1/orders")
-        )
-        .then(
-          axios.spread((...res) => {
-            const orders = res;
-            console.log(orders);
-            expect(orders[0].name).to.equal("노른자 분리기");
-            expect(orders[0].id).to.equal(1);
-            expect(orders[3].id).to.equal(2);
-            expect(orders[3].order_quantity).to.equal(2);
-          })
-        )
-        .then(done);
+      await axios.all(
+        [
+          {
+            orders: [
+              { itemId: 1, quantity: 2 },
+              { itemId: 2, quantity: 5 },
+            ],
+            totalPrice: 79800,
+          },
+          {
+            orders: [
+              { itemId: 5, quantity: 1 },
+              { itemId: 6, quantity: 2 },
+            ],
+            totalPrice: 10700,
+          },
+        ].map(postOrder)
+      );
+
+      await axios.get("http://127.0.0.1:4000/users/1/orders").then((res) => {
+        expect(res.data[0].name).to.equal("노른자 분리기");
+        expect(res.data[0].id).to.equal(1);
+        expect(res.data[3].id).to.equal(2);
+        expect(res.data[3].order_quantity).to.equal(2);
+      });
     });
   });
 });

@@ -13,7 +13,7 @@ const config = {
     user: "root",
     password: process.env.DATABASE_SPRINT_PASSWORD,
     database: "cmarket_test",
-  }
-}
+  },
+};
 
 module.exports = config;
