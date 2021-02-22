@@ -46,8 +46,8 @@ describe("Sprint-Cmarket-Database", () => {
         .then((res) => res.data)
         .then((data) => {
           expect(data.length).to.equal(8);
-        })
-        .then(done);
+          done();
+        });
     });
 
     it("주문내역을 데이터베이스에 저장해야합니다.", function (done) {
@@ -79,9 +79,9 @@ describe("Sprint-Cmarket-Database", () => {
             expect(result[1].order_id).to.equal(1);
             expect(result[1].item_id).to.equal(2);
             expect(result[1].order_quantity).to.equal(5);
+            done();
           });
-        })
-        .then(done);
+        });
     });
 
     it("데이터베이스에 저장된 주문내역을 가져와야합니다.", async function () {
