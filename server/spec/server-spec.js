@@ -40,9 +40,18 @@ describe("Sprint-Cmarket-Database", () => {
       app.close();
     });
 
+    it("데이터베이스에 저장된 상품 목록을 가져와야합니다.", function (done) {
+      axios
+        .get("http://localhost:4000/main")
+        .then((res) => res.data)
+        .then((data) => {
+          expect(data.length).to.equal(8);
+        })
+        .then(done);
+    });
+
     it("주문내역을 데이터베이스에 저장해야합니다.", function (done) {
       // Place the order to the cmarket server.
-      console.log(process.env.DATABASE_SPRINT_PASSWORD);
       axios({
         method: "post",
         url: "http://localhost:4000/users/1/orders/new",
@@ -103,12 +112,15 @@ describe("Sprint-Cmarket-Database", () => {
         ].map(postOrder)
       );
 
-      await axios.get("http://127.0.0.1:4000/users/1/orders").then((res) => {
-        expect(res.data[0].name).to.equal("노른자 분리기");
-        expect(res.data[0].id).to.equal(1);
-        expect(res.data[3].id).to.equal(2);
-        expect(res.data[3].order_quantity).to.equal(2);
-      });
+      await axios
+        .get("http://127.0.0.1:4000/users/1/orders")
+        .then((res) => res.data)
+        .then((data) => {
+          expect(data[0].name).to.equal("노른자 분리기");
+          expect(data[0].id).to.equal(1);
+          expect(data[3].id).to.equal(2);
+          expect(data[3].order_quantity).to.equal(2);
+        });
     });
   });
 });

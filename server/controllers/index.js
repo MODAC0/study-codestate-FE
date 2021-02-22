@@ -11,7 +11,6 @@ module.exports = {
         models.orders.get(userId, (error, result) => {
           if (error) {
             res.status(404).send("No orders found.");
-            console.log(error);
           } else {
             res.status(200).json(result);
           }
@@ -28,7 +27,6 @@ module.exports = {
         models.orders.post(userId, orders, totalPrice, (error, result) => {
           if (error) {
             res.status(404).send("Not found");
-            console.log(error);
           } else {
             res.status(201).send("Order has been placed.");
           }
