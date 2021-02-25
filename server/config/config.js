@@ -3,16 +3,18 @@ dotenv.config();
 
 const config = {
   development: {
-    host: 'localhost',
-    user: 'root',
+    host: process.env.DATABASE_SPRINT_HOST,
+    username: process.env.DATABASE_SPRINT_USER,
     password: process.env.DATABASE_SPRINT_PASSWORD,
-    database: 'cmarket'
+    database: 'cmarket',
+    dialect: 'mysql'
   },
   test: {
-    host: 'localhost',
-    user: 'root',
+    host: process.env.DATABASE_SPRINT_HOST,
+    username: process.env.DATABASE_SPRINT_USER,
     password: process.env.DATABASE_SPRINT_PASSWORD,
-    database: 'cmarket_test'
+    database: 'cmarket_test',
+    dialect: 'mysql'
   }
 };
 

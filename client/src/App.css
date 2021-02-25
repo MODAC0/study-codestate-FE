@@ -382,3 +382,19 @@ a:hover {
   flex-direction: column;
   flex: 1 1;
 }
+
+#server-indicator {
+  text-align: right;
+  margin: 0.5rem;
+}
+#indicator-container {
+  
+  display: flex;
+  width: 100vw;
+}
+
+#item-list-title {
+  margin-left: 10%;
+  width: 50%;
+
+}

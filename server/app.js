@@ -4,8 +4,10 @@ const cors = require('cors');
 const morgan = require('morgan');
 const parser = require('body-parser');
 const controller = require('./controllers');
+const sequelize = require('sequelize');
 
 const app = express();
+sequelize.sync();
 const port = 4000;
 
 app.use(

@@ -35,8 +35,10 @@ function ItemListContainer () {
   return (
     <div id='item-list-container'>
       <div id='item-list-body'>
-        <div>서버 연결 상태 : {response}</div>
-        <div id='item-list-title'>쓸모없는 선물 모음</div>
+        <div id='indicator-container'>
+          <div id='item-list-title'>쓸모없는 선물 모음</div>
+          <div id='server-indicator'>서버 연결 상태 : {response}</div>
+        </div>
         {items.map((item, idx) => (
           <Item
             item={item}

@@ -1,48 +1,37 @@
-const db = require('../db');
+'use strict';
 
-module.exports = {
-  orders: {
-    get: (userId, callback) => {
-      const queryString = `SELECT orders.id, orders.created_at, orders.total_price, items.name, items.price, items.image, order_items.order_quantity FROM items 
-      INNER JOIN order_items ON (order_items.item_id = items.id)
-      INNER JOIN orders ON (orders.id = order_items.order_id)
-      INNER JOIN users ON (orders.user_id = users.id)
-      WHERE (users.id = ?)`;
+const fs = require('fs');
+const path = require('path');
+const Sequelize = require('sequelize');
+const basename = path.basename(__filename);
+const env = process.env.NODE_ENV || 'development';
+const config = require(__dirname + '/../config/config.js')[env];
+const db = {};
 
-      const params = [userId];
+let sequelize;
+if (config.use_env_variable) {
+  sequelize = new Sequelize(process.env[config.use_env_variable], config);
+} else {
+  sequelize = new Sequelize(config.database, config.username, config.password, config);
+}
 
-      db.query(queryString, params, (error, result) => {
-        callback(error, result);
-      });
-    },
-    post: (userId, orders, totalPrice, callback) => {
-      const queryString = 'INSERT INTO orders (user_id, total_price) VALUES (?, ?)';
-      const params = [userId, totalPrice];
+fs
+  .readdirSync(__dirname)
+  .filter(file => {
+    return (file.indexOf('.') !== 0) && (file !== basename) && (file.slice(-3) === '.js');
+  })
+  .forEach(file => {
+    const model = require(path.join(__dirname, file))(sequelize, Sequelize.DataTypes);
+    db[model.name] = model;
+  });
 
-      db.query(queryString, params, (error, result) => {
-        if (result) {
-          const queryString = 'INSERT INTO order_items (order_id, item_id, order_quantity) VALUES ?;';
-          const params = orders.map(order => [
-            result.insertId,
-            order.itemId,
-            order.quantity
-          ]);
-
-          return db.query(queryString, [params], (error, result) => {
-            callback(error, result);
-          });
-        }
-        callback(error, null);
-      });
-    }
-  },
-  items: {
-    get: callback => {
-      const queryString = 'SELECT * FROM items';
-
-      db.query(queryString, (error, result) => {
-        callback(error, result);
-      });
-    }
+Object.keys(db).forEach(modelName => {
+  if (db[modelName].associate) {
+    db[modelName].associate(db);
   }
-};
+});
+
+db.sequelize = sequelize;
+db.Sequelize = Sequelize;
+
+module.exports = db;
