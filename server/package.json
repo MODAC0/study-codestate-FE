@@ -1,0 +1,27 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "export NODE_ENV=test && mocha spec/server-spec.js --timeout 20000 --exit && unset NODE_ENV",
+    "start": "nodemon app.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "morgan": "^1.10.0",
+    "mysql": "^2.18.1",
+    "nodemon": "^2.0.7",
+    "path": "^0.12.7"
+  },
+  "devDependencies": {
+    "axios": "^0.21.1",
+    "chai": "^4.3.0",
+    "fs": "0.0.1-security",
+    "mocha": "^8.3.0"
+  }
+}
