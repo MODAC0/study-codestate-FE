@@ -6,24 +6,23 @@ import './App.css';
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
-} from "react-router-dom";
+  Route
+} from 'react-router-dom';
 import ShoppingCart from './pages/ShoppingCart';
 import OrderList from './pages/OrderList';
 
-function App() {
-
+function App () {
   return (
     <Router>
       <Nav />
       <Switch>
-        <Route exact={true} path="/">
+        <Route exact path='/'>
           <ItemListContainer />
         </Route>
-        <Route path="/shoppingcart">
+        <Route path='/shoppingcart'>
           <ShoppingCart />
         </Route>
-        <Route path="/orderlist">
+        <Route path='/orderlist'>
           <OrderList />
         </Route>
       </Switch>

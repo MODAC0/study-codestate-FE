@@ -1,13 +1,14 @@
 // action types
-export const SET_PRODUCTS = "SET_PRODUCTS";
-export const SET_ORDERS = "SET_ORDERS";
-export const SET_ORDER_ITEMS = "SET_ORDER_ITEMS";
-export const ADD_TO_CART = "ADD_TO_CART";
-export const REMOVE_FROM_CART = "REMOVE_FROM_CART";
-export const SET_QUANTITY = "SET_QUANTITY";
-export const NOTIFY = "NOTIFY";
-export const ENQUEUE_NOTIFICATION = "ENQUEUE_NOTIFICATION";
-export const DEQUEUE_NOTIFICATION = "DEQUEUE_NOTIFICATION";
+export const SET_PRODUCTS = 'SET_PRODUCTS';
+export const SET_ORDERS = 'SET_ORDERS';
+export const SET_ORDER_ITEMS = 'SET_ORDER_ITEMS';
+export const ADD_TO_CART = 'ADD_TO_CART';
+export const REMOVE_FROM_CART = 'REMOVE_FROM_CART';
+export const SET_QUANTITY = 'SET_QUANTITY';
+export const NOTIFY = 'NOTIFY';
+export const ENQUEUE_NOTIFICATION = 'ENQUEUE_NOTIFICATION';
+export const DEQUEUE_NOTIFICATION = 'DEQUEUE_NOTIFICATION';
+export const RESPONSE = 'RESPONSE';
 
 // actions creator functions
 export const fetchData = (api, action) => (dispatch) => {
@@ -19,12 +20,19 @@ export const fetchData = (api, action) => (dispatch) => {
     .catch((err) => console.log(err));
 };
 
+export const setResponse = (data) => {
+  return {
+    type: RESPONSE,
+    payload: data.response
+  };
+};
+
 export const setProducts = (items) => {
   return {
     type: SET_PRODUCTS,
     payload: {
-      items,
-    },
+      items
+    }
   };
 };
 
@@ -41,8 +49,8 @@ export const setOrders = (data) => {
   return {
     type: SET_ORDERS,
     payload: {
-      orders,
-    },
+      orders
+    }
   };
 };
 
@@ -51,8 +59,8 @@ export const addToCart = (itemId) => {
     type: ADD_TO_CART,
     payload: {
       quantity: 1,
-      itemId,
-    },
+      itemId
+    }
   };
 };
 
@@ -60,8 +68,8 @@ export const removeFromCart = (itemId) => {
   return {
     type: REMOVE_FROM_CART,
     payload: {
-      itemId,
-    },
+      itemId
+    }
   };
 };
 
@@ -70,8 +78,8 @@ export const setQuantity = (itemId, quantity) => {
     type: SET_QUANTITY,
     payload: {
       itemId,
-      quantity,
-    },
+      quantity
+    }
   };
 };
 
@@ -89,13 +97,13 @@ export const enqueueNotification = (message, dismissTime, uuid) => {
     payload: {
       message,
       dismissTime,
-      uuid,
-    },
+      uuid
+    }
   };
 };
 
 export const dequeueNotification = () => {
   return {
-    type: DEQUEUE_NOTIFICATION,
+    type: DEQUEUE_NOTIFICATION
   };
 };

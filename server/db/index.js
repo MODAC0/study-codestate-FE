@@ -1,6 +1,6 @@
-const mysql = require("mysql");
-const dotenv = require("dotenv");
-const config = require("../config/config");
+const mysql = require('mysql');
+const dotenv = require('dotenv');
+const config = require('../config/config');
 dotenv.config();
 
 // process.env로 시작하는 모든 변수들은 환경 변수(environmental variables)입니다.
@@ -14,7 +14,7 @@ dotenv.config();
 
 // todo
 const con = mysql.createConnection(
-  config[process.env.NODE_ENV || "development"]
+  config[process.env.NODE_ENV || 'development']
 );
 
 con.connect((err) => {

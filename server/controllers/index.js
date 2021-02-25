@@ -1,4 +1,4 @@
-const models = require("../models");
+const models = require('../models');
 
 module.exports = {
   orders: {
@@ -6,11 +6,11 @@ module.exports = {
       const userId = req.params.userId;
 
       if (!userId) {
-        return res.status(401).send("Unauthorized user.");
+        return res.status(401).send('Unauthorized user.');
       } else {
         models.orders.get(userId, (error, result) => {
           if (error) {
-            res.status(404).send("No orders found.");
+            res.status(404).send('No orders found.');
           } else {
             res.status(200).json(result);
           }
@@ -22,27 +22,27 @@ module.exports = {
       const { orders, totalPrice } = req.body;
 
       if (orders.length === 0) {
-        return res.status(400).send("Bad request.");
+        return res.status(400).send('Bad request.');
       } else {
         models.orders.post(userId, orders, totalPrice, (error, result) => {
           if (error) {
-            res.status(404).send("Not found");
+            res.status(404).send('Not found');
           } else {
-            res.status(201).send("Order has been placed.");
+            res.status(201).send('Order has been placed.');
           }
         });
       }
-    },
+    }
   },
   items: {
     get: (req, res) => {
       models.items.get((error, result) => {
         if (error) {
-          res.status(404).send("Not found");
+          res.status(404).send('Not found');
         } else {
           res.status(200).json(result);
         }
       });
-    },
-  },
+    }
+  }
 };

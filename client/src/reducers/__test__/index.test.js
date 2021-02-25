@@ -1,9 +1,9 @@
-import { ADD_TO_CART, REMOVE_FROM_CART, SET_QUANTITY } from "../../actions/index";
-import { initialState } from "../initialState";
-import cartReducer from "../cartReducer";
+import { ADD_TO_CART, REMOVE_FROM_CART, SET_QUANTITY } from '../../actions/index';
+import { initialState } from '../initialState';
+import cartReducer from '../cartReducer';
 
-describe("Item Reducer", () => {
-  it("ADD_TO_CART 액션에 따라 cartItems 상태가 변해야 합니다", () => {
+describe('Item Reducer', () => {
+  it('ADD_TO_CART 액션에 따라 cartItems 상태가 변해야 합니다', () => {
     expect(
       cartReducer(
         initialState,
@@ -12,7 +12,7 @@ describe("Item Reducer", () => {
           payload: {
             itemId: 4,
             quantity: 1
-          },
+          }
         }
       )
     ).toEqual({
@@ -21,7 +21,7 @@ describe("Item Reducer", () => {
       notifications: []
     });
   });
-  it("REMOVE_FROM_CART 액션에 따라 cartItems 상태가 변해야 합니다", () => {
+  it('REMOVE_FROM_CART 액션에 따라 cartItems 상태가 변해야 합니다', () => {
     expect(
       cartReducer(
         initialState,
@@ -29,24 +29,24 @@ describe("Item Reducer", () => {
           type: REMOVE_FROM_CART,
           payload: {
             itemId: 1
-          },
+          }
         }
       )
     ).toEqual({
       items: initialState.items,
       cartItems: [
         {
-          "itemId": 5,
-          "quantity": 7
+          itemId: 5,
+          quantity: 7
         },
         {
-          "itemId": 2,
-          "quantity": 3
+          itemId: 2,
+          quantity: 3
         }],
       notifications: []
     });
   });
-  it("SET_QUANTITY 액션에 따라 cartItems 상태가 변해야 합니다", () => {
+  it('SET_QUANTITY 액션에 따라 cartItems 상태가 변해야 합니다', () => {
     expect(
       cartReducer(
         initialState,
@@ -55,31 +55,31 @@ describe("Item Reducer", () => {
           payload: {
             itemId: 1,
             quantity: 8
-          },
+          }
         }
       )
     ).toEqual({
       items: initialState.items,
       cartItems: [{
-        "itemId": 1,
-        "quantity": 8
+        itemId: 1,
+        quantity: 8
       },
       {
-        "itemId": 5,
-        "quantity": 7
+        itemId: 5,
+        quantity: 7
       },
       {
-        "itemId": 2,
-        "quantity": 3
+        itemId: 2,
+        quantity: 3
       }],
       notifications: []
     });
   });
-  it("리듀서는 다른 상태의 값을 보존해야 합니다", () => {
+  it('리듀서는 다른 상태의 값을 보존해야 합니다', () => {
     expect(
       cartReducer(
         {
-          mustkeep: "other states", cartItems: [],
+          mustkeep: 'other states', cartItems: []
         },
         {
           type: ADD_TO_CART,
@@ -90,13 +90,14 @@ describe("Item Reducer", () => {
         }
       )
     ).toEqual({
-      mustkeep: "other states",
-      cartItems: [{ itemId: 6, quantity: 1 }],
+      mustkeep: 'other states',
+      cartItems: [{ itemId: 6, quantity: 1 }]
     });
     expect(
       cartReducer(
         {
-          mustkeep: "other states", cartItems: [
+          mustkeep: 'other states',
+cartItems: [
             {
               itemId: 6,
               quantity: 1
@@ -110,18 +111,18 @@ describe("Item Reducer", () => {
         {
           type: REMOVE_FROM_CART,
           payload: {
-            itemId: 1,
+            itemId: 1
           }
         }
       )
     ).toEqual({
-      mustkeep: "other states",
+      mustkeep: 'other states',
       cartItems: [
         {
           itemId: 6,
           quantity: 1
         }
-      ],
+      ]
     });
   });
 });
