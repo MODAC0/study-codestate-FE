@@ -8,7 +8,7 @@ export default function OrderList () {
   const state = useSelector((state) => state.itemReducer);
   const dispatch = useDispatch();
   const { orders } = state;
-
+  console.log(orders);
   useEffect(() => {
     dispatch(
       fetchData(`http://localhost:4000/users/${userId}/orders`, setOrders)
@@ -26,9 +26,9 @@ export default function OrderList () {
               <OrderEntry
                 id={order}
                 key={i}
-                order={orders[order]}
-                orderDate={orders[order][0].created_at}
-                totalPrice={orders[order][0].total_price}
+                order={orders[order][0].items}
+                orderDate={orders[order][0].createdAt}
+                totalPrice={orders[order][0].totalPrice}
               />
               ))
               )

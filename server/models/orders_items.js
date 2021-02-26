@@ -11,11 +11,12 @@ module.exports = (sequelize, DataTypes) => {
     id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
-      allowNull: false
+      allowNull: false,
+      autoIncrement: true
     },
-    order_id: DataTypes.INTEGER,
-    items_id: DataTypes.INTEGER,
-    order_quantity: DataTypes.INTEGER,
+    orderId: DataTypes.INTEGER,
+    itemsId: DataTypes.INTEGER,
+    orderQuantity: DataTypes.INTEGER,
     createdAt: DataTypes.DATE,
     updatedAt: DataTypes.DATE
   }, {

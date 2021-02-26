@@ -1,5 +1,5 @@
 const models = require('../models');
-const { orders_items, items, users, orders } = models;
+const { orders_items, items, users, orderlists } = models;
 
 module.exports = {
   orders: {
@@ -17,17 +17,26 @@ module.exports = {
         //   }
         // });
         try {
-          const result = await users.findAll({
-            where: { id: userId },
-            include: [
-              { model: orders, attributes: ['id', 'createdAt', 'total_price'] },
-              { model: items, attributes: ['price', 'image'] },
-              { model: orders_items, attributes: ['order_quantity'] }
-
-            ]
-          });
-          console.log(result);
-          res.status(200).json(result);
+          const result = await orderlists.findAll(
+            {
+              include: [
+                {
+                  model: items,
+                  through: {
+                    attribute: ['itemsId', 'orderId']
+                  },
+                  required: true
+                }, {
+                  model: users,
+                  where: {
+                    id: userId
+                  }
+                }
+              ]
+            });
+          console.log('----', result);
+          const array = result.map(index => index.dataValues);
+          res.status(200).json(array);
         } catch (e) {
           console.log(e);
           res.status(404).send('No orders found.');
@@ -35,6 +44,7 @@ module.exports = {
       }
     },
     post: async (req, res) => {
+      console.log('ttttt');
       const userId = req.params.userId;
       const { orders, totalPrice } = req.body;
 
@@ -42,19 +52,23 @@ module.exports = {
         return res.status(400).send('Bad request.');
       } else {
         try {
-          const result = await orders.create({
-            user_id: userId,
-            total_price: totalPrice
+          console.log('ttttt');
+          const result = await orderlists.create({
+            id: 0,
+            userId: userId,
+            totalPrice: totalPrice
           });
+          console.log('-----', result.id);
           orders.map(async order => {
             await orders_items.create({
-              order_id: result.insertId,
-              item_id: order.itemId,
-              order_quantity: order.quantity
+              orderId: result.id,
+              itemsId: order.itemId,
+              orderQuantity: order.quantity
             });
           });
           res.status(201).send('Order has been placed');
         } catch (e) {
+          console.log(e);
           res.status(404).send('Not found');
         }
       }

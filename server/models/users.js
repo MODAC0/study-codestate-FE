@@ -11,14 +11,15 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate (models) {
       // define association here
-      this.hasMany(models.orders);
+      this.hasMany(models.orderlists);
     }
   }
   users.init({
     id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
-      allowNull: false
+      allowNull: false,
+      autoIncrement: true
     },
     createdAt: DataTypes.DATE,
     updatedAt: DataTypes.DATE
