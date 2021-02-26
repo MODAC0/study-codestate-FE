@@ -2,6 +2,11 @@ import React, { useEffect } from 'react';
 import { addToCart, fetchData, notify, setProducts, setResponse } from '../actions/index';
 import { useSelector, useDispatch } from 'react-redux';
 import Item from '../components/Item';
+import dotenv from 'dotenv';
+
+dotenv.config();
+const server = process.env.REACT_APP_SERVER_ADD;
+const port = process.env.REACT_APP_INSTANCE_PORT;
 
 function ItemListContainer () {
   const itemState = useSelector((state) => state.itemReducer);
@@ -14,12 +19,12 @@ function ItemListContainer () {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchData('http://localhost:4000/main', setProducts));
+    dispatch(fetchData(`http://${server}:${port}/main`, setProducts));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
-    dispatch(fetchData('http://localhost:4000/', setResponse));
+    dispatch(fetchData(`http://${server}:${port}/`, setResponse));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

@@ -2,6 +2,12 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { fetchData, notify, removeFromCart, setOrders } from '../actions';
+import dotenv from 'dotenv';
+
+dotenv.config();
+
+const server = process.env.REACT_APP_SERVER_ADD;
+const port = process.env.REACT_APP_INSTANCE_PORT;
 
 export default function OrderSummary ({ totalQty, total, cartItems }) {
   const userId = 1;
@@ -13,7 +19,7 @@ export default function OrderSummary ({ totalQty, total, cartItems }) {
       totalPrice
     });
 
-    return fetch(`http://localhost:4000/users/${userId}/orders/new`, {
+    return fetch(`http://${server}:${port}/users/${userId}/orders/new`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -24,7 +30,7 @@ export default function OrderSummary ({ totalQty, total, cartItems }) {
       .then(dispatch(notify('주문이 완료되었습니다.')))
       .then(
         dispatch(
-          fetchData(`http://localhost:4000/users/${userId}/orders`, setOrders)
+          fetchData(`http://${server}:${port}/users/${userId}/orders`, setOrders)
         )
       )
       .then(() => {

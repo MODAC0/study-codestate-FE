@@ -68,33 +68,38 @@ export default function ShoppingCart () {
             checked={
               checkedItems.length === cartItems.length
             }
-            onChange={(e) => handleAllCheck(e.target.checked)} />
+            onChange={(e) => handleAllCheck(e.target.checked)}
+          />
           <label>전체선택</label>
         </span>
         <div id='shopping-cart-container'>
-          {!cartItems.length ? (
-            <div id='item-list-text'>
-              장바구니에 아이템이 없습니다.
-            </div>
-          ) : (
-            <div id='cart-item-list'>
+          {
+          !cartItems.length
+            ? (
+              <div id='item-list-text'>
+                장바구니에 아이템이 없습니다.
+              </div>
+              )
+            : (
+              <div id='cart-item-list'>
                 {renderItems.map((item, idx) => {
                   const quantity = cartItems.filter(el => el.itemId === item.id)[0].quantity;
                   return (
-<CartItem
-                    key={idx}
-                    handleCheckChange={handleCheckChange}
-                    handleQuantityChange={handleQuantityChange}
-                    handleDelete={handleDelete}
-                    item={item}
-                    checkedItems={checkedItems}
-                    quantity={quantity}
-                    cartItems={cartItems}
-                  />
-);
+                    <CartItem
+                      key={idx}
+                      handleCheckChange={handleCheckChange}
+                      handleQuantityChange={handleQuantityChange}
+                      handleDelete={handleDelete}
+                      item={item}
+                      checkedItems={checkedItems}
+                      quantity={quantity}
+                      cartItems={cartItems}
+                    />
+                  );
                 })}
               </div>
-          )}
+              )
+}
           <OrderSummary total={total.price} totalQty={total.quantity} cartItems={cartItems} />
         </div>
       </div>

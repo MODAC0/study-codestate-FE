@@ -3,10 +3,9 @@ module.exports = {
   up: async (queryInterface, Sequelize) => {
     await queryInterface.createTable('users', {
       id: {
-        allowNull: false,
-        autoIncrement: true,
+        type: Sequelize.INTEGER,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        autoIncrement: true
       },
       username: {
         type: Sequelize.STRING
@@ -23,17 +22,16 @@ module.exports = {
       }
     });
 
-    await queryInterface.createTable('orders', {
+    await queryInterface.createTable('orderlists', {
       id: {
-        allowNull: false,
-        autoIncrement: true,
+        type: Sequelize.INTEGER,
         primaryKey: true,
+        autoIncrement: true
+      },
+      userId: {
         type: Sequelize.INTEGER
       },
-      user_id: {
-        type: Sequelize.INTEGER
-      },
-      total_price: {
+      totalPrice: {
         type: Sequelize.INTEGER
       },
       createdAt: {
@@ -50,10 +48,9 @@ module.exports = {
 
     await queryInterface.createTable('items', {
       id: {
-        allowNull: false,
-        autoIncrement: true,
+        type: Sequelize.INTEGER,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        autoIncrement: true
       },
       name: {
         type: Sequelize.STRING
@@ -78,20 +75,19 @@ module.exports = {
 
     await queryInterface.createTable('orders_items', {
       id: {
-        allowNull: false,
-        autoIncrement: true,
-        primaryKey: true,
-        type: Sequelize.INTEGER
-      },
-      order_id: {
         type: Sequelize.INTEGER,
-        references: { model: 'orders', key: 'id' }
+        primaryKey: true,
+        autoIncrement: true
       },
-      item_id: {
+      orderId: {
+        type: Sequelize.INTEGER,
+        references: { model: 'orderlists', key: 'id' }
+      },
+      itemsId: {
         type: Sequelize.INTEGER,
         references: { model: 'items', key: 'id' }
       },
-      order_quantity: {
+      orderQuantity: {
         type: Sequelize.INTEGER
       },
       createdAt: {
@@ -110,6 +106,6 @@ module.exports = {
     await queryInterface.dropTable('orders_items');
     await queryInterface.dropTable('items');
     await queryInterface.dropTable('users');
-    await queryInterface.dropTable('orders');
+    await queryInterface.dropTable('orderlists');
   }
 };

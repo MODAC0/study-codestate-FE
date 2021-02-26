@@ -3,25 +3,26 @@ const {
   Model
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class orders_items extends Model {
+  class orderlists extends Model {
     static associate (models) {
+      this.belongsToMany(models.items, { through: models.orders_items, foreignKey: 'itemsId' });
+      this.belongsTo(models.users);
     }
   }
-  orders_items.init({
+  orderlists.init({
     id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
       allowNull: false,
       autoIncrement: true
     },
-    orderId: DataTypes.INTEGER,
-    itemsId: DataTypes.INTEGER,
-    orderQuantity: DataTypes.INTEGER,
+    userId: DataTypes.INTEGER,
+    totalPrice: DataTypes.INTEGER,
     createdAt: DataTypes.DATE,
     updatedAt: DataTypes.DATE
   }, {
     sequelize,
-    modelName: 'orders_items'
+    modelName: 'orderlists'
   });
-  return orders_items;
+  return orderlists;
 };

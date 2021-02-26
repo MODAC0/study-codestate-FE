@@ -19,7 +19,7 @@ export default function Order ({ order, id, orderDate, totalPrice }) {
             <div className='order-item-info'>{item.name}</div>
             <img src={item.image} className='item-img' alt={item.name} />
             <div className='order-item-info'>{item.price}원</div>
-            <div className='order-item-info'>{item.order_quantity}개</div>
+            <div className='order-item-info'>{item.orders_items.orderQuantity}개</div>
           </div>
         ))}
       </div>
