@@ -3,6 +3,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchData, setOrders } from '../actions';
 import OrderEntry from '../components/OrderEntry';
 
+const server = process.env.REACT_APP_SERVER_ADD;
+const port = process.env.REACT_APP_INSTANCE_PORT;
+
+console.log(process.env);
 export default function OrderList () {
   const userId = 1;
   const state = useSelector((state) => state.itemReducer);
@@ -11,7 +15,7 @@ export default function OrderList () {
   console.log(orders);
   useEffect(() => {
     dispatch(
-      fetchData(`http://localhost:4000/users/${userId}/orders`, setOrders)
+      fetchData(`http://${server}:${port}/users/${userId}/orders`, setOrders)
     );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

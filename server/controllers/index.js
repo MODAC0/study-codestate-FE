@@ -9,13 +9,6 @@ module.exports = {
       if (!userId) {
         return res.status(401).send('Unauthorized user.');
       } else {
-        // models.orders.get(userId, (error, result) => {
-        //   if (error) {
-        //     res.status(404).send('No orders found.');
-        //   } else {
-        //     res.status(200).json(result);
-        //   }
-        // });
         try {
           const result = await orderlists.findAll(
             {
@@ -34,7 +27,6 @@ module.exports = {
                 }
               ]
             });
-          console.log('----', result);
           const array = result.map(index => index.dataValues);
           res.status(200).json(array);
         } catch (e) {
@@ -44,7 +36,6 @@ module.exports = {
       }
     },
     post: async (req, res) => {
-      console.log('ttttt');
       const userId = req.params.userId;
       const { orders, totalPrice } = req.body;
 
@@ -52,13 +43,11 @@ module.exports = {
         return res.status(400).send('Bad request.');
       } else {
         try {
-          console.log('ttttt');
           const result = await orderlists.create({
             id: 0,
             userId: userId,
             totalPrice: totalPrice
           });
-          console.log('-----', result.id);
           orders.map(async order => {
             await orders_items.create({
               orderId: result.id,
@@ -76,13 +65,6 @@ module.exports = {
   },
   items: {
     get: async (req, res) => {
-      // models.items.get((error, result) => {
-      //   if (error) {
-      //     res.status(404).send('Not found');
-      //   } else {
-      //     res.status(200).json(result);
-      //   }
-      // });
       try {
         const data = await items.findAll();
         res.status(200).json(data);
