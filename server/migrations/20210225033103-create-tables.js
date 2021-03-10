@@ -79,11 +79,11 @@ module.exports = {
         primaryKey: true,
         autoIncrement: true
       },
-      orderId: {
+      orderlistId: {
         type: Sequelize.INTEGER,
         references: { model: 'orderlists', key: 'id' }
       },
-      itemsId: {
+      itemId: {
         type: Sequelize.INTEGER,
         references: { model: 'items', key: 'id' }
       },

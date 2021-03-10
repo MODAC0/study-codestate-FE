@@ -6,7 +6,7 @@ module.exports = (sequelize, DataTypes) => {
   class items extends Model {
     static associate (models) {
       // define association here
-      this.belongsToMany(models.orderlists, { through: models.orders_items, foreignKey: 'itemsID' });
+      this.hasMany(models.orders_items, { foreignKey: 'itemID' });
     }
   }
   items.init({

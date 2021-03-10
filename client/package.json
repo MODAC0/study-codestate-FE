@@ -15,9 +15,6 @@
     "redux": "^4.0.5",
     "redux-thunk": "^2.3.0"
   },
-  "config":{
-      "BUCKETNAME": "YOUR_S3_BUCKET_NAME"
-  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
@@ -31,9 +28,6 @@
     "uploadObj": "aws s3 sync ./build s3://$npm_package_config_BUCKETNAME",
     "lsObj": "aws s3 ls s3://$npm_package_config_BUCKETNAME",
     "rmObj": "aws s3 rm s3://$npm_package_config_BUCKETNAME",
-    "webhosting": "aws s3 website s3://$npm_package_config_BUCKETNAME —index-document index.html —error-document error.html",
-    "public": "echo '{\"Version\":\"2012-10-17\",\"Statement\":[{\"Sid\":\"PublicReadGetObject\",\"Effect\":\"Allow\",\"Principal\":\"*\",\"Action\":\"s3:GetObject\",\"Resource\":\"arn:aws:s3:::$npm_package_config_BUCKETNAME/*\"}]}' && aws s3api put-bucket-policy --bucket $npm_package_config_BUCKETNAME --policy file:///tmp/bucket_policy.json",
-    "private": "echo '{\"Version\":\"2012-10-17\",\"Statement\":[{\"Sid\":\"PublicReadGetObject\",\"Effect\":\"Deny\",\"Principal\":\"*\",\"Action\":\"s3:GetObject\",\"Resource\":\"arn:aws:s3:::$npm_package_config_BUCKETNAME/*\"}]}' && aws s3api put-bucket-policy --bucket $npm_package_config_BUCKETNAME --policy file:///tmp/bucket_policy.json"
   },
   "eslintConfig": {
     "extends": "react-app"

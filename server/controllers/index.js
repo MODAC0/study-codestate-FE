@@ -10,25 +10,49 @@ module.exports = {
         return res.status(401).send('Unauthorized user.');
       } else {
         try {
-          const result = await orderlists.findAll(
+          const result = await orders_items.findAll(
             {
               include: [
+                { model: items },
                 {
-                  model: items,
-                  through: {
-                    attribute: ['itemsId', 'orderId']
-                  },
-                  required: true
-                }, {
-                  model: users,
-                  where: {
-                    id: userId
-                  }
+                  model: orderlists,
+                  where: { userId: userId }
                 }
+
               ]
+
             });
+          const rest = [];
           const array = result.map(index => index.dataValues);
-          res.status(200).json(array);
+
+          for (const n of array) {
+            console.log(n);
+            if (rest.length === 0) {
+              const template = Object.assign(n.orderlist.dataValues);
+              template.items = [];
+              n.item.dataValues.orderQuantity = n.orderQuantity;
+              template.items.push(n.item);
+              rest.push(template);
+            } else {
+              let flag = true;
+              for (const index in rest) {
+                if (rest[index].id === n.orderlist.id) {
+                  n.item.dataValues.orderQuantity = n.orderQuantity;
+                  rest[index].items.push(n.item);
+
+                  flag = false;
+                }
+              }
+              if (flag) {
+                const template = Object.assign(n.orderlist.dataValues);
+                template.items = [];
+                n.item.dataValues.orderQuantity = n.orderQuantity;
+                template.items.push(n.item);
+                rest.push(template);
+              }
+            }
+          }
+          res.status(200).json(rest);
         } catch (e) {
           console.log(e);
           res.status(404).send('No orders found.');
@@ -50,8 +74,8 @@ module.exports = {
           });
           orders.map(async order => {
             await orders_items.create({
-              orderId: result.id,
-              itemsId: order.itemId,
+              orderlistId: result.id,
+              itemId: order.itemId,
               orderQuantity: order.quantity
             });
           });
