@@ -5,6 +5,8 @@ const {
 module.exports = (sequelize, DataTypes) => {
   class orders_items extends Model {
     static associate (models) {
+      this.belongsTo(models.items);
+      this.belongsTo(models.orderlists);
     }
   }
   orders_items.init({
@@ -14,8 +16,8 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       autoIncrement: true
     },
-    orderId: DataTypes.INTEGER,
-    itemsId: DataTypes.INTEGER,
+    orderlistId: DataTypes.INTEGER,
+    itemId: DataTypes.INTEGER,
     orderQuantity: DataTypes.INTEGER,
     createdAt: DataTypes.DATE,
     updatedAt: DataTypes.DATE
