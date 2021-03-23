@@ -1,0 +1,171 @@
+* {
+  box-sizing: border-box;
+  font-size: 16px;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --main-border-color: rgb(235, 238, 240);
+  --point-color: rgb(64, 0, 199);
+  --point-color-tint: rgb(159, 127, 227);
+  --default-text-color: rgb(0, 0, 0);
+  --sub-text-color: rgb(91, 112, 131);
+  --bold-text-color: rgb(15, 20, 25);
+  --button-text-color: rgb(255, 255, 255);
+  --shade-color: rgb(229, 229, 229);
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: inherit; /* 1 */
+  font-size: 100%; /* 1 */
+  line-height: 1.15; /* 1 */
+  margin: 0; /* 2 */
+  border: 0;
+}
+
+button,
+input {
+  overflow: visible; /* 1 */
+}
+
+button {
+  color: var(--button-text-color);
+}
+
+button:hover,
+button:focus {
+  background: var(--point-color);
+}
+
+button:focus {
+  outline: 1px solid #fff;
+  outline-offset: -4px;
+}
+
+button:active {
+  transform: scale(0.99);
+}
+
+textarea {
+  overflow: auto;
+  resize: none;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+
+footer {
+  flex: 0 0 1rem;
+  padding: 0.3rem;
+  text-align: right;
+}
+
+main {
+  display: flex;
+  flex-direction: row;
+  max-width: 640px;
+  flex: 1 0 0;
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+}
+
+.far,
+.fas {
+  font-size: 2rem;
+  color: var(--default-text-color);
+  padding: 1.3rem;
+  cursor: pointer;
+}
+
+.features {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--main-border-color);
+  flex: 1 0 0;
+}
+
+.tweetForm__container {
+  border-bottom: 1px solid var(--main-border-color);
+  margin-bottom: 0.5rem;
+}
+
+.tweetForm__wrapper {
+  display: flex;
+  flex-direction: row;
+  padding: 0.5rem 1rem;
+}
+
+.tweetForm__profile {
+  padding: 0.2rem;
+}
+
+.tweetForm__profile > img {
+  display: inline-block;
+  width: 50px;
+  border-radius: 100%;
+}
+
+.tweetForm__input {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
+  flex: 1 0 0;
+}
+
+.tweetForm__inputWrapper {
+  display: flex;
+  margin: 0.5rem;
+  flex: 0 0 4rem;
+}
+
+.tweetForm__textarea {
+  flex: 1 0 0;
+  border: 0;
+}
+
+.tweetForm__count {
+  margin: 0.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.tweetForm__count__text {
+  color: var(--sub-text-color);
+}
+
+.tweetForm__submit {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex: 1 0 0;
+}
+
+.tweetForm__submitIcons {
+  flex: 1 0 0;
+}
+
+.tweetForm__submitButton {
+  background-color: var(--point-color-tint);
+  margin: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 1rem;
+}

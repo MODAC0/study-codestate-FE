@@ -1,0 +1,39 @@
+.tweet {
+  display: flex;
+  list-style: none;
+  padding: 0.5rem 1rem;
+  border-bottom: 1px solid var(--main-border-color);
+}
+
+.tweet:hover {
+  background-color: var(--shade-color);
+}
+
+.tweet__profile {
+  padding: 0.2rem;
+}
+
+.tweet__profile > img {
+  display: inline-block;
+  width: 50px;
+  border-radius: 100%;
+}
+
+.tweet__content {
+  flex: 1 0 0;
+}
+
+.tweet__userInfo > .tweet__username {
+  color: var(--bold-text-color);
+  font-weight: 700;
+  margin-left: 0.5rem;
+}
+
+.tweet__userInfo > .tweet__createdAt {
+  color: var(--sub-text-color);
+  margin-left: 0.5rem;
+}
+
+.tweet__message {
+  padding: 0.5rem;
+}

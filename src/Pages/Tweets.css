@@ -1,0 +1,5 @@
+.tweets {
+  flex: 1 0 80vh;
+  border: 1px solid var(--main-border-color);
+  overflow-y: scroll;
+}
