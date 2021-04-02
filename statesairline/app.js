@@ -6,23 +6,18 @@ class flightdata{
         this.date = date;
         this.seat = seat;
     }
-
     setflightIDX(data){
         this.flightIDX = data;
     }
-
     setstartingpoint(data){
         this.startingpoint = data;
     }
-
     setdestination(data){
         this.destination = data;
     }
-
     setdate(data){
         this.date = data;
     }
-
     setseat(data){
         this.seat = data;
     }
@@ -35,15 +30,12 @@ class reservationdata{
         this.name = name;
         this.phone = phone;
     }
-
     setreservationIDX(data){
         this.reservationIDX = data;
     }
-
     setname(data){
         this.name = data;
     }
-
     setphone(data){
         this.phone = data
     }
@@ -62,7 +54,6 @@ const cors = require('../node_modules/cors');
 const app = express();
 const port = 81;
 
-app.use(express.static('public'));
 app.use(express.json());
 app.use(cors());
 
@@ -92,8 +83,8 @@ app.post('/create/flightdata', (req, res)=>{
 });
 
 // 전체 항공편 조회
-app.get('/all/flightdata',(req, res)=>{
-    console.log(`GET : /all/flightdata`);
+app.get('/get/flightdata',(req, res)=>{
+    console.log(`GET : /get/flightdata`);
     try{
         if(flightlist.length != 0){
             res.json(flightlist);
@@ -101,7 +92,7 @@ app.get('/all/flightdata',(req, res)=>{
             res.send(null);
         }
     }catch(error){
-        console.error(`[Error] /all/flightdata : ${error}`);
+        console.error(`[Error] /get/flightdata : ${error}`);
         res.send("Failed : Not found flightdata");
     }
 });
@@ -127,9 +118,9 @@ app.post('/update/flightdata', (req, res)=>{
 });
 
 // 항공편 제거 [ params {"flightIDX" : "data"} ]
-app.get('/delete/flightdata/flightIDX/:idx', (req, res)=>{
+app.get('/delete/flightdata/flight/:idx', (req, res)=>{
     try{
-        console.log(`GET : /delete/flightdata/flightIDX/:idx`);
+        console.log(`GET : /delete/flightdata/flight/:idx`);
         let list;
         for(let i = 0; i < flightlist.length; i++){
             if(flightlist[i].flightIDX !== req.params.idx){
@@ -139,7 +130,7 @@ app.get('/delete/flightdata/flightIDX/:idx', (req, res)=>{
         flightlist = list;
         res.send(`Success : delete flightdata [${req.params.idx}]`);
     }catch(error){
-        console.error(`[Error] /delete/flightdata/flightIDX/:idx : ${error}`);
+        console.error(`[Error] /delete/flightdata/flight/:idx : ${error}`);
         res.send(`Failed : Not delete flightdata`);
     }
 });
@@ -181,9 +172,9 @@ app.post('/delete/flight/reservation/:idx', (req, res)=>{
 
 // User Controller
 // 출발지, 도착지, 날짜에 맞는 모든 항공편 조회 
-app.get('/get/flightdata/user/date/:start/:end/:date',(req, res)=>{
+app.get('/get/flightdata/selected/:start/:end/:date',(req, res)=>{
     try{
-        console.log(`GET : /get/flightdata/user/date/:start/:end/:date`);
+        console.log(`GET : /get/flightdata/selected/:start/:end/:date`);
         let list;
         for(let i = 0; i < flightlist.length; i++){
             if(flightlist[i].startingpoint === req.params.start 
@@ -194,20 +185,20 @@ app.get('/get/flightdata/user/date/:start/:end/:date',(req, res)=>{
         }
         res.json(list);
     }catch(error){
-        console.error(`[Error] /get/flightdata/user/date/:start/:end/:date : ${error}`);
+        console.error(`[Error] /get/flightdata/selected/:start/:end/:date : ${error}`);
         res.send(`Failed : Not found flightdata`);
     }
 });
 
-// 특정 항공편에 대한 예약 내역 생성 [ params { "idx" : "data"} ]
-app.post('/create/reservationdata/flightIDX',(req, res)=>{
+// 특정 항공편에 대한 예약 내역 생성 
+app.post('/create/reservationdata',(req, res)=>{
     try{
-        console.log(`POST : /create/reservationdata/flightIDX`);
+        console.log(`POST : /create/reservationdata`);
         let data = req.body;
         reservationlist.push(new reservationdata(createreservationdataIDXkey(), data.flightIDX, data.name, data.phone));
         res.send(`Success : Create reservationdata [${data.reservationIDX}]`);
     }catch(error){
-        console.error(`[Error] /create/reservationdata/flightIDX : ${error}`);
+        console.error(`[Error] /create/reservationdata : ${error}`);
         res.send(`Failed : Not Create reservationdata`);
     }
 });
@@ -235,9 +226,9 @@ app.get('/get/reservationdata/:phone',(req, res)=>{
 });
 
 // 예약 내역 업데이트
-app.post('/update/reservationdata/idx',(req, res)=>{
+app.post('/update/reservationdata',(req, res)=>{
     try{
-        console.log(`POST : /update/reservationdata/idx`);
+        console.log(`POST : /update/reservationdata`);
         for(let i = 0; i < reservationlist.length; i++){
             if(reservationlist[i].reservationIDX === req.body.reservationIDX){
                 reservationlist[i].setname(req.body.name);
@@ -245,7 +236,7 @@ app.post('/update/reservationdata/idx',(req, res)=>{
             }
         }
     }catch(error){
-        console.error(`[Error] /update/reservationdata/idx : ${error}`);
+        console.error(`[Error] /update/reservationdata : ${error}`);
         res.send(`Failed : Not Update reservationdata`);
     }
 });
@@ -253,7 +244,7 @@ app.post('/update/reservationdata/idx',(req, res)=>{
 // 예약 내역 삭제 [ params { "idx" : "data"} ]
 app.get('/delete/reservationdata/:idx',(req, res)=>{
     try{
-        console.log(`POST : /delete/reservationdata/idx`);
+        console.log(`POST : /delete/reservationdata/:idx`);
         let list;
         for(let i = 0; i < reservationlist.length; i++){
             if(reservationlist[i].reservationIDX !== req.params.idx){
@@ -263,7 +254,7 @@ app.get('/delete/reservationdata/:idx',(req, res)=>{
         reservationlist = list;
         res.send(`Success : delete flightdata [${req.params.idx}]`);
     }catch(error){
-        console.error(`[Error] /delete/reserviontdata/idx : ${error}`);
+        console.error(`[Error] /delete/reserviontdata/:idx : ${error}`);
         res.send(`Failed : Not delete reservationdata`);
     }
 });
