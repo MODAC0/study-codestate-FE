@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/codestates/im-sprint-statesairline-server#readme",
   "dependencies": {
+    "cors": "^2.8.5",
     "express": "^4.17.1",
     "fetch": "^1.1.0"
   }
