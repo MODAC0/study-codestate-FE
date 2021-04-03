@@ -1,11 +1,11 @@
 const express = require('express')
 const session = require('express-session')
-const db = require('./db/connection')
 const cors = require('cors')
+const router = require('./routes')
 
 const app = express()
 app.use(express.json())
-const port = 3000;
+const port = 4000;
 
 app.use(
     cors({
@@ -18,55 +18,15 @@ app.use(session({
     name: 'test_deploy',
     secret: 'codestates',
     cookie: { 
-        secure: true,
+        secure: false,
         httpOnly: true,
-        sameSite:'none'
+        sameSite:'Lax'
     },
     saveUninitialized: false,
     resave: false
 }))
 
-app.get('/', (req, res) => {
-    const { userId } = req.session
-    console.log(userId)
-    if(!userId){
-      res.status(200).send({          
-          message: "아이디:김코딩, 비밀번호:1234를 입력해서 로그인해주세요"
-      })
-    }else {
-        db.query('USE test',(err) => {               
-            if(err){            
-                return res.status(500).send({
-                    message: "데이터 베이스에 연결되지 않았습니다"
-                })           
-            }     
-            return res.status(200).send({                
-                message: "데이터 베이스에 성공적으로 연결 되었습니다"
-            })
-        })
-    }  
-})
-
-app.post('/', (req, res) => {    
-    const { username, password } = req.body
-    if(username !== '김코딩' && password !== '1234'){
-        res.status(401).send('아이디나 비밀번호가 일치하지 않습니다');
-    }else{                       
-        req.session.userId = username;        
-        res.send("OK");
-    }    
-})
-
-app.post('/signout',(req, res) => {
-    req.session.destroy((err) => {
-        if(err){
-            throw error;
-        }
-        else{
-            res.status(201).send("OK")
-        }
-    })
-})
+app.use('/', router)
 
 app.listen(port,() => {
     console.log(`서버가 ${port}번에서 작동중입니다.`)
