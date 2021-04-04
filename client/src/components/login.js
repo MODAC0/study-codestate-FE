@@ -1,13 +1,12 @@
 import React, { Component }from "react";
 import { withRouter } from "react-router-dom"
 import axios from "axios";
-
+import "./login.css"
 
 class Login extends Component {
     state = { 
         username:"",
-        password:"",
-        error:""
+        password:""
     }
 
     constructor(props){
@@ -35,7 +34,12 @@ class Login extends Component {
                     console.log(err)
                 })
         } else{
-            alert("이름과 비밀번호를 정확히 입력해주세요!")
+            this.setState({
+                username:"",
+                password:""
+            },() => {
+                alert("이름과 비밀번호를 정확히 입력해주세요!")
+            })
         }
     }
 
@@ -47,19 +51,20 @@ class Login extends Component {
 
     render() { 
         return (
-            <div>
-                <form onSubmit={e => e.preventDefault()}>
+            <div className="form-container">
+                <form className="form-items" onSubmit={e => e.preventDefault()}>
+                    <div className="login">Login</div>
                     <input
                         type="text"
                         name="username"
-                        placeholder="김코딩 입력!"
+                        placeholder="이름"
                         value={this.state.username}
                         onChange={this.handleChange}
                     />
                     <input
                         type="password"
                         name="password"
-                        placeholder="1234 입력!"
+                        placeholder="비밀번호"
                         value={this.state.password}
                         onChange={this.handleChange}
                     />

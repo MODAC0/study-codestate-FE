@@ -1,6 +1,6 @@
 import React, { Component }from "react"
 import axios from "axios"
-
+import './main.css'
 
 
 class Main extends Component {
@@ -24,9 +24,10 @@ class Main extends Component {
       }
     render() { 
         return (
-            <div>
-                <button onClick={this.handleLogout}>로그아웃</button>
-
+            <div className="main-container">
+                <div className="session">세션을 정상적으로 받았습니다</div>
+                <div className="db">데이터 베이스 연결 상태를 확인하세요</div>
+                <button type="submit" onClick={this.handleLogout}>로그아웃</button>
             </div>  
         );
     }

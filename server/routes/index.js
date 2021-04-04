@@ -8,12 +8,12 @@ router.get('/status', (req, res) => {
     if(userId) {
         db.query('USE test', (err) => {               
             if(err){            
-                return res.status(200).send("데이터 베이스 연결 실패")                         
+                return res.status(200).send("데이터 베이스 연결 상태: 실패")                         
             }     
-            return res.status(200).send("데이터 베이스 연결 성공")
+            return res.status(200).send("데이터 베이스 연결 상태: 성공!")
         })
     } else {
-        res.status(401).end()
+        res.status(401).send()
     }
 })
 
