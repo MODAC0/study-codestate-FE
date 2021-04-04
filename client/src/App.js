@@ -8,7 +8,7 @@ import Main from './components/Main'
 class App extends Component {
   state = { 
     isLogin: false,
-    status: "이름에 김코딩을, 비밀번호로 1234를 입력해서 로그인 해주세요"
+    status: "이름에 김코딩을, 비밀번호로 1234를 입력하세요"
   }
   constructor(props){
     super(props)
@@ -31,24 +31,25 @@ class App extends Component {
               status: res.data
             })
           } 
+          this.props.history.push('/')
         })        
         .catch(err => console.log(err))
-        .finally(() => this.props.history.push('/'))
   }
 
   changeLoginStatus (){
     this.setState({
       isLogin: false,
-      status: "이름에 김코딩을, 비밀번호로 1234를 입력해서 로그인 해주세요"
+      status: "이름에 김코딩을, 비밀번호로 1234를 입력하세요"
     })
     this.props.history.push("/")
   }
   
   render() { 
-    const { isLogin } = this.state
+    const { isLogin,status } = this.state
 
     return (     
-      <div>
+      <div className="app">
+        <div className="message">{status}</div>
         <Switch>
           <Route
             exact

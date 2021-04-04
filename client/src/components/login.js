@@ -28,12 +28,14 @@ class Login extends Component {
                 },
                 { withCredentials: true }
                 )
+                .then(res => {
+                    this.props.handleStatus()
+                })
                 .catch(err =>{
                     console.log(err)
                 })
-                .finally(() => {
-                    this.props.handleStatus()
-                })
+        } else{
+            alert("이름과 비밀번호를 정확히 입력해주세요!")
         }
     }
 
@@ -50,14 +52,14 @@ class Login extends Component {
                     <input
                         type="text"
                         name="username"
-                        placeholder="김코딩을 입력하세요"
+                        placeholder="김코딩 입력!"
                         value={this.state.username}
                         onChange={this.handleChange}
                     />
                     <input
                         type="password"
                         name="password"
-                        placeholder="1234를 입력하세요"
+                        placeholder="1234 입력!"
                         value={this.state.password}
                         onChange={this.handleChange}
                     />

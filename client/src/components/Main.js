@@ -15,11 +15,11 @@ class Main extends Component {
             "http://localhost:4000/signout",
             { withCredentials: true }
             )
-            .catch( err => {
-              console.log(err)
+            .then( res => {
+                this.props.changeLoginStatus()  
             })
-            .finally(() => {
-              this.props.changeLoginStatus()
+            .catch( err => {
+                console.log(err)
             })
       }
     render() { 
