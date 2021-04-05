@@ -26,6 +26,9 @@ app.use(session({
     resave: false
 }))
 
+app.get('/', (req, res) => {
+    res.status(201).send("hello World")
+})
 app.use('/', router)
 
 app.listen(port,() => {
