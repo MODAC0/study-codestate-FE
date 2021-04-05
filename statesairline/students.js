@@ -64,18 +64,28 @@ app.use(cors());
 // WelcomePage
 
 app.get("/", (req, res) => {
-  console.log(`GET : / `);
-  res.send("Hello, States Airline!");
+    console.log(`GET : / `);
+    res.send("Hello, States Airline!");
 });
 
 app.get("/get/flightlist", (req, res) => {
-  console.log("GET : /get/flightlist");
-  res.json(flightlist);
+    try {
+        console.log("GET : /get/flightlist");
+        res.json(flightlist);
+    } catch (error) {
+        console.error(`[Error] /get/flightlist : ${error}`);
+        res.send(`Failed : Not found flightlist`);
+    }
 });
 
 app.get("/get/reservationlist", (req, res) => {
-  console.log("GET : /get/reservationlist");
-  res.json(reservationlist);
+    try {
+        console.log("GET : /get/reservationlist");
+        res.json(reservationlist);
+    } catch (error) {
+        console.error(`[Error] /get/reservationlist : ${error}`);
+        res.send(`Failed : Not found reservationlist`);
+    }
 });
 
 // User Controller
@@ -83,8 +93,6 @@ app.get("/get/reservationlist", (req, res) => {
 app.get("/get/flightdata/selected/:start/:end", (req, res) => {
     try {
         //TODO :
-
-        
     } catch (error) {
         console.error(`[Error] /get/flightdata/selected/:start/:end/:date : ${error}`);
         res.send(`Failed : Not found flightdata`);
@@ -95,20 +103,16 @@ app.get("/get/flightdata/selected/:start/:end", (req, res) => {
 app.post("/create/reservationdata", (req, res) => {
     try {
         //TODO :
-
-
     } catch (error) {
         console.error(`[Error] /create/reservationdata : ${error}`);
         res.send(`Failed : Not Create reservationdata`);
     }
 });
 
-// phone 데이터에 의한 예약 내역 조회 [ params { "phone" : "data"} ]
+// phone 데이터에 의한 예약 내역 조회
 app.get("/get/reservationdata/:phone", (req, res) => {
     try {
         //TODO :
-
-
     } catch (error) {
         console.error(`[Error] /get/reservationdata/:phone : ${error}`);
         res.send(`Failed : Not Found reservationdata`);
@@ -119,20 +123,16 @@ app.get("/get/reservationdata/:phone", (req, res) => {
 app.post("/update/reservationdata", (req, res) => {
     try {
         //TODO :
-
-
     } catch (error) {
         console.error(`[Error] /update/reservationdata : ${error}`);
         res.send(`Failed : Not Update reservationdata`);
     }
 });
 
-// 예약 내역 삭제 [ params { "idx" : "data"} ]
+// 예약 내역 삭제
 app.get("/delete/reservationdata/:idx", (req, res) => {
     try {
         //TODO :
-
-
     } catch (error) {
         console.error(`[Error] /delete/reserviontdata/:idx : ${error}`);
         res.send(`Failed : Not delete reservationdata`);
