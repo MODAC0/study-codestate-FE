@@ -4,7 +4,7 @@
   "description": "Codestates Immersive Course Sprint",
   "main": "index.js",
   "dependencies": {
-    "@codestates-cc/submission-npm": "^1.1.2"
+    "@codestates-cc/submission-npm": "^1.1.3"
   },
   "scripts": {
     "test": "echo no test",
@@ -12,12 +12,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/codestates/sw-sprints-mini-node-server.git"
+    "url": "git+https://github.com/codestates/im-sprints-mini-node-server.git"
   },
   "author": "Codestates",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/codestates/sw-sprints-mini-node-server/issues"
+    "url": "https://github.com/codestates/im-sprints-mini-node-server/issues"
   },
-  "homepage": "https://github.com/codestates/sw-sprints-mini-node-server#readme"
+  "homepage": "https://github.com/codestates/im-sprints-mini-node-server#readme"
 }
