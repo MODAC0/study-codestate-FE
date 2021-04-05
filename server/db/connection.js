@@ -5,7 +5,7 @@ dotenv.config();
 const con = mysql.createConnection({
   host : "localhost",
   user: "root",
-  password: "안가르쳐주지",  
+  password:"   ",  
 });
 
 con.connect((err) => {    

@@ -13,7 +13,7 @@ body,html,#root,.app,.container {
 }
 
 .status {
-    width: 720px;
+    width: 780px;
     height: 50px;
     display: flex;
     align-items: center;

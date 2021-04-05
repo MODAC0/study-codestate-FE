@@ -57,7 +57,7 @@ class App extends Component {
                 ? (<div className="success">{status}</div>)
                 : (<div className="fail">{status}</div>)
               )
-            : (<div className="status">이름에 김코딩을, 비밀번호에 1234를 입력합니다</div>)
+            : (<div className="status">이름에는 김코딩,비밀번호에는 1234만 입력 가능합니다</div>)
           }
           <Switch>
             <Route
