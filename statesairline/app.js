@@ -1,3 +1,9 @@
+let flightIDXlist = ["1005", "1006", "1007", "1008", "1009", "1010"];
+let startingpointlist = ["Seoul", "Incheon", "Shanghai", "Danang", "Tokyo", "Taiwan"];
+let destinationlist = ["Tokyo", "Shanghai", "Danang", "Taiwan", "Incheon", "Seoul"];
+let datelist = ["2020.03.21", "2020.05.03", "2020.03.21", "2020.05.15", "2020.12.11", "2020.05.03"];
+let seatlist = ["10", "5", "3", "4", "5", "10"];
+
 class flightdata {
     constructor(flightIDX, startingpoint, destination, date, seat) {
         this.flightIDX = flightIDX;
@@ -5,21 +11,6 @@ class flightdata {
         this.destination = destination;
         this.date = date;
         this.seat = seat;
-    }
-    setflightIDX(data) {
-        this.flightIDX = data;
-    }
-    setstartingpoint(data) {
-        this.startingpoint = data;
-    }
-    setdestination(data) {
-        this.destination = data;
-    }
-    setdate(data) {
-        this.date = data;
-    }
-    setseat(data) {
-        this.seat = data;
     }
 }
 
@@ -41,25 +32,33 @@ class reservationdata {
     }
 }
 
-function createflightdataIDXkey(date) {
-    return String(date) + String(Math.floor(Math.random() * 10000));
-} // flight IDX Key 생성
+// 모든 데이터 저장 리스트
+let flightlist = new Array();
+let reservationlist = new Array();
+
+function init() {
+    createflightdatalist();
+}
 
 function createreservationdataIDXkey(phone) {
     return String(phone) + String(Math.floor(Math.random() * 10000));
 } // reservation IDX key 생성
 
-const express = require("../node_modules/express");
-const cors = require("../node_modules/cors");
+function createflightdatalist() {
+    for (let i = 0; i < flightIDXlist.length; i++) {
+        flightlist.push(new flightdata(flightIDXlist[i], startingpointlist[i], destinationlist[i], datelist[i], seatlist[i]));
+    }
+    console.log("Success : Create flight Data list!");
+}
+
+const express = require("express");
+const cors = require("cors");
 const app = express();
 const port = 81;
 
+init();
 app.use(express.json());
 app.use(cors());
-
-// 모든 데이터 저장 리스트
-let flightlist = new Array();
-let reservationlist = new Array();
 
 // Manager Controller
 // WelcomePage
@@ -69,115 +68,24 @@ app.get("/", (req, res) => {
     res.send("Hello, States Airline!");
 });
 
-// 항공편 생성
-app.post("/create/flightdata", (req, res) => {
-    console.log(`POST : /createflightdata`);
-    try {
-        let data = req.body;
-        flightlist.push(new flightdata(createflightdataIDXkey(data.date), data.startingpoint, data.destination, data.date, data.seat));
-        res.send(`Success : Create flightdata [${data.flightIDX}]`);
-    } catch (error) {
-        console.error(`[Error] /create/flightdata : ${error}`);
-        res.send("Failed : Not Create flightdata");
-    }
+app.get("/get/flightlist", (req, res) => {
+    console.log("GET : /get/flightlist");
+    res.json(flightlist);
 });
 
-// 전체 항공편 조회
-app.get("/get/flightdata", (req, res) => {
-    console.log(`GET : /get/flightdata`);
-    try {
-        if (flightlist.length != 0) {
-            res.json(flightlist);
-        } else {
-            res.send(null);
-        }
-    } catch (error) {
-        console.error(`[Error] /get/flightdata : ${error}`);
-        res.send("Failed : Not found flightdata");
-    }
-});
-
-// 항공편 수정
-app.post("/update/flightdata", (req, res) => {
-    try {
-        console.log(`POST : /update/flightdata`);
-        let data = req.body;
-        for (let i = 0; i < flightlist.length; i++) {
-            if (flightlist[i].flightIDX == data.flightIDX) {
-                flightlist[i].setstartingpoint(data.startingpoint);
-                flightlist[i].setdestination(data.destination);
-                flightlist[i].setdate(data.date);
-                flightlist[i].setseat(data.seat);
-            }
-        }
-        res.send(`Success : Update flightdata [${data.flightIDX}]`);
-    } catch (error) {
-        console.error(`[Error] /update/flightdata : ${error}`);
-        res.send(`Failed : Not Update flightdata`);
-    }
-});
-
-// 항공편 제거 [ params {"flightIDX" : "data"} ]
-app.get("/delete/flightdata/flight/:idx", (req, res) => {
-    try {
-        console.log(`GET : /delete/flightdata/flight/:idx`);
-        let list;
-        for (let i = 0; i < flightlist.length; i++) {
-            if (flightlist[i].flightIDX !== req.params.idx) {
-                list.push(flightlist[i]);
-            }
-        }
-        flightlist = list;
-        res.send(`Success : delete flightdata [${req.params.idx}]`);
-    } catch (error) {
-        console.error(`[Error] /delete/flightdata/flight/:idx : ${error}`);
-        res.send(`Failed : Not delete flightdata`);
-    }
-});
-
-// 특정 항공편 내 모든 예약자 조회 [ params {"idx" : "data"} ]
-app.get("/all/flight/reservation/:idx", (req, res) => {
-    try {
-        console.log(`GET : /all/flight/reservation/:idx`);
-        let list;
-        for (let i = 0; i < reservationlist.length; i++) {
-            if (reservationlist[i].flightIDX === req.params.idx) {
-                list.push(reservationlist[i]);
-            }
-        }
-        res.json(list);
-    } catch (error) {
-        console.error(`[Error] /all/flight/reservation/:idx : ${error}`);
-        res.send(`Failed : Not Found flightdata`);
-    }
-});
-
-// 특정 항공편 내 예약자 삭제 [ params { "idx" : "data"} ]
-app.post("/delete/flight/reservation/:idx", (req, res) => {
-    try {
-        console.log(`POST : /delete/flight/reservation/:idx`);
-        let list;
-        for (let i = 0; i < reservationlist.length; i++) {
-            if (reservationlist[i].reservationIDX !== req.params.idx) {
-                list.push(reservationlist[i]);
-            }
-        }
-        reservationlist = list;
-        res.send(`Success : delete flightdata [${req.params.idx}]`);
-    } catch (error) {
-        console.error(`[Error] /delete/flight/reservation/:idx : ${error}`);
-        res.send(`Failed : Not delete flightdata`);
-    }
+app.get("/get/reservationlist", (req, res) => {
+    console.log("GET : /get/reservationlist");
+    res.json(reservationlist);
 });
 
 // User Controller
 // 출발지, 도착지, 날짜에 맞는 모든 항공편 조회
-app.get("/get/flightdata/selected/:start/:end/:date", (req, res) => {
+app.get("/get/flightdata/selected/:start/:end", (req, res) => {
     try {
         console.log(`GET : /get/flightdata/selected/:start/:end/:date`);
-        let list;
+        let list = new Array();
         for (let i = 0; i < flightlist.length; i++) {
-            if (flightlist[i].startingpoint === req.params.start && flightlist[i].destination === req.params.end && flightlist[i].date === req.params.date) {
+            if (flightlist[i].startingpoint == req.params.start && flightlist[i].destination == req.params.end) {
                 list.push(flightlist[i]);
             }
         }
@@ -193,8 +101,8 @@ app.post("/create/reservationdata", (req, res) => {
     try {
         console.log(`POST : /create/reservationdata`);
         let data = req.body;
-        reservationlist.push(new reservationdata(createreservationdataIDXkey(), data.flightIDX, data.name, data.phone));
-        res.send(`Success : Create reservationdata [${data.reservationIDX}]`);
+        reservationlist.push(new reservationdata(createreservationdataIDXkey(data.phone), data.flightIDX, data.name, data.phone));
+        res.send(`Success : Create reservationdata`);
     } catch (error) {
         console.error(`[Error] /create/reservationdata : ${error}`);
         res.send(`Failed : Not Create reservationdata`);
@@ -207,11 +115,19 @@ app.get("/get/reservationdata/:phone", (req, res) => {
         console.log(`POST : /get/reservationdata/:phone`);
         let list;
         for (let i = 0; i < reservationlist.length; i++) {
-            if (reservationlist[i].phone === req.params.phone) {
-                list.push(reservationlist[i]);
-                for (let i = 0; i < flightlist.length; i++) {
-                    if (flightlist[i].flightIDX === reservationlist[i].flightIDX) {
-                        list.push(flightlist[i]);
+            if (reservationlist[i].phone == req.params.phone) {
+                for (let j = 0; j < flightlist.length; j++) {
+                    if (flightlist[j].flightIDX == reservationlist[i].flightIDX) {
+                        list = {
+                            flightIDX: flightlist[j].flightIDX,
+                            reservationIDX: reservationlist[i].reservationIDX,
+                            startingpoint: flightlist[j].startingpoint,
+                            destination: flightlist[j].destination,
+                            date: flightlist[j].date,
+                            seat: flightlist[j].seat,
+                            name: reservationlist[i].name,
+                            phone: reservationlist[i].phone,
+                        };
                     }
                 }
             }
@@ -233,6 +149,7 @@ app.post("/update/reservationdata", (req, res) => {
                 reservationlist[i].setphone(req.body.phone);
             }
         }
+        res.send(`Success : Update reservationdata ${req.body.reservationIDX}`);
     } catch (error) {
         console.error(`[Error] /update/reservationdata : ${error}`);
         res.send(`Failed : Not Update reservationdata`);
@@ -243,7 +160,7 @@ app.post("/update/reservationdata", (req, res) => {
 app.get("/delete/reservationdata/:idx", (req, res) => {
     try {
         console.log(`POST : /delete/reservationdata/:idx`);
-        let list;
+        let list = new Array();
         for (let i = 0; i < reservationlist.length; i++) {
             if (reservationlist[i].reservationIDX !== req.params.idx) {
                 list.push(reservationlist[i]);
