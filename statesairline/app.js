@@ -1,8 +1,8 @@
-let flightIDXlist = ["1005", "1006", "1007", "1008", "1009", "1010"];
-let startingpointlist = ["Seoul", "Incheon", "Shanghai", "Danang", "Tokyo", "Taiwan"];
-let destinationlist = ["Tokyo", "Shanghai", "Danang", "Taiwan", "Incheon", "Seoul"];
-let datelist = ["2020.03.21", "2020.05.03", "2020.03.21", "2020.05.15", "2020.12.11", "2020.05.03"];
-let seatlist = ["10", "5", "3", "4", "5", "10"];
+const flightIDXlist = ["1005", "1006", "1007", "1008", "1009", "1010"];
+const startingpointlist = ["Seoul", "Incheon", "Shanghai", "Danang", "Tokyo", "Taiwan"];
+const destinationlist = ["Tokyo", "Shanghai", "Danang", "Taiwan", "Incheon", "Seoul"];
+const datelist = ["2020.03.21", "2020.05.03", "2020.03.21", "2020.05.15", "2020.12.11", "2020.05.03"];
+const seatlist = ["10", "5", "3", "4", "5", "10"];
 
 class flightdata {
     constructor(flightIDX, startingpoint, destination, date, seat) {
