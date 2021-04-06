@@ -13,10 +13,15 @@ app.use('/flight', flight);
 app.use('/book', book);
 
 app.get('/', (req, res) => {
-  console.log('GET : / ');
-  res.send('Hello, States Airline!');
+  console.log('[GET] Success : / ');
+  res.send('Welcome, States Airline!');
+});
+
+app.post('/', (req, res) => {
+  console.log('[POST] Success : / ');
+  res.send('Welcome, States Airline!');
 });
 
 app.listen(port, () => {
-  console.log('Start Server "Welcome, StatesAirline!"');
+  console.log('[server] "Welcome, StatesAirline!"');
 });
