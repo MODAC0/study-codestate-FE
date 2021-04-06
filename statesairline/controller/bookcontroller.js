@@ -1,4 +1,4 @@
-const {bookdata, flightlist, reservationlist} = require('../data/statesdata');
+const {bookdata, flightlist, reservationlist} = require('../Repositories/statesRepositories');
 const { v4: uuidv4 } = require('uuid');
 
 module.exports = {

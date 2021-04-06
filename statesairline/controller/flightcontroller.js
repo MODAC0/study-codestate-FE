@@ -1,4 +1,4 @@
-const {flightlist} = require('../data/statesdata');
+const {flightlist} = require('../Repositories/statesRepositories');
 
 module.exports = {
     flightlookup : (req, res)=>{
