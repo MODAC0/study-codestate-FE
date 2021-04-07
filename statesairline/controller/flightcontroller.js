@@ -7,7 +7,7 @@ module.exports = {
       // 시간에 따른 필터링
       if (req.query.departure_times !== undefined && !req.query.arrival_times !== undefined) {
         const list = flightlist.filter((item) => {
-          return item.departure_times === req.query.departure_times && item.arrival_times === req.query.arrival_times
+          return item.departure_times === req.query.departure_times && item.arrival_times === req.query.arrival_times;
         });
         console.log(`[GET] Success : /flight?departure_times=${req.query.departure_times}&arrival_times=${req.query.arrival_times}`);
         return res.status(200).json(list);
@@ -15,7 +15,7 @@ module.exports = {
       // 공항에 따른 필터링
       if (req.query.departure !== undefined && req.query.destination !== undefined) {
         const list = flightlist.filter((item) => {
-          return item.departure === req.query.departure && item.destination === req.query.destination
+          return item.departure === req.query.departure && item.destination === req.query.destination;
         });
         console.log(`[GET] Success : /flight?departure=${req.query.departure}&destination=${req.query.destination}`);
         return res.status(200).json(list);
@@ -32,7 +32,7 @@ module.exports = {
 
   lookup_id: (req, res) => {
     try {
-      const data = flightlist.filter((item) => {return req.params.id == item.uuid});
+      const data = flightlist.filter((item) => { return req.params.id == item.uuid; });
       console.log('[GET] Success : /flight/:id');
       return res.status(200).send(...data);
     } catch (error) {

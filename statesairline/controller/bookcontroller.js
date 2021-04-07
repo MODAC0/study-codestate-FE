@@ -6,25 +6,15 @@ module.exports = {
   lookup: (req, res) => {
     try {
       if (req.query.flight_id !== undefined) {
-        const list = reservationlist.filter((item)=>{ return item.flight_guid === req.query.flight_id });
+        const list = reservationlist.filter((item) => { return item.flight_guid === req.query.flight_id; });
         console.log(`[GET] Success : /book?flight=${req.query.flight_id}`);
         return res.status(200).json(list);
       }
       if (req.query.phone !== undefined) {
-        const reservation = reservationlist.filter((item)=>{return item.phone === req.query.phone});
-        const flight = flightlist.filter((item)=>{return item.uuid === reservation[0].flight_guid});
-        const data = {
-          uuid: flight[0].uuid,
-          departure: flight[0].departure,
-          destination: flight[0].destination,
-          departure_times: flight[0].departure_times,
-          arrival_times: flight[0].arrival_times,
-          guid: reservation[0].guid,
-          name: reservation[0].name,
-          phone: reservation[0].phone
-        }
+        const [{ guid, flight_guid, name, phone }] = reservationlist.filter((item) => { return item.phone === req.query.phone; });
+        const [{ uuid, departure, destination, departure_times, arrival_times }] = flightlist.filter((item) => { return item.uuid === flight_guid; });
         console.log(`[GET] Success : /book?phone=${req.query.phone}`);
-        return res.status(200).json(data);
+        return res.status(200).json({ uuid, departure, destination, departure_times, arrival_times, guid, name, phone });
       }
       console.log('[GET] Success : /book');
       return res.status(200).json(reservationlist);
@@ -38,10 +28,10 @@ module.exports = {
     try {
       const { flight_guid, name, phone } = req.body;
       reservationlist.push({
-         guid: uuidv4(), 
-         flight_guid,
-         name, 
-         phone
+        guid: uuidv4(),
+        flight_guid,
+        name,
+        phone
       });
       console.log('[POST] Success : /book');
       return res.status(200).send('[POST] Success : Create reservationdata');
@@ -53,7 +43,7 @@ module.exports = {
 
   delete_id: (req, res) => {
     try {
-      reservationlist = reservationlist.filter((item)=>{ return req.params.id !== item.guid })
+      reservationlist = reservationlist.filter((item) => { return req.params.id !== item.guid; });
       console.log('[delete] Success : /delete/reservationdata/:id');
       return res.status(200).send(`[delete] Success : delete flightdata [${req.params.id}]`);
     } catch (error) {
