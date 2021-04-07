@@ -1,14 +1,14 @@
-const { userlookup, usercreate, userdelete } = require('../controller/bookcontroller');
+const { lookup, create, delete_id } = require('../controller/bookcontroller');
 const exress = require('express');
 const router = exress.Router();
 
 // 예약 내역 조회
-router.get('/', userlookup);
+router.get('/', lookup);
 
 // 항공편에 대한 예약 내역 생성
-router.post('/', usercreate);
+router.post('/',create);
 
 // 예약 내역 삭제
-router.delete('/:id', userdelete);
+router.delete('/:id', delete_id);
 
 module.exports = router;

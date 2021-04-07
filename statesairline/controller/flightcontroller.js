@@ -1,29 +1,21 @@
-const { flightlist } = require('../Repositories/statesRepositories');
+const flightlist = require('../Repositories/flightlist');
 
 module.exports = {
-  flightlookup: (req, res) => {
+  lookup: (req, res) => {
     try {
       // 조건에 따른 항공편 조회
       // 시간에 따른 필터링
-      if (req.query.departure_times !== undefined && req.query.arrival_times !== undefined) {
-        const list = new Array();
-        flightlist.map((item) => {
-          if (item.departure_times === req.query.departure_times &&
-                        item.arrival_times === req.query.arrival_times) {
-            list.push(item);
-          }
+      if (req.query.departure_times !== undefined && !req.query.arrival_times !== undefined) {
+        const list = flightlist.filter((item) => {
+          return item.departure_times === req.query.departure_times && item.arrival_times === req.query.arrival_times
         });
         console.log(`[GET] Success : /flight?departure_times=${req.query.departure_times}&arrival_times=${req.query.arrival_times}`);
         return res.status(200).json(list);
       }
       // 공항에 따른 필터링
       if (req.query.departure !== undefined && req.query.destination !== undefined) {
-        const list = new Array();
-        flightlist.map((item) => {
-          if (item.departure === req.query.departure &&
-                        item.destination === req.query.destination) {
-            list.push(item);
-          }
+        const list = flightlist.filter((item) => {
+          return item.departure === req.query.departure && item.destination === req.query.destination
         });
         console.log(`[GET] Success : /flight?departure=${req.query.departure}&destination=${req.query.destination}`);
         return res.status(200).json(list);
@@ -38,36 +30,31 @@ module.exports = {
     }
   },
 
-  flightlookupid: (req, res) => {
+  lookup_id: (req, res) => {
     try {
-      let data;
-      flightlist.map((item) => {
-        if (req.params.id == item.uuid) {
-          data = item;
-        }
-      });
+      const data = flightlist.filter((item) => {return req.params.id == item.uuid});
       console.log('[GET] Success : /flight/:id');
-      return res.status(200).send(data);
+      return res.status(200).send(...data);
     } catch (error) {
       console.error(`[GET] Error : /flight/:id ${error}`);
       return res.status(506).send('[GET] Failed : Not found flight');
     }
   },
 
-  flightupdate: (req, res) => {
+  update: (req, res) => {
     try {
       flightlist.map((item) => {
         if (req.params.id === item.uuid) {
-          if (!req.params.departure) {
+          if (req.body.departure !== undefined) {
             item.departure = req.body.departure;
           }
-          if (!req.params.destination) {
+          if (req.body.destination !== undefined) {
             item.destination = req.body.destination;
           }
-          if (!req.params.departure_times) {
+          if (req.body.departure_times !== undefined) {
             item.departure_times = req.body.departure_times;
           }
-          if (!req.params.arrival_times) {
+          if (req.body.arrival_times !== undefined) {
             item.arrival_times = req.body.arrival_times;
           }
         }

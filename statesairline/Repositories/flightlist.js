@@ -1,12 +1,4 @@
-module.exports = {
-  bookdata: function (uuid, flight_guid, name, phone) {
-    this.uuid = uuid;
-    this.flight_guid = flight_guid;
-    this.name = name;
-    this.phone = phone;
-  },
-  reservationlist: new Array(),
-  flightlist: [
+module.exports = [
     {
       uuid: 'af6fa55c-da65-47dd-af23-578fdba40bed',
       departure: 'ICN',
@@ -84,5 +76,4 @@ module.exports = {
       departure_times: '2021-12-02 12:00:00',
       arrival_times: '2021-12-03 12:00:00'
     }
-  ]
-};
+]
