@@ -1,6 +1,5 @@
 import React, { Component }from "react"
-import axios from "axios"
-import './main.css'
+import './Main.css'
 
 
 class Main extends Component {
@@ -10,18 +9,10 @@ class Main extends Component {
     }
     
     handleLogout () {
-        axios
-            .delete(
-            "http://localhost:4000/signout",
-            { withCredentials: true }
-            )
-            .then( res => {
-                this.props.changeLoginStatus()  
-            })
-            .catch( err => {
-                console.log(err)
-            })
-      }
+        localStorage.removeItem('accessToken')
+        this.props.changeLoginStatus()       
+    }
+
     render() { 
         return (
             <div className="main-container">

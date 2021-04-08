@@ -1,7 +1,7 @@
 import React, { Component }from "react";
 import { withRouter } from "react-router-dom"
 import axios from "axios";
-import "./login.css"
+import "./Login.css"
 
 class Login extends Component {
     state = { 
@@ -28,6 +28,7 @@ class Login extends Component {
                 { withCredentials: true }
                 )
                 .then(res => {
+                    localStorage.setItem('accessToken', res.data)
                     this.props.handleStatus()
                 })
                 .catch(err =>{

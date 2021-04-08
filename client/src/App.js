@@ -2,8 +2,8 @@ import React, { Component }from "react";
 import { Switch, Route, Redirect, withRouter } from "react-router-dom";
 import axios from "axios";
 
-import Login from './components/login'
-import Main from './components/main'
+import Login from './components/Login'
+import Main from './components/Main'
 import './App.css'
 
 class App extends Component {
@@ -24,8 +24,13 @@ class App extends Component {
 
   handleStatus () {
     axios
-        .get("http://localhost:4000/status",{ withCredentials:true })
-        .then(res => {
+        .get("http://localhost:4000/status",
+        { withCredentials:true, 
+          headers: {
+            "Authorization": `Bearer ${localStorage.getItem('accessToken')}`
+          }
+        })
+        .then(res => { 
             this.setState({
               isLogin: true,
               status: res.data
