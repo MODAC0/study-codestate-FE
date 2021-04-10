@@ -1,48 +1,52 @@
-body,html,#root,.app,.container {
-    width:100%;
-    height:100%;
+body,
+html,
+#root,
+.app,
+.container {
+  width: 100%;
+  height: 100%;
 }
 
-.container{
-    display:flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background-color: #f0edf0;
-    color:#2d2d28;
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #f0edf0;
+  color: #2d2d28;
 }
 
 .status {
-    width: 780px;
-    height: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 36px;
-    font-weight:bold;
-    margin-bottom: 15px;  
+  width: 780px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 36px;
+  font-weight: bold;
+  margin-bottom: 15px;
 }
 
 .fail {
-    width: 720px;
-    height: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 42px;
-    font-weight:bold;
-    margin-bottom: 15px;
-    color: #af1b1b;
+  width: 720px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 42px;
+  font-weight: bold;
+  margin-bottom: 15px;
+  color: #af1b1b;
 }
 
 .success {
-    width: 720px;
-    height: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 42px;
-    font-weight:bold;
-    margin-bottom: 15px;
-    color: #30a1aa;
+  width: 720px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 42px;
+  font-weight: bold;
+  margin-bottom: 15px;
+  color: #30a1aa;
 }
