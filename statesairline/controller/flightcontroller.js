@@ -1,7 +1,7 @@
 const flightlist = require('../Repositories/flightlist');
 
 module.exports = {
-  lookup: (req, res) => {
+  findAll: (req, res) => {
     try {
       // 조건에 따른 항공편 조회
       // 시간에 따른 필터링
@@ -30,11 +30,11 @@ module.exports = {
     }
   },
 
-  lookup_id: (req, res) => {
+  findById: (req, res) => {
     try {
-      const data = flightlist.filter((item) => { return req.params.id == item.uuid; });
+      const data = flightlist.filter(item => req.params.id == item.uuid);
       console.log('[GET] Success : /flight/:id');
-      return res.status(200).send(...data);
+      return res.status(200).send(data[0]);
     } catch (error) {
       console.error(`[GET] Error : /flight/:id ${error}`);
       return res.status(506).send('[GET] Failed : Not found flight');
@@ -43,7 +43,7 @@ module.exports = {
 
   update: (req, res) => {
     try {
-      flightlist.map((item) => {
+      flightlist.forEach((item) => {
         if (req.params.id === item.uuid) {
           if (req.body.departure !== undefined) {
             item.departure = req.body.departure;

@@ -3,16 +3,16 @@ const flightlist = require('../Repositories/flightlist');
 let reservationlist = [];
 
 module.exports = {
-  lookup: (req, res) => {
+  findById: (req, res) => {
     try {
       if (req.query.flight_id !== undefined) {
-        const list = reservationlist.filter((item) => { return item.flight_guid === req.query.flight_id; });
+        const list = reservationlist.filter(item => item.flight_guid === req.query.flight_id);
         console.log(`[GET] Success : /book?flight=${req.query.flight_id}`);
         return res.status(200).json(list);
       }
       if (req.query.phone !== undefined) {
-        const [{ guid, flight_guid, name, phone }] = reservationlist.filter((item) => { return item.phone === req.query.phone; });
-        const [{ uuid, departure, destination, departure_times, arrival_times }] = flightlist.filter((item) => { return item.uuid === flight_guid; });
+        const [{ guid, flight_guid, name, phone }] = reservationlist.filter(item => item.phone === req.query.phone);
+        const [{ uuid, departure, destination, departure_times, arrival_times }] = flightlist.filter(item => item.uuid === flight_guid);
         console.log(`[GET] Success : /book?phone=${req.query.phone}`);
         return res.status(200).json({ uuid, departure, destination, departure_times, arrival_times, guid, name, phone });
       }
@@ -41,9 +41,9 @@ module.exports = {
     }
   },
 
-  delete_id: (req, res) => {
+  deleteById: (req, res) => {
     try {
-      reservationlist = reservationlist.filter((item) => { return req.params.id !== item.guid; });
+      reservationlist = reservationlist.filter(item => req.params.id !== item.guid);
       console.log('[delete] Success : /delete/reservationdata/:id');
       return res.status(200).send(`[delete] Success : delete flightdata [${req.params.id}]`);
     } catch (error) {

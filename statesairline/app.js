@@ -14,14 +14,14 @@ app.use('/book', bookRouter);
 
 app.get('/', (req, res) => {
   console.log('[GET] Success : / ');
-  res.send('Welcome, States Airline!');
+  res.status(200).send('Welcome, States Airline!');
 });
 
 app.post('/', (req, res) => {
   console.log('[POST] Success : / ');
-  res.send('Welcome, States Airline!');
+  res.status(200).send('Welcome, States Airline!');
 });
 
-app.listen(port, () => {
-  console.log('[server] "Welcome, StatesAirline!"');
-});
+app.listen(port);
+
+module.exports = app;
