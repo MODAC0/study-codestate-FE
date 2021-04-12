@@ -1,4 +1,4 @@
-const { findAll, findById, update } = require('../controller/flightcontroller');
+const { findAll, findById, update } = require('../controller/flightController');
 const exress = require('express');
 const router = exress.Router();
 

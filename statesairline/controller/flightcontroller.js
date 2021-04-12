@@ -1,4 +1,4 @@
-const flightlist = require('../Repositories/flightlist');
+const flightlist = require('../Repositorie/flightlist');
 
 module.exports = {
   findAll: (req, res) => {
@@ -43,6 +43,7 @@ module.exports = {
 
   update: (req, res) => {
     try {
+      let data;
       flightlist.forEach((item) => {
         if (req.params.id === item.uuid) {
           if (req.body.departure !== undefined) {
@@ -57,10 +58,11 @@ module.exports = {
           if (req.body.arrival_times !== undefined) {
             item.arrival_times = req.body.arrival_times;
           }
+          data = item;
         }
       });
       console.log('[PUT] Success : /flight/:id');
-      return res.status(200).send('[PUT] Success : Update reservationdata');
+      return res.status(200).send(data);
     } catch (error) {
       console.error(`[PUT] Error : /flight/:id ${error}`);
       return res.status(506).send(`[PUT] Failed : Not Update flight ${req.params.id}`);

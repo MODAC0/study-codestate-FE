@@ -1,4 +1,4 @@
-const { findById, create, deleteById } = require('../controller/bookcontroller');
+const { findById, create, deleteById } = require('../controller/bookController');
 const exress = require('express');
 const router = exress.Router();
 

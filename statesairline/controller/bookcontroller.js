@@ -1,5 +1,5 @@
 const { v4: uuidv4 } = require('uuid');
-const flightlist = require('../Repositories/flightlist');
+const flightlist = require('../Repositorie/flightlist');
 let reservationlist = [];
 
 module.exports = {
@@ -34,7 +34,7 @@ module.exports = {
         phone
       });
       console.log('[POST] Success : /book');
-      return res.status(200).send('[POST] Success : Create reservationdata');
+      return res.status(201).send('[POST] Success : Create reservationdata');
     } catch (error) {
       console.error(`[POST] Error : /book ${error}`);
       return res.status(506).send('[POST] Failed : Not Create reservationdata');
@@ -43,9 +43,10 @@ module.exports = {
 
   deleteById: (req, res) => {
     try {
+      const count = reservationlist.length;
       reservationlist = reservationlist.filter(item => req.params.id !== item.guid);
       console.log('[delete] Success : /delete/reservationdata/:id');
-      return res.status(200).send(`[delete] Success : delete flightdata [${req.params.id}]`);
+      return res.status(200).send(count > reservationlist.length);
     } catch (error) {
       console.error(`[delete] Error /delete/reserviontdata/:id : ${error}`);
       return res.status(506).send('[delete] Failed : Not delete reservationdata');
