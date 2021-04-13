@@ -1,5 +1,5 @@
 const { v4: uuidv4 } = require('uuid');
-const flightlist = require('../Repositorie/flightlist');
+const flightlist = require('../repository/flightlist');
 let reservationlist = [];
 
 module.exports = {
@@ -39,8 +39,8 @@ module.exports = {
 
   deleteById: (req, res) => {
     try {
-      reservationlist = reservationlist.filter(item => req.params.id !== item.guid);
-      return res.status(200).send(reservationlist);
+      reservationlist = reservationlist.filter(item => req.query.phone !== item.phone);
+      return res.status(200).json(reservationlist);
     } catch (error) {
       console.error(`[delete] Error /delete/reserviontdata/:id : ${error}`);
       return res.status(506).send('[delete] Failed : Not delete reservationdata');

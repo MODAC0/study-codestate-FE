@@ -3,7 +3,8 @@ require("jest");
 
 const app = require("../app");
 let uuid;
-describe("app", function () {
+
+describe("server", function () {
     afterAll(() => {
         app.close();
     });
@@ -15,6 +16,21 @@ describe("app", function () {
           expect(res.status).toEqual(200);
           done();
         });
+    });
+
+    test("존재하지 않는 endpoint를 요청할 때에, 404 상태 코드를 응답해야 합니다", function (done) {
+      return request(app)
+        .get("/codestates")
+        .then(res => {
+          expect(res.status).toEqual(404);
+          done();
+        });
+    });
+  });
+
+describe("flight Router", ()=>{
+    afterAll(() => {
+      app.close();
     });
 
     test("GET /flight 요청은 파싱 가능한 JSON 문자열을 돌려줘야 합니다", function (done) {
@@ -164,7 +180,7 @@ describe("app", function () {
         });
     });
 
-    test("GET /flight/:ID 요청의 업데이트 된 객체를 반환해야 합니다", function (done) {
+    test("PUT /flight/:ID 요청의 업데이트 된 객체를 반환해야 합니다", function (done) {
       return request(app)
         .put("/flight/af6fa55c-da65-47dd-af23-578fdba99bed")
         .send({
@@ -185,7 +201,12 @@ describe("app", function () {
           done();
         });
     });
+  });
 
+describe("Book Router", ()=>{
+    afterAll(() => {
+      app.close();
+    });
     test("올바른 POST /book 요청을 처리할 수 있어야 합니다", function (done) {
       return request(app)
         .post("/book")
@@ -202,6 +223,11 @@ describe("app", function () {
     test("POST /book 요청시, flight_guid, name, phone 데이터가 객체로 저장되어야 합니다.", function (done) {
       return request(app)
         .post("/book")
+        .send({
+          flight_guid: "af6fa55c-da65-47dd-af23-578fdba44bed",
+          name: "김코딩",
+          phone : "010-1234-5678"
+      })
         .then(() => {
           return request(app)
             .get("/book")
@@ -281,22 +307,14 @@ describe("app", function () {
         });
     });
 
-    // test("Delet /book/:id 요청을 하면 reservationlist에서 파라미터 ID에 해당하는 데이터가 삭제되어야 합니다", function (done) {
-    //     return request(app)
-    //       .delete(`/flight/${uuid}`)
-    //       .then(res => {
-    //         //const bookdata = JSON.parse(res.text);
-    //         expect(res.text).toEqual(false);
-    //         done();
-    //       });
-    //   });
+    test("Delete /book/ 요청을 하면 reservationlist에서 파라미터 phone에 해당하는 데이터가 삭제되어야 합니다", function (done) {
+        return request(app)
+          .delete(`/book?phone=010-1234-5678`)
+          .then(res => {
+            const bookdata = JSON.parse(res.text);
+            expect(bookdata.length).toEqual(0);
+            done();
+          });
+     });
 
-    test("존재하지 않는 endpoint를 요청할 때에, 404 상태 코드를 응답해야 합니다", function (done) {
-      return request(app)
-        .get("/codestates")
-        .then(res => {
-          expect(res.status).toEqual(404);
-          done();
-        });
-    });
   });

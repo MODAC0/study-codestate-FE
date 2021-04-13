@@ -9,6 +9,6 @@ router.get('/', findById);
 router.post('/', create);
 
 // 예약 내역 삭제
-router.delete('/:id', deleteById);
+router.delete('/', deleteById);
 
 module.exports = router;

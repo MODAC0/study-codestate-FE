@@ -1,4 +1,4 @@
-const flightlist = require('../Repositorie/flightlist');
+const flightlist = require('../repository/flightlist');
 
 module.exports = {
   findAll: (req, res) => {
