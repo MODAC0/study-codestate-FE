@@ -10,9 +10,7 @@
 
 # production
 /build
-
-# Optional eslint cache
-.eslintcache
+.env
 
 # misc
 .DS_Store
@@ -24,4 +22,3 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-node_modules

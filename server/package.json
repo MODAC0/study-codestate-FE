@@ -2,29 +2,31 @@
   "name": "server",
   "version": "1.0.0",
   "description": "",
-  "main": "app.js",
+  "main": "index.js",
   "scripts": {
-    "test": "export NODE_ENV=test && mocha spec/server-spec.js --timeout 20000 --exit && unset NODE_ENV",
     "start": "nodemon app.js"
   },
+  "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.21.1",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
     "morgan": "^1.10.0",
     "mysql": "^2.18.1",
-    "mysql2": "^2.2.5",
     "nodemon": "^2.0.7",
-    "path": "^0.12.7",
-    "sequelize": "^6.5.0",
-    "sequelize-cli": "^6.2.0"
+    "path": "^0.12.7"
   },
   "devDependencies": {
-    "axios": "^0.21.1",
-    "chai": "^4.3.0",
-    "fs": "0.0.1-security",
-    "mocha": "^8.3.0"
+    "eslint": "^7.24.0",
+    "eslint-config-semistandard": "^15.0.1",
+    "eslint-config-standard": "^16.0.2",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.3.1",
+    "eslint-plugin-standard": "^5.0.0"
   }
 }
