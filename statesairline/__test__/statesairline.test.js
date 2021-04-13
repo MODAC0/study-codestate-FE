@@ -207,13 +207,13 @@ describe("app", function () {
             .get("/book")
             .then(res => {
               const bookdata = JSON.parse(res.text);
+              uuid = bookdata[0].guid;
               expect(bookdata[0]).toEqual({
                 guid : bookdata[0].guid,
                 flight_guid : "af6fa55c-da65-47dd-af23-578fdba44bed",
                 name : "김코딩",
                 phone : "010-1234-5678"
               });
-              uuid = bookdata[0].guid;
               done();
             });
         });
@@ -285,7 +285,8 @@ describe("app", function () {
     //     return request(app)
     //       .delete(`/flight/${uuid}`)
     //       .then(res => {
-    //         expect(res.text).toEqual("true");
+    //         //const bookdata = JSON.parse(res.text);
+    //         expect(res.text).toEqual(false);
     //         done();
     //       });
     //   });
