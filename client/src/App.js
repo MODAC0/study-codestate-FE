@@ -34,9 +34,10 @@ class App extends Component {
         })
       .then(res => {
         this.setState({
-          isLogin: true,
-          status: res.data
+          isLogin: res.data.isLogin,
+          status: res.data.isConnectedToDatabase
         }, () => {
+          console.log('시작');
           this.props.history.push('/');
         });
       })
@@ -58,12 +59,12 @@ class App extends Component {
     return (
       <div className="app">
         <div className="container">
-          {status.isLogin
+          {isLogin
             ? <div className="success">로그인에 성공했습니다</div>
             : <div className="status">이름에는 김코딩,비밀번호에는 1234만 입력 가능합니다</div>
           }
-          {status.isLogin
-            ? (status.isConnectedToDatabase
+          {isLogin
+            ? (status
               ? (<div className="success">데이터베이스 연결에 성공했습니다</div>)
               : (<div className="fail">하지만, 데이터베이스 연결이 필요합니다</div>))
             : ''

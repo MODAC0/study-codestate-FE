@@ -20,8 +20,7 @@ app.post('/signin', (req, res) => {
   if (username === '김코딩' && password === '1234') {
     const accessToken = jwt.sign({ username }, 'secretKey', { expiresIn: '1days' });
     res.status(201).send(accessToken);
-  }
-  else {
+  } else {
     res.status(401).send('Login Failed');
   }
 });
@@ -32,7 +31,7 @@ app.get('/', (req, res) => {
 
 app.get('/status', authToken, (req, res) => {
   if (req.username) { // jwt 토큰이 존재할 경우 데이터베이스 연결 여부 조회
-    db.query('select 1+1', (err) => {
+    db.query('use test', (err) => {
       if (err) {
         return res.status(200).send({
           isLogin: true,
