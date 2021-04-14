@@ -16,26 +16,33 @@ app.use(
 );
 
 app.post('/signin', (req, res) => {
-  const { username } = req.body;
-
-  const accessToken = jwt.sign({ username }, 'secretKey', { expiresIn: '1days' });
-
-  res.status(201).send(accessToken);
+  const { username, password } = req.body;
+  if (username === '김코딩' && password === '1234') {
+    const accessToken = jwt.sign({ username }, 'secretKey', { expiresIn: '1days' });
+    res.status(201).send(accessToken);
+  }
+  else {
+    res.status(401).send('Login Failed');
+  }
 });
 
 app.get('/', (req, res) => {
   res.status(201).send('hello World');
 });
 
-app.use(authToken);
-
-app.get('/status', (req, res) => {
-  if (req.username) { // jwt 토큰이 존재할 경우 데이터 베이스 연결 여부 조회
-    db.query('USE test', (err) => {
+app.get('/status', authToken, (req, res) => {
+  if (req.username) { // jwt 토큰이 존재할 경우 데이터베이스 연결 여부 조회
+    db.query('select 1+1', (err) => {
       if (err) {
-        return res.status(200).send('데이터 베이스 연결 상태: 실패');
+        return res.status(200).send({
+          isLogin: true,
+          isConnectedToDatabase: false
+        });
       }
-      return res.status(200).send('데이터 베이스 연결 상태: 성공!');
+      return res.status(200).send({
+        isLogin: true,
+        isConnectedToDatabase: true
+      });
     });
   }
 });

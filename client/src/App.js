@@ -13,17 +13,17 @@ class App extends Component {
 
   }
 
-  constructor (props) {
+  constructor(props) {
     super(props);
     this.handleStatus = this.handleStatus.bind(this);
     this.changeLoginStatus = this.changeLoginStatus.bind(this);
   }
 
-  componentDidMount () {
+  componentDidMount() {
     this.handleStatus();
   }
 
-  handleStatus () {
+  handleStatus() {
     axios
       .get(`${process.env.REACT_APP_API_URL}/status`,
         {
@@ -43,7 +43,7 @@ class App extends Component {
       .catch(err => console.log(err));
   }
 
-  changeLoginStatus () {
+  changeLoginStatus() {
     this.setState({
       isLogin: false,
       status: ''
@@ -52,36 +52,38 @@ class App extends Component {
     });
   }
 
-  render () {
+  render() {
     const { isLogin, status } = this.state;
 
     return (
       <div className="app">
         <div className="container">
-          {
-            status
-              ? (status === '데이터 베이스 연결 상태: 성공!'
-                  ? (<div className="success">{status}</div>)
-                  : (<div className="fail">{status}</div>)
-                )
-              : (<div className="status">이름에는 김코딩,비밀번호에는 1234만 입력 가능합니다</div>)
+          {status.isLogin
+            ? <div className="success">로그인에 성공했습니다</div>
+            : <div className="status">이름에는 김코딩,비밀번호에는 1234만 입력 가능합니다</div>
+          }
+          {status.isLogin
+            ? (status.isConnectedToDatabase
+              ? (<div className="success">데이터베이스 연결에 성공했습니다</div>)
+              : (<div className="fail">하지만, 데이터베이스 연결이 필요합니다</div>))
+            : ''
           }
           <Switch>
             <Route
               exact
               path='/main'
-              render={() => <Main changeLoginStatus={this.changeLoginStatus}/>}/>
+              render={() => <Main changeLoginStatus={this.changeLoginStatus} />} />
             <Route
               exact
               path='/login'
-              render={() => <Login handleStatus={this.handleStatus}/>}/>
+              render={() => <Login handleStatus={this.handleStatus} />} />
             <Route
               path='/'
               render={() => {
                 if (isLogin) {
-                  return <Redirect to='/main'/>;
+                  return <Redirect to='/main' />;
                 }
-                return <Redirect to='/login'/>;
+                return <Redirect to='/login' />;
               }}
             />
           </Switch>
