@@ -19,7 +19,23 @@
         "react"
     ],
     "rules": {
-        "react/prop-types":[0],
-        "quote-props": ["error", "as-needed", { "keywords": true, "unnecessary": false }]
+        "react/prop-types": [
+            0
+        ],
+        "quote-props": [
+            "error",
+            "as-needed",
+            {
+                "keywords": true,
+                "unnecessary": false
+            }
+        ],
+        "indent": [
+            1,
+            2
+        ],
+        "space-before-function-paren": [
+            0
+        ]
     }
 }
