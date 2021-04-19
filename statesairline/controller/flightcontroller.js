@@ -19,9 +19,9 @@ module.exports = {
         });
         return res.status(200).json(list);
       }
-      //자동 완성
-      if(req.query.keyword !== undefined){
-        const list = airport.filter((item)=>{
+      // 자동 완성
+      if (req.query.keyword !== undefined) {
+        const list = airport.filter((item) => {
           return item.code.includes(req.query.keyword.toUpperCase());
         });
         return res.status(200).json(list);
