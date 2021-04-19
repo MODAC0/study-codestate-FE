@@ -1,5 +1,5 @@
-const flightlist = require('../repository/flightlist');
-const airport = require('../repository/airportlist');
+const flights = require('../repository/flightList');
+const airports = require('../repository/airportList');
 
 module.exports = {
   findAll: (req, res) => {
@@ -7,26 +7,26 @@ module.exports = {
       // 조건에 따른 항공편 조회
       // 시간에 따른 필터링
       if (req.query.departure_times !== undefined && !req.query.arrival_times !== undefined) {
-        const list = flightlist.filter((item) => {
+        const list = flights.filter((item) => {
           return item.departure_times === req.query.departure_times && item.arrival_times === req.query.arrival_times;
         });
         return res.status(200).json(list);
       }
       // 공항에 따른 필터링
       if (req.query.departure !== undefined && req.query.destination !== undefined) {
-        const list = flightlist.filter((item) => {
+        const list = flights.filter((item) => {
           return item.departure === req.query.departure && item.destination === req.query.destination;
         });
         return res.status(200).json(list);
       }
       // 자동 완성
       if (req.query.keyword !== undefined) {
-        const list = airport.filter((item) => {
+        const list = airports.filter((item) => {
           return item.code.includes(req.query.keyword.toUpperCase());
         });
         return res.status(200).json(list);
       }
-      res.json(flightlist);
+      res.json(flights);
     } catch (error) {
       console.error(`[GET] Error : /flight ${error}`);
       return res.status(506).send('[GET] Failed : Not found flight');
@@ -35,7 +35,7 @@ module.exports = {
 
   findById: (req, res) => {
     try {
-      const data = flightlist.filter(item => req.params.id == item.uuid);
+      const data = flights.filter(item => req.params.id === item.uuid);
       return res.status(200).send(data[0]);
     } catch (error) {
       console.error(`[GET] Error : /flight/:id ${error}`);
@@ -46,7 +46,7 @@ module.exports = {
   update: (req, res) => {
     try {
       let data;
-      flightlist.forEach((item) => {
+      flights.forEach((item) => {
         if (req.params.id === item.uuid) {
           if (req.body.departure !== undefined) {
             item.departure = req.body.departure;

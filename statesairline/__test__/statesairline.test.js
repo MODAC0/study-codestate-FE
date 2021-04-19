@@ -2,7 +2,6 @@ const request = require('supertest');
 require('jest');
 
 const app = require('../app');
-let uuid;
 
 describe('server', function () {
   afterAll(() => {
@@ -233,7 +232,6 @@ describe('Book Router', () => {
           .get('/book')
           .then(res => {
             const bookdata = JSON.parse(res.text);
-            uuid = bookdata[0].guid;
             expect(bookdata[0]).toEqual({
               guid: bookdata[0].guid,
               flight_guid: 'af6fa55c-da65-47dd-af23-578fdba44bed',
@@ -307,7 +305,7 @@ describe('Book Router', () => {
       });
   });
 
-  test('Delete /book/ 요청을 하면 reservationlist에서 파라미터 phone에 해당하는 데이터가 삭제되어야 합니다', function (done) {
+  test('Delete /book/ 요청을 하면 예약 목록에서 파라미터 phone에 해당하는 데이터가 삭제되어야 합니다', function (done) {
     return request(app)
       .delete('/book?phone=010-1234-5678')
       .then(res => {
