@@ -22,6 +22,8 @@ app.post('/', (req, res) => {
   res.status(200).send('Welcome, States Airline!');
 });
 
-app.listen(port);
+app.listen(port, ()=>{
+  console.log("[Server Start] StatesAirline");
+});
 
 module.exports = app;

@@ -1,4 +1,5 @@
 const flightlist = require('../repository/flightlist');
+const airport = require('../repository/airportlist');
 
 module.exports = {
   findAll: (req, res) => {
@@ -15,6 +16,13 @@ module.exports = {
       if (req.query.departure !== undefined && req.query.destination !== undefined) {
         const list = flightlist.filter((item) => {
           return item.departure === req.query.departure && item.destination === req.query.destination;
+        });
+        return res.status(200).json(list);
+      }
+      //자동 완성
+      if(req.query.keyword !== undefined){
+        const list = airport.filter((item)=>{
+          return item.code.includes(req.query.keyword.toUpperCase());
         });
         return res.status(200).json(list);
       }
