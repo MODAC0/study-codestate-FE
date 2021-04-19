@@ -159,26 +159,6 @@ describe('flight Router', () => {
       });
   });
 
-  test('GET /flight/:ID 요청의 업데이트 된 객체를 반환해야 합니다', function (done) {
-    return request(app)
-      .put('/flight/af6fa55c-da65-47dd-af23-578fdba99bed')
-      .send({
-        departure_times: '2021-12-01 09:00:00',
-        arrival_times: '2021-12-01 20:00:00'
-      })
-      .then(res => {
-        const flight = JSON.parse(res.text);
-        expect(flight).toEqual({
-          uuid: 'af6fa55c-da65-47dd-af23-578fdba99bed',
-          departure: 'CJU',
-          destination: 'ICN',
-          departure_times: '2021-12-01 09:00:00',
-          arrival_times: '2021-12-01 20:00:00'
-        });
-        done();
-      });
-  });
-
   test('PUT /flight/:ID 요청의 업데이트 된 객체를 반환해야 합니다', function (done) {
     return request(app)
       .put('/flight/af6fa55c-da65-47dd-af23-578fdba99bed')

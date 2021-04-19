@@ -29,17 +29,28 @@ module.exports = {
       res.json(flights);
     } catch (error) {
       console.error(`[GET] Error : /flight ${error}`);
-      return res.status(506).send('[GET] Failed : Not found flight');
+      return res.status(500).json({
+        message: 'Internal Server Error',
+        stacktrace: error.toString()
+      });
     }
   },
 
   findById: (req, res) => {
     try {
       const data = flights.filter(item => req.params.id === item.uuid);
-      return res.status(200).send(data[0]);
+      if (data.length > 0) {
+        return res.status(200).json(data[0]);
+      }
+      else {
+        return res.status(404).json(null);
+      }
     } catch (error) {
       console.error(`[GET] Error : /flight/:id ${error}`);
-      return res.status(506).send('[GET] Failed : Not found flight');
+      return res.status(500).json({
+        message: 'Internal Server Error',
+        stacktrace: error.toString()
+      });
     }
   },
 
@@ -63,10 +74,13 @@ module.exports = {
           data = item;
         }
       });
-      return res.status(200).send(data);
+      return res.status(200).json(data);
     } catch (error) {
       console.error(`[PUT] Error : /flight/:id ${error}`);
-      return res.status(506).send(`[PUT] Failed : Not Update flight ${req.params.id}`);
+      return res.status(500).json({
+        message: 'Internal Server Error',
+        stacktrace: error.toString()
+      });
     }
   }
 };

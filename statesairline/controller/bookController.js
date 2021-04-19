@@ -17,7 +17,10 @@ module.exports = {
       return res.status(200).json(booking);
     } catch (error) {
       console.error(`[GET] Error : /book ${error}`);
-      return res.status(506).send('[GET] Failed : Not found booking data');
+      return res.status(500).json({
+        message: 'Internal Server Error',
+        stacktrace: error.toString()
+      });
     }
   },
 
@@ -30,10 +33,13 @@ module.exports = {
         name,
         phone
       });
-      return res.status(201).send('[POST] Success : Create booking data');
+      return res.status(201).json('[POST] Success : Create booking data');
     } catch (error) {
       console.error(`[POST] Error : /book ${error}`);
-      return res.status(506).send('[POST] Failed : Not Create booking data');
+      return res.status(500).json({
+        message: 'Internal Server Error',
+        stacktrace: error.toString()
+      });
     }
   },
 
@@ -43,7 +49,10 @@ module.exports = {
       return res.status(200).json(booking);
     } catch (error) {
       console.error(`[delete] Error /delete/reserviontdata/:id : ${error}`);
-      return res.status(506).send('[delete] Failed : Not delete booking data');
+      return res.status(500).json({
+        message: 'Internal Server Error',
+        stacktrace: error.toString()
+      });
     }
   }
 };
