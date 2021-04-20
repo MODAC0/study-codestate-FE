@@ -6,13 +6,16 @@ module.exports = {
   findById: (req, res) => {
     try {
       if (req.query.flight_id !== undefined) {
-        const list = booking.filter(item => item.flight_guid === req.query.flight_id);
-        return res.status(200).json(list);
+        const filtered = booking.filter(item => item.flight_uuid === req.query.flight_id);
+        return res.status(200).json(filtered);
       }
       if (req.query.phone !== undefined) {
-        const [{ guid, flight_guid, name, phone }] = booking.filter(item => item.phone === req.query.phone);
-        const [{ uuid, departure, destination, departure_times, arrival_times }] = flights.filter(item => item.uuid === flight_guid);
-        return res.status(200).json({ uuid, departure, destination, departure_times, arrival_times, guid, name, phone });
+        const filtered = booking.filter(item => item.phone === req.query.phone);
+        if (filtered.length === 0) {
+          return res.status(404).json([])
+        }
+        const [{uuid, flight_uuid, name, phone}] = filtered;
+        return res.status(200).json({uuid, flight_uuid, name, phone});
       }
       return res.status(200).json(booking);
     } catch (error) {
@@ -26,10 +29,10 @@ module.exports = {
 
   create: (req, res) => {
     try {
-      const { flight_guid, name, phone } = req.body;
+      const { flight_uuid, name, phone } = req.body;
       booking.push({
-        guid: uuidv4(),
-        flight_guid,
+        uuid: uuidv4(),
+        flight_uuid,
         name,
         phone
       });

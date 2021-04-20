@@ -190,7 +190,7 @@ describe('Book Router', () => {
     return request(app)
       .post('/book')
       .send({
-        flight_guid: 'af6fa55c-da65-47dd-af23-578fdba44bed',
+        flight_uuid: 'af6fa55c-da65-47dd-af23-578fdba44bed',
         name: '김코딩',
         phone: '010-1234-5678'
       })
@@ -213,8 +213,8 @@ describe('Book Router', () => {
           .then(res => {
             const bookdata = JSON.parse(res.text);
             expect(bookdata[0]).toEqual({
-              guid: bookdata[0].guid,
-              flight_guid: 'af6fa55c-da65-47dd-af23-578fdba44bed',
+              uuid: bookdata[0].uuid,
+              flight_uuid: 'af6fa55c-da65-47dd-af23-578fdba44bed',
               name: '김코딩',
               phone: '010-1234-5678'
             });
@@ -257,8 +257,8 @@ describe('Book Router', () => {
       .then(res => {
         const bookdata = JSON.parse(res.text);
         expect(bookdata[0]).toEqual({
-          guid: bookdata[0].guid,
-          flight_guid: 'af6fa55c-da65-47dd-af23-578fdba44bed',
+          uuid: bookdata[0].uuid,
+          flight_uuid: 'af6fa55c-da65-47dd-af23-578fdba44bed',
           name: '김코딩',
           phone: '010-1234-5678'
         });
@@ -266,18 +266,14 @@ describe('Book Router', () => {
       });
   });
 
-  test('GET /book?phone=010-1234-5678 요청은 번호에 해당하는 에약 내역과 항공편 일정을 합하여 반환해야 합니다', function (done) {
+  test('GET /book?phone=010-1234-5678 요청은 번호에 해당하는 에약 내역을 반환해야 합니다', function (done) {
     return request(app)
       .get('/book?phone=010-1234-5678')
       .then(res => {
         const bookdata = JSON.parse(res.text);
         expect(bookdata).toEqual({
-          uuid: 'af6fa55c-da65-47dd-af23-578fdba44bed',
-          departure: 'ICN',
-          destination: 'CJU',
-          departure_times: '2021-12-03 12:00:00',
-          arrival_times: '2021-12-03 12:00:00',
-          guid: bookdata.guid,
+          uuid: bookdata.uuid,
+          flight_uuid : "af6fa55c-da65-47dd-af23-578fdba44bed",
           name: '김코딩',
           phone: '010-1234-5678'
         });
