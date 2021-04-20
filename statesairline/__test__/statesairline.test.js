@@ -69,38 +69,38 @@ describe('flight Router', () => {
           uuid: 'af6fa55c-da65-47dd-af23-578fdba40bed',
           departure: 'ICN',
           destination: 'CJU',
-          departure_times: '2021-12-02 12:00:00',
-          arrival_times: '2021-12-03 12:00:00'
+          departure_times: '2021-12-02T12:00:00',
+          arrival_times: '2021-12-03T12:00:00'
         });
         done();
       });
   });
 
-  test('GET /flight?departure_times=2021-12-03 12:00:00 &arrival_times=2021-12-03 12:00:00를 입력하면 조건에 해당하는 객체를 리턴해야 합니다', function (done) {
+  test('GET /flight?departure_times=2021-12-03T12:00:00 &arrival_times=2021-12-03T12:00:00를 입력하면 조건에 해당하는 객체를 리턴해야 합니다', function (done) {
     return request(app)
-      .get('/flight?departure_times=2021-12-03 12:00:00&arrival_times=2021-12-03 12:00:00')
+      .get('/flight?departure_times=2021-12-03T12:00:00&arrival_times=2021-12-03T12:00:00')
       .then(res => {
         const flight = JSON.parse(res.text);
         expect(flight[0]).toEqual({
           uuid: 'af6fa55c-da65-47dd-af23-578fdba40byd',
           departure: 'ICN',
           destination: 'CJU',
-          departure_times: '2021-12-03 12:00:00',
-          arrival_times: '2021-12-03 12:00:00'
+          departure_times: '2021-12-03T12:00:00',
+          arrival_times: '2021-12-03T12:00:00'
         });
         expect(flight[1]).toEqual({
           uuid: 'af6fa55c-da65-47dd-af23-578fdba44bed',
           departure: 'ICN',
           destination: 'CJU',
-          departure_times: '2021-12-03 12:00:00',
-          arrival_times: '2021-12-03 12:00:00'
+          departure_times: '2021-12-03T12:00:00',
+          arrival_times: '2021-12-03T12:00:00'
         });
         expect(flight[2]).toEqual({
           uuid: 'af6fa55c-da65-47dd-af23-578fdba41bed',
           departure: 'CJU',
           destination: 'ICN',
-          departure_times: '2021-12-03 12:00:00',
-          arrival_times: '2021-12-03 12:00:00'
+          departure_times: '2021-12-03T12:00:00',
+          arrival_times: '2021-12-03T12:00:00'
         });
         done();
       });
@@ -115,29 +115,29 @@ describe('flight Router', () => {
           uuid: 'af6fa55c-da65-47dd-af23-578fdba42bed',
           departure: 'CJU',
           destination: 'ICN',
-          departure_times: '2021-12-03 12:00:00',
-          arrival_times: '2021-12-04 12:00:00'
+          departure_times: '2021-12-03T12:00:00',
+          arrival_times: '2021-12-04T12:00:00'
         });
         expect(flight[1]).toEqual({
           uuid: 'af6fa55c-da65-47dd-af23-578fdba41bed',
           departure: 'CJU',
           destination: 'ICN',
-          departure_times: '2021-12-03 12:00:00',
-          arrival_times: '2021-12-03 12:00:00'
+          departure_times: '2021-12-03T12:00:00',
+          arrival_times: '2021-12-03T12:00:00'
         });
         expect(flight[2]).toEqual({
           uuid: 'af6fa55c-da65-47dd-af23-578fdba99bed',
           departure: 'CJU',
           destination: 'ICN',
-          departure_times: '2021-12-03 12:00:00',
-          arrival_times: '2021-12-04 12:00:00'
+          departure_times: '2021-12-03T12:00:00',
+          arrival_times: '2021-12-04T12:00:00'
         });
         expect(flight[3]).toEqual({
           uuid: 'af6fa55c-da65-47dd-af23-578fdba50bed',
           departure: 'CJU',
           destination: 'ICN',
-          departure_times: '2021-12-02 12:00:00',
-          arrival_times: '2021-12-03 12:00:00'
+          departure_times: '2021-12-02T12:00:00',
+          arrival_times: '2021-12-03T12:00:00'
         });
         done();
       });
@@ -152,8 +152,8 @@ describe('flight Router', () => {
           uuid: 'af6fa55c-da65-47dd-af23-578fdba42bed',
           departure: 'CJU',
           destination: 'ICN',
-          departure_times: '2021-12-03 12:00:00',
-          arrival_times: '2021-12-04 12:00:00'
+          departure_times: '2021-12-03T12:00:00',
+          arrival_times: '2021-12-04T12:00:00'
         });
         done();
       });
@@ -203,7 +203,7 @@ describe('Book Router', () => {
     return request(app)
       .post('/book')
       .send({
-        flight_guid: 'af6fa55c-da65-47dd-af23-578fdba44bed',
+        flight_uuid: 'af6fa55c-da65-47dd-af23-578fdba44bed',
         name: '김코딩',
         phone: '010-1234-5678'
       })
