@@ -76,9 +76,9 @@ describe('flight Router', () => {
       });
   });
 
-  test('GET /flight?departure_times=2021-12-03T12:00:00 &arrival_times=2021-12-03T12:00:00를 입력하면 조건에 해당하는 객체를 리턴해야 합니다', function (done) {
+  test('GET /flight?departure_times=2021-12-03&arrival_times=2021-12-03를 입력하면 조건에 해당하는 객체를 리턴해야 합니다', function (done) {
     return request(app)
-      .get('/flight?departure_times=2021-12-03T12:00:00&arrival_times=2021-12-03T12:00:00')
+      .get('/flight?departure_times=2021-12-03&arrival_times=2021-12-03')
       .then(res => {
         const flight = JSON.parse(res.text);
         expect(flight[0]).toEqual({

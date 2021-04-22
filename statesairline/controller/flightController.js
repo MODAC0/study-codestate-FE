@@ -8,7 +8,7 @@ module.exports = {
       // 시간에 따른 필터링
       if (req.query.departure_times !== undefined && !req.query.arrival_times !== undefined) {
         const list = flights.filter((item) => {
-          return item.departure_times === req.query.departure_times && item.arrival_times === req.query.arrival_times;
+          return item.departure_times.includes(req.query.departure_times) && item.arrival_times.includes(req.query.arrival_times);
         });
         return res.status(200).json(list);
       }

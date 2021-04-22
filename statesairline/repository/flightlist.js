@@ -38,8 +38,8 @@ module.exports = [
     uuid: 'af6fa55c-da65-47dd-af23-578fdba40bod',
     departure: 'ICN',
     destination: 'CJU',
-    departure_times: '2021-12-02 12:00:00',
-    arrival_times: '2021-12-03 12:00:00'
+    departure_times: '2021-12-02T12:00:00',
+    arrival_times: '2021-12-03T12:00:00'
   },
   {
     uuid: 'af6fa55c-da65-47dd-af23-578fdba44bed',
