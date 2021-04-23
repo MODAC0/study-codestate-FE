@@ -6,9 +6,10 @@ module.exports = {
     try {
       // 조건에 따른 항공편 조회
       // 시간에 따른 필터링
-      if (req.query.departure_times !== undefined && !req.query.arrival_times !== undefined) {
+      if (req.query.departure_times !== undefined && req.query.arrival_times !== undefined) {
         const list = flights.filter((item) => {
-          return item.departure_times.includes(req.query.departure_times) && item.arrival_times.includes(req.query.arrival_times);
+          return new Date(item.departure_times).getDate() === new Date(req.query.departure_times).getDate()
+          && new Date(item.arrival_times).getDate() === new Date(req.query.arrival_times).getDate();
         });
         return res.status(200).json(list);
       }

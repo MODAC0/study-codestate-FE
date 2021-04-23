@@ -165,8 +165,8 @@ describe('flight Router', () => {
       .send({
         departure: 'ICN',
         destination: 'CJU',
-        departure_times: '2021-12-02 11:00:00',
-        arrival_times: '2021-12-04 15:00:00'
+        departure_times: '2021-12-02T11:00:00',
+        arrival_times: '2021-12-04T15:00:00'
       })
       .then(res => {
         const flight = JSON.parse(res.text);
@@ -174,8 +174,8 @@ describe('flight Router', () => {
           uuid: 'af6fa55c-da65-47dd-af23-578fdba99bed',
           departure: 'ICN',
           destination: 'CJU',
-          departure_times: '2021-12-02 11:00:00',
-          arrival_times: '2021-12-04 15:00:00'
+          departure_times: '2021-12-02T11:00:00',
+          arrival_times: '2021-12-04T15:00:00'
         });
         done();
       });
