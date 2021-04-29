@@ -1,10 +1,10 @@
 {
-  "name": "pre-sprint-react-twittler-spa",
+  "name": "react-twittler-state-props",
   "author": "Hong Shik Branden Kim <kimploo@gmail.com>",
   "version": "1.0.0",
   "private": true,
   "dependencies": {
-    "@codestates-cc/submission-npm": "^1.1.2",
+    "@codestates-cc/submission-npm": "^1.1.3",
     "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/react": "^11.2.5",
     "@testing-library/user-event": "^12.8.3",
@@ -14,14 +14,8 @@
     "react-scripts": "4.0.3",
     "react-test-renderer": "^17.0.1"
   },
-  "devDependencies": {
-    "eslint": "^7.21.0",
-    "eslint-config-prettier": "^8.1.0",
-    "eslint-plugin-jest-dom": "^3.6.5",
-    "eslint-plugin-prettier": "^3.3.1",
-    "eslint-plugin-react": "^7.22.0",
-    "eslint-plugin-react-hooks": "^4.2.0",
-    "prettier": "^2.2.1"
+  "jest": {
+    "testMatch": ["**/App.test.js"]
   },
   "scripts": {
     "start": "react-scripts start",
@@ -42,5 +36,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "resq": "^1.10.0"
   }
 }
