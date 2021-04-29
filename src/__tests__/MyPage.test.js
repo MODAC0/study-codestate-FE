@@ -10,7 +10,7 @@ import dummyTweets from '../static/dummyData';
 
 const myPageTest = {
   main() {
-    test('주어진 트윗 목록(dummyTweets)중 현재 유저인 parkhacker의 트윗만 보여야 합니다.', () => {
+    test('주어진 트윗 목록(dummyTweets) 중 현재 유저인 parkhacker의 트윗만 보여야 합니다.', () => {
       const { queryByText } = render(<MyPage dummyTweets={[]} />);
       expect(
         queryByText(

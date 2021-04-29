@@ -25,7 +25,7 @@ import dummyTweets from '../static/dummyData';
 let ReactRouterDom;
 
 describe('App.js React Router 설치', () => {
-  test('react-router-dom 를 npm 으로 설치해야 합니다. (react-router-dom)', async () => {
+  test('react-router-dom을 npm 으로 설치해야 합니다. (react-router-dom)', async () => {
     let isReactRouterDomInstalled = false;
     const defaultPath = join(process.cwd(), 'node_modules', 'react-router-dom');
 

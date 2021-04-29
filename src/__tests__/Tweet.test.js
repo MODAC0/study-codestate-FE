@@ -35,7 +35,7 @@ const tweetTest = {
         expect(username).toHaveClass('tweet__username');
       });
 
-      test('트윗 생성 일자(yyyy. mm. dd.) 가 있어야 합니다.', () => {
+      test('트윗 생성 일자(yyyy. mm. dd.)가 있어야 합니다.', () => {
         const { container, queryByText } = render(<Tweet tweet={tweet} />);
         const tweetEl = container.querySelector('.tweet');
         const createdAt = queryByText('2019. 2. 25.');
@@ -44,7 +44,7 @@ const tweetTest = {
         expect(createdAt).toHaveClass('tweet__createdAt');
       });
 
-      test('트윗 메세지가 있어야 합니다.', () => {
+      test('트윗 메시지가 있어야 합니다.', () => {
         const { container, queryByText } = render(<Tweet tweet={tweet} />);
         const tweetEl = container.querySelector('.tweet');
         const tweetMessage = queryByText(
@@ -106,7 +106,7 @@ const tweetTest = {
         expect(createdAtEl).toHaveClass('tweet__createdAt');
       });
 
-      test('트윗 메세지가 있어야 합니다.', () => {
+      test('트윗 메시지가 있어야 합니다.', () => {
         const { container, queryByText } = render(<Tweet tweet={tweet} />);
         const tweetEl = container.querySelector('.tweet');
         const tweetMessage = queryByText(content);
