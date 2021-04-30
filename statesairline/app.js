@@ -5,12 +5,14 @@ const port = 81;
 
 const flightRouter = require('./router/flightRouter');
 const bookRouter = require('./router/bookRouter');
+const airportRouter = require('./router/airportRouter');
 
 app.use(cors());
 app.use(express.json());
 
 app.use('/flight', flightRouter);
 app.use('/book', bookRouter);
+app.use('/airport', airportRouter);
 
 app.get('/', (req, res) => {
   console.log('[GET] Success : / ');

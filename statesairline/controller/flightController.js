@@ -9,7 +9,7 @@ module.exports = {
       if (req.query.departure_times !== undefined && req.query.arrival_times !== undefined) {
         const list = flights.filter((item) => {
           return new Date(item.departure_times).getDate() === new Date(req.query.departure_times).getDate()
-          && new Date(item.arrival_times).getDate() === new Date(req.query.arrival_times).getDate();
+            && new Date(item.arrival_times).getDate() === new Date(req.query.arrival_times).getDate();
         });
         return res.status(200).json(list);
       }
@@ -20,13 +20,7 @@ module.exports = {
         });
         return res.status(200).json(list);
       }
-      // 자동 완성
-      if (req.query.keyword !== undefined) {
-        const list = airports.filter((item) => {
-          return item.code.includes(req.query.keyword.toUpperCase());
-        });
-        return res.status(200).json(list);
-      }
+
       res.json(flights);
     } catch (error) {
       console.error(`[GET] Error : /flight ${error}`);
