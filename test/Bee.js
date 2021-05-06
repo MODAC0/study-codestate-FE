@@ -1,7 +1,7 @@
 require('mocha')
 const chai = require('chai')
 const expect = chai.expect
-const Bee = require('../../src/es6/Bee')
+const Bee = require('../src/Bee')
 
 describe('Bee class functionality', () => {
   var bee;
