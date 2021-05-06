@@ -10,35 +10,35 @@ describe('HoneyMakerBee class functionality', () => {
 
   /*  Overwrite methods from superclass  */
 
-  it('should have an age property that is set to `10`', () => {
+  it('`age` 속성은 `10`이어야 합니다', () => {
     expect(honeyBee.age).to.equal(10);
   });
 
-  it('should have a job property that is set to `make honey`', () => {
+  it('`job` 속성은 `make honey`이어야 합니다', () => {
     expect(honeyBee.job).to.equal('make honey')
   });
 
   /*  Inherited from superclass  */
 
-  it('should have a color property inherited from `bee` that is set to `yellow`', () => {
+  it('`color` 속성은 `Bee`로부터 상속받습니다', () => {
     expect(honeyBee.color).to.equal('yellow');
   });
 
-  it('should have a food property that is inherited from grub', () => {
+  it('`food` 속성은 `Grub`으로부터 상속받습니다', () => {
     expect(honeyBee.food).to.equal('jelly');
   });
 
-  it('should have an eat method that is inherited from grub', () => {
+  it('`eat` 메소드는 `Grub`으로부터 상속받습니다', () => {
     expect(honeyBee.eat).to.be.a('function');
   });
 
   /*  New methods and properties  */
 
-  it('should have a `honeyPot` property that is set to `0`', () => {
+  it('`honeyPot` 속성은 `0`이어야 합니다', () => {
     expect(honeyBee.honeyPot).to.equal(0);
   });
 
-  it('should have a `makeHoney` method that adds `1` to that honeyBee\'s honeyPot', () => {
+  it('`makeHoney` 메소드는 `honeyPot`에 1씩 추가합니다', () => {
     expect(honeyBee.makeHoney).to.be.a('function');
     honeyBee.makeHoney();
     expect(honeyBee.honeyPot).to.equal(1);
@@ -46,7 +46,7 @@ describe('HoneyMakerBee class functionality', () => {
     expect(honeyBee.honeyPot).to.equal(2);
   });
 
-  it('should have a `giveHoney` method that subtracts `1` from that honeyBee\'s honeyPot', () => {
+  it('`giveHoney` 메소드는 `honeyPot`에 1씩 뺍니다', () => {
     expect(honeyBee.giveHoney).to.be.a('function');
     honeyBee.makeHoney();
     honeyBee.makeHoney();

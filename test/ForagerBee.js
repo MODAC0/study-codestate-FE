@@ -10,39 +10,39 @@ describe('ForagerBee class functionality', () => {
 
   /*  Overwrite methods from superclass  */
 
-  it('should have an `age` property that is set to `10`', () => {
+  it('`age` 속성은 `10`이어야 합니다', () => {
     expect(foragerBee.age).to.equal(10);
   });
 
-  it('should have a `job` property that is set to `find pollen`', () => {
+  it('`job` 속성은 `find pollen`이어야 합니다', () => {
     expect(foragerBee.job).to.equal('find pollen');
   });
 
   /*  Inherited from superclass  */
 
-  it('should have a `color` property inherited from `bee` that is set to `yellow`', () => {
+  it('`color` 속성은 `Bee`로부터 상속받습니다', () => {
     expect(foragerBee.color).to.equal('yellow');
   });
 
-  it('should have a `food` property that is inherited from grub', () => {
+  it('`food` 속성은 `Grub`으로부터 상속받습니다', () => {
     expect(foragerBee.food).to.equal('jelly');
   });
 
-  it('should have an `eat` method that is inherited from grub', () => {
+  it('`eat` 메소드는 `Grub`으로부터 상속받습니다', () => {
     expect(foragerBee.eat).to.be.a('function');
   });
 
   /*  New methods and properties  */
 
-  it('should have a `canFly` property that is set `true`', () => {
+  it('`canFly` 속성은 `true`이어야 합니다', () => {
     expect(foragerBee.canFly).to.equal(true);
   });
 
-  it('should have a `treasureChest` property that is set to an empty array `[]`', () => {
+  it('`treasureChest` 속성은 빈 배열 `[]`이어야 합니다', () => {
     expect(foragerBee.treasureChest).to.be.a('array');
   });
 
-  it('should have a `forage` method that allows the bee to add a `treasure` to the `treasureChest`', () => {
+  it('`forage` 메소드를 통해 `treasureChest` 속성에 보물을 추가할 수 있어야 합니다', () => {
     foragerBee.forage('pollen');
     foragerBee.forage('flowers');
     foragerBee.forage('gold');
