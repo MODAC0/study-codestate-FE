@@ -1,9 +1,10 @@
+const {serverErrorHandler} = require('./errorhandler');
 const flights = require('../repository/flightList');
 const airports = require('../repository/airportList');
 
 module.exports = {
   findAll: (req, res) => {
-    try {
+    serverErrorHandler(()=>{
       // 조건에 따른 항공편 조회
       // 시간에 따른 필터링
       if (req.query.departure_times !== undefined && req.query.arrival_times !== undefined) {
@@ -20,19 +21,12 @@ module.exports = {
         });
         return res.status(200).json(list);
       }
-
-      res.json(flights);
-    } catch (error) {
-      console.error(`[GET] Error : /flight ${error}`);
-      return res.status(500).json({
-        message: 'Internal Server Error',
-        stacktrace: error.toString()
-      });
-    }
+      return res.json(flights);
+    },`[GET] /flight`);
   },
 
   findById: (req, res) => {
-    try {
+    serverErrorHandler(()=>{
       const data = flights.filter(item => req.params.id === item.uuid);
       if (data.length > 0) {
         return res.status(200).json(data[0]);
@@ -40,17 +34,11 @@ module.exports = {
       else {
         return res.status(404).json(null);
       }
-    } catch (error) {
-      console.error(`[GET] Error : /flight/:id ${error}`);
-      return res.status(500).json({
-        message: 'Internal Server Error',
-        stacktrace: error.toString()
-      });
-    }
+    }, `[GET] /flight/:id`);
   },
 
   update: (req, res) => {
-    try {
+    serverErrorHandler(()=>{
       let data;
       flights.forEach((item) => {
         if (req.params.id === item.uuid) {
@@ -70,12 +58,6 @@ module.exports = {
         }
       });
       return res.status(200).json(data);
-    } catch (error) {
-      console.error(`[PUT] Error : /flight/:id ${error}`);
-      return res.status(500).json({
-        message: 'Internal Server Error',
-        stacktrace: error.toString()
-      });
-    }
+    }, `[PUT] /flight/:id`);
   }
 };

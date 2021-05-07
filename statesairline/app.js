@@ -25,7 +25,7 @@ app.post('/', (req, res) => {
 });
 
 app.listen(port, () => {
-  console.log('[Server Start] StatesAirline');
+  console.log('[Server Start] StatesAirline | http://localhost:81/');
 });
 
 module.exports = app;

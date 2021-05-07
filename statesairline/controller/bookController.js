@@ -1,10 +1,17 @@
 const { v4: uuidv4 } = require('uuid');
+const {serverErrorHandler} = require('./errorhandler');
 const flights = require('../repository/flightList');
+const errorhandler = require('./errorhandler');
 let booking = [];
 
 module.exports = {
+  //serverErrorHandler errorhandler.js 안에 정의 된 메소드 입니다. 
+  //라우터 요청에 에러처리를 수행하는 메소드입니다.
   findById: (req, res) => {
-    try {
+    serverErrorHandler(()=>{
+      // [GET] /book 
+      // [GET] /book?
+
       if (req.query.flight_id !== undefined) {
         const filtered = booking.filter(item => item.flight_uuid === req.query.flight_id);
         return res.status(200).json(filtered);
@@ -18,17 +25,11 @@ module.exports = {
         return res.status(200).json({uuid, flight_uuid, name, phone});
       }
       return res.status(200).json(booking);
-    } catch (error) {
-      console.error(`[GET] Error : /book ${error}`);
-      return res.status(500).json({
-        message: 'Internal Server Error',
-        stacktrace: error.toString()
-      });
-    }
+    }, `[GET] /book`)
   },
 
   create: (req, res) => {
-    try {
+    serverErrorHandler(()=>{
       const { flight_uuid, name, phone } = req.body;
       booking.push({
         uuid: uuidv4(),
@@ -37,25 +38,13 @@ module.exports = {
         phone
       });
       return res.status(201).json('[POST] Success : Create booking data');
-    } catch (error) {
-      console.error(`[POST] Error : /book ${error}`);
-      return res.status(500).json({
-        message: 'Internal Server Error',
-        stacktrace: error.toString()
-      });
-    }
+    }, `[POST] /book`);
   },
 
   deleteById: (req, res) => {
-    try {
+    serverErrorHandler(()=>{
       booking = booking.filter(item => req.query.phone !== item.phone);
       return res.status(200).json(booking);
-    } catch (error) {
-      console.error(`[delete] Error /delete/reserviontdata/:id : ${error}`);
-      return res.status(500).json({
-        message: 'Internal Server Error',
-        stacktrace: error.toString()
-      });
-    }
+    }, `[delete] /delete/reserviontdata/:id`);
   }
-};
+}
