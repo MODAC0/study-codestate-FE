@@ -32,7 +32,6 @@ module.exports = {
     serverErrorHandler(()=>{
       const { flight_uuid, name, phone } = req.body;
       booking.push({
-        uuid: uuidv4(),
         flight_uuid,
         name,
         phone
