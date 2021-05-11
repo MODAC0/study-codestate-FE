@@ -15,13 +15,19 @@ app.use('/book', bookRouter);
 app.use('/airport', airportRouter);
 
 app.get('/', (req, res) => {
-  console.log('[GET] Success : / ');
   res.status(200).send('Welcome, States Airline!');
 });
 
-app.post('/', (req, res) => {
-  console.log('[POST] Success : / ');
-  res.status(200).send('Welcome, States Airline!');
+app.use((req, res, next) => {
+  res.status(404).send('Not Found!');
+});
+ 
+app.use((err, req, res, next) => {
+  console.error(err.stack)
+  res.status(500).send({
+    message: 'Internal Server Error',
+    stacktrace: err.toString()
+  })
 });
 
 app.listen(port, () => {
