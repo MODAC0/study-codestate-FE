@@ -26,7 +26,7 @@ app.post('/signin', (req, res) => {
 });
 
 app.get('/', (req, res) => {
-  res.status(201).send('hello World');
+  res.status(201).send('Hello World');
 });
 
 app.get('/status', authToken, (req, res) => {
