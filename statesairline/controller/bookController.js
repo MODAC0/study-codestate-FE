@@ -5,8 +5,6 @@ module.exports = {
   //serverErrorHandler errorhandler.js 안에 정의 된 메소드 입니다. 
   //라우터 요청에 에러처리를 수행하는 메소드입니다.
   findById: async (req, res) => {
-      // [GET] /book 
-      // [GET] /book?
       if (req.query.flight_id !== undefined) {
         const filtered = booking.filter(item => item.flight_uuid === req.query.flight_id);
         return res.status(200).json(filtered);
