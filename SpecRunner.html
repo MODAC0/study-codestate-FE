@@ -2,7 +2,8 @@
 <html>
   <head>
     <title>Underbar Test Suite</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
     <link rel="stylesheet" href="lib/css/mocha.css" />
     <script src="lib/chai.js"></script>
     <script src="lib/mocha.js"></script>
@@ -11,24 +12,17 @@
     <script src="lib/testSupport.js"></script>
 
     <!-- Source files -->
-    <script src="src/underbar.js"></script>
+    <script src="src/01_bareMinimum.js"></script>
+    <!-- Advanced Challenge, nightmare에 도전하려면 아래 주석을 해제하세요. -->
+    <!-- <script src="src/02_advanced.js"></script> -->
+    <!-- <script src="src/03_nightmare.js"></script> -->
     <!-- End source files -->
 
     <!-- Test files -->
-    <script>
-          var clock;
-
-          before(function() {
-            clock = sinon.useFakeTimers();
-          });
-
-          after(function() {
-            clock.restore();
-          });
-    </script>
-    <script src="spec/part1.js"></script>
-    <script src="spec/part2.js"></script>
-    <script src="spec/advanced.js"></script>
+    <script src="spec/01_bareMinimum.test.js"></script>
+    <!-- Advanced Challenge, nightmare에 도전하려면 아래 주석을 해제하세요. -->
+    <!-- <script src="spec/02_advanced.test.js"></script> -->
+    <!-- <script src="spec/03_nightmare.test.js"></script> -->
     <!-- End test files -->
   </head>
   <body>
