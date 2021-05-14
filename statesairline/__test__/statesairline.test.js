@@ -186,6 +186,18 @@ describe('Book Router', () => {
   afterAll(() => {
     app.close();
   });
+
+  test('GET /book 요청의 응답은 배열의 형태여야 합니다', function (done) {
+    return request(app)
+      .get('/book')
+      .then(res => {
+        const parsedBody = JSON.parse(res.text);
+        expect(typeof parsedBody).toEqual('object');
+        expect(Array.isArray(parsedBody)).toEqual(true);
+        done();
+      });
+  });
+
   test('올바른 POST /book 요청을 처리할 수 있어야 합니다', function (done) {
     return request(app)
       .post('/book')
@@ -213,7 +225,6 @@ describe('Book Router', () => {
           .then(res => {
             const bookdata = JSON.parse(res.text);
             expect(bookdata[0]).toEqual({
-              uuid: bookdata[0].uuid,
               flight_uuid: 'af6fa55c-da65-47dd-af23-578fdba44bed',
               name: '김코딩',
               phone: '010-1234-5678'
@@ -240,24 +251,12 @@ describe('Book Router', () => {
       });
   });
 
-  test('GET /book 요청의 응답은 배열의 형태여야 합니다', function (done) {
-    return request(app)
-      .get('/book')
-      .then(res => {
-        const parsedBody = JSON.parse(res.text);
-        expect(typeof parsedBody).toEqual('object');
-        expect(Array.isArray(parsedBody)).toEqual(true);
-        done();
-      });
-  });
-
   test('GET /book?flightId=af6fa55c-da65-47dd-af23-578fdba44bed 요청은 특정 항공편에 대한 모든 예약 객체를 반환해야 합니다', function (done) {
     return request(app)
       .get('/book?flightId=af6fa55c-da65-47dd-af23-578fdba44bed')
       .then(res => {
         const bookdata = JSON.parse(res.text);
         expect(bookdata[0]).toEqual({
-          uuid: bookdata[0].uuid,
           flight_uuid: 'af6fa55c-da65-47dd-af23-578fdba44bed',
           name: '김코딩',
           phone: '010-1234-5678'
@@ -272,8 +271,7 @@ describe('Book Router', () => {
       .then(res => {
         const bookdata = JSON.parse(res.text);
         expect(bookdata).toEqual({
-          uuid: bookdata.uuid,
-          flight_uuid : "af6fa55c-da65-47dd-af23-578fdba44bed",
+          flight_uuid: 'af6fa55c-da65-47dd-af23-578fdba44bed',
           name: '김코딩',
           phone: '010-1234-5678'
         });
