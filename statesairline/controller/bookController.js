@@ -30,7 +30,7 @@ module.exports = {
       name,
       phone
     });
-    return res.status(201).json('Success');
+    return res.status(201).json({ message: "Create success!" });
   },
 
   //[DELETE] /book 요청을 수행합니다.
