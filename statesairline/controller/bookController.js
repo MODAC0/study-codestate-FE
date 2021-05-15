@@ -33,7 +33,7 @@ module.exports = {
     return res.status(201).json({ message: "Create success!" });
   },
 
-  //[DELETE] /book 요청을 수행합니다.
+  //[DELETE] /book?phone={phone} 요청을 수행합니다.
   //요청 된 phone 값과 동일한 예약 데이터를 삭제합니다.
   deleteById: async (req, res) => {
     booking = booking.filter(item => req.query.phone !== item.phone);
