@@ -45,6 +45,6 @@ module.exports = {
         data = item;
       }
     });
-    return res.status(200).json({message: "Update success!"});
+    return res.status(200).json(data);
   }
 };

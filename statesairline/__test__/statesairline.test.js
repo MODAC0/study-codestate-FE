@@ -158,28 +158,6 @@ describe('flight Router', () => {
         done();
       });
   });
-
-  test('PUT /flight/:ID 요청의 업데이트 된 객체를 반환해야 합니다', function (done) {
-    return request(app)
-      .put('/flight/af6fa55c-da65-47dd-af23-578fdba99bed')
-      .send({
-        departure: 'ICN',
-        destination: 'CJU',
-        departure_times: '2021-12-02T11:00:00',
-        arrival_times: '2021-12-04T15:00:00'
-      })
-      .then(res => {
-        const flight = JSON.parse(res.text);
-        expect(flight).toEqual({
-          uuid: 'af6fa55c-da65-47dd-af23-578fdba99bed',
-          departure: 'ICN',
-          destination: 'CJU',
-          departure_times: '2021-12-02T11:00:00',
-          arrival_times: '2021-12-04T15:00:00'
-        });
-        done();
-      });
-  });
 });
 
 describe('Book Router', () => {
@@ -285,6 +263,34 @@ describe('Book Router', () => {
       .then(res => {
         const bookdata = JSON.parse(res.text);
         expect(bookdata.length).toEqual(0);
+        done();
+      });
+  });
+});
+
+describe('Advanced Challenges', function () {
+  afterAll(() => {
+    app.close();
+  });
+
+  test('PUT /flight/:ID 요청의 업데이트 된 객체를 반환해야 합니다', function (done) {
+    return request(app)
+      .put('/flight/af6fa55c-da65-47dd-af23-578fdba99bed')
+      .send({
+        departure: 'ICN',
+        destination: 'CJU',
+        departure_times: '2021-12-02T11:00:00',
+        arrival_times: '2021-12-04T15:00:00'
+      })
+      .then(res => {
+        const flight = JSON.parse(res.text);
+        expect(flight).toEqual({
+          uuid: 'af6fa55c-da65-47dd-af23-578fdba99bed',
+          departure: 'ICN',
+          destination: 'CJU',
+          departure_times: '2021-12-02T11:00:00',
+          arrival_times: '2021-12-04T15:00:00'
+        });
         done();
       });
   });
