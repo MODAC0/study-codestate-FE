@@ -9,7 +9,7 @@ module.exports = [
   {
     uuid: 'af6fa55c-da65-47dd-af23-578fdba40byd',
     departure: 'ICN',
-    destination: 'CJU',
+    destination: 'PUS',
     departure_times: '2021-12-03T12:00:00',
     arrival_times: '2021-12-03T12:00:00'
   },
@@ -30,7 +30,7 @@ module.exports = [
   {
     uuid: 'af6fa55c-da65-47dd-af23-578fd7a40bed',
     departure: 'ICN',
-    destination: 'CJU',
+    destination: 'BKK',
     departure_times: '2021-12-02T12:00:00',
     arrival_times: '2021-12-03T12:00:00'
   },

@@ -84,7 +84,7 @@ describe('flight Router', () => {
         expect(flight[0]).toEqual({
           uuid: 'af6fa55c-da65-47dd-af23-578fdba40byd',
           departure: 'ICN',
-          destination: 'CJU',
+          destination: 'PUS',
           departure_times: '2021-12-03T12:00:00',
           arrival_times: '2021-12-03T12:00:00'
         });
