@@ -242,7 +242,7 @@ describe('Book Router', () => {
         done();
       });
   });
-
+  // 해당 테스트에서 저장 된 데이터가 아래 Delete 요청을 통해 지워져야 합니다.
   test('GET /book?phone=010-1234-5678 요청은 번호에 해당하는 에약 내역을 반환해야 합니다', function (done) {
     return request(app)
       .get('/book?phone=010-1234-5678')
@@ -256,7 +256,7 @@ describe('Book Router', () => {
         done();
       });
   });
-
+  // Delete 요청을 통해 지우는 데이터는 위 GET 요청 테스트를 통해 저장된 데이터입니다.
   test('Delete /book/ 요청을 하면 예약 목록에서 파라미터 phone에 해당하는 데이터가 삭제되어야 합니다', function (done) {
     return request(app)
       .delete('/book?phone=010-1234-5678')
