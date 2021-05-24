@@ -9,6 +9,7 @@ module.exports = {
     //TODO: 
 
 
+
     return res.status(200).json(booking);
   },
 
@@ -16,6 +17,7 @@ module.exports = {
   // 요청 된 예약 데이터를 저장합니다.
   create: async (req, res) => {
     //TODO: 
+
 
 
     return res.status(201).json({ message: 'Create success!' });
@@ -26,6 +28,7 @@ module.exports = {
   deleteById: async (req, res) => {
     //TODO: 
 
+    
     
     return res.status(200).json(booking);
   }
