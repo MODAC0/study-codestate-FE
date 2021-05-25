@@ -169,7 +169,7 @@ describe('Book Router', () => {
       });
   });
 
-  test('POST /book 요청시, flight_guid, name, phone 데이터가 객체로 저장되어야 합니다.', function (done) {
+  test('POST /book 요청시, flight_uuid, name, phone 데이터가 객체로 저장되어야 합니다.', function (done) {
     return request(app)
       .post('/book')
       .send({
@@ -192,7 +192,7 @@ describe('Book Router', () => {
       });
   });
 
-  test('GET /book?flight_id=af6fa55c-da65-47dd-af23-578fdba50bed 요청은 특정 항공편에 대한 모든 예약 객체를 반환해야 합니다', function (done) {
+  test('GET /book?flight_uuid=af6fa55c-da65-47dd-af23-578fdba50bed 요청은 특정 항공편에 대한 모든 예약 객체를 반환해야 합니다', function (done) {
     return request(app)
       .post('/book')
       .send({
@@ -202,7 +202,7 @@ describe('Book Router', () => {
       })
       .then(() => {
         return request(app)
-          .get('/book?flight_id=af6fa55c-da65-47dd-af23-578fdba50bed')
+          .get('/book?flight_uuid=af6fa55c-da65-47dd-af23-578fdba50bed')
           .then(res => {
             const bookdata = JSON.parse(res.text);
             expect(bookdata[0]).toEqual({
