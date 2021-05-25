@@ -7,14 +7,13 @@ module.exports = {
     //TODO: 
     
 
-
     return res.json(flights);
   },
   // [GET] /fligjt/{:id}
   // 요청 된 id 값과 동일한 uuid 값을 가진 항공편 데이터를 조회합니다.
   findById: async (req, res) => {
     //TODO: 
-
+    
 
 
   },
