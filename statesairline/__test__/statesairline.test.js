@@ -266,4 +266,24 @@ describe('Advanced Challenges', function () {
         done();
       });
   });
+
+  test('PUT /flight/{:id} 요청의 일부 데이터만 업데이트 된 객체를 반환해야 합니다', function (done) {
+    return request(app)
+      .put('/flight/af6fa55c-da65-47dd-af23-578fdba99bed')
+      .send({
+        departure: 'CJU',
+        destination: 'ICN'
+      })
+      .then(res => {
+        const flight = JSON.parse(res.text);
+        expect(flight).toEqual({
+          uuid: 'af6fa55c-da65-47dd-af23-578fdba99bed',
+          departure: 'CJU',
+          destination: 'ICN',
+          departure_times: '2021-12-02T11:00:00',
+          arrival_times: '2021-12-04T15:00:00'
+        });
+        done();
+      });
+  });
 });
