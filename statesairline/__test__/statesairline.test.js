@@ -215,7 +215,7 @@ describe('Book Router', () => {
       });
   });
   
-  test('GET /book?phone=010-1234-5678 요청은 번호에 해당하는 에약 내역을 반환해야 합니다', function (done) {
+  test('GET /book?phone=010-1234-5678 요청은 번호에 해당하는 예약 내역을 반환해야 합니다', function (done) {
     return request(app)
       .get('/book?phone=010-1234-5678')
       .then(res => {
