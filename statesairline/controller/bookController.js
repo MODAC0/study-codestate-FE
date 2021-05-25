@@ -4,7 +4,7 @@ let booking = [];
 
 module.exports = {
   // [GET] /book 요청을 수행합니다.
-  // 전체 데이터 혹은 요청 된 flight_id, phone 값과 동일한 예약 데이터를 조회합니다.
+  // 전체 데이터 혹은 요청 된 flight_uuid, phone 값과 동일한 예약 데이터를 조회합니다.
   findById: async (req, res) => {
     //TODO:
 
