@@ -124,7 +124,7 @@ describe('flight Router', () => {
       .get('/flight/af6fa55c-da65-47dd-af23-578fdba42bed')
       .then(res => {
         const flight = JSON.parse(res.text);
-        expect(flight).toEqual({
+        expect(flight[0]).toEqual({
           uuid: 'af6fa55c-da65-47dd-af23-578fdba42bed',
           departure: 'CJU',
           destination: 'ICN',
