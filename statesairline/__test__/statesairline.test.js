@@ -259,7 +259,7 @@ describe('Book Router', () => {
   });
 
   // Delete 요청을 통해 지우는 데이터는 위 GET 요청 테스트를 통해 저장된 데이터입니다.
-  test('Delete /book/ 요청을 하면 예약 목록에서 파라미터 phone에 해당하는 데이터가 삭제되어야 합니다', function (done) {
+  test('Delete /book?phone=010-1234-5678 요청을 하면 예약 목록에서 파라미터 phone에 해당하는 데이터가 삭제되어야 합니다', function (done) {
     return request(app)
       .delete('/book?phone=010-1234-5678')
       .then(res => {
