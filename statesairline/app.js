@@ -1,7 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const app = express();
-const port = 81;
+const port = 3001;
 
 const flightRouter = require('./router/flightRouter');
 const bookRouter = require('./router/bookRouter');
