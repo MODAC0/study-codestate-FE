@@ -1,5 +1,5 @@
 {
-  "name": "shoppinglist",
+  "name": "cmarket-redux",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
