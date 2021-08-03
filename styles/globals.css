@@ -14,3 +14,33 @@ a {
 * {
   box-sizing: border-box;
 }
+
+.table {
+  display: table;
+  width: calc(100% - 2rem);
+  margin: 1rem;
+  border: 1px solid gray;
+}
+
+.row, .row-header {
+  display: table-row;
+}
+
+.col {
+  display: table-cell;
+  padding: 0.5rem 1rem;
+  border-right: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+}
+
+.row-header .col {
+  background-color: #eee;
+}
+
+.merge-col {
+  position: absolute;
+  width: calc(100% - 2rem);
+  border: 1px solid gray;
+  margin-left: -1px;
+  padding: 0.5rem 1rem;
+}
