@@ -305,7 +305,7 @@ describe('Tweets.js 트윗 전송 폼 테스트', () => {
     expect(textarea).toHaveClass('tweetForm__input--message', { exact: true });
   });
 
-  test('트윗을 전송할 수 있는 button 엘리먼트가 있어야 합니다.', () => {
+  test('트윗을 전송할 수 있는 button 엘리먼트가 있어야 합니다. (className : "tweetForm__submitButton")', () => {
     const { container } = render(<Tweets />);
     const submitButton = container.querySelector('.tweetForm__submitButton');
     expect(submitButton).toBeInTheDocument();
