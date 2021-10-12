@@ -1,6 +1,6 @@
 const { findAll, findById, update } = require('../controller/flightController');
-const exress = require('express');
-const router = exress.Router();
+const express = require('express');
+const router = express.Router();
 
 router.get('/', findAll);
 

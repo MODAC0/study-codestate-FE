@@ -1,6 +1,6 @@
 const { findById, create, deleteById } = require('../controller/bookController');
-const exress = require('express');
-const router = exress.Router();
+const express = require('express');
+const router = express.Router();
 
 router.get('/', findById);
 
