@@ -119,12 +119,12 @@ describe('flight Router', () => {
       });
   });
 
-  test('GET /flight/{:id} 요청의 응답 객체는 `uuid, departure, destination, departure_times, arrival_times`를 포함해야 합니다', function (done) {
+  test('GET /flight/:id 요청의 응답 객체는 `uuid, departure, destination, departure_times, arrival_times`를 포함해야 합니다', function (done) {
     return request(app)
       .get('/flight/af6fa55c-da65-47dd-af23-578fdba42bed')
       .then(res => {
         const flight = JSON.parse(res.text);
-        expect(flight).toEqual({
+        expect(flight[0]).toEqual({
           uuid: 'af6fa55c-da65-47dd-af23-578fdba42bed',
           departure: 'CJU',
           destination: 'ICN',
@@ -169,7 +169,7 @@ describe('Book Router', () => {
       });
   });
 
-  test('POST /book 요청시, flight_uuid, name, phone 데이터가 객체로 저장되어야 합니다.', function (done) {
+  test('POST /book 요청시, flight_uuid, name, phone 데이터가 객체로 저장되어야 합니다', function (done) {
     return request(app)
       .post('/book')
       .send({
@@ -214,7 +214,7 @@ describe('Book Router', () => {
           });
       });
   });
-  
+
   test('GET /book?phone=010-1234-5678 요청은 번호에 해당하는 에약 내역을 반환해야 합니다', function (done) {
     return request(app)
       .get('/book?phone=010-1234-5678')
@@ -229,7 +229,7 @@ describe('Book Router', () => {
       });
   });
 
-  test('Delete /book?phone=010-1234-5678 요청을 하면 예약 목록에서 파라미터 phone에 해당하는 데이터가 삭제되어야 합니다', function (done) {
+  test('DELETE /book?phone=010-1234-5678 요청을 하면 예약 목록에서 파라미터 phone에 해당하는 데이터가 삭제되어야 합니다', function (done) {
     return request(app)
       .delete('/book?phone=010-1234-5678')
       .then(res => {
@@ -245,7 +245,7 @@ describe('Advanced Challenges', function () {
     app.close();
   });
 
-  test('PUT /flight/{:id} 요청의 업데이트 된 객체를 반환해야 합니다', function (done) {
+  test('PUT /flight/:id 요청의 업데이트 된 객체를 반환해야 합니다', function (done) {
     return request(app)
       .put('/flight/af6fa55c-da65-47dd-af23-578fdba99bed')
       .send({
