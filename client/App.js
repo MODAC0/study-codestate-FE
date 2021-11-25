@@ -8,7 +8,7 @@ class App {
       .addEventListener('click', this.toLowerCase.bind(this));
   }
   post(path, body) {
-    fetch(`http://localhost:5000/${path}`, {
+    fetch(`http://localhost:4999/${path}`, {
       method: 'POST',
       body: JSON.stringify(body),
       headers: {
