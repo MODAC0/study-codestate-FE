@@ -7,9 +7,9 @@
     "test": "test"
   },
   "scripts": {
-    "test": "mocha test/**/*.js",
-    "report": "mocha test/**/*.js --reporter @mochajs/json-file-reporter",
-    "submit": "codestates-submission"
+    "test": "mocha test/**/*.js --reporter mocha-multi-reporters --reporter-options configFile=multi-reporters.json",
+    "report": "mocha test/**/*.js --timeout 50000 --reporter @mochajs/json-file-reporter",
+    "submit": "codestates"
   },
   "lint-staged": {
     "linters": {
@@ -33,13 +33,12 @@
     "url": "https://github.com/codestates/im-sprints-beesbeesbees/issues"
   },
   "homepage": "https://github.com/codestates/im-sprints-beesbeesbees#readme",
-  "dependencies": {
-    "@codestates-cc/submission-npm": "^1.1.3"
-  },
   "devDependencies": {
     "@mochajs/json-file-reporter": "^1.3.0",
     "chai": "^4.1.2",
+    "codestates-assignment-manager": "^1.8.0",
     "mocha": "^8.2.0",
+    "mocha-multi-reporters": "^1.5.1",
     "underscore": "^1.9.1"
   }
 }
