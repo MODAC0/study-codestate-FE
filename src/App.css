@@ -13,7 +13,11 @@
   --sub-text-color: rgb(91, 112, 131);
   --bold-text-color: rgb(15, 20, 25);
   --button-text-color: rgb(255, 255, 255);
+  --button-color: rgb(25, 71, 140);
   --shade-color: rgb(229, 229, 229);
+  --mypage-component-color: #eb9705;
+  --about-component-color: #097e4d;
+  --tweets-component-color: #003380;
 }
 
 body {
@@ -40,21 +44,8 @@ input {
 }
 
 button {
+  background-color: var(--button-color);
   color: var(--button-text-color);
-}
-
-button:hover,
-button:focus {
-  background: var(--point-color);
-}
-
-button:focus {
-  outline: 1px solid #fff;
-  outline-offset: -4px;
-}
-
-button:active {
-  transform: scale(0.99);
 }
 
 textarea {
@@ -95,77 +86,9 @@ main {
 }
 
 .features {
+  width: 564px;
   display: flex;
   flex-direction: column;
   border: 1px solid var(--main-border-color);
   flex: 1 0 0;
-}
-
-.tweetForm__container {
-  border-bottom: 1px solid var(--main-border-color);
-  margin-bottom: 0.5rem;
-}
-
-.tweetForm__wrapper {
-  display: flex;
-  flex-direction: row;
-  padding: 0.5rem 1rem;
-}
-
-.tweetForm__profile {
-  padding: 0.2rem;
-}
-
-.tweetForm__profile > img {
-  display: inline-block;
-  width: 50px;
-  border-radius: 100%;
-}
-
-.tweetForm__input {
-  display: flex;
-  justify-content: center;
-  align-content: center;
-  flex-direction: column;
-  flex: 1 0 0;
-}
-
-.tweetForm__inputWrapper {
-  display: flex;
-  margin: 0.5rem;
-  flex: 0 0 4rem;
-}
-
-.tweetForm__textarea {
-  flex: 1 0 0;
-  border: 0;
-}
-
-.tweetForm__count {
-  margin: 0.5rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.tweetForm__count__text {
-  color: var(--sub-text-color);
-}
-
-.tweetForm__submit {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  flex: 1 0 0;
-}
-
-.tweetForm__submitIcons {
-  flex: 1 0 0;
-}
-
-.tweetForm__submitButton {
-  background-color: var(--point-color-tint);
-  margin: 0.5rem;
-  padding: 0.5rem 1rem;
-  border-radius: 1rem;
 }

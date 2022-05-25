@@ -14,6 +14,8 @@
   height: 97px;
   display: flex;
   align-items: center;
+  color:white;
+  background-color: var(--mypage-component-color);
 }
 
 .myInfo__detail {
@@ -32,4 +34,10 @@
   width: 80px;
   height: 80px;
   border-radius: 100%;
+}
+
+.tweets__mypage{
+  flex: 1 0 80vh;
+  border: 2px solid var(--mypage-component-color);
+  overflow-y: scroll;
 }
