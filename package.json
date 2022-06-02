@@ -9,16 +9,8 @@
     "report": "jest --forceExit --runInBand --json --outputFile=report.jest.json",
     "submit": "codestates"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/codestates/im-sprint-statesairline-server.git"
-  },
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/codestates/im-sprint-statesairline-server/issues"
-  },
-  "homepage": "https://github.com/codestates/im-sprint-statesairline-server#readme",
   "dependencies": {
     "cors": "^2.8.5",
     "eslint": "^7.23.0",
