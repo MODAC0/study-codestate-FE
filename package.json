@@ -1,5 +1,5 @@
 {
-  "name": "react-twittler-state-props",
+  "name": "fe-sprint-react-twittler-state-props",
   "author": "Hong Shik Branden Kim <kimploo@gmail.com>",
   "version": "1.0.0",
   "private": true,
@@ -11,7 +11,8 @@
     "react-dom": "^17.0.1",
     "react-router-dom": "^6.3.0",
     "react-scripts": "4.0.3",
-    "react-test-renderer": "^17.0.1"
+    "react-test-renderer": "^17.0.1",
+    "resq": "^1.10.2"
   },
   "jest": {
     "testMatch": ["**/App.test.js"]
@@ -22,7 +23,7 @@
     "test": "react-scripts test --watchAll=false --verbose",
     "watch": "react-scripts test --verbose",
     "report": "react-scripts test --watchAll=false --json --outputFile=report.jest.json",
-    "submit": "codestates-submission"
+    "submit": "codestates"
   },
   "browserslist": {
     "production": [
@@ -37,6 +38,6 @@
     ]
   },
   "devDependencies": {
-    "resq": "^1.10.0"
+    "codestates-assignment-manager": "^1.8.0"
   }
 }
