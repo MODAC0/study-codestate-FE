@@ -38,7 +38,7 @@ const tweetTest = {
       test('트윗 생성 일자(yyyy. m. d.)가 있어야 합니다.', () => {
         const { container, queryByText } = render(<Tweet tweet={tweet} />);
         const tweetEl = container.querySelector('.tweet');
-        const createdAt = queryByText('2019. 2. 25.');
+        const createdAt = queryByText('2022. 2. 25.');
 
         expect(tweetEl).toContainElement(createdAt);
         expect(createdAt).toHaveClass('tweet__createdAt');
