@@ -11,11 +11,12 @@
     "react-dom": "^17.0.1",
     "react-router-dom": "^6.3.0",
     "react-scripts": "4.0.3",
-    "react-test-renderer": "^17.0.1",
-    "resq": "^1.10.2"
+    "react-test-renderer": "^17.0.1"
   },
   "jest": {
-    "testMatch": ["**/App.test.js"]
+    "testMatch": [
+      "**/App.test.js"
+    ]
   },
   "scripts": {
     "start": "react-scripts start",
@@ -38,6 +39,7 @@
     ]
   },
   "devDependencies": {
-    "codestates-assignment-manager": "^1.8.0"
+    "codestates-assignment-manager": "^1.8.0",
+    "resq": "^1.10.2"
   }
 }
