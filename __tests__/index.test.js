@@ -139,9 +139,10 @@ describe('💡 Part 2: AJAX 요청', () => {
     test('더이상, 하드코딩된 flightList JSON을 사용하지 않습니다 (초기값은 빈 배열로 둡니다)', () => {
       // HINT: 주석 처리하지 말고, 해당 내용을 지워야 테스트에 통과합니다
       const file = readFileSync(__dirname + '/../pages/Main.js').toString();
-      expect(file.includes("import json from '../resource/flightList'")).toBe(
-        false
-      );
+      expect(
+        file.includes("import json from '../resource/flightList'") ||
+          file.includes('import json from "../resource/flightList"')
+      ).toBe(false);
     });
 
     test('getFlight 요청이 다소 느리므로, 로딩 상태에 따라 LoadingIndicator 컴포넌트를 표시해야 합니다', async () => {
@@ -153,7 +154,9 @@ describe('💡 Part 2: AJAX 요청', () => {
       fireEvent.click(btn);
 
       expect(getByAltText('now loading...')).not.toBeNull();
-      await waitForElementToBeRemoved(() => getByAltText('now loading...'));
+      await waitForElementToBeRemoved(() =>
+        container.querySelector('.loading-indicator')
+      );
     });
   });
 
