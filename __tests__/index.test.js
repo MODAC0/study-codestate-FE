@@ -17,11 +17,17 @@ import nock from 'nock';
 import { readFileSync } from 'fs';
 
 configure({
-  // showOriginalStackTrace: false,
+  showOriginalStackTrace: false,
   getElementError: (message, container) => {
     return new Error(message);
   },
 });
+
+console = {
+  ...console,
+  error: () => {},
+  log: () => {},
+};
 
 // console.error = (msg) => {
 //   if (
@@ -144,15 +150,15 @@ describe('💡 Part 2: AJAX 요청', () => {
     });
 
     test('getFlight 요청이 다소 느리므로, 로딩 상태에 따라 LoadingIndicator 컴포넌트를 표시해야 합니다', async () => {
-      const { getByRole, getByAltText, container } = render(<Main />);
+      const { getByRole, queryByAltText, container } = render(<Main />);
       const btn = getByRole('button', { name: '검색' });
       const input = container.querySelector('#input-destination');
 
       fireEvent.change(input, { target: { value: 'CJU' } });
       fireEvent.click(btn);
 
-      expect(getByAltText('now loading...')).not.toBeNull();
-      await waitForElementToBeRemoved(() => getByAltText('now loading...'));
+      expect(queryByAltText('now loading...')).not.toBeNull();
+      await waitForElementToBeRemoved(() => queryByAltText('now loading...'));
     });
   });
 
