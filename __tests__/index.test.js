@@ -89,7 +89,7 @@ describe('💡 Part 1: 항공권 목록 필터링', () => {
   });
 });
 
-xdescribe('💡 Part 2: AJAX 요청', () => {
+describe('💡 Part 2: AJAX 요청', () => {
   describe('🧩 Side Effect는 useEffect에서 다뤄야 합니다', () => {
     afterEach(() => {
       cleanup();
