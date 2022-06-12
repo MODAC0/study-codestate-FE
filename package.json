@@ -1,10 +1,9 @@
 {
-  "name": "mini-node-server",
+  "name": "fe-sprint-mini-node-server",
   "version": "1.0.0",
-  "description": "Codestates Immersive Course Sprint",
-  "main": "index.js",
+  "description": "",
   "dependencies": {
-    "@codestates-cc/submission-npm": "^1.1.3"
+    "codestates-assignment-manager": "^1.8.0"
   },
   "scripts": {
     "test": "echo no test",
@@ -12,12 +11,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/codestates/im-sprints-mini-node-server.git"
+    "url": "git+https://github.com/codestates-seb/fe-sprint-mini-node-server.git"
   },
   "author": "Codestates",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/codestates/im-sprints-mini-node-server/issues"
+    "url": "https://github.com/codestates-seb/fe-sprint-mini-node-server.git"
   },
-  "homepage": "https://github.com/codestates/im-sprints-mini-node-server#readme"
+  "homepage": "https://github.com/codestates-seb/fe-sprint-mini-node-server#readme"
 }
