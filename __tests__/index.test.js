@@ -17,16 +17,23 @@ import nock from 'nock';
 import { readFileSync } from 'fs';
 
 configure({
-  showOriginalStackTrace: false,
   getElementError: (message, container) => {
     return new Error(message);
   },
 });
 
-console = {
-  ...console,
-  error: () => {},
-  log: () => {},
+console.error = function (msg) {
+  if (
+    msg
+      .toString()
+      .includes(
+        'Warning: An update to Main inside a test was not wrapped in act'
+      )
+  ) {
+    return () => {};
+  } else {
+    return console.error;
+  }
 };
 
 describe('💡 Part 1: 항공권 목록 필터링', () => {
