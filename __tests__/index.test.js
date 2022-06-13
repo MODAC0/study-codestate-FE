@@ -29,18 +29,6 @@ console = {
   log: () => {},
 };
 
-// console.error = (msg) => {
-//   if (
-//     msg
-//       .toString()
-//       .includes(
-//         'Warning: An update to Main inside a test was not wrapped in act'
-//       )
-//   ) {
-//     return () => {};
-//   } else return console.error;
-// };
-
 describe('💡 Part 1: 항공권 목록 필터링', () => {
   describe('🧩 Main 컴포넌트에서 항공편을 조회합니다', () => {
     afterEach(() => {
