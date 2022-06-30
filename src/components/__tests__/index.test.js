@@ -24,4 +24,3 @@ describe('Modal UI 컴포넌트 기능 테스트', () => {
 // describe('ClickToEdit UI 컴포넌트 기능 테스트', () => {
 //   require('./ClickToEdit.test');
 // });
-``
