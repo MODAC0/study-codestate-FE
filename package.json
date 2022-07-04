@@ -20,12 +20,21 @@
     "test": "jest src/index.test.js --verbose",
     "eject": "react-scripts eject",
     "report": "jest src/index.test.js --verbose --json --outputFile=report.jest.json",
-    "submit": "codestates-submission"
+    "submit": "codestates"
   },
   "eslintConfig": {
     "extends": "react-app"
   },
   "jest": {
+    "reporters": [
+      "default",
+      [
+        "./node_modules/codestates-assignment-manager/imposter-reporter/index.js",
+        {
+          "project_id": "async-and-promise"
+        }
+      ]
+    ],
     "moduleNameMapper": {
       "\\.(css|less|sass|scss)$": "<rootDir>/__mocks__/styleMock.js",
       "\\.(gif|ttf|eot|svg)$": "<rootDir>/__mocks__/fileMock.js"
@@ -51,6 +60,7 @@
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
     "babel-jest": "^26.6.3",
+    "codestates-assignment-manager": "^1.8.0",
     "redux-mock-store": "^1.5.4"
   }
 }
