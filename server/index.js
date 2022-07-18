@@ -27,7 +27,7 @@ app.use(cors(corsOptions));
 
 app.post('/callback', controllers.callback);
 app.post('/userinfo', controllers.userInfo);
-app.delete('/logout', controllers.callback);
+app.delete('/logout', controllers.logout);
 
 // 인증서 파일들이 존재하는 경우에만 https 프로토콜을 사용하는 서버를 실행합니다.
 // 만약 인증서 파일이 존재하지 않는경우, http 프로토콜을 사용하는 서버를 실행합니다.
