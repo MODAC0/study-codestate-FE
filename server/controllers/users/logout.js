@@ -12,7 +12,7 @@ module.exports = (req, res) => {
       access_token: accessToken,
     })
     .then((res) => {
-      res.staus(205).send('Successfuly Logged Out');
+      res.status(205).send('Successfuly Logged Out');
     })
     .catch((e) => {
       console.log(e.response);
