@@ -16,8 +16,10 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "test": "react-scripts test --watchAll=false",
+    "report": "react-scripts test --watchAll=false --json --outputFile=report.jest.json",
+    "eject": "react-scripts eject",
+    "submit": "codestates"
   },
   "eslintConfig": {
     "extends": [
@@ -36,5 +38,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "codestates-assignment-manager": "^1.8.0"
   }
 }
