@@ -242,7 +242,6 @@ const Render = () => {
   };
   useEffect(() => {
     window.addEventListener('scroll', updateScroll);
-    console.log(scrollPosition);
   });
 
   return (
