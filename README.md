@@ -1,70 +1,19 @@
-# Getting Started with Create React App
+# HTML/CSS 심화 과제
+- HTML/CSS 심화 과제는 2개의 과제가 주어져 있습니다.
+- 해당 레포지토리를 `fork`한 후, 페어와 과제를 진행한 뒤 `pull request`를 통해 과제를 2번 제출합니다.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 과제 1 - 반응형 웹 구현하기
+- 첫 번째 과제는 반응형 웹을 페어와 함께 구현해 주세요.
+- 반응형 웹 구현 시 좋아하는 웹 사이트가 있거나, 혹은 클론 코딩하기 좋은 웹 사이트가 있다면 벤치마킹을 해도 좋습니다.
+- 반응형 웹을 구현하였다면 `pull request`를 통해 과제를 제출해주세요.
+- 제출 시 제목 양식은 **[본인 이름 & 페어 이름] 과제 1 반응형 웹 제출합니다.** 로 통일합니다.
 
-## Available Scripts
+## 과제 2 - CSS 애니메이션 및 캔버스 활용하기
+- 두 번째 과제는 **첫 번째 과제에서 구현한 반응형 웹에서 시작**합니다.
+- 구현한 반응형 웹에 CSS 애니메이션 및 캔버스를 페어와 함께 구현해 주세요.
+- 해당 과제 구현 시 벤치마킹하고자 하는 애니메이션 및 캔버스가 있다면 벤치마킹하여 구현해도 괜찮습니다.
+- 두 번째 과제까지 구현했다면 `pull request`를 통해 과제를 제출해주세요.
+- 제출 시 제목 양식은 **[본인 이름 & 페어 이름] 과제 2 CSS 애니메이션 및 캔버스 활용하기 제출합니다.** 로 통일합니다.
 
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## 과제 1, 2 제출 후
+- 과제를 2개 다 제출하였다면, `npm submit`을 통해 최종 제출을 합니다.
