@@ -10,7 +10,7 @@
     scrollbar-width: none;
   }
   *::-webkit-scrollbar {
-    display: none; /* Chrome , Safari , Opera */
+    display: none;
   }
   
   body {
