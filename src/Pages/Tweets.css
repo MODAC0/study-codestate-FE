@@ -79,11 +79,12 @@
   margin: 0.5rem;
   padding: 0.5rem 1rem;
   border-radius: 1rem;
+  cursor: pointer;
 }
 
 .tweetForm__submitButton:hover,
 .tweetForm__submitButton:focus {
-  background: var(--tweets-component-color);
+  background: var(--button-hover-color);
 }
 
 .tweetForm__submitButton:focus {
@@ -92,7 +93,7 @@
 }
 
 .tweets {
-  flex: 1 0 80vh;
+  flex: 1 0 70vh;
   border: 2px solid var(--tweets-component-color);
   overflow-y: scroll;
 }
@@ -103,10 +104,18 @@
   margin-bottom: 8px;
 }
 
+.tweet__selectUser > select {
+  margin-left: 8px;
+  border: 1px solid var(--shade-color);
+  border-radius: 2px;
+}
+
 .tweet__selectUser > button {
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 24px;
+  height: 24px;
   background-color: var(--button-color);
   margin-left: 0.5rem;
   padding: 0.2rem;
@@ -117,7 +126,7 @@
 .tweet__selectUser > button:focus {
   outline: none;
   box-shadow: 0 0 3px var(--button-color);
-  background: var(--tweets-component-color);
+  background: var(--button-hover-color);
 }
 
 .tweet__selectUser > button > .far {
@@ -126,4 +135,5 @@
   font-size: 0.8rem;
   padding: 0.1rem;
   border-radius: 50px;
+  transform: translate(0, 0.5px);
 }
