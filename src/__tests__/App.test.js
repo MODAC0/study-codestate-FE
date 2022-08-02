@@ -337,7 +337,6 @@ describe("Tweets.js 트윗 전송 폼 테스트", () => {
     const { container } = render(<Tweets />);
     const submitButton = container.querySelector(".tweetForm__submitButton");
     expect(submitButton).toBeInTheDocument();
-    expect(submitButton).toHaveTextContent("Tweet");
   });
 
   test("<input>의 값이 변경될 때 onChange 이벤트 핸들러가 불려야 합니다.", () => {
