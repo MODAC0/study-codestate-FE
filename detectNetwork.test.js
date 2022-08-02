@@ -147,9 +147,3 @@ describe("Discover", function() {
   it("has a prefix of 6011 and a length of 16");
   it("has a prefix of 6011 and a length of 19");
 });
-
-// Maestro, China UnionPay와 Switch를 검사하는 것은 Advanced 과제입니다.
-// 원하시는 분들은 도전해보세요!
-describe("Maestro", function() {});
-describe("should support China UnionPay", function() {});
-describe("should support Switch", function() {});
