@@ -24,7 +24,7 @@ describe("Introduction to Mocha Tests - READ ME FIRST", function() {
   });
 
   it("오류가 발생하지 않으므로, 실패하지 않습니다.", function() {
-    // 이 테스트는 실제로 아무것도 테스트하지 않습니다. 그러므로 그냥 여기는 통과하게 됩니다.
+    // 이 테스트는 실제로 아무것도 테스트하지 않습니다. 그러므로 그냥 여기는 통과하게 됩니다.
     let even = function(num) {
       return num % 2 === 0;
     };
