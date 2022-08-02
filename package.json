@@ -4,14 +4,18 @@
   "description": "",
   "main": "detectNetwork.js",
   "scripts": {
-    "test": "mocha .test --reporter json",
-    "submit": "node .travis/submit.js"
+    "test": "mocha test/index.test.js --reporter mocha-multi-reporters --reporter-options configFile=multi-reporters.json",
+    "report": "mocha test/index.test.js --timeout 50000 --exit --sort --reporter @mochajs/json-file-reporter",
+    "submit": "codestates"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@mochajs/json-file-reporter": "^1.3.0",
     "chai": "^4.2.0",
-    "mocha": "^6.2.3"
+    "codestates-assignment-manager": "^1.8.0",
+    "mocha": "^6.2.3",
+    "mocha-multi-reporters": "^1.5.1"
   }
 }
