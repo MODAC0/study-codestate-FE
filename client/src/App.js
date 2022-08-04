@@ -66,19 +66,19 @@ class App extends Component {
           <Switch>
             <Route
               exact
-              path='/main'
+              path={'/main'}
               render={() => <Main changeLoginStatus={this.changeLoginStatus} />} />
             <Route
               exact
-              path='/login'
+              path={'/login'}
               render={() => <Login handleStatus={this.handleStatus} />} />
             <Route
               path='/'
               render={() => {
                 if (isLogin) {
-                  return <Redirect to='/main' />;
+                  return <Redirect to={'/main'}/>;
                 }
-                return <Redirect to='/login' />;
+                return <Redirect to={'/login'} />;
               }}
             />
           </Switch>

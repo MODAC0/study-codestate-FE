@@ -93,10 +93,7 @@ app.use(express.json());
 const port = process.env.NODE_ENV === 'test' ? 4999 : 80;
 
 app.use(
-  cors({
-    origin: true,
-    credentials: true
-  })
+  cors()
 );
 
 app.post('/signin', (req, res) => {
