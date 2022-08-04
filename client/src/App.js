@@ -34,9 +34,6 @@ class App extends Component {
         this.setState({
           isLogin: res.data.isLogin,
           status: res.data.isConnectedToDatabase
-        }, () => {
-          console.log('시작');
-          this.props.history.push('/');
         });
       })
       .catch(err => console.log(err));
@@ -46,8 +43,6 @@ class App extends Component {
     this.setState({
       isLogin: false,
       status: ''
-    }, () => {
-      this.props.history.push('/');
     });
   }
 
