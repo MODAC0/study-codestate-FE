@@ -94,7 +94,10 @@ const port = process.env.NODE_ENV === 'test' ? 4999 : 80;
 
 app.use(
   cors({
-    origin: true,
+    origin: [
+      /\.surge\.sh$/,
+      /\.fe-student-bucket\.s3\.ap-northeast-2\.amazonaws\.com$/
+    ],
     credentials: true
   })
 );
