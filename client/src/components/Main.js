@@ -15,8 +15,7 @@ class Main extends Component {
   render() {
     return (
       <div className="main-container">
-        <div className="session">정답은 노트북입니다</div>
-        <div className="db">유어클래스로 돌아가 퀴즈를 풀어주세요</div>
+        <div className="session">로그인 성공</div>
         <button type="submit" onClick={this.handleLogout}>로그아웃</button>
       </div>
     );
