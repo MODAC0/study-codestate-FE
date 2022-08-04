@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
 import axios from 'axios';
 
 import Login from './components/Login';
@@ -27,7 +26,6 @@ class App extends Component {
     axios
       .get(`${process.env.REACT_APP_API_URL}/status`,
         {
-          withCredentials: true,
           headers: {
             'Authorization': `Bearer ${localStorage.getItem('accessToken')}`
           }
@@ -60,32 +58,18 @@ class App extends Component {
       <div className="app">
         <div className="container">
           {isLogin
-            ? <div className="success">로그인에 성공했습니다</div>
-            : <div className="status">이름에는 김코딩,비밀번호에는 1234만 입력 가능합니다</div>
+            ? (<div>
+              <div className="success">로그인에 성공했습니다</div>
+              <Main changeLoginStatus={this.changeLoginStatus} />
+            </div>)
+            : (<div><div className="status">이름에는 김코딩,비밀번호에는 1234만 입력 가능합니다</div>
+              <Login handleStatus={this.handleStatus} />
+            </div>)
           }
-          <Switch>
-            <Route
-              exact
-              path={'/main'}
-              render={() => <Main changeLoginStatus={this.changeLoginStatus} />} />
-            <Route
-              exact
-              path={'/login'}
-              render={() => <Login handleStatus={this.handleStatus} />} />
-            <Route
-              path='/'
-              render={() => {
-                if (isLogin) {
-                  return <Redirect to={'/main'}/>;
-                }
-                return <Redirect to={'/login'} />;
-              }}
-            />
-          </Switch>
         </div>
       </div>
     );
   }
 }
 
-export default withRouter(App);
+export default App;

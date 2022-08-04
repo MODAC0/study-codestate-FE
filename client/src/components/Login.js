@@ -24,8 +24,7 @@ class Login extends Component {
         {
           username,
           password
-        },
-        { withCredentials: true }
+        }
       )
       .then(res => {
         localStorage.setItem('accessToken', res.data);
