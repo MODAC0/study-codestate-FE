@@ -9,8 +9,7 @@ class App extends Component {
   state = {
     isLogin: false,
     status: ''
-
-  }
+  };
 
   constructor(props) {
     super(props);
@@ -24,19 +23,18 @@ class App extends Component {
 
   handleStatus() {
     axios
-      .get(`${process.env.REACT_APP_API_URL}/status`,
-        {
-          headers: {
-            'Authorization': `Bearer ${localStorage.getItem('accessToken')}`
-          }
-        })
-      .then(res => {
+      .get(`${process.env.REACT_APP_API_URL}/status`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('accessToken')}`
+        }
+      })
+      .then((res) => {
         this.setState({
           isLogin: res.data.isLogin,
           status: res.data.isConnectedToDatabase
         });
       })
-      .catch(err => console.log(err));
+      .catch((err) => console.log(err));
   }
 
   changeLoginStatus() {
@@ -53,14 +51,20 @@ class App extends Component {
       <div className="app">
         <div className="container">
           {isLogin
-            ? (<div>
-              <div className="success">로그인에 성공했습니다</div>
-              <Main changeLoginStatus={this.changeLoginStatus} />
-            </div>)
-            : (<div><div className="status">이름에는 김코딩,비밀번호에는 1234만 입력 가능합니다</div>
-              <Login handleStatus={this.handleStatus} />
-            </div>)
-          }
+            ? (
+              <>
+                <div className="success">로그인에 성공했습니다</div>
+                <Main changeLoginStatus={this.changeLoginStatus} />
+              </>
+            )
+            : (
+              <>
+                <div className="status">
+                이름에는 김코딩,비밀번호에는 1234만 입력 가능합니다
+                </div>
+                <Login handleStatus={this.handleStatus} />
+              </>
+            )}
         </div>
       </div>
     );
