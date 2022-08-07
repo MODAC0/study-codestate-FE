@@ -71,6 +71,7 @@ export default function Main() {
         <div className="debug-area">
           <Debug condition={condition} />
         </div>
+        <img id="logo" alt="logo" src="codestates-logo.png" />
       </main>
     </div>
   );
