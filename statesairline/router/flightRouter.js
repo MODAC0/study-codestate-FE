@@ -4,8 +4,8 @@ const router = express.Router();
 
 router.get('/', findAll);
 
-router.get('/:id', findById);
+router.get('/:uuid', findById);
 
-router.put('/:id', update);
+router.put('/:uuid', update);
 
 module.exports = router;
