@@ -1,11 +1,16 @@
-const { findById, create, deleteById } = require('../controller/bookController');
+const { findAll, findByPhone, findByIdAndPhone, create, deleteByIdAndPhone } = require('../controller/bookController');
 const express = require('express');
 const router = express.Router();
 
-router.get('/', findById);
+router.get('/', findAll);
+
+router.get('/:phone', findByPhone);
+
+router.get('/:id/:phone', findByIdAndPhone);
 
 router.post('/', create);
 
-router.delete('/', deleteById);
+//Optional
+router.delete('/:id/:phone', deleteByIdAndPhone);
 
 module.exports = router;
