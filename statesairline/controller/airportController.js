@@ -6,10 +6,10 @@ module.exports = {
   findAll: (req, res) => {
     if (req.query.query !== undefined) {
       console.log(req.query.query);
-      const list = airports.filter((item) => {
-        return item.code.includes(req.query.query.toUpperCase());
+      const filteredAirports = airports.filter((airport) => {
+        return airport.code.includes(req.query.query.toUpperCase());
       });
-      return res.status(200).json(list);
+      return res.status(200).json(filteredAirports);
     }
     res.json(airports);
   }
