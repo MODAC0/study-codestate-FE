@@ -146,7 +146,7 @@ body {
   /* text-align: center; */
   margin: 1rem auto;
   border-radius: 10px;
-  border: 1px solid var(--coz-purple-400);
+  border: 1px solid var(--gray-600);
   background-color: white;
   box-shadow: 1px 1px 3px rgb(210, 210, 210);
 }
