@@ -109,6 +109,15 @@ button:hover {
   background-color: var(--coz-purple-400);
 }
 
+#logo {
+  position: fixed;
+  bottom: 12px;
+  right: 12px;
+  height: 24px;
+  opacity: 0.4;
+  user-select: none;
+}
+
 /* local */
 
 .input-text {
