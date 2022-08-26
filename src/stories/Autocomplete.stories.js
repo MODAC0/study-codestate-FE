@@ -1,5 +1,5 @@
 import React from 'react';
-
+import '../variables.css';
 import { Autocomplete } from '../components/AdvancedChallenges/Autocomplete';
 
 export default {

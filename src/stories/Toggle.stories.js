@@ -1,5 +1,5 @@
 import React from 'react';
-
+import '../variables.css';
 import { Toggle } from '../components/BareMinimumRequirements/Toggle';
 
 export default {

@@ -1,5 +1,5 @@
 import React from 'react';
-
+import '../variables.css';
 import { Tag } from '../components/BareMinimumRequirements/Tag';
 
 export default {

@@ -1,5 +1,5 @@
 import React from 'react';
-
+import '../variables.css';
 import { ClickToEdit } from '../components/AdvancedChallenges/ClickToEdit';
 
 export default {

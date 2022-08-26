@@ -1,5 +1,5 @@
 import React from 'react';
-
+import '../variables.css';
 import { Modal } from '../components/BareMinimumRequirements/Modal';
 
 export default {
