@@ -8,7 +8,7 @@ describe('Bare Minimum Requirements', function () {
 });
 
 // Advanced Challenge에 도전하려면 xdescribe를 describe로 변경하세요.
-xdescribe('Advanced Challenge', function () {
+describe('Advanced Challenge', function () {
   require('../lib/testSupport.js');
   require('../src/02_advanced.js');
   require('../spec/02_advanced.test.js');

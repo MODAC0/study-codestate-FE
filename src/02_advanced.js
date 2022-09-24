@@ -4,7 +4,7 @@
  * FUNCTIONS
  * =========
  * 기술 면접에서 클로져(closure) 대해서 설명하라는 질문을 받으면 어떻게 대답하시겠습니까? (실제로 물을 수 있는 질문입니다.)
- *
+ * 클로저는 함수와 함수가 선언된 어휘적 환경의 조합을 의미합니다. 내부 함수가 외부 함수에 선언된 지역 변수에 접근할 수 있으며 
  *
  *
  *
@@ -33,9 +33,17 @@
 // _.once가 리턴하는 함수를 여러 번 호출해도 callback 함수는 한 번 이상 호출되지 않습니다.
 _.once = function (func) {
   // TODO: 여기에 코드를 작성합니다.
+  // func를 한번만 실행
+  let result;
+  let alreadyCalled = false;
 
-  return function () {
+  return function (...arg) {
     // TIP: arguments 키워드 혹은, spread operator를 사용하세요.
+    if (!alreadyCalled) {
+      alreadyCalled = true
+      result = func(...arg)
+    }
+    return result;
   };
 };
 

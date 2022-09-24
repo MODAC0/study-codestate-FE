@@ -10,7 +10,9 @@
 // _.identity는 전달인자(argument)가 무엇이든, 그대로 리턴합니다.
 // 이 함수는 underbar의 기능 구현 및 테스트를 위해 재사용되는 함수입니다.
 _.identity = function (val) {
-  // TODO: 여기에 코드를 작성합니다.
+  let result;
+  result = val;
+  return result;
 };
 
 /**
@@ -112,13 +114,17 @@ _.slice = function (arr, start, end) {
 // n이 배열의 길이를 벗어날 경우, 전체 배열을 shallow copy한 새로운 배열을 리턴합니다.
 _.take = function (arr, n) {
   // TODO: 여기에 코드를 작성합니다.
+  if (n === undefined || n < 0) return [];
+  else return _.slice(arr,0,n);
 };
 
 // _.drop는 _.take와는 반대로, 처음 n개의 element를 제외한 새로운 배열을 리턴합니다.
 // n이 undefined이거나 음수인 경우, 전체 배열을 shallow copy한 새로운 배열을 리턴합니다.
 // n이 배열의 길이를 벗어날 경우, 빈 배열을 리턴합니다.
 _.drop = function (arr, n) {
-  // TODO: 여기에 코드를 작성합니다.
+  if (arr.length < n) return [];
+  if (n === undefined || n < 0) return _.slice(arr,0,n);
+  else return _.slice(arr,n,arr.length);
 };
 
 // _.last는 배열의 마지막 n개의 element를 담은 새로운 배열을 리턴합니다.
@@ -127,6 +133,10 @@ _.drop = function (arr, n) {
 // _.take와 _.drop 중 일부 또는 전부를 활용할 수 있습니다.
 _.last = function (arr, n) {
   // TODO: 여기에 코드를 작성합니다.
+  // else return _.slice(arr,n-1,arr.length);
+  if (n === undefined || n < 0) return [arr[arr.length-1]];
+  else if (arr.length < n) return arr;
+  return _.drop(arr, arr.length - n);
 };
 
 // _.each는 collection의 각 데이터에 반복적인 작업을 수행합니다.
@@ -159,7 +169,15 @@ _.last = function (arr, n) {
 
 // _.each는 명시적으로 어떤 값을 리턴하지 않습니다.
 _.each = function (collection, iteratee) {
-  // TODO: 여기에 코드를 작성합니다.
+  if (Array.isArray(collection)) {
+    for (let i = 0; i < collection.length; i++) {
+      iteratee(collection[i],i,collection)
+    }
+  } else {
+    for (let el in collection) {
+      iteratee(collection[el],el,collection)
+    }
+  }
 };
 
 // _.indexOf는 target으로 전달되는 값이 arr의 요소인 경우, 배열에서의 위치(index)를 리턴합니다.
@@ -183,31 +201,47 @@ _.indexOf = function (arr, target) {
 // _.filter는 test 함수를 통과하는 모든 요소를 담은 새로운 배열을 리턴합니다.
 // test(element)의 결과(return 값)가 truthy일 경우, 통과입니다.
 // test 함수는 각 요소에 반복 적용됩니다.
-_.filter = function (arr, test) {
-  // TODO: 여기에 코드를 작성합니다.
+_.filter = function (arr, test) { 
+  let result = [];
+  _.each(arr, function(value) {
+    if (test(value)) result.push(value);
+  })
+  return result;
 };
 
 // _.reject는 _.filter와 정반대로 test 함수를 통과하지 않는 모든 요소를 담은 새로운 배열을 리턴합니다.
 _.reject = function (arr, test) {
   // TODO: 여기에 코드를 작성합니다.
-  // TIP: 위에서 구현한 `filter` 함수를 사용해서 `reject` 함수를 구현해 보세요.
+  let result = [];
+  _.each(arr, function(value) {
+    if (!test(value)) result.push(value);
+  })
+  return result;
 };
 
 // _.uniq는 주어진 배열의 요소가 중복되지 않도록 새로운 배열을 리턴합니다.
 // 중복 여부의 판단은 엄격한 동치 연산(strict equality, ===)을 사용해야 합니다.
 // 입력으로 전달되는 배열의 요소는 모두 primitive value라고 가정합니다.
 _.uniq = function (arr) {
-  // TODO: 여기에 코드를 작성합니다.
+  let newArr = [];
+_.each(arr, (el) => {
+  if(_.indexOf(newArr,el) === -1) newArr.push(el)
+})
+return newArr;
 };
 
 // _.map은 iteratee(반복되는 작업)를 배열의 각 요소에 적용(apply)한 결과를 담은 새로운 배열을 리턴합니다.
 // 함수의 이름에서 드러나듯이 _.map은 배열의 각 요소를 다른 것(iteratee의 결과)으로 매핑(mapping)합니다.
 _.map = function (arr, iteratee) {
+  let newArr = [];
+  _.each(arr, (el) => {
+    newArr.push(iteratee(el)) 
+  })
+  return newArr;
   // TODO: 여기에 코드를 작성합니다.
   // _.map 함수는 매우 자주 사용됩니다.
   // _.each 함수와 비슷하게 동작하지만, 각 요소에 iteratee를 적용한 결과를 리턴합니다.
 };
-
 // _.pluck은
 //  1. 객체 또는 배열을 요소로 갖는 배열과 각 요소에서 찾고자 하는 key 또는 index를 입력받아
 //  2. 각 요소의 해당 값 또는 요소만을 추출하여 새로운 배열에 저장하고,
@@ -216,6 +250,11 @@ _.map = function (arr, iteratee) {
 // 최종적으로 리턴되는 새로운 배열의 길이는 입력으로 전달되는 배열의 길이와 같아야 합니다.
 // 따라서 찾고자 하는 key 또는 index를 가지고 있지 않은 요소의 경우, 추출 결과는 undefined 입니다.
 _.pluck = function (arr, keyOrIdx) {
+  let newArr = [];
+  _.map(arr, (el) => {
+    newArr.push(el[keyOrIdx])
+  })
+  return newArr;
   // _.pluck을 _.each를 사용해 구현하면 아래와 같습니다.
   // let result = [];
   // _.each(arr, function (item) {
@@ -274,6 +313,15 @@ _.pluck = function (arr, keyOrIdx) {
 //  }, 2); // 초기 값이 2로 주어졌습니다. 첫 번째 요소부터 반복 작업이 시작됩니다.
 //         // 2 + 3 * 3 = 11; (첫 작업의 결과가 누적되어 다음 작업으로 전달됩니다.)
 //         // 11 + 5 * 5 = 36; (마지막 작업이므로 최종적으로 36이 리턴됩니다.)
-_.reduce = function (arr, iteratee, initVal) {
-  // TODO: 여기에 코드를 작성합니다.
+
+_.reduce = function (arr, iteratee, initVal) { // iteratee(ele, idx, arr)
+  // 값이 누적될 때  iteratee(pre, ele, idx, arr) 가 되어야 한다.
+  let acc = initVal;
+  _.each(arr, (el, idx, arr)=> {
+    // 만약에 initval없으면 배열 0번째 인덱스 할당
+    if (initVal === undefined && idx === 0) acc = el;
+    // 누적값 acc에 함수를 실행시킨 결과값 할당 (누적값 acc 현재값 el 인덱스 idx 초기배열 arr)
+    else acc = iteratee(acc, el, idx, arr)
+  })
+  return acc
 };
