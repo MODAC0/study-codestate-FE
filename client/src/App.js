@@ -1,75 +1,71 @@
-import { useState, useEffect } from "react";
-import { Routes, Route, useNavigate, Navigate } from "react-router-dom";
-import axios from "axios";
+import React, { Component } from 'react';
+import axios from 'axios';
 
 import Login from "./components/Login";
 import Main from "./components/Main";
 import "./App.css";
 
-function App() {
-  const [isLogin, setIsLogin] = useState(false);
-  const [isConnectedToDatabase, setIsConnectedToDatabase] = useState(false);
-  const navigate = useNavigate();
+class App extends Component {
+  state = {
+    isLogin: false,
+    status: ''
+  };
 
-  const checkStatus = () => {
-    return axios
+  constructor(props) {
+    super(props);
+    this.handleStatus = this.handleStatus.bind(this);
+    this.changeLoginStatus = this.changeLoginStatus.bind(this);
+  }
+
+  componentDidMount() {
+    this.handleStatus();
+  }
+
+  handleStatus() {
+    axios
       .get(`${process.env.REACT_APP_API_URL}/status`, {
-        withCredentials: true,
         headers: {
-          Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-        },
+          Authorization: `Bearer ${localStorage.getItem('accessToken')}`
+        }
       })
       .then((res) => {
-        setIsLogin(res.data.isLogin);
-        setIsConnectedToDatabase(res.data.isConnectedToDatabase);
-        navigate("/main");
+        this.setState({
+          isLogin: res.data.isLogin,
+          status: res.data.isConnectedToDatabase
+        });
       })
       .catch((err) => console.log(err));
-  };
+  }
 
-  const logout = () => {
-    setIsLogin(false);
-    setIsConnectedToDatabase("");
-    navigate("/");
-  };
+  changeLoginStatus() {
+    this.setState({
+      isLogin: false,
+      status: ''
+    });
+  }
 
-  useEffect(() => {
-    checkStatus();
-  }, []);
+  render() {
+    const { isLogin } = this.state;
 
-  return (
-    <div className="app">
-      <div className="container">
-        {isLogin ? (
-          <div className="success">로그인에 성공했습니다</div>
-        ) : (
-          <div className="status">
-            이름에는 김코딩,비밀번호에는 1234만 입력 가능합니다
-          </div>
-        )}
-        {isLogin ? (
-          isConnectedToDatabase ? (
-            <div className="success">데이터베이스 연결에 성공했습니다</div>
-          ) : (
-            <div className="fail">하지만, 데이터베이스 연결이 필요합니다</div>
-          )
-        ) : (
-          ""
-        )}
-        <Routes>
-          <Route path="/login" element={<Login checkStatus={checkStatus} />} />
-          <Route
-            path="/main"
-            element={<Main isLogin={isLogin} logout={logout} />}
-          />
-          <Route
-            exact
-            path="/"
-            element={
-              isLogin ? <Navigate to="/main" /> : <Navigate to="/login" />
-            }
-          />
-        </Routes>
+    return (
+      <div className="app">
+        <div className="container">
+          {isLogin
+            ? (
+              <>
+                <div className="success">로그인에 성공했습니다</div>
+                <Main changeLoginStatus={this.changeLoginStatus} />
+              </>
+            )
+            : (
+              <>
+                <div className="status">
+                이름에는 김코딩,비밀번호에는 1234만 입력 가능합니다
+                </div>
+                <Login handleStatus={this.handleStatus} />
+              </>
+            )}
+        </div>
       </div>
     </div>
   );
