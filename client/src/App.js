@@ -1,97 +1,78 @@
-import React, { Component } from 'react';
-import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
-import axios from 'axios';
+import { useState, useEffect } from "react";
+import { Routes, Route, useNavigate, Navigate } from "react-router-dom";
+import axios from "axios";
 
-import Login from './components/Login';
-import Main from './components/Main';
-import './App.css';
+import Login from "./components/Login";
+import Main from "./components/Main";
+import "./App.css";
 
-class App extends Component {
-  state = {
-    isLogin: false,
-    status: ''
+function App() {
+  const [isLogin, setIsLogin] = useState(false);
+  const [isConnectedToDatabase, setIsConnectedToDatabase] = useState(false);
+  const navigate = useNavigate();
 
-  }
-
-  constructor(props) {
-    super(props);
-    this.handleStatus = this.handleStatus.bind(this);
-    this.changeLoginStatus = this.changeLoginStatus.bind(this);
-  }
-
-  componentDidMount() {
-    this.handleStatus();
-  }
-
-  handleStatus() {
-    axios
-      .get(`${process.env.REACT_APP_API_URL}/status`,
-        {
-          withCredentials: true,
-          headers: {
-            'Authorization': `Bearer ${localStorage.getItem('accessToken')}`
-          }
-        })
-      .then(res => {
-        this.setState({
-          isLogin: res.data.isLogin,
-          status: res.data.isConnectedToDatabase
-        }, () => {
-          console.log('시작');
-          this.props.history.push('/');
-        });
+  const checkStatus = () => {
+    return axios
+      .get(`${process.env.REACT_APP_API_URL}/status`, {
+        withCredentials: true,
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
       })
-      .catch(err => console.log(err));
-  }
+      .then((res) => {
+        setIsLogin(res.data.isLogin);
+        setIsConnectedToDatabase(res.data.isConnectedToDatabase);
+        navigate("/main");
+      })
+      .catch((err) => console.log(err));
+  };
 
-  changeLoginStatus() {
-    this.setState({
-      isLogin: false,
-      status: ''
-    }, () => {
-      this.props.history.push('/');
-    });
-  }
+  const logout = () => {
+    setIsLogin(false);
+    setIsConnectedToDatabase("");
+    navigate("/");
+  };
 
-  render() {
-    const { isLogin, status } = this.state;
+  useEffect(() => {
+    checkStatus();
+  }, []);
 
-    return (
-      <div className="app">
-        <div className="container">
-          {isLogin
-            ? <div className="success">로그인에 성공했습니다</div>
-            : <div className="status">이름에는 김코딩,비밀번호에는 1234만 입력 가능합니다</div>
-          }
-          {isLogin
-            ? (status
-              ? (<div className="success">데이터베이스 연결에 성공했습니다</div>)
-              : (<div className="fail">하지만, 데이터베이스 연결이 필요합니다</div>))
-            : ''
-          }
-          <Switch>
-            <Route
-              exact
-              path='/main'
-              render={() => <Main changeLoginStatus={this.changeLoginStatus} />} />
-            <Route
-              exact
-              path='/login'
-              render={() => <Login handleStatus={this.handleStatus} />} />
-            <Route
-              path='/'
-              render={() => {
-                if (isLogin) {
-                  return <Redirect to='/main' />;
-                }
-                return <Redirect to='/login' />;
-              }}
-            />
-          </Switch>
-        </div>
+  return (
+    <div className="app">
+      <div className="container">
+        {isLogin ? (
+          <div className="success">로그인에 성공했습니다</div>
+        ) : (
+          <div className="status">
+            이름에는 김코딩,비밀번호에는 1234만 입력 가능합니다
+          </div>
+        )}
+        {isLogin ? (
+          isConnectedToDatabase ? (
+            <div className="success">데이터베이스 연결에 성공했습니다</div>
+          ) : (
+            <div className="fail">하지만, 데이터베이스 연결이 필요합니다</div>
+          )
+        ) : (
+          ""
+        )}
+        <Routes>
+          <Route path="/login" element={<Login checkStatus={checkStatus} />} />
+          <Route
+            path="/main"
+            element={<Main isLogin={isLogin} logout={logout} />}
+          />
+          <Route
+            exact
+            path="/"
+            element={
+              isLogin ? <Navigate to="/main" /> : <Navigate to="/login" />
+            }
+          />
+        </Routes>
       </div>
-    );
-  }
+    </div>
+  );
 }
 
-export default withRouter(App);
+export default App;

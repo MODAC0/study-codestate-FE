@@ -1,78 +1,62 @@
-import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom';
-import axios from 'axios';
-import './Login.css';
+import { useState } from "react";
+import axios from "axios";
+import "./Login.css";
 
-class Login extends Component {
-  state = {
-    username: '',
-    password: ''
-  }
+const Login = ({ checkStatus }) => {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
 
-  constructor(props) {
-    super(props);
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleChange = this.handleChange.bind(this);
-  }
-
-  handleSubmit() {
-    const { username, password } = this.state;
-
+  const handleSubmit = () => {
     axios
       .post(
         `${process.env.REACT_APP_API_URL}/signin`,
         {
           username,
-          password
+          password,
         },
         { withCredentials: true }
       )
-      .then(res => {
-        localStorage.setItem('accessToken', res.data);
-        this.props.handleStatus();
+      .then((res) => {
+        localStorage.setItem("accessToken", res.data);
+        checkStatus();
       })
-      .catch(err => {
-        this.setState({
-          username: '',
-          password: ''
-        });
+      .catch((err) => {
+        setUsername("");
+        setPassword("");
         if (err.response.status === 401) {
-          alert('이름과 비밀번호를 정확히 입력해주세요!');
+          alert("이름과 비밀번호를 정확히 입력해주세요!");
         }
       });
-  }
+  };
 
-  handleChange(e) {
-    this.setState({
-      [e.target.name]: e.target.value
-    });
-  }
+  return (
+    <div className="form-container">
+      <form className="form-items" onSubmit={(e) => { 
+        e.preventDefault();
+        handleSubmit();
+      }}>
+        <div className="login">Login</div>
+        <input
+          type="text"
+          name="username"
+          placeholder="이름"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+        />
+        <input
+          type="password"
+          name="password"
+          placeholder="비밀번호"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
 
-  render() {
-    return (
-      <div className="form-container">
-        <form className="form-items" onSubmit={e => e.preventDefault()}>
-          <div className="login">Login</div>
-          <input
-            type="text"
-            name="username"
-            placeholder="이름"
-            value={this.state.username}
-            onChange={this.handleChange}
-          />
-          <input
-            type="password"
-            name="password"
-            placeholder="비밀번호"
-            value={this.state.password}
-            onChange={this.handleChange}
-          />
+        <button type="submit">
+          로그인
+        </button>
+      </form>
+    </div>
+  );
+};
 
-          <button type="submit" onClick={this.handleSubmit}>로그인</button>
-        </form>
-      </div>
-    );
-  }
-}
-
-export default withRouter(Login);
+export default Login;
