@@ -1,5 +1,5 @@
-import { useLocation, Navigate } from "react-router-dom";
-import "./Main.css";
+import { useLocation, Navigate } from 'react-router-dom';
+import './Main.css';
 
 const RequireAuth = ({ isLogin, children }) => {
   let location = useLocation();
@@ -13,7 +13,7 @@ const RequireAuth = ({ isLogin, children }) => {
 
 const Main = ({ isLogin, logout }) => {
   const handleLogout = () => {
-    localStorage.removeItem("accessToken");
+    localStorage.removeItem('accessToken');
     logout();
   };
 

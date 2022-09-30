@@ -1,10 +1,10 @@
-import { useState } from "react";
-import axios from "axios";
-import "./Login.css";
+import { useState } from 'react';
+import axios from 'axios';
+import './Login.css';
 
 const Login = ({ checkStatus }) => {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
 
   const handleSubmit = () => {
     axios
@@ -17,24 +17,27 @@ const Login = ({ checkStatus }) => {
         { withCredentials: true }
       )
       .then((res) => {
-        localStorage.setItem("accessToken", res.data);
+        localStorage.setItem('accessToken', res.data);
         checkStatus();
       })
       .catch((err) => {
-        setUsername("");
-        setPassword("");
+        setUsername('');
+        setPassword('');
         if (err.response.status === 401) {
-          alert("이름과 비밀번호를 정확히 입력해주세요!");
+          alert('이름과 비밀번호를 정확히 입력해주세요!');
         }
       });
   };
 
   return (
     <div className="form-container">
-      <form className="form-items" onSubmit={(e) => { 
-        e.preventDefault();
-        handleSubmit();
-      }}>
+      <form
+        className="form-items"
+        onSubmit={(e) => {
+          e.preventDefault();
+          handleSubmit();
+        }}
+      >
         <div className="login">Login</div>
         <input
           type="text"
@@ -51,9 +54,7 @@ const Login = ({ checkStatus }) => {
           onChange={(e) => setPassword(e.target.value)}
         />
 
-        <button type="submit">
-          로그인
-        </button>
+        <button type="submit">로그인</button>
       </form>
     </div>
   );

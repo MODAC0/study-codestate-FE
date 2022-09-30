@@ -1,10 +1,10 @@
-import { useState, useEffect } from "react";
-import { Routes, Route, useNavigate, Navigate } from "react-router-dom";
-import axios from "axios";
+import { useState, useEffect } from 'react';
+import { Routes, Route, useNavigate, Navigate } from 'react-router-dom';
+import axios from 'axios';
 
-import Login from "./components/Login";
-import Main from "./components/Main";
-import "./App.css";
+import Login from './components/Login';
+import Main from './components/Main';
+import './App.css';
 
 function App() {
   const [isLogin, setIsLogin] = useState(false);
@@ -16,21 +16,21 @@ function App() {
       .get(`${process.env.REACT_APP_API_URL}/status`, {
         withCredentials: true,
         headers: {
-          Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+          Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
         },
       })
       .then((res) => {
         setIsLogin(res.data.isLogin);
         setIsConnectedToDatabase(res.data.isConnectedToDatabase);
-        navigate("/main");
+        navigate('/main');
       })
       .catch((err) => console.log(err));
   };
 
   const logout = () => {
     setIsLogin(false);
-    setIsConnectedToDatabase("");
-    navigate("/");
+    setIsConnectedToDatabase('');
+    navigate('/');
   };
 
   useEffect(() => {
@@ -54,7 +54,7 @@ function App() {
             <div className="fail">하지만, 데이터베이스 연결이 필요합니다</div>
           )
         ) : (
-          ""
+          ''
         )}
         <Routes>
           <Route path="/login" element={<Login checkStatus={checkStatus} />} />
