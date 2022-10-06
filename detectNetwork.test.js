@@ -133,11 +133,11 @@ describe("MasterCard", function() {
   let should = chai.should();
 
   it("has a prefix of 54 and a length of 16", function() {
-    detectNetwork("5412345678901234").should.equal(FILL_ME_IN);
+    should.equal(detectNetwork("5412345678901234"), FILL_ME_IN);
   });
 
   it("has a prefix of 55 and a length of 16", function() {
-    detectNetwork("5512345678901234").should.equal(FILL_ME_IN);
+    should.equal(detectNetwork("5512345678901234"), FILL_ME_IN);
   });
 });
 
