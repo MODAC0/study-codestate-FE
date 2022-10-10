@@ -1,9 +1,10 @@
 .form-container {
-  width: 480px;
-  height: 320px;
+  flex: 1 0 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: white;
   color: #2d2d28;
-  margin-bottom: 50px;
 }
 
 input[type='text'] {
@@ -36,8 +37,6 @@ input[type='password'] {
 .login {
   font-size: 32px;
   font-weight: bold;
-  margin-bottom: 20px;
-  margin-top: 20px;
   color: #2d2d28;
 }
 
@@ -48,8 +47,6 @@ button[type='submit'] {
   padding: 8px;
   border-radius: 1px;
   font-size: 24px;
-  margin-bottom: 20px;
-  margin-top: 15px;
   font-weight: bold;
   border-color: #2d2d28;
   background-color: #2d2d28;

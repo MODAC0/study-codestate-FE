@@ -1,25 +1,31 @@
-import React, { Component } from 'react';
+import { useLocation, Navigate } from 'react-router-dom';
 import './Main.css';
 
-class Main extends Component {
-  constructor(props) {
-    super(props);
-    this.handleLogout = this.handleLogout.bind(this);
+const RequireAuth = ({ isLogin, children }) => {
+  let location = useLocation();
+
+  if (!isLogin) {
+    return <Navigate to="/" state={{ from: location }} replace />;
   }
 
-  handleLogout() {
+  return children;
+};
+
+const Main = ({ isLogin, logout }) => {
+  const handleLogout = () => {
     localStorage.removeItem('accessToken');
-    this.props.changeLoginStatus();
-  }
+    logout();
+  };
 
-  render() {
-    return (
+  return (
+    <RequireAuth isLogin={isLogin}>
       <div className="main-container">
-        <div className="session">로그인 성공</div>
-        <button type="submit" onClick={this.handleLogout}>로그아웃</button>
+        <button type="submit" onClick={handleLogout}>
+          로그아웃
+        </button>
       </div>
-    );
-  }
-}
+    </RequireAuth>
+  );
+};
 
 export default Main;
