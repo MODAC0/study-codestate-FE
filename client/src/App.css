@@ -7,7 +7,8 @@ html,
   height: 100%;
 }
 
-.container {
+
+.app {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -16,37 +17,37 @@ html,
   color: #2d2d28;
 }
 
-.status {
-  width: 780px;
-  height: 50px;
+.container {
+  width: 960px;
+  height: 640px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.statusContainer {
+  flex: 2 0 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.status,
+.success,
+.fail {
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 36px;
   font-weight: bold;
-  margin-bottom: 15px;
 }
 
 .fail {
-  width: 720px;
-  height: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 42px;
-  font-weight: bold;
-  margin-bottom: 15px;
   color: #af1b1b;
 }
 
 .success {
-  width: 720px;
-  height: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 42px;
-  font-weight: bold;
-  margin-bottom: 15px;
   color: #30a1aa;
 }
