@@ -11,7 +11,7 @@ module.exports = {
 
     return res.json(flights);
   },
-  // [GET] /flight/:ㅕㅕid
+  // [GET] /flight/:uuid
   // 요청 된 uuid 값과 동일한 uuid 값을 가진 항공편 데이터를 조회합니다.
   findById: (req, res) => {
     const { uuid } = req.params;
