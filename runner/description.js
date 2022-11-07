@@ -145,12 +145,8 @@ function w() {
 function y() {
   console.log(
     [
-      "축하합니다! Test Builder의 모든 단계를 통과하셨습니다.",
-    ].join("\n"),
-    "font-weight:bold",
-    "font-weight:normal",
-    "color:blue",
-    "color:black"
+      "축하합니다! Test Builder의 모든 단계를 통과하셨습니다."
+    ].join("\n")
   );
 }
 
