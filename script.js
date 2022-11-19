@@ -13,6 +13,7 @@ const convertToDiscussion = (obj) => {
   avatarWrapper.className = "discussion__avatar--wrapper"; // 아바타디브 클래스 지정
   // li - 아바타 div - img
   const avatarImg = document.createElement('img');
+  avatarImg.className = "discussion__avatar--image";
   avatarImg.src = obj.avatarUrl;  // 아바타 이미지 요소 추가
   avatarImg.alt = `avatar of ${obj.author}`; // 이미지 이름 추가
   avatarWrapper.append(avatarImg); // 이미지를 자식으로 추가
@@ -32,7 +33,7 @@ const convertToDiscussion = (obj) => {
   // li - 컨텐츠 div - 생성자 div
   const discussionInfo = document.createElement('div'); // 디브 생성
   discussionInfo.className = 'discussion__information'; // 생성자 클래스 추가
-  discussionInfo.textContent = `${obj.author} / ${new Date(obj.createdAt).toLocaleString()}`; // 내용 추가
+  discussionInfo.textContent = `${obj.author} · ${new Date(obj.createdAt).toLocaleDateString()}`; // 내용 추가
   discussionContent.append(discussionInfo); // 생성자를 자식으로 추가
 
   // li - 대답했안했 div
@@ -40,12 +41,14 @@ const convertToDiscussion = (obj) => {
   discussionAnswered.className = "discussion__answered"; // 대답했안했 클래스 지정
   // li - 대답했안했 div - 상태ui p태그
   const statusUI = document.createElement('p'); // p태그 생성
-  statusUI.textContent = obj.answer ? '☑' : '☒'; // 나중에 체크박스 기능 추가 // 여유되면 디자인 변경
+  statusUI.className = 'tag';
+  statusUI.textContent = obj.answer ? '답변완료' : '답변중'; // 나중에 체크박스 기능 추가 // 여유되면 디자인 변경
   discussionAnswered.append(statusUI); // p태그를 자식으로 추가
+  discussionContent.prepend(discussionAnswered);
 
   // TODO: 객체 하나에 담긴 정보를 DOM에 적절히 넣어주세요.
   // 아바타 div, 컨텐츠 div, 대답했안했 div -> li
-  li.append(avatarWrapper, discussionContent, discussionAnswered);
+  li.append(avatarWrapper, discussionContent);
   return li;
 };
 
@@ -55,7 +58,7 @@ const convertToDiscussion = (obj) => {
 const form = document.querySelector('form.form');
 const formAuthor = form.querySelector('div.form__input--name > input');
 const formTitle = form.querySelector('div.form__input--title > input');
-const formTextbox = form.querySelector('div.form__textbox > textarea');
+const formTextbox = form.querySelector('div.form__textbox > input');
 
 // submit 이벤트 시 li안에 들어갈 정보 추가
 form.addEventListener('submit',(event) => {
@@ -94,81 +97,5 @@ const render = (element) => {
 const ul = document.querySelector("ul.discussions__container");
 
 render(ul);
-
-//페이지네이션 구현
-const pagenationNumbers = document.querySelector('div.buttons');
-const listItems = ul.querySelectorAll("li");
-
-const paginationLimit = 10;
-const pageCount = Math.ceil(listItems.length / paginationLimit);
-let currentPage;
-
-const appendPageNumber = (index) => {
-  const pageNumber = document.createElement("button");
-  pageNumber.className = "page__number";
-  pageNumber.innerText = index;
-  pageNumber.setAttribute("page-index", index);
-  pageNumber.setAttribute("aria-label", "Page " + index);
- 
-  pagenationNumbers.appendChild(pageNumber);
-};
-
-const getPaginationNumbers = () => {
-  for (let i = 1; i <= pageCount; i++) {
-    appendPageNumber(i);
-  }
-};
-
-// paginationLimit 개수만큼 display
-// 만약 현재 1페이지에 있다면 1~10까지의 item을 나타냄
-// 2페이지에 있다면 11~20까지의 item을 나타냄
-const setCurrentPage = (pageNum) => {
-  currentPage = pageNum;
-   
-  // 새로운 페이지가 set 될때마다 active page number가 업데이트됨
-  handleActivePageNumber();
-
-
-  const prevRange = (pageNum - 1) * paginationLimit;
-  const currRange = pageNum * paginationLimit;
-
-  // 배열을 반복문으로 돌려서 전부다 hide 했다가 range에 속하는 부분만 unhide
-  listItems.forEach((item, index) => {
-    item.classList.add("hidden");
-    // 배열은 인덱스 0부터 시작 -> range 설정 유의
-    if (index >= prevRange && index < currRange) {
-      item.classList.remove("hidden");
-    }
-  });
-};
-
-// 웹페이지가 load 될 때 getPaginationNumbers 함수 호출해서 페이지 넘버 표시
-window.addEventListener("load", () => {
-  getPaginationNumbers();
-  setCurrentPage(1);
- 
-  document.querySelectorAll(".page__number").forEach((button) => {
-    const pageIndex = Number(button.getAttribute("page-index"));
- 
-    if (pageIndex) {
-      // 페이지 버튼 클릭했을 때 setCurrentPage 함수 실행
-      button.addEventListener("click", () => {
-        setCurrentPage(pageIndex);
-      });
-    }
-  });
-});
-
-// 현재 active한 페이지의 버튼에 class="active" 추가
-const handleActivePageNumber = () => {
-  document.querySelectorAll(".page__number").forEach((button) => {
-    button.classList.remove("active");
-     
-    const pageIndex = Number(button.getAttribute("page-index"));
-    if (pageIndex === currentPage) {
-      button.classList.add("active");
-    }
-  });
-};
 
 
