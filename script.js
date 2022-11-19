@@ -70,7 +70,7 @@ form.addEventListener('submit',(event) => {
     url: "https://github.com/codestates-seb/agora-states-fe/discussions/6",
     author: formAuthor.value,
     bodyHTML: formTextbox.value,
-    avatarUrl: 'https://avatars.githubusercontent.com/u/22221941?s=64&u=7332dde3a563f98d2912e107f455ce2265ccca45&v=4'
+    avatarUrl: 'https://source.unsplash.com/random'
   }
   // data.js의 agoraStatesDiscussions 배열 안으로 submit된 obj 변수를 추가한다
   // unshift를 사용해서 맨 앞으로 보낸다(최신순)
