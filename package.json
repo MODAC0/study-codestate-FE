@@ -6,6 +6,7 @@
     "codestates-assignment-manager": "^1.8.0"
   },
   "scripts": {
+    "start": "nodemon server/basic-server.js",
     "test": "echo no test",
     "submit": "echo you don\\'t need to submit"
   },
