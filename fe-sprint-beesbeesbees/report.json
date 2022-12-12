@@ -1,0 +1,382 @@
+{
+  "stats": {
+    "suites": 4,
+    "tests": 26,
+    "passes": 26,
+    "pending": 0,
+    "failures": 0,
+    "start": "2022-11-21T07:11:03.432Z",
+    "end": "2022-11-21T07:11:03.459Z",
+    "duration": 27
+  },
+  "tests": [
+    {
+      "title": "`age` 속성은 `5`이어야 합니다",
+      "fullTitle": "Bee class functionality `age` 속성은 `5`이어야 합니다",
+      "duration": 1,
+      "currentRetry": 0,
+      "err": {}
+    },
+    {
+      "title": "`color` 속성은 `yellow`이어야 합니다",
+      "fullTitle": "Bee class functionality `color` 속성은 `yellow`이어야 합니다",
+      "duration": 1,
+      "currentRetry": 0,
+      "err": {}
+    },
+    {
+      "title": "`food` 속성은 Grub으로부터 상속받습니다",
+      "fullTitle": "Bee class functionality `food` 속성은 Grub으로부터 상속받습니다",
+      "duration": 0,
+      "currentRetry": 0,
+      "err": {}
+    },
+    {
+      "title": "`eat` 메소드는 Grub으로부터 상속받습니다",
+      "fullTitle": "Bee class functionality `eat` 메소드는 Grub으로부터 상속받습니다",
+      "duration": 0,
+      "currentRetry": 0,
+      "err": {}
+    },
+    {
+      "title": "`job` 속성은 `Keep on growing`이어야 합니다",
+      "fullTitle": "Bee class functionality `job` 속성은 `Keep on growing`이어야 합니다",
+      "duration": 0,
+      "currentRetry": 0,
+      "err": {}
+    },
+    {
+      "title": "`age` 속성은 `10`이어야 합니다",
+      "fullTitle": "ForagerBee class functionality `age` 속성은 `10`이어야 합니다",
+      "duration": 0,
+      "currentRetry": 0,
+      "err": {}
+    },
+    {
+      "title": "`job` 속성은 `find pollen`이어야 합니다",
+      "fullTitle": "ForagerBee class functionality `job` 속성은 `find pollen`이어야 합니다",
+      "duration": 1,
+      "currentRetry": 0,
+      "err": {}
+    },
+    {
+      "title": "`color` 속성은 `Bee`로부터 상속받습니다",
+      "fullTitle": "ForagerBee class functionality `color` 속성은 `Bee`로부터 상속받습니다",
+      "duration": 0,
+      "currentRetry": 0,
+      "err": {}
+    },
+    {
+      "title": "`food` 속성은 `Grub`으로부터 상속받습니다",
+      "fullTitle": "ForagerBee class functionality `food` 속성은 `Grub`으로부터 상속받습니다",
+      "duration": 0,
+      "currentRetry": 0,
+      "err": {}
+    },
+    {
+      "title": "`eat` 메소드는 `Grub`으로부터 상속받습니다",
+      "fullTitle": "ForagerBee class functionality `eat` 메소드는 `Grub`으로부터 상속받습니다",
+      "duration": 0,
+      "currentRetry": 0,
+      "err": {}
+    },
+    {
+      "title": "`canFly` 속성은 `true`이어야 합니다",
+      "fullTitle": "ForagerBee class functionality `canFly` 속성은 `true`이어야 합니다",
+      "duration": 0,
+      "currentRetry": 0,
+      "err": {}
+    },
+    {
+      "title": "`treasureChest` 속성은 빈 배열 `[]`이어야 합니다",
+      "fullTitle": "ForagerBee class functionality `treasureChest` 속성은 빈 배열 `[]`이어야 합니다",
+      "duration": 0,
+      "currentRetry": 0,
+      "err": {}
+    },
+    {
+      "title": "`forage` 메소드를 통해 `treasureChest` 속성에 보물을 추가할 수 있어야 합니다",
+      "fullTitle": "ForagerBee class functionality `forage` 메소드를 통해 `treasureChest` 속성에 보물을 추가할 수 있어야 합니다",
+      "duration": 1,
+      "currentRetry": 0,
+      "err": {}
+    },
+    {
+      "title": "`age` 속성은 `0`이어야 합니다",
+      "fullTitle": "Grub class functionality `age` 속성은 `0`이어야 합니다",
+      "duration": 0,
+      "currentRetry": 0,
+      "err": {}
+    },
+    {
+      "title": "`color` 속성은 `pink`이어야 합니다",
+      "fullTitle": "Grub class functionality `color` 속성은 `pink`이어야 합니다",
+      "duration": 1,
+      "currentRetry": 0,
+      "err": {}
+    },
+    {
+      "title": "`food` 속성은 `jelly`이어야 합니다",
+      "fullTitle": "Grub class functionality `food` 속성은 `jelly`이어야 합니다",
+      "duration": 0,
+      "currentRetry": 0,
+      "err": {}
+    },
+    {
+      "title": "`eat` 메소드가 존재해야 합니다",
+      "fullTitle": "Grub class functionality `eat` 메소드가 존재해야 합니다",
+      "duration": 0,
+      "currentRetry": 0,
+      "err": {}
+    },
+    {
+      "title": "`eat` 메소드를 통해 `Grub`이 젤리를 먹습니다",
+      "fullTitle": "Grub class functionality `eat` 메소드를 통해 `Grub`이 젤리를 먹습니다",
+      "duration": 1,
+      "currentRetry": 0,
+      "err": {}
+    },
+    {
+      "title": "`age` 속성은 `10`이어야 합니다",
+      "fullTitle": "HoneyMakerBee class functionality `age` 속성은 `10`이어야 합니다",
+      "duration": 0,
+      "currentRetry": 0,
+      "err": {}
+    },
+    {
+      "title": "`job` 속성은 `make honey`이어야 합니다",
+      "fullTitle": "HoneyMakerBee class functionality `job` 속성은 `make honey`이어야 합니다",
+      "duration": 0,
+      "currentRetry": 0,
+      "err": {}
+    },
+    {
+      "title": "`color` 속성은 `Bee`로부터 상속받습니다",
+      "fullTitle": "HoneyMakerBee class functionality `color` 속성은 `Bee`로부터 상속받습니다",
+      "duration": 0,
+      "currentRetry": 0,
+      "err": {}
+    },
+    {
+      "title": "`food` 속성은 `Grub`으로부터 상속받습니다",
+      "fullTitle": "HoneyMakerBee class functionality `food` 속성은 `Grub`으로부터 상속받습니다",
+      "duration": 0,
+      "currentRetry": 0,
+      "err": {}
+    },
+    {
+      "title": "`eat` 메소드는 `Grub`으로부터 상속받습니다",
+      "fullTitle": "HoneyMakerBee class functionality `eat` 메소드는 `Grub`으로부터 상속받습니다",
+      "duration": 0,
+      "currentRetry": 0,
+      "err": {}
+    },
+    {
+      "title": "`honeyPot` 속성은 `0`이어야 합니다",
+      "fullTitle": "HoneyMakerBee class functionality `honeyPot` 속성은 `0`이어야 합니다",
+      "duration": 0,
+      "currentRetry": 0,
+      "err": {}
+    },
+    {
+      "title": "`makeHoney` 메소드는 `honeyPot`에 1씩 추가합니다",
+      "fullTitle": "HoneyMakerBee class functionality `makeHoney` 메소드는 `honeyPot`에 1씩 추가합니다",
+      "duration": 0,
+      "currentRetry": 0,
+      "err": {}
+    },
+    {
+      "title": "`giveHoney` 메소드는 `honeyPot`에 1씩 뺍니다",
+      "fullTitle": "HoneyMakerBee class functionality `giveHoney` 메소드는 `honeyPot`에 1씩 뺍니다",
+      "duration": 0,
+      "currentRetry": 0,
+      "err": {}
+    }
+  ],
+  "pending": [],
+  "failures": [],
+  "passes": [
+    {
+      "title": "`age` 속성은 `5`이어야 합니다",
+      "fullTitle": "Bee class functionality `age` 속성은 `5`이어야 합니다",
+      "duration": 1,
+      "currentRetry": 0,
+      "err": {}
+    },
+    {
+      "title": "`color` 속성은 `yellow`이어야 합니다",
+      "fullTitle": "Bee class functionality `color` 속성은 `yellow`이어야 합니다",
+      "duration": 1,
+      "currentRetry": 0,
+      "err": {}
+    },
+    {
+      "title": "`food` 속성은 Grub으로부터 상속받습니다",
+      "fullTitle": "Bee class functionality `food` 속성은 Grub으로부터 상속받습니다",
+      "duration": 0,
+      "currentRetry": 0,
+      "err": {}
+    },
+    {
+      "title": "`eat` 메소드는 Grub으로부터 상속받습니다",
+      "fullTitle": "Bee class functionality `eat` 메소드는 Grub으로부터 상속받습니다",
+      "duration": 0,
+      "currentRetry": 0,
+      "err": {}
+    },
+    {
+      "title": "`job` 속성은 `Keep on growing`이어야 합니다",
+      "fullTitle": "Bee class functionality `job` 속성은 `Keep on growing`이어야 합니다",
+      "duration": 0,
+      "currentRetry": 0,
+      "err": {}
+    },
+    {
+      "title": "`age` 속성은 `10`이어야 합니다",
+      "fullTitle": "ForagerBee class functionality `age` 속성은 `10`이어야 합니다",
+      "duration": 0,
+      "currentRetry": 0,
+      "err": {}
+    },
+    {
+      "title": "`job` 속성은 `find pollen`이어야 합니다",
+      "fullTitle": "ForagerBee class functionality `job` 속성은 `find pollen`이어야 합니다",
+      "duration": 1,
+      "currentRetry": 0,
+      "err": {}
+    },
+    {
+      "title": "`color` 속성은 `Bee`로부터 상속받습니다",
+      "fullTitle": "ForagerBee class functionality `color` 속성은 `Bee`로부터 상속받습니다",
+      "duration": 0,
+      "currentRetry": 0,
+      "err": {}
+    },
+    {
+      "title": "`food` 속성은 `Grub`으로부터 상속받습니다",
+      "fullTitle": "ForagerBee class functionality `food` 속성은 `Grub`으로부터 상속받습니다",
+      "duration": 0,
+      "currentRetry": 0,
+      "err": {}
+    },
+    {
+      "title": "`eat` 메소드는 `Grub`으로부터 상속받습니다",
+      "fullTitle": "ForagerBee class functionality `eat` 메소드는 `Grub`으로부터 상속받습니다",
+      "duration": 0,
+      "currentRetry": 0,
+      "err": {}
+    },
+    {
+      "title": "`canFly` 속성은 `true`이어야 합니다",
+      "fullTitle": "ForagerBee class functionality `canFly` 속성은 `true`이어야 합니다",
+      "duration": 0,
+      "currentRetry": 0,
+      "err": {}
+    },
+    {
+      "title": "`treasureChest` 속성은 빈 배열 `[]`이어야 합니다",
+      "fullTitle": "ForagerBee class functionality `treasureChest` 속성은 빈 배열 `[]`이어야 합니다",
+      "duration": 0,
+      "currentRetry": 0,
+      "err": {}
+    },
+    {
+      "title": "`forage` 메소드를 통해 `treasureChest` 속성에 보물을 추가할 수 있어야 합니다",
+      "fullTitle": "ForagerBee class functionality `forage` 메소드를 통해 `treasureChest` 속성에 보물을 추가할 수 있어야 합니다",
+      "duration": 1,
+      "currentRetry": 0,
+      "err": {}
+    },
+    {
+      "title": "`age` 속성은 `0`이어야 합니다",
+      "fullTitle": "Grub class functionality `age` 속성은 `0`이어야 합니다",
+      "duration": 0,
+      "currentRetry": 0,
+      "err": {}
+    },
+    {
+      "title": "`color` 속성은 `pink`이어야 합니다",
+      "fullTitle": "Grub class functionality `color` 속성은 `pink`이어야 합니다",
+      "duration": 1,
+      "currentRetry": 0,
+      "err": {}
+    },
+    {
+      "title": "`food` 속성은 `jelly`이어야 합니다",
+      "fullTitle": "Grub class functionality `food` 속성은 `jelly`이어야 합니다",
+      "duration": 0,
+      "currentRetry": 0,
+      "err": {}
+    },
+    {
+      "title": "`eat` 메소드가 존재해야 합니다",
+      "fullTitle": "Grub class functionality `eat` 메소드가 존재해야 합니다",
+      "duration": 0,
+      "currentRetry": 0,
+      "err": {}
+    },
+    {
+      "title": "`eat` 메소드를 통해 `Grub`이 젤리를 먹습니다",
+      "fullTitle": "Grub class functionality `eat` 메소드를 통해 `Grub`이 젤리를 먹습니다",
+      "duration": 1,
+      "currentRetry": 0,
+      "err": {}
+    },
+    {
+      "title": "`age` 속성은 `10`이어야 합니다",
+      "fullTitle": "HoneyMakerBee class functionality `age` 속성은 `10`이어야 합니다",
+      "duration": 0,
+      "currentRetry": 0,
+      "err": {}
+    },
+    {
+      "title": "`job` 속성은 `make honey`이어야 합니다",
+      "fullTitle": "HoneyMakerBee class functionality `job` 속성은 `make honey`이어야 합니다",
+      "duration": 0,
+      "currentRetry": 0,
+      "err": {}
+    },
+    {
+      "title": "`color` 속성은 `Bee`로부터 상속받습니다",
+      "fullTitle": "HoneyMakerBee class functionality `color` 속성은 `Bee`로부터 상속받습니다",
+      "duration": 0,
+      "currentRetry": 0,
+      "err": {}
+    },
+    {
+      "title": "`food` 속성은 `Grub`으로부터 상속받습니다",
+      "fullTitle": "HoneyMakerBee class functionality `food` 속성은 `Grub`으로부터 상속받습니다",
+      "duration": 0,
+      "currentRetry": 0,
+      "err": {}
+    },
+    {
+      "title": "`eat` 메소드는 `Grub`으로부터 상속받습니다",
+      "fullTitle": "HoneyMakerBee class functionality `eat` 메소드는 `Grub`으로부터 상속받습니다",
+      "duration": 0,
+      "currentRetry": 0,
+      "err": {}
+    },
+    {
+      "title": "`honeyPot` 속성은 `0`이어야 합니다",
+      "fullTitle": "HoneyMakerBee class functionality `honeyPot` 속성은 `0`이어야 합니다",
+      "duration": 0,
+      "currentRetry": 0,
+      "err": {}
+    },
+    {
+      "title": "`makeHoney` 메소드는 `honeyPot`에 1씩 추가합니다",
+      "fullTitle": "HoneyMakerBee class functionality `makeHoney` 메소드는 `honeyPot`에 1씩 추가합니다",
+      "duration": 0,
+      "currentRetry": 0,
+      "err": {}
+    },
+    {
+      "title": "`giveHoney` 메소드는 `honeyPot`에 1씩 뺍니다",
+      "fullTitle": "HoneyMakerBee class functionality `giveHoney` 메소드는 `honeyPot`에 1씩 뺍니다",
+      "duration": 0,
+      "currentRetry": 0,
+      "err": {}
+    }
+  ]
+}
