@@ -1,0 +1,144 @@
+@import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css);
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  color: var(--gray-900);
+  font-family: 'Spoqa Han Sans Neo', -apple-system, BlinkMacSystemFont, Segoe UI,
+    Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,
+    sans-serif;
+}
+
+main {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin: 8px;
+  padding: 4px;
+  background-color: white;
+}
+
+fieldset {
+  padding: 12px;
+  border: 1px solid var(--coz-purple-600);
+  box-shadow: 0 0 2px 1px var(--coz-purple-400);
+  background-color: white;
+}
+
+fieldset > span {
+  margin: 0px 4px 0px 12px;
+}
+
+legend {
+  padding: 4px 12px;
+  background-color: inherit;
+  border-radius: 4px;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+h1 {
+  margin: 16px 0;
+  font-size: 36px;
+  color: var(--bluish-gray-900);
+}
+h2 {
+  margin: 12px 0;
+  font-size: 32px;
+  color: var(--bluish-gray-900);
+}
+
+input {
+  margin: 4px;
+  padding: 4px;
+  font-size: 14px;
+  border: none;
+  border-bottom: 1px solid var(--gray-600);
+  border-radius: 2px 2px 0px 0px;
+}
+
+input:disabled {
+  color: var(--gray-400);
+  border-bottom: 1px solid var(--gray-400);
+  background-color: var(--gray-50);
+}
+
+input:focus {
+  outline: none;
+  border-bottom: 1px solid var(--coz-purple-600);
+}
+
+textarea {
+  margin: 8px 4px;
+  padding: 4px;
+  font-size: 14px;
+  border: 1px solid var(--gray-600);
+  border-radius: 2px;
+}
+
+textarea:focus {
+  outline: 1px solid var(--coz-blue-600);
+  /* border: none; */
+}
+
+pre {
+  margin: 8px 4px;
+  padding: 4px;
+  font-size: 14px;
+  border: 1px solid var(--gray-600);
+  border-radius: 2px;
+}
+
+button {
+  padding: 4px 12px;
+  margin: 0 4px;
+  color: white;
+  vertical-align: middle;
+  background-color: var(--coz-purple-500);
+  border: 1px solid var(--coz-purple-100);
+  border-radius: 4px;
+  user-select: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: var(--coz-purple-400);
+}
+
+#logo {
+  position: fixed;
+  bottom: 12px;
+  right: 12px;
+  height: 24px;
+  opacity: 0.4;
+  user-select: none;
+}
+
+/* local */
+
+.input-text {
+  resize: none;
+  font-size: 1.5rem;
+  width: 80%;
+  height: 144px;
+  /* border: 1px solid #000; */
+}
+
+#response-wrapper {
+  width: 80%;
+  font-size: 2rem;
+  /* border: 1px solid #000; */
+  height: 144px;
+}
+
+button {
+  font-size: 2rem;
+}
+
+#root {
+  padding: 8px 12px;
+}

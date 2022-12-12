@@ -1,0 +1,29 @@
+{
+  "name": "fe-sprint-mini-node-server",
+  "version": "1.0.0",
+  "description": "",
+  "dependencies": {
+    "codestates-assignment-manager": "^1.8.0",
+    "cors": "^2.8.5",
+    "express": "^4.18.2"
+  },
+  "scripts": {
+    "start": "nodemon server/basic-server.js",
+    "test": "echo no test",
+    "submit": "echo you don\\'t need to submit"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/codestates-seb/fe-sprint-mini-node-server.git"
+  },
+  "author": "Codestates",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/codestates-seb/fe-sprint-mini-node-server.git"
+  },
+  "homepage": "https://github.com/codestates-seb/fe-sprint-mini-node-server#readme",
+  "main": "index.js",
+  "devDependencies": {
+    "mocha": "^9.2.2"
+  }
+}
