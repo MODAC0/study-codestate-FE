@@ -1,0 +1,111 @@
+* {
+  box-sizing: border-box;
+  font-size: 16px;
+  margin: 0;
+  padding: 0;
+  font-family: 'Spoqa Han Sans Neo', 'sans-serif';
+}
+
+:root {
+  --main-border-color: var(--gray-100); /*#f0f0f0*/
+  --point-color: var(--coz-purple-600); /*#452cdd*/
+  --point-color-tint: var(--coz-purple-400); /*#a296ee*/
+  --default-text-color: var(--gray-900); /*#141414*/
+  --sub-text-color: var(--gray-700); /*#5c5c5c*/
+  --bold-text-color: black;
+  --button-text-color: white;
+  --button-color: var(--coz-blue-600); /*#295ce0*/
+  --button-hover-color: var(--coz-blue-500); /*#5e85e8*/
+  --shade-color: var(--gray-200); /*#e6e6e6*/
+  --mypage-component-color: #eb9705;
+  --about-component-color: #097e4d;
+  --tweets-component-color: #003380;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: inherit; /* 1 */
+  font-size: 100%; /* 1 */
+  line-height: 1.15; /* 1 */
+  margin: 0; /* 2 */
+  border: 0;
+}
+
+button,
+input {
+  overflow: visible; /* 1 */
+  border-radius: 2px;
+}
+
+button {
+  background-color: var(--button-color);
+  color: var(--button-text-color);
+}
+
+textarea {
+  overflow: auto;
+  resize: none;
+  margin-top: 4px;
+  border-radius: 2px;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+
+footer {
+  position: relative;
+  flex: 0 0 1rem;
+  padding: 0.3rem;
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--gray-600);
+  text-align: right;
+  border: 2px solid var(--footer-component-color);
+}
+
+main {
+  display: flex;
+  flex-direction: row;
+  max-width: 640px;
+  flex: 1 0 0;
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+}
+
+.far,
+.fas {
+  font-size: 2rem;
+  color: var(--default-text-color);
+  padding: 1.3rem;
+  cursor: pointer;
+}
+
+.features {
+  width: 564px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--main-border-color);
+  flex: 1 0 0;
+}
+
+#logo {
+  position: absolute;
+  left: 12px;
+  top: 4px;
+  height: 22px;
+}

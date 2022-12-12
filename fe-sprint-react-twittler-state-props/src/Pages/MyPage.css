@@ -1,0 +1,43 @@
+.myInfo {
+  display: flex;
+  flex-direction: column;
+  flex: 1 0 0;
+}
+
+.myInfo__container {
+  border-bottom: 1px solid var(--main-border-color);
+  margin-bottom: 0.5rem;
+}
+
+.myInfo__wrapper {
+  padding-left: 15px;
+  height: 97px;
+  display: flex;
+  align-items: center;
+  color:white;
+  background-color: var(--mypage-component-color);
+}
+
+.myInfo__detail {
+  padding-left: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.myInfo__detail > .myInfo__detailName {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.myInfo__profile > img {
+  display: inline-block;
+  width: 80px;
+  height: 80px;
+  border-radius: 100%;
+}
+
+.tweets__mypage{
+  flex: 1 0 80vh;
+  border: 2px solid var(--mypage-component-color);
+  overflow-y: scroll;
+}
