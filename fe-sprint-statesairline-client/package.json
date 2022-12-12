@@ -1,0 +1,38 @@
+{
+  "name": "fe-sprint-statesairline-client",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "build": "next build",
+    "start": "next dev",
+    "test": "jest",
+    "report": "jest --json --outputFile=report.jest.json",
+    "submit": "codestates"
+  },
+  "dependencies": {
+    "next": "^12",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "codestates-assignment-manager": "^1.8.0",
+    "@testing-library/dom": "^7.30.4",
+    "@testing-library/jest-dom": "^5.12.0",
+    "@testing-library/react": "^11.2.6",
+    "babel-jest": "^26.6.3",
+    "jest": "^26.6.3",
+    "nock": "^13.0.11",
+    "node-fetch": "^2.6.1",
+    "resq": "^1.10.0"
+  },
+  "jest": {
+    "testPathIgnorePatterns": [
+      "<rootDir>/.next/",
+      "<rootDir>/node_modules/"
+    ],
+    "transform": {
+      "^.+\\.(js|jsx|ts|tsx)$": "<rootDir>/node_modules/babel-jest"
+    }
+  }
+}
