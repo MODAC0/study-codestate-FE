@@ -1,0 +1,25 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <title>Mocha Spec Runner</title>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+  <link rel="stylesheet" href="lib/mocha/mocha.css">
+  <script src="lib/mocha/mocha.js"></script>
+  <script src="lib/chai/chai.js"></script>
+  <script>
+    mocha.setup({ ui: 'bdd' });
+    window.expect = chai.expect;
+    window.onload = function () {
+      window.mochaPhantomJS ? mochaPhantomJS.run() : mocha.run();
+    }
+  </script>
+  <script src="src/stringifyJSON.js"></script>
+  <script src="spec/stringifyJSONSpec.js"></script>
+</head>
+
+<body>
+  <div id="mocha"></div>
+</body>
+
+</html>

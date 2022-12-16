@@ -1,0 +1,30 @@
+{
+  "name": "fe-sprint-stringify-json",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "mocha spec/stringifyJSONSpec.js --reporter mocha-multi-reporters --reporter-options configFile=multi-reporters.json",
+    "report": "mocha spec/stringifyJSONSpec.js --timeout 50000 --exit --sort --reporter @mochajs/json-file-reporter",
+    "submit": "codestates"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/codestates/pre-sprint-stringify-json.git"
+  },
+  "author": "",
+  "bugs": {
+    "url": "https://github.com/codestates/pre-sprint-stringify-json/issues"
+  },
+  "homepage": "https://github.com/codestates/pre-sprint-stringify-json#readme",
+  "devDependencies": {
+    "@mochajs/json-file-reporter": "^1.3.0",
+    "chai": "^4.2.0",
+    "codestates-assignment-manager": "^1.8.0",
+    "mocha": "^8.2.1",
+    "mocha-multi-reporters": "^1.5.1"
+  }
+}
