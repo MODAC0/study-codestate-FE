@@ -1,0 +1,24 @@
+{
+  "name": "fe-sprint-tree-ui",
+  "version": "1.0.0",
+  "author": "Phillip Choi <jaeja.phil@gmail.com>",
+  "description": "fe-sprint-tree-ui",
+  "main": "fix_me.js",
+  "scripts": {
+    "test": "mocha test/index.test.js --reporter mocha-multi-reporters --reporter-options configFile=multi-reporters.json",
+    "report": "mocha test/index.test.js --timeout 50000 --exit --sort --reporter @mochajs/json-file-reporter",
+    "submit": "codestates"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/codestates/pre-sprint-tree-ui"
+  },
+  "devDependencies": {
+    "@mochajs/json-file-reporter": "^1.3.0",
+    "chai": "^4.2.0",
+    "codestates-assignment-manager": "^1.8.0",
+    "jsdom": "^16.4.0",
+    "mocha": "^8.2.1",
+    "mocha-multi-reporters": "^1.5.1"
+  }
+}
