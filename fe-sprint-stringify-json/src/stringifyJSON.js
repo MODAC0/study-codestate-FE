@@ -52,7 +52,7 @@ function stringifyJSON(obj) {
       }
       let newKey = stringifyJSON(key); //key
       let newValue = stringifyJSON(obj[key]); //key의 값
-      str = str + newKey + ":" + newValue + ",";
+      str += +newKey + ":" + newValue + ",";
     }
     str = str.slice(0, -1); //마지막 쉼표 버리기
     return `{${str}}`;
