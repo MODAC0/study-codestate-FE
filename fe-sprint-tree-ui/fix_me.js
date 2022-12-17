@@ -173,11 +173,27 @@ const menu = [
 const root = document.getElementById("root");
 
 function createTreeView(menu, currentNode) {
-  const li = document.createElement("li");
-  menu.forEach((element) => {
-    console.log(element);
-    if (Object.keys(element) === "childen") console.log(element[children]);
+  menu.forEach((el) => {
+    const li = document.createElement("li");
+    if (el.children) {
+      // ! recursive case
+      const span = document.createElement("span");
+      span.textContent = el.name;
+      const inputBox = document.createElement("input");
+      inputBox.type = "checkbox";
+      const ul = document.createElement("ul");
+      li.append(inputBox, span, ul);
+      // * 1. test case의 요소를 만족시킨 li를 만든다.
+      currentNode.append(li);
+      // * 2. li를 ul에 넣는다.
+      createTreeView(el.children, ul);
+      // * 3. 객체 안의 객체를 찾아서 li안의 ul에 append시킨다
+    } else {
+      // ! base case
+      li.textContent = el.name;
+      currentNode.append(li);
+      // * 1. 최하위 li는 name text만을 가지고 있는 li이다.
+    }
   });
 }
-
 createTreeView(menu, root);
