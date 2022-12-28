@@ -1,8 +1,7 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
 
-function Nav() {
-
+function Nav({ count }) {
   return (
     <div id="nav-body">
       <span id="title">
@@ -12,7 +11,7 @@ function Nav() {
       <div id="menu">
         <Link to="/">상품리스트</Link>
         <Link to="/shoppingcart">
-          장바구니<span id="nav-item-counter">0</span>
+          장바구니<span id="nav-item-counter">{count}</span>
         </Link>
       </div>
     </div>
