@@ -1,0 +1,70 @@
+{
+  "name": "react-custom-component",
+  "version": "0.2.0",
+  "private": true,
+  "dependencies": {
+    "@testing-library/jest-dom": "^5.12.0",
+    "@testing-library/react": "^11.2.6",
+    "@testing-library/user-event": "^12.8.3",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-scripts": "4.0.3",
+    "resq": "^1.10.0",
+    "sass": "^1.32.12",
+    "styled-components": "^5.3.6"
+  },
+  "jest": {
+    "testMatch": [
+      "**/index.test.js"
+    ]
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test ./src/components/__tests__/index.test.js --watchAll=false --verbose",
+    "report": "react-scripts test ./src/components/__tests__/index.test.js --watchAll=false --json --outputFile=report.jest.json",
+    "submit": "codestates",
+    "eject": "react-scripts eject",
+    "lint": "semistandard --fix",
+    "storybook": "start-storybook -p 6006 -s public",
+    "build-storybook": "build-storybook -s public"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ],
+    "overrides": [
+      {
+        "files": [
+          "**/*.stories.*"
+        ],
+        "rules": {
+          "import/no-anonymous-default-export": "off"
+        }
+      }
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@storybook/addon-actions": "^6.3.6",
+    "@storybook/addon-essentials": "^6.3.6",
+    "@storybook/addon-links": "^6.3.6",
+    "@storybook/node-logger": "^6.3.6",
+    "@storybook/preset-create-react-app": "^3.2.0",
+    "@storybook/react": "^6.3.6",
+    "codestates-assignment-manager": "^1.8.0",
+    "react-test-renderer": "^17.0.2"
+  }
+}
