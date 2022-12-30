@@ -2,18 +2,6 @@ import React from "react";
 import Item from "../components/Item";
 
 function ItemListContainer({ items, cartItems, setCartItems }) {
-  // const handleClick = (e, itemId) => {
-  //   const newCartItem = {};
-  //   newCartItem.itemId = itemId;
-  //   newCartItem.quantity = 1;
-  //   cartItems.map((el) => {
-  //     if (el.itemId === itemId) {
-  //       setCartItems([...cartItems]);
-  //       el.quantity++;
-  //     } else {
-  //       setCartItems([...cartItems, newCartItem]);
-  //     }
-  //   });
   const handleClick = (e, itemId) => {
     if (!cartItems.find((el) => el.itemId === itemId)) {
       setCartItems([...cartItems, { itemId, quantity: 1 }]);
