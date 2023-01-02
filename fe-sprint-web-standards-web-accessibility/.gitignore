@@ -1,0 +1,7 @@
+node_modules/
+.env
+.vscode
+.DS_Store
+.eslintrc.json
+.prettierrc.json
+report.json

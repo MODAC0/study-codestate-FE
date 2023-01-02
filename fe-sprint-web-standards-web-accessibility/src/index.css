@@ -1,0 +1,366 @@
+*{
+  font-family: 'Spoqa Han Sans Neo', 'sans-serif';
+  box-sizing: border-box;
+  margin: 0;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+
+/* 여기서부터 문제 1과 관련된 CSS 속성을 수정해주세요. */
+
+.header {
+  flex: 1 1 0;
+  font-weight: 400;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 30px;
+  box-shadow: 4px 4px 4px rgba(0,0,0,0.1);
+  background-color: var(--coz-blue-800);
+  z-index: 1;
+}
+
+.container {
+  flex: 8.5 1 0;
+  display: flex;
+  height: 70vh;
+}
+
+.nav {
+  padding : 10px 0;
+  flex-basis: auto;
+  background-color: var(--bluish-gray-50);
+}
+.nav > li {
+  font-size: 1.5rem;
+  font-weight: 500;
+  list-style: none;
+  text-align: left;
+  padding: 10px 30px;
+}
+.nav > li:hover {
+  background-color: var(--coz-purple-200);
+}
+.nav > li:active {
+  background-color:var(--coz-purple-300);
+}
+
+.main {
+  padding : 20px;
+  flex: 3 1 0;
+  overflow-y: scroll;
+  border-right: 1px solid var(--bluish-gray-200);
+}
+
+.aside {
+  padding : 20px;
+  flex: 2 1 0;
+  text-align: left;
+  overflow-y: scroll;
+}
+
+.footer {
+  padding-top: 10px;
+  padding-right: 30px;
+  flex: 0.5 1 0;
+  background-color: var(--bluish-gray-400);
+  color:white;
+}
+
+.title1 {
+  font-weight: 700;
+  font-size: 1.8rem;
+  padding: 0 10px 10px 10px;
+  text-align: left;
+}
+.title2 {
+  font-weight: 700;
+  font-size: 1.5rem;
+  padding: 0 10px 10px 10px;
+  text-align: left;
+}
+.title3 {
+  font-weight: 700;
+  font-size: 1.2rem;
+  padding: 0 10px 10px 10px;
+  text-align: left;
+}
+
+.section {
+  text-align: left;
+  margin: 15px 15px 30px 15px;
+}
+
+.p {
+  padding: 10px;
+  text-align: left;
+  margin-bottom: 10px;
+}
+
+
+
+
+/* 이 밑으로는 수정하지 말아주세요. */
+
+
+li {
+  padding: 10px 10px 10px 20px;
+  text-align: left;
+}
+li.selected{
+  color: var(--coz-purple-600);
+  transition: 0.2s;
+}
+li > li:nth-child(1) {
+  padding-top: 20px;
+}
+li > li {
+  list-style-type: circle;
+  padding-top: 5px;
+}
+
+.tabContainer {
+  padding: 10px;
+}
+.tabList {
+  display: flex;
+}
+.tab{
+  padding: 10px;
+  width: 100px;
+  text-align: center;
+  transition: 0.2s;
+  border-bottom: 1px solid var(--gray-600);
+}
+.tab:hover {
+  text-decoration: underline;
+}
+div.selected.tab {
+  background-color: var(--coz-purple-200);
+  color: var(--coz-blue-700);
+  transition: 0.2s;
+}
+.tabPanel{
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  width: 100px;
+}
+.block {
+  display: block;
+}
+.none {
+  /* 스크린 리더가 읽을 수 있도록 설정한 것입니다. */
+  color: transparent;
+  list-style: none;
+  height: 0;
+}
+.one {
+  position: relative;
+  left: -100px;
+}
+.two {
+  position: relative;
+  left: -200px;
+}
+
+
+
+button {
+  font-size: 1.1rem;
+  font-weight: 500;
+  display: block;
+  margin: 10px;
+  padding: 10px;
+  width: 200px;
+  border: 1px solid black;
+  border-radius: 8px;
+}
+button:hover {
+  background-color: var(--coz-purple-200);
+  box-shadow: 3px 3px 3px var(--gray-200);
+}
+.button {
+  font-size: 1.1rem;
+  font-weight: 500;
+  display: block;
+  text-align: center;
+  background-color: #efefef;
+  margin: 10px;
+  padding: 10px;
+  width: 200px;
+  border: 1px solid black;
+  border-radius: 8px;
+}
+.button:hover {
+  background-color: var(--coz-purple-200);;
+  box-shadow: 3px 3px 3px var(--gray-200);
+}
+
+img {
+width: 100%;
+}
+
+.iconButtonContainer {
+  display: flex;
+  margin-left: 30px;
+}
+button>img {
+  width: 60px;
+  object-fit: cover;
+}
+.iconButton {
+  width: 80px;
+  height: 80px;
+  display: inline;
+}
+
+
+
+th, tr, td {
+  border: 1px solid black;
+  padding: 10px;
+}
+table {
+  margin-left: 30px;
+}
+caption {
+  padding: 10px;
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+th {
+  background-color: var(--bluish-gray-300);
+}
+td {
+  background-color: white;
+}
+
+
+
+.inputContainer {
+  margin-left: 20px;
+  display: flex;
+}
+label, span {
+  padding: 5px;
+  display: block;
+}
+input {
+  display: block;
+  margin: 5px;
+  width: 100px;
+}
+
+
+:root {
+  /* color */
+  --bluish-gray-10:#f5f7f9;
+  --bluish-gray-50:#f2f4f7;
+  --bluish-gray-100:#eceef3;
+  --bluish-gray-200:#dfe3ec;
+  --bluish-gray-300:#ccd3e0;
+  --bluish-gray-400:#b2bdd1;
+  --bluish-gray-500:#8c9cba;
+  --bluish-gray-600:#667ba3;
+  --bluish-gray-700:#455573;
+  --bluish-gray-800:#262f40;
+  --bluish-gray-900:#0f1319;
+  --white:#ffffff;
+  --gray-10:#f7f7f7;
+  --gray-50:#f2f2f2;
+  --gray-100:#f0f0f0;
+  --gray-200:#e6e6e6;
+  --gray-300:#d6d6d6;
+  --gray-400:#c2c2c2;
+  --gray-500:#a3a3a3;
+  --gray-600:#858585;
+  --gray-700:#5c5c5c;
+  --gray-800:#333333;
+  --gray-900:#141414;
+  --black:#000000;
+  --coz-purple-10:#f3f2fd;
+  --coz-purple-50:#efedfc;
+  --coz-purple-100:#e8e5fb;
+  --coz-purple-200:#d8d3f8;
+  --coz-purple-300:#c0b9f4;
+  --coz-purple-400:#a296ee;
+  --coz-purple-500:#7361e5;
+  --coz-purple-600:#452cdd;
+  --coz-purple-700:#2c1a9e;
+  --coz-purple-800:#190e58;
+  --coz-purple-900:#0a0623;
+  --coz-blue-10:#f2f5fd;
+  --coz-blue-50:#edf1fc;
+  --coz-blue-100:#e4ebfb;
+  --coz-blue-200:#d2ddf9;
+  --coz-blue-300:#b8c9f5;
+  --coz-blue-400:#94adf0;
+  --coz-blue-500:#5e85e8;
+  --coz-blue-600:#295ce0;
+  --coz-blue-700:#173ea1;
+  --coz-blue-800:#0d2259;
+  --coz-blue-900:#050e24;
+  --coz-orange-50:#fff2e9;
+  --coz-orange-100:#ffebde;
+  --coz-orange-200:#ffe1cc;
+  --coz-orange-300:#ffcead;
+  --coz-orange-400:#ffb685;
+  --coz-orange-500:#ff9247;
+  --coz-orange-600:#ff6e0a;
+  --coz-orange-700:#b84b00;
+  --mint-50:#ebfff7;
+  --mint-100:#e0fff2;
+  --mint-200:#ccffea;
+  --mint-300:#adffdd;
+  --mint-400:#84ffcb;
+  --mint-500:#47ffb2;
+  --mint-600:#0aff98;
+  --mint-700:#00b86a;
+  --mint-800:#00663b;
+  --peach-50:#ffeeeb;
+  --peach-100:#ffe6e0;
+  --peach-200:#ffd5cc;
+  --peach-300:#ffbcad;
+  --peach-400:#ff9b85;
+  --peach-500:#ff6947;
+  --peach-600:#ff360a;
+  --peach-700:#b82100;
+  --blackalpha-10:#00000008;
+  --blackalpha-50:#0000000a;
+  --blackalpha-100:#0000000f;
+  --blackalpha-200:#0000001a;
+  --blackalpha-300:#00000029;
+  --blackalpha-400:#0000003d;
+  --blackalpha-500:#0000005c;
+  --blackalpha-600:#0000007a;
+  --blackalpha-700:#000000a3;
+  --blackalpha-800:#000000cc;
+  --blackalpha-900:#000000eb;
+  /* fontSizes */
+  --default:16px;
+  --h1:36px;
+  --h2:32px;
+  --h3:24px;
+  --h4:20px;
+  --h5:18px;
+  --t1:14px;
+  --t2:12px;
+  --t3:10px;
+  /* lineHeights */
+  --default-lh:24px;
+  --h1-lh:54px;
+  --h2-lh:48px;
+  --h3-lh:36px;
+  --h4-lh:30px;
+  --h5-lh:27px;
+  --t1-lh:21px;
+  --t2-lh:18px;
+  --t3-lh:15px;
+  /* boxShadow */
+  --dropdown:0 3px 6px -4px #0000001f,0 6px 16px 0 #00000014,0 9px 28px 8px #0000000d;
+  }
