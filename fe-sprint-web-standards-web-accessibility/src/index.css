@@ -12,7 +12,7 @@
 
 /* 여기서부터 문제 1과 관련된 CSS 속성을 수정해주세요. */
 
-.header {
+header {
   flex: 1 1 0;
   font-weight: 400;
   display: flex;
@@ -30,26 +30,26 @@
   height: 70vh;
 }
 
-.nav {
+nav {
   padding: 10px 0;
   flex-basis: auto;
   background-color: var(--bluish-gray-50);
 }
-.nav > li {
+nav > li {
   font-size: 1.5rem;
   font-weight: 500;
   list-style: none;
   text-align: left;
   padding: 10px 30px;
 }
-.nav > li:hover {
+nav > li:hover {
   background-color: var(--coz-purple-200);
 }
-.nav > li:active {
+nav > li:active {
   background-color: var(--coz-purple-300);
 }
 
-.main {
+main {
   padding: 20px;
   flex: 3 1 0;
   overflow-y: scroll;
@@ -150,7 +150,7 @@ h6 {
   margin: 15px 15px 30px 15px;
 }
 
-.p {
+p {
   padding: 10px;
   text-align: left;
   margin-bottom: 10px;
