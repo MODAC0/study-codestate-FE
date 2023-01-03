@@ -1,7 +1,11 @@
-const Footer = () => {
-    return (
-        <div class="footer" style={{"text-align": "right", "font-weight":"400"}}>All rights reseved @ Codestates</div>
-    )
-}
+import styled from "styled-components";
+const StyleFooter = styled.footer`
+  text-align: right;
+  font-weight: 400;
+`;
 
-export default Footer
+const Footer = () => {
+  return <StyleFooter>All rights reseved @ Codestates</StyleFooter>;
+};
+
+export default Footer;
