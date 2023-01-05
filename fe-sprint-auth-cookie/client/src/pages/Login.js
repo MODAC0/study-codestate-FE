@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 
-export default function Login() {
+export default function Login({ setIsLogin, setUserInfo }) {
   const [loginInfo, setLoginInfo] = useState({
     userId: "",
     password: "",
@@ -20,12 +20,19 @@ export default function Login() {
     // 로그인에 필요한 유저정보가 충분히 제공되지 않았다면 에러메시지가 나타나도록 구현하세요.
     return axios
       .post("https://localhost:4000/login", { loginInfo, checkedKeepLogin })
-
       .then((res) => {
-        console.log(res.data);
+        setUserInfo(res.data);
+        setIsLogin(true);
         // 로그인에 성공했다면 응답으로 받은 데이터가 Mypage에 렌더링되도록 State를 변경하세요.
       })
       .catch((err) => {
+        alert(err);
+        setErrorMessage("로그인에 실패했습니다");
+        setUserInfo({
+          userId: "",
+          password: "",
+        });
+        setIsLogin(false);
         // 로그인에 실패했다면 그에 대한 에러 핸들링을 구현하세요.
       });
   };

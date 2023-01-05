@@ -1,9 +1,9 @@
-import './App.css';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Login from './pages/Login';
-import Mypage from './pages/Mypage';
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import "./App.css";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Login from "./pages/Login";
+import Mypage from "./pages/Mypage";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 
 // 모든 요청에 withCredentials가 true로 설정됩니다.
 axios.defaults.withCredentials = true;
@@ -33,23 +33,19 @@ function App() {
 
   return (
     <BrowserRouter>
-      <div className='main'>
+      <div className="main">
         <Routes>
           <Route
-            path='/'
+            path="/"
             element={
               isLogin ? (
                 <Mypage
-                /*
-                TODO: 렌더링에 필요한 App의 상태와 이를 하위 컴포넌트에서 변경할 수 있도록 props를 전달하세요. 
-                */
+                  setIsLogin={setIsLogin}
+                  setUserInfo={setUserInfo}
+                  userInfo={userInfo}
                 />
               ) : (
-                <Login
-                /*
-                TODO: App의 상태를 변경할 수 있도록 props를 전달하세요. 
-                */
-                />
+                <Login setIsLogin={setIsLogin} setUserInfo={setUserInfo} />
               )
             }
           />
