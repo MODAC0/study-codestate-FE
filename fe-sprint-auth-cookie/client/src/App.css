@@ -1,0 +1,131 @@
+* {
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+input {
+  border: 0px;
+  padding: 3px;
+  border-radius: 3px;
+  outline: none;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
+}
+
+input:focus{
+  box-shadow: rgba(3, 102, 214, 0.3) 0px 0px 0px 2px;
+}
+
+.main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-image: linear-gradient(to right, #fcfbfb7f, #b7b9e3);
+}
+
+.container {
+  height: 27rem;
+  width: 38rem;
+  overflow:hidden;
+  border-radius: 8px;
+  box-shadow: rgba(17, 12, 46, 0.7) 0px 48px 100px 0px;
+  background-color: #eee;
+}
+.right-box {
+  display: inline-block;
+  margin: 0 auto;
+  width: 19rem;
+  height: 27rem;
+  align-content: center;
+  text-align: center;
+}
+.left-box {
+  width: 19rem;
+  height: 27rem;
+  float: left;
+  background: linear-gradient(60deg, #4000c7  38%, rgba(0,0,0,0) 30%),linear-gradient(80deg, #7f73e3  65%, rgba(0,0,0,0) 30%), linear-gradient(40deg, rgb(163, 155, 255) 60%, #e3d8ff 90%);
+}
+
+.left-box > span {
+  max-width: 30rem;
+  font-size:2.2rem;
+  display: inline-block;
+  padding-top: 13rem;
+  margin: 1rem;
+  font-weight: bold;
+  color: white;
+}
+
+
+h1{
+  text-align: center;
+  margin: 0 auto;
+  margin-top: 2rem;
+  font-weight: 900;
+  width: min-content;
+  line-height: 100%;
+}
+
+h3{
+  color: #4000c7;
+  margin-bottom: 3px;
+}
+
+.input-field {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  margin: 0 auto;
+  margin-top: 3rem;
+  width:12rem;
+}
+.input-field > span {
+  padding: 0.2rem;
+  font-size:smaller;
+  font-weight: 600;
+  color:rgb(72, 65, 122);
+}
+
+.userinfo-field > article {
+  margin-top: 1rem;
+  padding: 0.3rem;
+}
+
+.checkbox-container {
+  font-size: 11px;
+  margin: 6px;
+}
+.checkbox-container > input {
+  vertical-align:text-top;
+}
+button {
+  border: 0px;
+  background-color: #7d51ff; 
+  color: white;
+  width: 12rem;
+  height: 40px;
+  border-radius: 6px;
+  cursor: pointer;
+  outline: none;
+  margin-top: 1rem;
+  font-size: 1rem;
+  letter-spacing:5px;
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+}
+
+button:hover {
+  background-color: #4000c7;
+}
+
+#alert-message {
+  font-size:smaller;
+  padding: 10px;
+  color: rgb(189, 16, 16);
+}
+
+.userinfo-field {
+  font-size: small;
+  margin-top: 1rem;
+}
