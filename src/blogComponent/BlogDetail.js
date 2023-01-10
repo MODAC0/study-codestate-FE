@@ -9,7 +9,7 @@ const BlogDetails = () => {
 
 
   /* 현재는 개별 블로그 내용으로 진입해도 내용이 보이지 않습니다. */
-  /* id를 이용하여 개별 블로그의 내용이 보일 수 있게 해봅시다. */
+  /* useParams와 id를 이용하여 개별 블로그의 내용이 보일 수 있게 해봅시다. */
   useEffect(() => {
     setTimeout(() => {
       fetch('http://localhost:3001/blogs/')
@@ -33,7 +33,7 @@ const BlogDetails = () => {
 
   const handleDeleteClick = () => {
     /* delete 버튼을 누르면 다시 home으로 리다이렉트 되어야 합니다. */
-    /* useNavigate()를 이용하여 로직을 작성해주세요. */
+    /* useNavigate()를 이용하여 handleDeleteClick 로직을 작성해주세요. */
     console.log('delete!');
   }
 
