@@ -1,0 +1,328 @@
+* {
+  font-family: "SamsungSharpSans-Regular";
+  font-size: 12px;
+  line-height: 1.3;
+  color: #000;
+  font-size: 100%;
+  word-break: keep-all;
+  word-wrap: break-word;
+}
+@media screen and (max-width: 767.7px) {
+  .header {
+    height: 12.8vw;
+    padding: 0 8%;
+  }
+  .nav-container {
+    margin-top: 0.66667vw;
+  }
+  .header .logo a {
+    margin-top: 0.26667vw;
+  }
+  .header .logo img {
+    width: 34vw;
+    max-width: none;
+    vertical-align: middle;
+  }
+  .widget-search {
+    width: 4.26667vw;
+    margin-top: 0.4vw;
+    margin-right: 6.26667vw;
+  }
+  .header .widget-search img {
+    width: 100%;
+  }
+  .header .widget-nav-btn {
+    height: 2.4vw;
+    width: 4.8vw;
+  }
+  .header .d-block-pc {
+    display: none;
+  }
+  .header .d-block-m {
+    display: flex;
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 1280px) {
+  .header {
+    padding: 0vw 3.90625vw;
+    height: 7.03125vw;
+  }
+  .nav-container {
+    margin-top: 0.39062vw;
+  }
+  .header .logo a {
+    margin-top: 0.15625vw;
+  }
+  .header .logo img {
+    width: 14.14062vw;
+  }
+  .nav-container nav {
+    font-family: "SamsungSharpSans-Regular";
+    font-size: 1.40625vw;
+    line-height: 1.44444;
+    margin-left: 2.1875vw;
+  }
+  .hash-rolling-wrapper {
+    margin-top: 0.39062vw;
+    width: 21.09375vw;
+  }
+  .widget-hash {
+    margin-right: 4.6875vw;
+  }
+  .widget-hash a {
+    font-family: "SamsungSharpSans-Bold";
+    font-size: 1.40625vw;
+    line-height: 1.44444;
+  }
+  .widget-search {
+    margin-top: 0.23438vw;
+    margin-right: 2.03125vw;
+  }
+  .widget-lang {
+    margin-top: 0.23438vw;
+    margin-right: 2.03125vw;
+    font-size: 1.25vw;
+    line-height: 1.25;
+  }
+  .header .d-block-m {
+    display: none;
+  }
+  .header .d-block-pc {
+    display: flex;
+  }
+}
+@media screen and (min-width: 1281px) {
+  .header {
+    padding: 0 50px;
+    height: 90px;
+  }
+  .nav-container {
+    margin-top: 5px;
+  }
+  .widget-hash {
+    margin-right: 60px;
+  }
+  .widget-hash a {
+    font-family: "SamsungSharpSans-Bold";
+    font-size: 18px;
+    line-height: 1.44444;
+  }
+  .hash-rolling-wrapper {
+    margin-top: 5px;
+    width: 270px;
+  }
+  nav {
+    font-size: 18px;
+    line-height: 1.44444;
+    margin-left: 28px;
+  }
+  .logo img {
+    width: 181px;
+  }
+  .hash-rolling-wrapper {
+    height: 40%;
+  }
+  .widget-search {
+    margin-right: 26px;
+  }
+  .widget-search,
+  .widget-lang {
+    margin-top: 3px;
+    font-family: "samsungSharpSans-Medium";
+    font-size: 16px;
+    line-height: 1.25;
+  }
+  .widget-lang a {
+    font-size: 16px;
+    line-height: 1.25;
+  }
+  .header .d-block-m {
+    display: none;
+  }
+  .header .d-block-pc {
+    display: flex;
+  }
+}
+.header {
+  box-sizing: border-box;
+  background: #fff;
+  position: fixed;
+  z-index: 999999;
+  width: 100%;
+  top: 0;
+}
+.header-container {
+  position: relative;
+  display: flex;
+  height: 100%;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 99;
+}
+.nav-container {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  z-index: 99;
+}
+
+.logo {
+  position: relative;
+  font-size: 0;
+  z-index: 99;
+}
+h1 {
+  line-height: 1;
+  margin: 0;
+  padding: 0;
+  font-weight: normal;
+  display: block;
+  font-size: 2em;
+  margin-block-start: 0.67em;
+  margin-block-end: 0.67em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  font-weight: bold;
+}
+.logo a {
+  display: block;
+  font-size: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-container > nav {
+  display: flex;
+  justify-content: space-around;
+  margin-top: unset;
+  position: unset;
+  top: unset;
+  left: unset;
+  transition: unset;
+  opacity: 1;
+  transform: unset;
+  filter: unset;
+}
+.nav-container > nav > ul {
+  display: flex;
+  flex-direction: row;
+}
+.nav-container > nav > ul > li {
+  margin: 0vw 1.04167vw;
+  display: flex;
+  align-items: center;
+  width: auto;
+  height: auto;
+}
+.nav-container a {
+  height: auto;
+  position: relative;
+}
+.nav-container a::after {
+  content: "";
+  display: block;
+  position: absolute;
+  transform-origin: center;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 1px;
+  bottom: 0;
+  background-color: #000;
+  transition: width 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+.nav-container a:hover::after {
+  width: 100%;
+}
+a:link,
+a:visited,
+a:active {
+  text-decoration: none;
+  color: #000;
+}
+a:-webkit-any-link {
+  cursor: pointer;
+}
+
+.nav-widget {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  z-index: 9;
+  height: 100%;
+}
+
+.widget-hash {
+  display: flex;
+  position: relative;
+  height: 100%;
+  align-items: center;
+}
+.widget-hash ul {
+  animation: rolling 6s ease-in-out infinite;
+  position: relative;
+  height: 100%;
+}
+@keyframes rolling {
+  from {
+    top: 0%;
+  }
+  20% {
+    top: -90%;
+  }
+  40% {
+    top: -200%;
+  }
+  60% {
+    top: -300%;
+  }
+  80% {
+    top: -400%;
+  }
+  to {
+    top: -500%;
+  }
+}
+.widget-hash ul > li {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  position: relative;
+}
+.hash-rolling-wrapper {
+  height: 40%;
+  overflow: hidden;
+}
+
+.widget-lang {
+  text-decoration: underline;
+}
+.header img,
+.widget-lang img,
+.widget-search img {
+  vertical-align: middle;
+}
+.widget-nav-btn {
+  display: block;
+  position: relative;
+}
+.widget-nav-btn::before {
+  top: 0;
+  left: 0;
+  height: 0.5333vw;
+}
+.widget-nav-btn::after {
+  left: 0;
+  bottom: 0;
+  height: 0.5333vw;
+}
+.widget-nav-btn::before,
+.widget-nav-btn::after {
+  content: "";
+  display: block;
+  position: absolute;
+  background-color: #000;
+  width: 100%;
+}

@@ -1,8 +1,7 @@
-import Render from '../component/Render';
-
+import Render from "../component/Render";
 const Main = () => {
   return (
-    <div className='section'>
+    <div>
       <Render />
     </div>
   );
