@@ -1,3 +1,5 @@
+require("./style.css");
+
 let serverDiscussions = []; // 서버에서 받은 데이터를 담을 변수를 준비한다.
 fetch("http://localhost:4000/discussions")
   .then((res) => res.json())
