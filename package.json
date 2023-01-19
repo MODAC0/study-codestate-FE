@@ -63,10 +63,10 @@
     "start": "node scripts/start.js",
     "build": "node scripts/build.js && shx cp build/index.html build/404.html",
     "test": "node scripts/test.js",
-    "deploy": "gh-pages -b master -d build",
-    "predeploy": "npm run build"
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
-  "homepage": "https://MODAC0.github.io/AgoraStates-FrontEnd",
+  "homepage": "https://modac0.github.io/AgoraStates-FrontEnd",
   "eslintConfig": {
     "extends": [
       "react-app",
@@ -142,5 +142,9 @@
     "presets": [
       "react-app"
     ]
-  }
+  },
+  "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
+  "main": "index.js",
+  "author": "",
+  "license": "ISC"
 }
