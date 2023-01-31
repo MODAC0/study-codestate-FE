@@ -12,13 +12,36 @@
  */
 
 function detectNetwork(cardNumber) {
-  /**
-   * 주의사항: 'cardNumber'는 항상 문자열입니다.
-   * 'Diner's Club' 카드 번호는 항상 38이나 39로 시작을하고, 14 자리 숫자입니다.
-   * 'American Express' 카드 번호는 항상 34 나 37로 시작하고, 15 자리 숫자입니다.
-   * 이 글을 읽으셨다면, detectNetwork함수가 'Diner's Club', 'American Express'를
-   * 정확히 검사할 수 있도록 만들고 브라우저 console 화면으로 돌아가세요.
-   */
+  let num = cardNumber[0];
+  if (
+    (cardNumber.startsWith("38") || cardNumber.startsWith("39")) &&
+    cardNumber.length === 14
+  )
+    return "Diner's Club";
+  else if (
+    (cardNumber.startsWith("34") || cardNumber.startsWith("37")) &&
+    cardNumber.length === 15
+  )
+    return "American Express";
+  else if (cardNumber.startsWith("4") && (cardNumber.length === 13 || 16 || 19))
+    return "Visa";
+  else if (
+    (cardNumber.startsWith("51") ||
+      cardNumber.startsWith("52") ||
+      cardNumber.startsWith("53") ||
+      cardNumber.startsWith("54") ||
+      cardNumber.startsWith("55")) &&
+    cardNumber.length === 16
+  )
+    return "MasterCard";
+  else if (
+    ((cardNumber.startsWith("6011") ||
+      cardNumber.startsWith("65") ||
+      (+num > 643 && +num < 650)) &&
+      cardNumber.length === 16) ||
+    19
+  )
+    return "Discover";
 }
 
 // you don't have to worry about this code. keep this code.
