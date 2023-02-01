@@ -1,0 +1,21 @@
+{
+  "name": "pre-testbuilder",
+  "version": "1.0.0",
+  "description": "",
+  "main": "detectNetwork.js",
+  "scripts": {
+    "test": "mocha test/index.test.js --reporter mocha-multi-reporters --reporter-options configFile=multi-reporters.json",
+    "report": "mocha test/index.test.js --timeout 50000 --exit --sort --reporter @mochajs/json-file-reporter",
+    "submit": "codestates"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@mochajs/json-file-reporter": "^0.1.1",
+    "chai": "^4.2.0",
+    "codestates-assignment-manager": "^1.8.0",
+    "mocha": "^10.2.0",
+    "mocha-multi-reporters": "^1.5.1"
+  }
+}
