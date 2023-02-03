@@ -30,6 +30,6 @@ jobs:
         run: |
           aws s3 sync \
             --region ap-northeast-2 \
-            build s3://my-agora-states-client-fe-35-modac0-s3 \
+            build s3://fe-35-modac0-s3 \
             --delete
         working-directory: ./my-agora-states-client
