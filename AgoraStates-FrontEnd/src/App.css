@@ -1,0 +1,77 @@
+main {
+  display: flex;
+  flex-direction: column;
+  justify-items: flex-start;
+}
+
+section.form__container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #eaeaea;
+  padding-bottom: 4em;
+}
+
+h1 {
+  font-size: 3em;
+  margin: 1em;
+}
+
+form.form {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  width: 50em;
+  height: 28em;
+}
+
+div.form__input--wrapper {
+  /* position: absolute; */
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 1em;
+  width: 28em;
+}
+
+div.form__input--wrapper > div {
+  margin: 0.3em 0.3em;
+}
+
+div.form__input--name {
+  flex: 1 0 10em;
+}
+
+div.form__input--title {
+  flex: 1 0 10em;
+}
+div.form__textbox {
+  flex: 1 0 20em;
+}
+div.form__input--wrapper > div > input {
+  padding: 1em;
+  width: 100%;
+  border-radius: 0.3em;
+  border: none;
+}
+
+.submitbtn {
+  background-color: rgb(28, 77, 201);
+  color: white;
+}
+
+input:focus {
+  outline: solid 1px #1d1d1d;
+}
+
+section.discussion__wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #dddddd;
+}
