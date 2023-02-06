@@ -1,0 +1,53 @@
+body,
+html,
+#root,
+.app,
+.container {
+  width: 100%;
+  height: 100%;
+}
+
+
+.app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #f0edf0;
+  color: #2d2d28;
+}
+
+.container {
+  width: 960px;
+  height: 640px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.statusContainer {
+  flex: 2 0 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.status,
+.success,
+.fail {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 36px;
+  font-weight: bold;
+}
+
+.fail {
+  color: #af1b1b;
+}
+
+.success {
+  color: #30a1aa;
+}
